@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Étude de Galates 1-6</title>
+<meta name="description" content="Accueil de l&#x27;étude de Galates 1-6 dans la perspective de John MacArthur : recherche exégétique sur tout le livre, plan de série « Aucun autre Évangile : la grâce qui affranchit » et recherches des six sermons.">
+<meta name="author" content="André-Guy Bruneau">
+<meta name="color-scheme" content="dark">
+<style>
+  :root{
+    /* ---- Palette des recherches : noir et orange ---- */
+    --nuit:#0a0a0a;
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;
+    --encre:#f3f0ec;
+    --encre-doux:#c9c2ba;
+    --or:#e8843c;
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    /* Contour des éléments interactifs : au moins 3:1 sur la page et sur les cartes */
+    --filet-fort:rgba(232,132,60,.65);
+    --titre:"Cormorant Garamond","EB Garamond",Georgia,"Times New Roman",serif;
+    --texte:"EB Garamond",Georgia,"Times New Roman",serif;
+    --max:82rem;
+    --colonne:46rem;
+    --gout:clamp(1rem,4vw,2.5rem);
+    /* Étiquettes : jamais sous 14 px */
+    --etiq:max(.875rem,.7em);
+    /* Hauteur de la barre collante : deux rangées sur téléphone, une ensuite */
+    --barre:6.6rem;
+    color-scheme:dark;
+  }
+  @media (min-width:48rem){:root{--barre:3.7rem;}}
+  @media (max-height:30rem){:root{--barre:0rem;}}
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:calc(var(--barre) + .9rem);}
+  body{
+    margin:0;
+    font-family:var(--texte);
+    /* Grands caractères pour des lecteurs aînés, comme les recherches */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.75;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 70% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-repeat:no-repeat;
+    overflow-wrap:break-word;
+  }
+  /* Grain de parchemin et vignette, très discrets */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .vignette{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+  .tete,main,.pied{position:relative;z-index:1;}
+
+  a{color:var(--feuille);}
+  :focus-visible{outline:3px solid var(--feuille-vif);outline-offset:3px;border-radius:4px;}
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  .nw{white-space:nowrap;}
+  .vh{
+    position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;
+    overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0;
+  }
+  abbr[title]{text-decoration:underline dotted;text-decoration-thickness:1px;text-underline-offset:.18em;cursor:help;}
+  .q{color:var(--or);font-style:normal;}
+
+  /* ---- Lien d'évitement ---- */
+  .evitement{
+    position:absolute;left:1rem;top:-8rem;z-index:100;
+    padding:.6rem 1rem;border-radius:4px;
+    background:var(--or);color:var(--nuit);font-weight:600;text-decoration:none;
+  }
+  .evitement:focus{top:.6rem;}
+
+  /* ---- Barre de navigation collante ---- */
+  .barre{
+    position:sticky;top:0;z-index:30;
+    background:rgba(10,10,10,.95);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--filet);
+  }
+  @media (max-height:30rem){.barre{position:relative;}}
+  .barre__in{
+    max-width:var(--max);margin:0 auto;padding:.3rem var(--gout);
+    display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:.2rem .6rem;
+  }
+  .barre a{text-decoration:none;}
+  .barre__marque{
+    display:inline-flex;align-items:center;min-height:2.75rem;
+    font-family:var(--titre);font-weight:600;font-size:1.3rem;letter-spacing:.06em;white-space:nowrap;
+    color:var(--or-clair);
+  }
+  .barre ul{margin:0;padding:0;list-style:none;}
+  .barre__liens{display:flex;justify-content:flex-end;gap:.2rem;}
+  .barre__liens a{
+    display:inline-flex;align-items:center;justify-content:center;min-height:2.75rem;padding:0 .75rem;border-radius:5px;
+    font-size:1.1rem;line-height:1.2;color:var(--encre);white-space:nowrap;
+  }
+  .barre__liens a:hover{color:var(--or-clair);background:rgba(232,132,60,.1);}
+  .barre__liens a[aria-current]{color:var(--or-clair);box-shadow:inset 0 -2px 0 var(--or);}
+  .barre__puces{grid-column:1 / -1;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.2rem;}
+  /* Chaque pastille rétrécit avec sa cellule au lieu de déborder sur la voisine */
+  .barre__puces li{display:flex;align-items:center;justify-content:center;min-width:0;}
+  .barre__puces a{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:min(2.75rem,100%);height:2.75rem;border:1px solid var(--filet-fort);border-radius:50%;
+    font-family:var(--titre);font-weight:600;font-size:1.35rem;line-height:1;color:var(--encre);
+  }
+  .barre__puces a:hover{border-color:var(--or);color:var(--or-clair);background:rgba(232,132,60,.12);}
+  .barre__puces a[aria-current]{background:var(--or);border-color:var(--or);color:var(--nuit);}
+  @supports (aspect-ratio:1){.barre__puces a{height:auto;aspect-ratio:1;}}
+  @media (max-width:25.99rem){
+    .barre__in{grid-template-columns:minmax(0,1fr);}
+    .barre__marque{display:none;}
+    .barre__liens{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+    .barre__liens a{white-space:normal;text-align:center;}
+  }
+  @media (min-width:48rem){
+    .barre__in{display:flex;gap:.5rem 1rem;}
+    .barre__marque{margin-right:auto;}
+    .barre__puces{display:flex;gap:.3rem;}
+    .barre__puces a{width:2.75rem;}
+  }
+
+  /* ---- En-tête : couverture encadrée, compacte ---- */
+  .tete{max-width:var(--max);margin:0 auto;padding:clamp(1rem,2.5vw,1.8rem) var(--gout) 0;}
+  .tete__cadre{
+    position:relative;text-align:center;
+    padding:clamp(1.8rem,4.5vw,3.2rem) clamp(1rem,4vw,3rem) clamp(1.7rem,4vw,2.8rem);
+    border:1px solid var(--filet);
+    background:radial-gradient(80% 60% at 50% 0%, rgba(240,182,89,.06), transparent 70%);
+  }
+  .tete__cadre::before,.tete__cadre::after{content:"";position:absolute;width:18px;height:18px;pointer-events:none;}
+  .tete__cadre::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .tete__cadre::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+  .tete__kicker{
+    margin:0 0 .5rem;font-size:var(--etiq);letter-spacing:.34em;text-transform:uppercase;color:var(--or);
+  }
+  h1{
+    margin:0 auto;max-width:16em;padding:.04em .06em .16em;
+    font-family:var(--titre);font-weight:600;
+    font-size:clamp(2.35rem,1.4rem + 3.6vw,4.4rem);line-height:1.04;letter-spacing:.015em;
+    text-wrap:balance;
+    color:var(--or-clair);
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 48%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 30px rgba(240,182,89,.22));
+  }
+  @media (forced-colors:active){h1{background:none;-webkit-text-fill-color:CanvasText;filter:none;}}
+  .ornement{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    width:min(20rem,80%);margin:1.2rem auto;color:var(--or);
+  }
+  .ornement::before,.ornement::after{
+    content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornement span{font-size:.8rem;line-height:1;}
+  .tete__verset{margin:0 auto;max-width:48rem;}
+  .tete__verset blockquote{margin:0;}
+  .tete__verset p{
+    margin:0;font-family:var(--titre);font-style:italic;font-weight:500;
+    font-size:clamp(1.3rem,1rem + 1vw,1.85rem);line-height:1.55;color:var(--encre);text-wrap:balance;
+  }
+  .tete__verset figcaption{
+    margin-top:.9rem;font-size:var(--etiq);letter-spacing:.28em;text-transform:uppercase;color:var(--or);
+  }
+  .tete__serie{margin:1.5rem 0 0;}
+  .tete__serie .etiquette{display:block;margin-bottom:.15rem;color:var(--encre-doux);}
+  .tete__phrase{
+    font-family:var(--titre);font-weight:600;font-size:clamp(1.45rem,1.15rem + 1vw,2rem);line-height:1.3;color:var(--feuille);
+  }
+  .tete__meta{margin:1.1rem auto 0;max-width:40rem;font-size:.92em;line-height:1.55;color:var(--encre-doux);}
+
+  /* ---- Sections ---- */
+  main{max-width:var(--max);margin:0 auto;padding:0 var(--gout);}
+  .sec{padding-top:clamp(2.4rem,6vw,4rem);}
+  .sec-tete{text-align:center;margin-bottom:1.6rem;}
+  .kicker{
+    margin:0 0 .5rem;font-size:var(--etiq);letter-spacing:.28em;text-transform:uppercase;color:var(--or);
+  }
+  .kicker::before{content:"\25C6";content:"\25C6" / "";margin-right:.7em;font-size:.72em;vertical-align:.12em;}
+  h2{
+    margin:0;font-family:var(--titre);font-weight:600;
+    font-size:clamp(2.05rem,1.4rem + 2.2vw,3.1rem);line-height:1.1;color:var(--encre);text-wrap:balance;
+  }
+  .sec-tete h2::after{content:"";display:block;width:2.6rem;height:1px;margin:1rem auto 0;background:var(--filet-fort);}
+  .lead{
+    max-width:var(--colonne);margin:0 auto 1rem;padding-left:1.2rem;border-left:3px solid var(--or);
+    font-size:1.04em;line-height:1.7;color:#faf3ec;text-wrap:pretty;
+  }
+  .question{max-width:var(--colonne);margin:0 auto;padding-left:1.2rem;border-left:3px solid transparent;line-height:1.65;color:var(--encre);}
+  .question strong,.carte__question strong{font-family:var(--titre);font-style:italic;font-weight:600;font-size:1.12em;color:var(--feuille);}
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    margin:clamp(2.2rem,5vw,3.4rem) auto 0;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* ---- Étiquettes et boutons ---- */
+  .etiquette{margin:0;font-size:var(--etiq);font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--or);line-height:1.5;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    min-height:2.9rem;padding:.35rem 1rem;
+    border:1px solid var(--filet-fort);border-radius:6px;
+    font-size:max(1.1rem,.95em);line-height:1.2;text-align:center;text-decoration:none;color:var(--encre);
+  }
+  .btn:hover{border-color:var(--or);color:var(--or-clair);background:rgba(232,132,60,.1);}
+  .btn--plein{background:var(--or);border-color:var(--or);color:var(--nuit);font-weight:600;}
+  .btn--plein:hover{background:var(--or-clair);border-color:var(--or-clair);color:var(--nuit);}
+  .actions{display:flex;flex-wrap:wrap;gap:.55rem;}
+  @media (max-width:29.99rem){
+    .actions{display:grid;grid-template-columns:1fr 1fr;}
+    .actions .btn--plein{grid-column:1 / -1;}
+  }
+
+  /* ---- Le livre entier ---- */
+  .livre{display:grid;gap:1.2rem;align-items:start;grid-template-columns:minmax(0,1fr);}
+  @media (min-width:64rem){.livre{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);}}
+  .carte{
+    display:flex;flex-direction:column;gap:.85rem;
+    padding:clamp(1.15rem,3vw,1.6rem) clamp(1.05rem,3vw,1.7rem) clamp(1.2rem,3vw,1.6rem);
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 10px 10px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.78),rgba(18,18,18,.45));
+  }
+  .carte p{margin:0;}
+  .carte h3{
+    margin:0;font-family:var(--titre);font-weight:600;
+    font-size:clamp(1.65rem,1.3rem + 1vw,2.2rem);line-height:1.12;color:var(--or-clair);
+  }
+  .carte__texte{line-height:1.7;color:var(--encre);text-wrap:pretty;}
+  /* Téléphone : la date passe sous l'étiquette, sans point médian orphelin en fin de ligne */
+  @media (max-width:25.99rem){.carte__sep{display:none;}.carte__date{display:block;}}
+  .carte__question{padding:.75rem 0 .1rem 1rem;border-top:1px solid var(--filet);line-height:1.65;color:var(--encre);border-left:2px solid var(--filet-fort);}
+  .carte__duree{padding:.75rem 1rem .8rem;border:1px solid var(--filet);border-radius:6px;background:rgba(232,132,60,.05);line-height:1.6;}
+  .carte__duree .etiquette{display:block;}
+  .carte .actions{margin-top:0;padding-top:.35rem;}
+  .rubriques{display:grid;gap:.15rem 1.4rem;grid-template-columns:repeat(auto-fill,minmax(min(100%,13rem),1fr));margin:.1rem 0 0;padding:0;list-style:none;}
+  .rubriques li{position:relative;padding-left:1.2rem;line-height:1.5;color:var(--encre);}
+  .rubriques li::before{content:"\25C6";content:"\25C6" / "";position:absolute;left:0;top:.55em;font-size:.55em;color:var(--or);}
+  .sections{display:flex;flex-wrap:wrap;gap:.45rem;margin:0;padding:0;list-style:none;}
+  .sections a{
+    display:inline-flex;align-items:center;min-height:2.75rem;padding:.2rem .9rem;
+    border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.92em;line-height:1.25;color:var(--encre);text-decoration:none;
+  }
+  .sections a:hover{border-color:var(--or);color:var(--or-clair);background:rgba(232,132,60,.08);}
+
+  /* Les sept mouvements de la lettre */
+  .mouvements{
+    margin-top:1.2rem;padding:clamp(1.15rem,3vw,1.6rem) clamp(1.05rem,3vw,1.7rem);
+    border:1px solid var(--filet);border-radius:10px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));
+  }
+  .mouvements__tete{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.3rem 1.2rem;margin-bottom:1rem;}
+  .mouvements h3{margin:0;font-family:var(--titre);font-weight:600;font-size:clamp(1.55rem,1.25rem + .9vw,2rem);line-height:1.15;color:var(--or-clair);}
+  .mouvements__lien{display:inline-flex;align-items:center;min-height:2.75rem;font-size:.92em;}
+  .mv{list-style:none;margin:0;padding:0;counter-reset:mv;columns:2 24rem;column-gap:2.6rem;}
+  .mv li{
+    counter-increment:mv;position:relative;break-inside:avoid;
+    margin:0 0 .65rem;padding:.55rem .2rem .6rem 3.2rem;border-top:1px solid var(--filet);
+  }
+  .mv li::before{
+    content:counter(mv);position:absolute;left:0;top:.65rem;
+    display:flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;
+    border:1px solid var(--filet-fort);border-radius:50%;background:rgba(232,132,60,.06);
+    font-family:var(--titre);font-weight:600;font-size:1.2rem;line-height:1;color:var(--or);
+  }
+  .mv__ref{display:block;font-size:var(--etiq);letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .mv__lib{display:block;line-height:1.5;color:var(--encre);}
+
+  /* ---- Les six sermons ---- */
+  .sommaire{display:grid;gap:1rem 1.4rem;margin:1.8rem 0 .4rem;padding:0;list-style:none;}
+  .sommaire__bloc{min-width:0;}
+  @media (min-width:69rem){
+    .sommaire{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto auto;}
+    .sommaire__bloc{display:grid;grid-template-rows:subgrid;grid-row:span 2;row-gap:0;}
+    .sommaire__nom{align-self:end;}
+  }
+  .sommaire__nom{margin:0 0 .5rem;line-height:1.3;}
+  .sommaire__ch{display:block;font-size:var(--etiq);letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .sommaire__titre{font-family:var(--titre);font-weight:600;font-size:1.12em;color:var(--or-clair);}
+  .sommaire ol{display:grid;gap:.5rem;margin:0;padding:0;list-style:none;}
+  .sommaire ol li{display:flex;}
+  .sommaire ol a{flex:1;}
+  .sommaire a{
+    position:relative;display:flex;flex-direction:column;justify-content:center;min-height:4.2rem;
+    padding:.55rem .9rem .6rem 3.6rem;border:1px solid var(--filet-fort);border-radius:8px;
+    color:var(--encre);text-decoration:none;line-height:1.3;
+    background:rgba(18,18,18,.35);
+  }
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.08);}
+  .sommaire__n{
+    position:absolute;left:.75rem;top:50%;transform:translateY(-50%);
+    display:flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;
+    border:1px solid var(--filet-fort);border-radius:50%;
+    font-family:var(--titre);font-weight:600;font-size:1.25rem;line-height:1;color:var(--or-clair);
+  }
+  .sommaire__ref{font-size:var(--etiq);letter-spacing:.14em;text-transform:uppercase;color:var(--encre-doux);}
+  .sommaire__lib{font-family:var(--titre);font-weight:600;font-size:1.15em;}
+
+  .bloc{margin-top:clamp(1.8rem,4vw,2.6rem);}
+  .bloc__titre{
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:.1rem 1rem;
+    margin:0 0 1rem;padding:.65rem .8rem .55rem;
+    border-bottom:1px solid var(--filet-fort);
+    background:linear-gradient(90deg,rgba(232,132,60,.11),transparent 75%);
+    font-weight:inherit;
+  }
+  .bloc__ch{font-size:var(--etiq);letter-spacing:.22em;text-transform:uppercase;color:var(--or);}
+  .bloc__ch::before{content:"\25C6";content:"\25C6" / "";margin-right:.6em;font-size:.72em;vertical-align:.12em;}
+  .bloc__nom{font-family:var(--titre);font-weight:600;font-size:clamp(1.85rem,1.45rem + 1.3vw,2.6rem);line-height:1.2;color:var(--or-clair);}
+
+  .sermons{display:grid;gap:1.3rem;margin:0;padding:0;list-style:none;}
+  .sermon{
+    position:relative;display:grid;column-gap:.9rem;row-gap:.75rem;
+    grid-template-columns:auto minmax(0,1fr);
+    grid-template-areas:"n titre" "gty gty" "phrase phrase" "docs docs" "corps corps" "pied pied";
+    align-items:start;
+    padding:clamp(1.1rem,3vw,1.6rem) clamp(1rem,3vw,1.7rem) clamp(1rem,2.5vw,1.3rem);
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 10px 10px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.78),rgba(18,18,18,.42));
+  }
+  .sermon:target{border-color:var(--or);box-shadow:0 0 0 1px var(--or),0 0 32px rgba(232,132,60,.22);}
+  .sermon > *{margin:0;min-width:0;}
+  .s-n{
+    grid-area:n;display:flex;align-items:center;justify-content:center;
+    width:2.9rem;height:2.9rem;margin-top:.2rem;border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.08);
+    font-family:var(--titre);font-weight:600;font-size:1.65rem;line-height:1;color:var(--or-clair);
+  }
+  .s-titre{grid-area:titre;font-weight:inherit;}
+  .s-kicker{display:block;margin-bottom:.15rem;font-size:var(--etiq);letter-spacing:.2em;text-transform:uppercase;color:var(--or);line-height:1.4;}
+  @media (max-width:25.99rem){.s-kicker{letter-spacing:.16em;}}
+  .s-titre a{
+    font-family:var(--titre);font-weight:600;font-size:clamp(1.55rem,1.3rem + .8vw,2rem);line-height:1.12;
+    color:var(--encre);text-decoration:underline;text-decoration-color:var(--filet-fort);
+    text-decoration-thickness:1px;text-underline-offset:.16em;text-wrap:balance;
+  }
+  .s-titre a:hover{color:var(--or-clair);text-decoration-color:var(--or);}
+  .s-gty{grid-area:gty;font-size:.92em;color:var(--encre-doux);}
+  .s-phrase{grid-area:phrase;}
+  .s-phrase .etiquette{display:block;}
+  .s-phrase__txt{font-family:var(--titre);font-style:italic;font-size:1.22em;line-height:1.4;color:#faf3ec;}
+  .s-docs{grid-area:docs;display:grid;grid-template-columns:1fr 1fr;gap:.5rem;}
+  .s-docs .btn--plein{grid-column:1 / -1;}
+  .s-docs .btn{padding:.35rem .6rem;}
+
+  .corps{grid-area:corps;display:grid;grid-template-columns:minmax(0,1fr);gap:1.2rem 2.2rem;padding-top:1.05rem;border-top:1px solid var(--filet);}
+  @media (min-width:58rem){.corps{grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);}}
+  .corps__col > .etiquette{margin-bottom:.35rem;}
+  .corps__col > .etiquette ~ .etiquette{margin-top:1.1rem;}
+  .idee{margin:0;line-height:1.68;color:var(--encre);text-wrap:pretty;}
+
+  /* Versets (bloc à filet orange, comme les recherches) */
+  .verset{
+    margin:0;padding:1.05rem 1.2rem 1rem 1.3rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 6px 6px 0;
+    background:linear-gradient(180deg,rgba(232,132,60,.08),rgba(232,132,60,.02));
+  }
+  .verset blockquote{margin:0;}
+  .verset p{margin:0;font-family:var(--titre);font-style:italic;font-size:1.12em;line-height:1.55;color:var(--encre);}
+  .verset figcaption{margin-top:.6rem;font-size:var(--etiq);letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+
+  .etapes{list-style:none;margin:0;padding:0;display:grid;gap:.6rem;}
+  .etapes li{display:grid;grid-template-columns:2.4em minmax(0,1fr);column-gap:.3rem;}
+  .etape__num{font-family:var(--titre);font-weight:600;font-size:1.08em;line-height:1.35;color:var(--or);}
+  .etape__nom{display:block;font-family:var(--titre);font-weight:600;font-size:1.1em;line-height:1.3;color:var(--encre);}
+  .etape__ref{display:block;font-size:.88em;line-height:1.45;color:var(--encre-doux);}
+
+  /* Pied de la fiche : sections, sermons GTY, transition */
+  .pied-fiche{grid-area:pied;display:flex;flex-wrap:wrap;align-items:flex-start;gap:.6rem;padding-top:1rem;border-top:1px solid var(--filet);}
+  .repli{flex:0 1 auto;min-width:0;}
+  .repli[open]{flex-basis:100%;}
+  .repli > summary{
+    display:inline-flex;align-items:center;gap:.6rem;min-height:2.9rem;padding:.3rem 1rem .3rem .75rem;
+    border:1px solid var(--filet-fort);border-radius:6px;cursor:pointer;list-style:none;
+    font-size:max(1.1rem,.95em);line-height:1.25;color:var(--feuille);
+  }
+  .repli > summary::-webkit-details-marker{display:none;}
+  .repli > summary::before{
+    content:"+";content:"+" / "";display:inline-flex;align-items:center;justify-content:center;flex:none;
+    width:1.7rem;height:1.7rem;border:1px solid var(--filet-fort);border-radius:50%;
+    font-size:1.15rem;line-height:1;color:var(--or);
+  }
+  .repli[open] > summary::before{content:"\2212";content:"\2212" / "";}
+  .repli > summary:hover{border-color:var(--or);color:var(--feuille-vif);background:rgba(232,132,60,.08);}
+  .repli__corps{margin-top:.7rem;padding:1rem 1.1rem;border:1px solid var(--filet);border-radius:8px;background:rgba(10,10,10,.35);}
+  .repli__note{max-width:var(--colonne);margin:0 0 .8rem;font-size:.95em;line-height:1.6;color:var(--encre-doux);}
+  .gty{list-style:none;margin:0;padding:0;display:grid;gap:.55rem 2rem;grid-template-columns:repeat(auto-fill,minmax(min(100%,22rem),1fr));}
+  .gty li{display:grid;grid-template-columns:3.6em minmax(0,1fr);column-gap:.5rem;line-height:1.4;}
+  .gty__code{color:var(--or-clair);font-weight:600;}
+  .gty__titre{color:var(--encre);}
+  .gty__ref{display:block;font-size:.88em;color:var(--encre-doux);}
+
+  .transition{flex-basis:100%;margin-top:.3rem;padding:.85rem 1rem .9rem;border-left:2px solid var(--filet-fort);background:linear-gradient(90deg,rgba(232,132,60,.06),transparent 80%);}
+  .transition p{margin:0;}
+  .transition__texte{max-width:var(--colonne);line-height:1.65;color:var(--encre);text-wrap:pretty;}
+  .transition__lien{display:inline-block;padding:.45rem 0;font-weight:600;line-height:1.45;}
+  .retour{display:inline-flex;align-items:center;min-height:2.75rem;margin-left:auto;font-size:.95em;color:var(--feuille);}
+
+  @media (min-width:48rem){
+    .sermon{
+      grid-template-columns:3.6rem minmax(0,1fr);column-gap:1.4rem;
+      grid-template-areas:"n titre" "n gty" "n phrase" "n docs" ". corps" ". pied";
+    }
+    .s-n{width:3.4rem;height:3.4rem;font-size:1.95rem;}
+    .s-docs{display:flex;flex-wrap:wrap;}
+    .s-docs .btn{padding:.35rem 1rem;}
+  }
+  @media (min-width:64rem){
+    .sermon{
+      grid-template-columns:3.6rem minmax(0,1fr) 17rem;
+      grid-template-areas:"n titre docs" "n gty docs" "n phrase docs" ". corps corps" ". pied pied";
+    }
+    .s-docs{display:grid;}
+    .s-docs .btn{padding:.35rem .6rem;}
+  }
+
+  /* ---- Conclusion de la série ---- */
+  .conclusion{text-align:center;}
+  .rappel{
+    display:grid;gap:.6rem;margin:0 auto;padding:0;list-style:none;max-width:68rem;text-align:left;
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));
+  }
+  .rappel a{
+    display:flex;align-items:center;gap:.85rem;min-height:3.4rem;height:100%;padding:.55rem 1rem;
+    border:1px solid var(--filet-fort);border-radius:8px;text-decoration:none;color:var(--encre);background:rgba(18,18,18,.35);
+  }
+  .rappel a:hover{border-color:var(--or);background:rgba(232,132,60,.08);}
+  .rappel__n{
+    flex:none;display:flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;
+    border:1px solid var(--filet-fort);border-radius:50%;
+    font-family:var(--titre);font-weight:600;font-size:1.2rem;line-height:1;color:var(--or-clair);
+  }
+  .rappel__t{font-family:var(--titre);font-style:italic;font-size:1.18em;line-height:1.3;}
+  .conclusion .ornement{margin:1.8rem auto 1.4rem;}
+  .conclusion__phrase{
+    margin:.2rem auto 0;max-width:24em;font-family:var(--titre);font-weight:600;
+    font-size:clamp(1.7rem,1.3rem + 1.5vw,2.5rem);line-height:1.25;color:var(--feuille);text-wrap:balance;
+  }
+  .benediction{max-width:44rem;margin:2rem auto 0;}
+  .benediction .etiquette{margin-bottom:.5rem;}
+  .benediction .verset{text-align:left;}
+  .benediction .verset p{font-size:1.25em;}
+
+  /* ---- Pied de page ---- */
+  .pied{
+    margin-top:clamp(2.6rem,6vw,4rem);padding:2rem var(--gout) 2.6rem;text-align:center;
+    border-top:1px solid var(--filet);
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .pied .ornement{margin:0 auto 1.1rem;}
+  .pied p{margin:.25rem 0;font-size:.92em;line-height:1.55;color:var(--encre-doux);}
+  .pied .pied__nom{margin-bottom:.4rem;font-family:var(--titre);font-weight:600;font-size:1.6rem;color:var(--encre);}
+  .pied .pied__sdg{margin-top:1.3rem;font-size:var(--etiq);letter-spacing:.36em;text-transform:uppercase;color:var(--or);}
+
+  /* ---- Très grande police ou fort zoom (moins de 20 rem de large) : tout se replie, rien ne déborde ---- */
+  @media (max-width:19.99rem){
+    .nw{white-space:normal;}
+    .actions,.s-docs{grid-template-columns:minmax(0,1fr);}
+    .sections a,.sommaire a,.rappel a,.btn,.repli > summary{min-width:0;overflow-wrap:anywhere;-webkit-hyphens:auto;hyphens:auto;}
+  }
+
+  /* ---- Mouvement : seulement si la personne l'accepte ---- */
+  @media (prefers-reduced-motion:no-preference){
+    html{scroll-behavior:smooth;}
+    .btn,.sections a,.barre a,.sommaire a,.rappel a,.repli > summary,.sermon{
+      transition:background-color .2s,border-color .2s,color .2s,box-shadow .3s;
+    }
+  }
+
+  /* ---- Impression ---- */
+  @media print{
+    /* Fond blanc : les jetons clairs prévus pour le noir deviennent sombres (AA sur blanc) */
+    :root{
+      --encre:#111;--encre-doux:#444;
+      --or:#8a4510;--or-clair:#5c2e0a;--feuille:#5c2e0a;--feuille-vif:#5c2e0a;
+      --filet:#bbb;--filet-fort:#888;
+      color-scheme:light;
+    }
+    body{background:#fff;color:#000;font-size:11pt;}
+    .barre,.evitement,.grain,.vignette{display:none;}
+    h1{background:none;-webkit-text-fill-color:#000;color:#000;filter:none;}
+    .lead,.s-phrase__txt{color:var(--encre);}
+    .carte,.verset,.sermon,.mouvements,.bloc__titre,.tete__cadre{background:none;}
+    /* Au cas où « graphiques d'arrière-plan » est activé */
+    .sommaire a,.rappel a,.sections a,.repli__corps,.transition,.carte__duree,.s-n,.mv li::before{background:none;}
+    .btn--plein{background:none;border-color:var(--or);color:var(--encre);}
+    .sermon{break-inside:avoid;}
+    a{color:#000;}
+  }
+
+</style>
+</head>
+<body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<nav class="barre" aria-label="Accès rapide">
+  <div class="barre__in">
+    <a class="barre__marque" href="#haut"><span class="nw">Galates 1-6</span><span class="vh"> : haut de la page</span></a>
+    <ul class="barre__liens" role="list">
+      <li><a href="#livre">Livre et plan</a></li>
+      <li><a href="#sermons">Sermons</a></li>
+    </ul>
+    <ul class="barre__puces" role="list"><li><a href="#sermon-1"><span class="vh">Sermon </span>1<span class="vh"> (Galates 1 : Aucun autre Évangile)</span></a></li><li><a href="#sermon-2"><span class="vh">Sermon </span>2<span class="vh"> (Galates 2 : Justifié par la foi en Christ)</span></a></li><li><a href="#sermon-3"><span class="vh">Sermon </span>3<span class="vh"> (Galates 3 : La promesse avant la loi)</span></a></li><li><a href="#sermon-4"><span class="vh">Sermon </span>4<span class="vh"> (Galates 4 : Fils, et non plus esclave)</span></a></li><li><a href="#sermon-5"><span class="vh">Sermon </span>5<span class="vh"> (Galates 5 : La liberté qui marche selon l'Esprit)</span></a></li><li><a href="#sermon-6"><span class="vh">Sermon </span>6<span class="vh"> (Galates 6 : Se glorifier de la croix seule)</span></a></li></ul>
+  </div>
+</nav>
+
+<header class="tete" id="haut" data-nav="">
+  <div class="tete__cadre">
+    <p class="tete__kicker">Étude · <span class="nw">Galates 1-6</span></p>
+    <h1>Aucun autre Évangile : la grâce qui affranchit</h1>
+    <div class="ornement" aria-hidden="true"><span>◆</span></div>
+    <figure class="tete__verset">
+      <blockquote><p><span class="q">«</span> Néanmoins, sachant que ce n’est pas par les œuvres de la loi que l’homme est justifié, mais par la foi en <span class="nw">Jésus-Christ</span>, nous aussi nous avons cru en <span class="nw">Jésus-Christ</span>, afin d’être justifiés par la foi en Christ et non par les œuvres de la loi, parce que personne ne sera justifié par les œuvres de la loi. <span class="q">»</span></p></blockquote>
+      <figcaption><span class="nw">Galates 2.16</span> · NEG79</figcaption>
+    </figure>
+    <p class="tete__serie"><span class="etiquette">Phrase de la série</span><span class="vh"> : </span><span class="tete__phrase">Christ suffit : rien à ajouter, tout à recevoir.</span></p>
+    <p class="tete__meta">Recherche exégétique et plan de série · Perspective John MacArthur · <span class="nw">André-Guy Bruneau</span></p>
+  </div>
+</header>
+
+<main id="contenu">
+  <section class="sec" id="livre" aria-labelledby="livre-titre" data-nav="livre">
+    <div class="sec-tete">
+      <p class="kicker">Vue d'ensemble</p>
+      <h2 id="livre-titre">Le livre entier</h2>
+    </div>
+    <div class="livre">
+      <article class="carte" aria-labelledby="carte-recherche">
+        <p class="etiquette"><span class="nw">Galates 1-6</span><span class="carte__sep"> · </span><span class="carte__date nw">7 octobre 2026</span></p>
+        <h3 id="carte-recherche">Recherche sur tout le livre</h3>
+        <p class="carte__texte">Galates est la défense de l'Évangile de la grâce : Paul répond à des maîtres venus imposer la circoncision et la loi de Moïse à des croyants non juifs, et il le fait sans un mot d'éloge, de l'étonnement de 1.6 à la croix de 6.14.</p>
+        <p class="carte__question">La question qui commande tout le livre est celle de 2.16 : <strong>comment un homme est-il justifié devant Dieu, par la foi en Christ seule, ou par la foi complétée des œuvres de la loi, à commencer par la circoncision?</strong></p>
+        <div class="actions">
+          <a class="btn btn--plein" href="Sommaire/Recherche-MacArthur-Galates-1-6.html"><span>Lire la recherche<span class="vh"> sur tout le livre, <span class="nw">Galates 1-6</span></span></span></a>
+          <a class="btn" href="Sommaire/Recherche-MacArthur-Galates-1-6.pdf"><span><span class="vh">Recherche sur tout le livre, version </span>PDF</span></a>
+          <a class="btn" href="Sommaire/Recherche-MacArthur-Galates-1-6.md"><span><span class="vh">Recherche sur tout le livre, version </span>Texte (.md)</span></a>
+        </div>
+        <p class="etiquette">Sections de la recherche</p>
+        <ul class="sections" role="list"><li><a href="Sommaire/Recherche-MacArthur-Galates-1-6.html#contexte">Contexte du passage<span class="vh"> (recherche sur tout le livre)</span></a></li><li><a href="Sommaire/Recherche-MacArthur-Galates-1-6.html#arriere-plan">Arrière-plan historique et culturel<span class="vh"> (recherche sur tout le livre)</span></a></li><li><a href="Sommaire/Recherche-MacArthur-Galates-1-6.html#texte">État du texte<span class="vh"> (recherche sur tout le livre)</span></a></li><li><a href="Sommaire/Recherche-MacArthur-Galates-1-6.html#structure">Structure et grammaire<span class="vh"> (recherche sur tout le livre)</span></a></li><li><a href="Sommaire/Recherche-MacArthur-Galates-1-6.html#mots-cles">Étude des mots-clés<span class="vh"> (recherche sur tout le livre)</span></a></li><li><a href="Sommaire/Recherche-MacArthur-Galates-1-6.html#commentateurs">Apports des commentateurs<span class="vh"> (recherche sur tout le livre)</span></a></li><li><a href="Sommaire/Recherche-MacArthur-Galates-1-6.html#renvois">Renvois et passages parallèles<span class="vh"> (recherche sur tout le livre)</span></a></li><li><a href="Sommaire/Recherche-MacArthur-Galates-1-6.html#themes">Thèmes théologiques<span class="vh"> (recherche sur tout le livre)</span></a></li><li><a href="Sommaire/Recherche-MacArthur-Galates-1-6.html#reflexion">Pistes de réflexion<span class="vh"> (recherche sur tout le livre)</span></a></li></ul>
+      </article>
+      <article class="carte" aria-labelledby="carte-plan">
+        <p class="etiquette">Plan de série<span class="carte__sep"> · </span><span class="carte__date nw">13 octobre 2026</span></p>
+        <h3 id="carte-plan">Six sermons, un par chapitre</h3>
+        <p class="carte__texte">Galates défend la justification par la foi seule contre un Évangile qui ajoutait à Christ la circoncision et la loi : certains disaient déjà que le salut est par grâce, mais non par la grâce seule <span class="nw">(48-3)</span>.</p>
+        <p class="carte__duree"><span class="etiquette">Durée visée</span><span class="vh"> : </span>environ 42 minutes par sermon, plus la lecture publique du chapitre (hypothèse : même gabarit que le plan du <span class="nw">Psaume 94</span>)</p>
+        <p class="etiquette">Pour chaque sermon</p>
+        <ul class="rubriques" role="list"><li>Sermons <abbr lang="en" title="Grace to You">GTY</abbr></li><li>Textes d'appui</li><li>Idée centrale</li><li>Phrase à faire retenir</li><li>But</li><li>Étapes</li></ul>
+        <div class="actions">
+          <a class="btn btn--plein" href="Plan-Serie-Galates-1-6.pdf"><span>Lire le plan (PDF)<span class="vh"> de la série</span></span></a>
+          <a class="btn" href="Plan-Serie-Galates-1-6.md"><span><span class="vh">Plan de série, version </span>Texte (.md)</span></a>
+        </div>
+      </article>
+    </div>
+    <section class="mouvements" aria-labelledby="mouvements-titre">
+      <div class="mouvements__tete">
+        <h3 id="mouvements-titre">Les sept mouvements de la lettre</h3>
+        <a class="mouvements__lien" href="Sommaire/Recherche-MacArthur-Galates-1-6.html#structure">Structure et grammaire<span class="vh"> (recherche sur tout le livre)</span> <span aria-hidden="true">→</span></a>
+      </div>
+      <ol class="mv" role="list"><li><span class="mv__ref"><span class="nw">Galates 1.1-10</span></span> <span class="mv__lib">Salutation, étonnement et anathème : un seul Évangile</span></li><li><span class="mv__ref"><span class="nw">Galates 1.11-2.10</span></span> <span class="mv__lib">L'Évangile reçu par révélation et reconnu à Jérusalem</span></li><li><span class="mv__ref"><span class="nw">Galates 2.11-21</span></span> <span class="mv__lib">Antioche : la vérité de l'Évangile et la justification par la foi</span></li><li><span class="mv__ref"><span class="nw">Galates 3.1-29</span></span> <span class="mv__lib">L'Esprit reçu par la foi, la bénédiction d'Abraham et le but de la loi</span></li><li><span class="mv__ref"><span class="nw">Galates 4.1-31</span></span> <span class="mv__lib">Fils et héritiers, non esclaves : l'adoption, l'appel de Paul, Agar et Sara</span></li><li><span class="mv__ref"><span class="nw">Galates 5.1-6.10</span></span> <span class="mv__lib">La liberté gardée et la marche par l'Esprit</span></li><li><span class="mv__ref"><span class="nw">Galates 6.11-18</span></span> <span class="mv__lib">Conclusion de la main de Paul : la croix et la nouvelle création</span></li></ol>
+    </section>
+  </section>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <section class="sec" id="sermons" aria-labelledby="sermons-titre">
+    <div data-nav="sermons">
+      <div class="sec-tete">
+        <p class="kicker">Plan de série</p>
+        <h2 id="sermons-titre">Les six sermons</h2>
+      </div>
+      <p class="lead">MacArthur découpe la lettre en trois blocs de deux chapitres : l'autorité de Paul <span class="nw">(1-2)</span>, l'Évangile de la grâce <span class="nw">(3-4)</span>, la marche du chrétien dans la grâce <span class="nw">(5-6)</span> <span class="nw">(48-2)</span>. La série les suit, deux sermons par bloc.</p>
+      <p class="question">Chaque chapitre répond à sa manière à la question de 2.16 : <strong>comment un homme est-il justifié devant Dieu?</strong></p>
+      <nav class="sommaire-nav" id="sommaire" aria-label="Sommaire de la série"><ol class="sommaire" role="list"><li class="sommaire__bloc"><p class="sommaire__nom"><span class="sommaire__ch">Chapitres 1 et 2</span><span class="vh"> : </span><span class="sommaire__titre">L'autorité de Paul</span></p><ol role="list"><li><a href="#sermon-1"><span class="sommaire__n" aria-hidden="true">1</span><span class="sommaire__ref">Dimanche 1 · <span class="nw">Galates 1</span></span><span class="vh"> : </span><span class="sommaire__lib">Aucun autre Évangile</span></a></li><li><a href="#sermon-2"><span class="sommaire__n" aria-hidden="true">2</span><span class="sommaire__ref">Dimanche 2 · <span class="nw">Galates 2</span></span><span class="vh"> : </span><span class="sommaire__lib">Justifié par la foi en Christ</span></a></li></ol></li><li class="sommaire__bloc"><p class="sommaire__nom"><span class="sommaire__ch">Chapitres 3 et 4</span><span class="vh"> : </span><span class="sommaire__titre">L'Évangile de la grâce</span></p><ol role="list"><li><a href="#sermon-3"><span class="sommaire__n" aria-hidden="true">3</span><span class="sommaire__ref">Dimanche 3 · <span class="nw">Galates 3</span></span><span class="vh"> : </span><span class="sommaire__lib">La promesse avant la loi</span></a></li><li><a href="#sermon-4"><span class="sommaire__n" aria-hidden="true">4</span><span class="sommaire__ref">Dimanche 4 · <span class="nw">Galates 4</span></span><span class="vh"> : </span><span class="sommaire__lib">Fils, et non plus esclave</span></a></li></ol></li><li class="sommaire__bloc"><p class="sommaire__nom"><span class="sommaire__ch">Chapitres 5 et 6</span><span class="vh"> : </span><span class="sommaire__titre">La marche du chrétien dans la grâce</span></p><ol role="list"><li><a href="#sermon-5"><span class="sommaire__n" aria-hidden="true">5</span><span class="sommaire__ref">Dimanche 5 · <span class="nw">Galates 5</span></span><span class="vh"> : </span><span class="sommaire__lib">La liberté qui marche selon l'Esprit</span></a></li><li><a href="#sermon-6"><span class="sommaire__n" aria-hidden="true">6</span><span class="sommaire__ref">Dimanche 6 · <span class="nw">Galates 6</span></span><span class="vh"> : </span><span class="sommaire__lib">Se glorifier de la croix seule</span></a></li></ol></li></ol></nav>
+    </div>
+    <section class="bloc" id="bloc-1" aria-labelledby="bloc-1-titre">
+      <h3 class="bloc__titre" id="bloc-1-titre"><span class="bloc__ch">Chapitres 1 et 2</span><span class="vh"> : </span><span class="bloc__nom">L'autorité de Paul</span></h3>
+      <ol class="sermons" role="list">
+      <li class="sermon" id="sermon-1" data-nav="sermon-1">
+        <span class="s-n" aria-hidden="true">1</span>
+        <h4 class="s-titre"><span class="s-kicker">Dimanche 1 · <span class="nw">Galates 1</span></span><span class="vh"> : </span><a href="01-Galates-1/Recherche-MacArthur-Galates-1.html">Aucun autre Évangile<span class="vh"> (recherche exégétique)</span></a></h4>
+        <p class="s-gty">Sermons <abbr lang="en" title="Grace to You">GTY</abbr> <span class="nw">48-1</span> à <span class="nw">48-6</span></p>
+        <p class="s-phrase"><span class="etiquette">Phrase à faire retenir</span> <span class="s-phrase__txt"><span class="q">«</span> Un seul Évangile, reçu de Dieu, qui ne se retouche pas. <span class="q">»</span></span></p>
+        <div class="s-docs">
+          <a class="btn btn--plein" href="01-Galates-1/Recherche-MacArthur-Galates-1.html"><span>Lire la recherche<span class="vh"> du dimanche 1 : Aucun autre Évangile</span></span></a>
+          <a class="btn" href="01-Galates-1/Recherche-MacArthur-Galates-1.pdf"><span><span class="vh">Recherche du dimanche 1 : Aucun autre Évangile, version </span>PDF</span></a>
+          <a class="btn" href="01-Galates-1/Recherche-MacArthur-Galates-1.md"><span><span class="vh">Recherche du dimanche 1 : Aucun autre Évangile, version </span>Texte (.md)</span></a>
+        </div>
+        <div class="corps">
+          <div class="corps__col">
+            <p class="etiquette">Verset clé</p>
+            <figure class="verset">
+              <blockquote><p><span class="q">«</span> Je m’étonne que vous vous détourniez si promptement de celui qui vous a appelés par la grâce de Christ, pour passer à un autre évangile. Non pas qu’il y ait un autre évangile, mais il y a des gens qui vous troublent, et qui veulent altérer l’Evangile de Christ. <span class="q">»</span></p></blockquote>
+              <figcaption><span class="nw">Galates 1.6-7</span> · NEG79</figcaption>
+            </figure>
+          </div>
+          <div class="corps__col">
+            <p class="etiquette">Idée centrale</p>
+            <p class="idee">L'Évangile de Paul vient de Dieu par révélation et délivre réellement du présent siècle mauvais; quiconque y ajoute en fait un autre, que Paul déclare anathème.</p>
+            <p class="etiquette">Étapes</p>
+            <ol class="etapes" role="list"><li><span class="etape__num" aria-hidden="true">I.</span><span><span class="vh">I. </span><span class="etape__nom">L'Évangile qui délivre</span> <span class="etape__ref"><span class="nw">Galates 1.1-5</span></span></span></li><li><span class="etape__num" aria-hidden="true">II.</span><span><span class="vh">II. </span><span class="etape__nom">L'Évangile qu'on n'altère pas</span> <span class="etape__ref"><span class="nw">Galates 1.6-10</span>; <span class="nw">1 Corinthiens 16.22</span></span></span></li><li><span class="etape__num" aria-hidden="true">III.</span><span><span class="vh">III. </span><span class="etape__nom">L'Évangile reçu par révélation</span> <span class="etape__ref"><span class="nw">Galates 1.11-24</span></span></span></li></ol>
+          </div>
+        </div>
+        <div class="pied-fiche">
+          <details class="repli">
+            <summary><span>Sections de la recherche<span class="vh"> du dimanche 1 : Aucun autre Évangile</span></span></summary>
+            <div class="repli__corps"><ul class="sections" role="list"><li><a href="01-Galates-1/Recherche-MacArthur-Galates-1.html#contexte">Contexte du passage<span class="vh"> (recherche du dimanche 1 : Aucun autre Évangile)</span></a></li><li><a href="01-Galates-1/Recherche-MacArthur-Galates-1.html#arriere-plan">Arrière-plan historique et culturel<span class="vh"> (recherche du dimanche 1 : Aucun autre Évangile)</span></a></li><li><a href="01-Galates-1/Recherche-MacArthur-Galates-1.html#texte">État du texte<span class="vh"> (recherche du dimanche 1 : Aucun autre Évangile)</span></a></li><li><a href="01-Galates-1/Recherche-MacArthur-Galates-1.html#structure">Structure et grammaire<span class="vh"> (recherche du dimanche 1 : Aucun autre Évangile)</span></a></li><li><a href="01-Galates-1/Recherche-MacArthur-Galates-1.html#mots-cles">Étude des mots-clés<span class="vh"> (recherche du dimanche 1 : Aucun autre Évangile)</span></a></li><li><a href="01-Galates-1/Recherche-MacArthur-Galates-1.html#commentateurs">Apports des commentateurs<span class="vh"> (recherche du dimanche 1 : Aucun autre Évangile)</span></a></li><li><a href="01-Galates-1/Recherche-MacArthur-Galates-1.html#renvois">Renvois et passages parallèles<span class="vh"> (recherche du dimanche 1 : Aucun autre Évangile)</span></a></li><li><a href="01-Galates-1/Recherche-MacArthur-Galates-1.html#themes">Thèmes théologiques<span class="vh"> (recherche du dimanche 1 : Aucun autre Évangile)</span></a></li><li><a href="01-Galates-1/Recherche-MacArthur-Galates-1.html#reflexion">Pistes de réflexion<span class="vh"> (recherche du dimanche 1 : Aucun autre Évangile)</span></a></li></ul></div>
+          </details>
+          <details class="repli">
+            <summary><span>Sermons <abbr lang="en" title="Grace to You">GTY</abbr> de la <span class="nw">recherche (6)</span><span class="vh"> du dimanche 1 : Aucun autre Évangile</span></span></summary>
+            <div class="repli__corps"><ul class="gty" role="list"><li><span class="gty__code"><span class="nw">48-1</span></span> <span><span class="gty__titre" lang="en">Getting the Gospel Right</span> <span class="gty__ref"><span class="nw">Ga 1</span></span></span></li><li><span class="gty__code"><span class="nw">48-2</span></span> <span><span class="gty__titre" lang="en">Freedom in Christ, <span class="nw">Part 1</span></span> <span class="gty__ref"><span class="nw">Ga 1.1-5</span></span></span></li><li><span class="gty__code"><span class="nw">48-3</span></span> <span><span class="gty__titre" lang="en">Freedom in Christ, <span class="nw">Part 2</span></span> <span class="gty__ref"><span class="nw">Ga 1.1-5</span></span></span></li><li><span class="gty__code"><span class="nw">48-4</span></span> <span><span class="gty__titre" lang="en">No Other Gospel</span> <span class="gty__ref"><span class="nw">Ga 1.6-9</span></span></span></li><li><span class="gty__code"><span class="nw">48-5</span></span> <span><span class="gty__titre" lang="en">Paul Defends His Apostleship, <span class="nw">Part 1</span></span> <span class="gty__ref"><span class="nw">Ga 1.10-15</span></span></span></li><li><span class="gty__code"><span class="nw">48-6</span></span> <span><span class="gty__titre" lang="en">Paul Defends His Apostleship, <span class="nw">Part 2</span></span> <span class="gty__ref"><span class="nw">Ga 1.10-24</span></span></span></li></ul></div>
+          </details>
+          <div class="transition">
+            <p class="etiquette">Transition</p>
+            <p class="transition__texte">Paul a reçu l'Évangile de Dieu. Le chapitre 2 montre que Jérusalem l'a reconnu, et qu'il a dû le défendre jusque devant Pierre.</p>
+            <p><a class="transition__lien" href="#sermon-2">Vers le dimanche 2 : Justifié par la foi en Christ<span aria-hidden="true"> ↓</span></a></p>
+          </div>
+          <a class="retour" href="#sommaire">Retour au sommaire <span aria-hidden="true">↑</span></a>
+        </div>
+      </li>
+      <li class="sermon" id="sermon-2" data-nav="sermon-2">
+        <span class="s-n" aria-hidden="true">2</span>
+        <h4 class="s-titre"><span class="s-kicker">Dimanche 2 · <span class="nw">Galates 2</span></span><span class="vh"> : </span><a href="02-Galates-2/Recherche-MacArthur-Galates-2.html">Justifié par la foi en Christ<span class="vh"> (recherche exégétique)</span></a></h4>
+        <p class="s-gty">Sermons <abbr lang="en" title="Grace to You">GTY</abbr> <span class="nw">48-7</span> à <span class="nw">48-10</span></p>
+        <p class="s-phrase"><span class="etiquette">Phrase à faire retenir</span> <span class="s-phrase__txt"><span class="q">«</span> Déclaré juste par la foi; Christ vit en moi. <span class="q">»</span></span></p>
+        <div class="s-docs">
+          <a class="btn btn--plein" href="02-Galates-2/Recherche-MacArthur-Galates-2.html"><span>Lire la recherche<span class="vh"> du dimanche 2 : Justifié par la foi en Christ</span></span></a>
+          <a class="btn" href="02-Galates-2/Recherche-MacArthur-Galates-2.pdf"><span><span class="vh">Recherche du dimanche 2 : Justifié par la foi en Christ, version </span>PDF</span></a>
+          <a class="btn" href="02-Galates-2/Recherche-MacArthur-Galates-2.md"><span><span class="vh">Recherche du dimanche 2 : Justifié par la foi en Christ, version </span>Texte (.md)</span></a>
+        </div>
+        <div class="corps">
+          <div class="corps__col">
+            <p class="etiquette">Verset clé</p>
+            <figure class="verset">
+              <blockquote><p><span class="q">«</span> Néanmoins, sachant que ce n’est pas par les œuvres de la loi que l’homme est justifié, mais par la foi en <span class="nw">Jésus-Christ</span>, nous aussi nous avons cru en <span class="nw">Jésus-Christ</span>, afin d’être justifiés par la foi en Christ et non par les œuvres de la loi, parce que personne ne sera justifié par les œuvres de la loi. <span class="q">»</span></p></blockquote>
+              <figcaption><span class="nw">Galates 2.16</span> · NEG79</figcaption>
+            </figure>
+          </div>
+          <div class="corps__col">
+            <p class="etiquette">Idée centrale</p>
+            <p class="idee">La vérité de l'Évangile, reconnue à Jérusalem et défendue à Antioche, est que l'homme est déclaré juste par la foi en <span class="nw">Jésus-Christ</span>, non par les œuvres de la loi; le chrétien est crucifié avec Christ, et Christ vit en lui.</p>
+            <p class="etiquette">Étapes</p>
+            <ol class="etapes" role="list"><li><span class="etape__num" aria-hidden="true">I.</span><span><span class="vh">I. </span><span class="etape__nom">La vérité reconnue à Jérusalem</span> <span class="etape__ref"><span class="nw">Galates 2.1-10</span>; <span class="nw">Actes 15.1-11</span></span></span></li><li><span class="etape__num" aria-hidden="true">II.</span><span><span class="vh">II. </span><span class="etape__nom">La vérité défendue à Antioche</span> <span class="etape__ref"><span class="nw">Galates 2.11-14</span></span></span></li><li><span class="etape__num" aria-hidden="true">III.</span><span><span class="vh">III. </span><span class="etape__nom">La vérité exposée : justifié par la foi</span> <span class="etape__ref"><span class="nw">Galates 2.15-21</span></span></span></li></ol>
+          </div>
+        </div>
+        <div class="pied-fiche">
+          <details class="repli">
+            <summary><span>Sections de la recherche<span class="vh"> du dimanche 2 : Justifié par la foi en Christ</span></span></summary>
+            <div class="repli__corps"><ul class="sections" role="list"><li><a href="02-Galates-2/Recherche-MacArthur-Galates-2.html#contexte">Contexte du passage<span class="vh"> (recherche du dimanche 2 : Justifié par la foi en Christ)</span></a></li><li><a href="02-Galates-2/Recherche-MacArthur-Galates-2.html#arriere-plan">Arrière-plan historique et culturel<span class="vh"> (recherche du dimanche 2 : Justifié par la foi en Christ)</span></a></li><li><a href="02-Galates-2/Recherche-MacArthur-Galates-2.html#texte">État du texte<span class="vh"> (recherche du dimanche 2 : Justifié par la foi en Christ)</span></a></li><li><a href="02-Galates-2/Recherche-MacArthur-Galates-2.html#structure">Structure et grammaire<span class="vh"> (recherche du dimanche 2 : Justifié par la foi en Christ)</span></a></li><li><a href="02-Galates-2/Recherche-MacArthur-Galates-2.html#mots-cles">Étude des mots-clés<span class="vh"> (recherche du dimanche 2 : Justifié par la foi en Christ)</span></a></li><li><a href="02-Galates-2/Recherche-MacArthur-Galates-2.html#commentateurs">Apports des commentateurs<span class="vh"> (recherche du dimanche 2 : Justifié par la foi en Christ)</span></a></li><li><a href="02-Galates-2/Recherche-MacArthur-Galates-2.html#renvois">Renvois et passages parallèles<span class="vh"> (recherche du dimanche 2 : Justifié par la foi en Christ)</span></a></li><li><a href="02-Galates-2/Recherche-MacArthur-Galates-2.html#themes">Thèmes théologiques<span class="vh"> (recherche du dimanche 2 : Justifié par la foi en Christ)</span></a></li><li><a href="02-Galates-2/Recherche-MacArthur-Galates-2.html#reflexion">Pistes de réflexion<span class="vh"> (recherche du dimanche 2 : Justifié par la foi en Christ)</span></a></li></ul></div>
+          </details>
+          <details class="repli">
+            <summary><span>Sermons <abbr lang="en" title="Grace to You">GTY</abbr> de la <span class="nw">recherche (4)</span><span class="vh"> du dimanche 2 : Justifié par la foi en Christ</span></span></summary>
+            <div class="repli__corps"><ul class="gty" role="list"><li><span class="gty__code"><span class="nw">48-7</span></span> <span><span class="gty__titre" lang="en">Paul’s Gospel Ministry Confirmed, <span class="nw">Part 1</span></span> <span class="gty__ref"><span class="nw">Ga 2.1-10</span></span></span></li><li><span class="gty__code"><span class="nw">48-8</span></span> <span><span class="gty__titre" lang="en">Paul’s Gospel Ministry Confirmed, <span class="nw">Part 2</span></span> <span class="gty__ref"><span class="nw">Ga 2.1-10</span></span></span></li><li><span class="gty__code"><span class="nw">48-9</span></span> <span><span class="gty__titre" lang="en">The Danger of Adding to the Gospel</span> <span class="gty__ref"><span class="nw">Ga 2.11-12</span></span></span></li><li><span class="gty__code"><span class="nw">48-10</span></span> <span><span class="gty__titre" lang="en">Keeping the Gospel Pure</span> <span class="gty__ref"><span class="nw">Ga 2.13-21</span></span></span></li></ul></div>
+          </details>
+          <div class="transition">
+            <p class="etiquette">Transition</p>
+            <p class="transition__texte">Si la justice ne vient pas de la loi, d'où vient-elle? Paul répond au chapitre 3 par l'expérience des Galates, puis par l'Écriture.</p>
+            <p><a class="transition__lien" href="#sermon-3">Vers le dimanche 3 : La promesse avant la loi<span aria-hidden="true"> ↓</span></a></p>
+          </div>
+          <a class="retour" href="#sommaire">Retour au sommaire <span aria-hidden="true">↑</span></a>
+        </div>
+      </li>
+      </ol>
+    </section>
+    <section class="bloc" id="bloc-2" aria-labelledby="bloc-2-titre">
+      <h3 class="bloc__titre" id="bloc-2-titre"><span class="bloc__ch">Chapitres 3 et 4</span><span class="vh"> : </span><span class="bloc__nom">L'Évangile de la grâce</span></h3>
+      <ol class="sermons" role="list">
+      <li class="sermon" id="sermon-3" data-nav="sermon-3">
+        <span class="s-n" aria-hidden="true">3</span>
+        <h4 class="s-titre"><span class="s-kicker">Dimanche 3 · <span class="nw">Galates 3</span></span><span class="vh"> : </span><a href="03-Galates-3/Recherche-MacArthur-Galates-3.html">La promesse avant la loi<span class="vh"> (recherche exégétique)</span></a></h4>
+        <p class="s-gty">Sermons <abbr lang="en" title="Grace to You">GTY</abbr> <span class="nw">48-11</span> à <span class="nw">48-18</span></p>
+        <p class="s-phrase"><span class="etiquette">Phrase à faire retenir</span> <span class="s-phrase__txt"><span class="q">«</span> La loi maudit, Christ a pris la malédiction, la foi reçoit la promesse. <span class="q">»</span></span></p>
+        <div class="s-docs">
+          <a class="btn btn--plein" href="03-Galates-3/Recherche-MacArthur-Galates-3.html"><span>Lire la recherche<span class="vh"> du dimanche 3 : La promesse avant la loi</span></span></a>
+          <a class="btn" href="03-Galates-3/Recherche-MacArthur-Galates-3.pdf"><span><span class="vh">Recherche du dimanche 3 : La promesse avant la loi, version </span>PDF</span></a>
+          <a class="btn" href="03-Galates-3/Recherche-MacArthur-Galates-3.md"><span><span class="vh">Recherche du dimanche 3 : La promesse avant la loi, version </span>Texte (.md)</span></a>
+        </div>
+        <div class="corps">
+          <div class="corps__col">
+            <p class="etiquette">Verset clé</p>
+            <figure class="verset">
+              <blockquote><p><span class="q">«</span> Christ nous a rachetés de la malédiction de la loi, étant devenu malédiction pour nous – car il est écrit: Maudit est quiconque est pendu au bois – afin que la bénédiction d’Abraham ait pour les païens son accomplissement en <span class="nw">Jésus-Christ</span>, et que nous recevions par la foi l’Esprit qui avait été promis. <span class="q">»</span></p></blockquote>
+              <figcaption><span class="nw">Galates 3.13-14</span> · NEG79</figcaption>
+            </figure>
+          </div>
+          <div class="corps__col">
+            <p class="etiquette">Idée centrale</p>
+            <p class="idee">L'Esprit reçu par la foi, Abraham déclaré juste avant la loi et Christ devenu malédiction à notre place montrent que la justice vient de la promesse reçue par la foi; la loi, ajoutée pour un temps, conduit à Christ, en qui tous les croyants sont un.</p>
+            <p class="etiquette">Étapes</p>
+            <ol class="etapes" role="list"><li><span class="etape__num" aria-hidden="true">I.</span><span><span class="vh">I. </span><span class="etape__nom">L'Esprit reçu par la foi</span> <span class="etape__ref"><span class="nw">Galates 3.1-5</span></span></span></li><li><span class="etape__num" aria-hidden="true">II.</span><span><span class="vh">II. </span><span class="etape__nom">Abraham et la malédiction portée</span> <span class="etape__ref"><span class="nw">Galates 3.6-14</span>; <span class="nw">Genèse 15.6</span>; <span class="nw">Deutéronome 27.26</span>; <span class="nw">Habacuc 2.4</span>; <span class="nw">Deutéronome 21.23</span></span></span></li><li><span class="etape__num" aria-hidden="true">III.</span><span><span class="vh">III. </span><span class="etape__nom">La loi à sa place</span> <span class="etape__ref"><span class="nw">Galates 3.15-25</span></span></span></li><li><span class="etape__num" aria-hidden="true">IV.</span><span><span class="vh">IV. </span><span class="etape__nom">Tous un en Christ</span> <span class="etape__ref"><span class="nw">Galates 3.26-29</span></span></span></li></ol>
+          </div>
+        </div>
+        <div class="pied-fiche">
+          <details class="repli">
+            <summary><span>Sections de la recherche<span class="vh"> du dimanche 3 : La promesse avant la loi</span></span></summary>
+            <div class="repli__corps"><ul class="sections" role="list"><li><a href="03-Galates-3/Recherche-MacArthur-Galates-3.html#contexte">Contexte du passage<span class="vh"> (recherche du dimanche 3 : La promesse avant la loi)</span></a></li><li><a href="03-Galates-3/Recherche-MacArthur-Galates-3.html#arriere-plan">Arrière-plan historique et culturel<span class="vh"> (recherche du dimanche 3 : La promesse avant la loi)</span></a></li><li><a href="03-Galates-3/Recherche-MacArthur-Galates-3.html#texte">État du texte<span class="vh"> (recherche du dimanche 3 : La promesse avant la loi)</span></a></li><li><a href="03-Galates-3/Recherche-MacArthur-Galates-3.html#structure">Structure et grammaire<span class="vh"> (recherche du dimanche 3 : La promesse avant la loi)</span></a></li><li><a href="03-Galates-3/Recherche-MacArthur-Galates-3.html#mots-cles">Étude des mots-clés<span class="vh"> (recherche du dimanche 3 : La promesse avant la loi)</span></a></li><li><a href="03-Galates-3/Recherche-MacArthur-Galates-3.html#commentateurs">Apports des commentateurs<span class="vh"> (recherche du dimanche 3 : La promesse avant la loi)</span></a></li><li><a href="03-Galates-3/Recherche-MacArthur-Galates-3.html#renvois">Renvois et passages parallèles<span class="vh"> (recherche du dimanche 3 : La promesse avant la loi)</span></a></li><li><a href="03-Galates-3/Recherche-MacArthur-Galates-3.html#themes">Thèmes théologiques<span class="vh"> (recherche du dimanche 3 : La promesse avant la loi)</span></a></li><li><a href="03-Galates-3/Recherche-MacArthur-Galates-3.html#reflexion">Pistes de réflexion<span class="vh"> (recherche du dimanche 3 : La promesse avant la loi)</span></a></li></ul></div>
+          </details>
+          <details class="repli">
+            <summary><span>Sermons <abbr lang="en" title="Grace to You">GTY</abbr> de la <span class="nw">recherche (8)</span><span class="vh"> du dimanche 3 : La promesse avant la loi</span></span></summary>
+            <div class="repli__corps"><ul class="gty" role="list"><li><span class="gty__code"><span class="nw">48-11</span></span> <span><span class="gty__titre" lang="en">Bewitched by False Doctrine</span> <span class="gty__ref"><span class="nw">Ga 3.1-5</span></span></span></li><li><span class="gty__code"><span class="nw">48-12</span></span> <span><span class="gty__titre" lang="en">Works or Grace?, <span class="nw">Part 1</span></span> <span class="gty__ref"><span class="nw">Ga 3.6-14</span></span></span></li><li><span class="gty__code"><span class="nw">48-13</span></span> <span><span class="gty__titre" lang="en">Works or Grace?, <span class="nw">Part 2</span></span> <span class="gty__ref"><span class="nw">Ga 3.10-14</span></span></span></li><li><span class="gty__code"><span class="nw">48-14</span></span> <span><span class="gty__titre" lang="en">Works or Grace?, <span class="nw">Part 3</span></span> <span class="gty__ref"><span class="nw">Ga 3.10-14</span></span></span></li><li><span class="gty__code"><span class="nw">48-15</span></span> <span><span class="gty__titre" lang="en">The Big Picture of Salvation</span> <span class="gty__ref"><span class="nw">Ga 3.15-18</span></span></span></li><li><span class="gty__code"><span class="nw">48-16</span></span> <span><span class="gty__titre" lang="en">God’s Eternal Covenant of Promise</span> <span class="gty__ref"><span class="nw">Ga 3.15-18</span></span></span></li><li><span class="gty__code"><span class="nw">48-17</span></span> <span><span class="gty__titre" lang="en">The Inferiority of the Law</span> <span class="gty__ref"><span class="nw">Ga 3.15-22</span></span></span></li><li><span class="gty__code"><span class="nw">48-18</span></span> <span><span class="gty__titre" lang="en">Deliverance from Bondage to the Law</span> <span class="gty__ref"><span class="nw">Ga 3.23-29</span></span></span></li></ul></div>
+          </details>
+          <div class="transition">
+            <p class="etiquette">Transition</p>
+            <p class="transition__texte">« héritiers selon la promesse » (3.29) : le chapitre 4 dit ce qu'est un héritier.</p>
+            <p><a class="transition__lien" href="#sermon-4">Vers le dimanche 4 : Fils, et non plus esclave<span aria-hidden="true"> ↓</span></a></p>
+          </div>
+          <a class="retour" href="#sommaire">Retour au sommaire <span aria-hidden="true">↑</span></a>
+        </div>
+      </li>
+      <li class="sermon" id="sermon-4" data-nav="sermon-4">
+        <span class="s-n" aria-hidden="true">4</span>
+        <h4 class="s-titre"><span class="s-kicker">Dimanche 4 · <span class="nw">Galates 4</span></span><span class="vh"> : </span><a href="04-Galates-4/Recherche-MacArthur-Galates-4.html">Fils, et non plus esclave<span class="vh"> (recherche exégétique)</span></a></h4>
+        <p class="s-gty">Sermons <abbr lang="en" title="Grace to You">GTY</abbr> <span class="nw">48-19</span> à <span class="nw">48-27</span></p>
+        <p class="s-phrase"><span class="etiquette">Phrase à faire retenir</span> <span class="s-phrase__txt"><span class="q">«</span> Fils, non esclave; héritier, non salarié. <span class="q">»</span></span></p>
+        <div class="s-docs">
+          <a class="btn btn--plein" href="04-Galates-4/Recherche-MacArthur-Galates-4.html"><span>Lire la recherche<span class="vh"> du dimanche 4 : Fils, et non plus esclave</span></span></a>
+          <a class="btn" href="04-Galates-4/Recherche-MacArthur-Galates-4.pdf"><span><span class="vh">Recherche du dimanche 4 : Fils, et non plus esclave, version </span>PDF</span></a>
+          <a class="btn" href="04-Galates-4/Recherche-MacArthur-Galates-4.md"><span><span class="vh">Recherche du dimanche 4 : Fils, et non plus esclave, version </span>Texte (.md)</span></a>
+        </div>
+        <div class="corps">
+          <div class="corps__col">
+            <p class="etiquette">Verset clé</p>
+            <figure class="verset">
+              <blockquote><p><span class="q">«</span> Ainsi tu n’es plus esclave, mais fils; et si tu es fils, tu es aussi héritier par la grâce de Dieu. <span class="q">»</span></p></blockquote>
+              <figcaption><span class="nw">Galates 4.7</span> · NEG79</figcaption>
+            </figure>
+          </div>
+          <div class="corps__col">
+            <p class="etiquette">Idée centrale</p>
+            <p class="idee">Dieu a envoyé son Fils pour racheter ceux qui étaient sous la loi, et son Esprit pour attester leur adoption; revenir aux principes élémentaires, c'est retourner à l'esclavage, alors que Dieu forme Christ en ses enfants, nés comme Isaac selon la promesse.</p>
+            <p class="etiquette">Étapes</p>
+            <ol class="etapes" role="list"><li><span class="etape__num" aria-hidden="true">I.</span><span><span class="vh">I. </span><span class="etape__nom">L'adoption accomplie</span> <span class="etape__ref"><span class="nw">Galates 4.1-7</span>; <span class="nw">Éphésiens 1.4-5</span></span></span></li><li><span class="etape__num" aria-hidden="true">II.</span><span><span class="vh">II. </span><span class="etape__nom">Le retour impossible</span> <span class="etape__ref"><span class="nw">Galates 4.8-20</span></span></span></li><li><span class="etape__num" aria-hidden="true">III.</span><span><span class="vh">III. </span><span class="etape__nom">Les deux fils d'Abraham</span> <span class="etape__ref"><span class="nw">Galates 4.21-5.1</span>; <span class="nw">Genèse 16 et 21</span>; <span class="nw">Ésaïe 54.1</span></span></span></li></ol>
+          </div>
+        </div>
+        <div class="pied-fiche">
+          <details class="repli">
+            <summary><span>Sections de la recherche<span class="vh"> du dimanche 4 : Fils, et non plus esclave</span></span></summary>
+            <div class="repli__corps"><ul class="sections" role="list"><li><a href="04-Galates-4/Recherche-MacArthur-Galates-4.html#contexte">Contexte du passage<span class="vh"> (recherche du dimanche 4 : Fils, et non plus esclave)</span></a></li><li><a href="04-Galates-4/Recherche-MacArthur-Galates-4.html#arriere-plan">Arrière-plan historique et culturel<span class="vh"> (recherche du dimanche 4 : Fils, et non plus esclave)</span></a></li><li><a href="04-Galates-4/Recherche-MacArthur-Galates-4.html#texte">État du texte<span class="vh"> (recherche du dimanche 4 : Fils, et non plus esclave)</span></a></li><li><a href="04-Galates-4/Recherche-MacArthur-Galates-4.html#structure">Structure et grammaire<span class="vh"> (recherche du dimanche 4 : Fils, et non plus esclave)</span></a></li><li><a href="04-Galates-4/Recherche-MacArthur-Galates-4.html#mots-cles">Étude des mots-clés<span class="vh"> (recherche du dimanche 4 : Fils, et non plus esclave)</span></a></li><li><a href="04-Galates-4/Recherche-MacArthur-Galates-4.html#commentateurs">Apports des commentateurs<span class="vh"> (recherche du dimanche 4 : Fils, et non plus esclave)</span></a></li><li><a href="04-Galates-4/Recherche-MacArthur-Galates-4.html#renvois">Renvois et passages parallèles<span class="vh"> (recherche du dimanche 4 : Fils, et non plus esclave)</span></a></li><li><a href="04-Galates-4/Recherche-MacArthur-Galates-4.html#themes">Thèmes théologiques<span class="vh"> (recherche du dimanche 4 : Fils, et non plus esclave)</span></a></li><li><a href="04-Galates-4/Recherche-MacArthur-Galates-4.html#reflexion">Pistes de réflexion<span class="vh"> (recherche du dimanche 4 : Fils, et non plus esclave)</span></a></li></ul></div>
+          </details>
+          <details class="repli">
+            <summary><span>Sermons <abbr lang="en" title="Grace to You">GTY</abbr> de la <span class="nw">recherche (9)</span><span class="vh"> du dimanche 4 : Fils, et non plus esclave</span></span></summary>
+            <div class="repli__corps"><ul class="gty" role="list"><li><span class="gty__code"><span class="nw">48-19</span></span> <span><span class="gty__titre" lang="en">The Adoption of the Believer</span> <span class="gty__ref"><span class="nw">Ga 4.1-11</span></span></span></li><li><span class="gty__code"><span class="nw">48-20</span></span> <span><span class="gty__titre" lang="en">The Christian’s Assurance of Salvation</span> <span class="gty__ref"><span class="nw">Ga 4.1-6</span></span></span></li><li><span class="gty__code"><span class="nw">48-21</span></span> <span><span class="gty__titre" lang="en">The Inheritance You Can’t Lose</span> <span class="gty__ref"><span class="nw">Ga 4.7-11</span></span></span></li><li><span class="gty__code"><span class="nw">48-22</span></span> <span><span class="gty__titre" lang="en">Paul’s Plea: Cling to the Gospel!</span> <span class="gty__ref"><span class="nw">Ga 4.12-18</span></span></span></li><li><span class="gty__code"><span class="nw">48-23</span></span> <span><span class="gty__titre" lang="en">The Primary Importance of Sanctification</span> <span class="gty__ref"><span class="nw">Ga 4.19-20</span></span></span></li><li><span class="gty__code"><span class="nw">48-24</span></span> <span><span class="gty__titre" lang="en">The Right Motive in Sanctification</span> <span class="gty__ref"><span class="nw">Ga 4.19</span></span></span></li><li><span class="gty__code"><span class="nw">48-25</span></span> <span><span class="gty__titre" lang="en">The Starting Point of Sanctification</span> <span class="gty__ref"><span class="nw">Ga 4.19</span></span></span></li><li><span class="gty__code"><span class="nw">48-26</span></span> <span><span class="gty__titre" lang="en">A Perfect Portrait of Saving Faith, <span class="nw">Part 1</span></span> <span class="gty__ref"><span class="nw">Ga 4.21-5.1</span></span></span></li><li><span class="gty__code"><span class="nw">48-27</span></span> <span><span class="gty__titre" lang="en">A Perfect Portrait of Saving Faith, <span class="nw">Part 2</span></span> <span class="gty__ref"><span class="nw">Ga 4.21-5.1</span></span></span></li></ul></div>
+          </details>
+          <div class="transition">
+            <p class="etiquette">Transition</p>
+            <p class="transition__texte">Libres : le chapitre 5 dit comment garder cette liberté, et comment la vivre.</p>
+            <p><a class="transition__lien" href="#sermon-5">Vers le dimanche 5 : La liberté qui marche selon l'Esprit<span aria-hidden="true"> ↓</span></a></p>
+          </div>
+          <a class="retour" href="#sommaire">Retour au sommaire <span aria-hidden="true">↑</span></a>
+        </div>
+      </li>
+      </ol>
+    </section>
+    <section class="bloc" id="bloc-3" aria-labelledby="bloc-3-titre">
+      <h3 class="bloc__titre" id="bloc-3-titre"><span class="bloc__ch">Chapitres 5 et 6</span><span class="vh"> : </span><span class="bloc__nom">La marche du chrétien dans la grâce</span></h3>
+      <ol class="sermons" role="list">
+      <li class="sermon" id="sermon-5" data-nav="sermon-5">
+        <span class="s-n" aria-hidden="true">5</span>
+        <h4 class="s-titre"><span class="s-kicker">Dimanche 5 · <span class="nw">Galates 5</span></span><span class="vh"> : </span><a href="05-Galates-5/Recherche-MacArthur-Galates-5.html">La liberté qui marche selon l'Esprit<span class="vh"> (recherche exégétique)</span></a></h4>
+        <p class="s-gty">Sermons <abbr lang="en" title="Grace to You">GTY</abbr> <span class="nw">48-28</span> à <span class="nw">48-39</span></p>
+        <p class="s-phrase"><span class="etiquette">Phrase à faire retenir</span> <span class="s-phrase__txt"><span class="q">«</span> Libre, non pour pécher, mais pour marcher selon l'Esprit. <span class="q">»</span></span></p>
+        <div class="s-docs">
+          <a class="btn btn--plein" href="05-Galates-5/Recherche-MacArthur-Galates-5.html"><span>Lire la recherche<span class="vh"> du dimanche 5 : La liberté qui marche selon l'Esprit</span></span></a>
+          <a class="btn" href="05-Galates-5/Recherche-MacArthur-Galates-5.pdf"><span><span class="vh">Recherche du dimanche 5 : La liberté qui marche selon l'Esprit, version </span>PDF</span></a>
+          <a class="btn" href="05-Galates-5/Recherche-MacArthur-Galates-5.md"><span><span class="vh">Recherche du dimanche 5 : La liberté qui marche selon l'Esprit, version </span>Texte (.md)</span></a>
+        </div>
+        <div class="corps">
+          <div class="corps__col">
+            <p class="etiquette">Verset clé</p>
+            <figure class="verset">
+              <blockquote><p><span class="q">«</span> Frères, vous avez été appelés à la liberté; seulement ne faites pas de cette liberté un prétexte de vivre selon la chair; mais rendez-vous, par amour, serviteurs les uns des autres. <span class="q">»</span></p></blockquote>
+              <figcaption><span class="nw">Galates 5.13</span> · NEG79</figcaption>
+            </figure>
+          </div>
+          <div class="corps__col">
+            <p class="etiquette">Idée centrale</p>
+            <p class="idee">Christ nous a affranchis pour la liberté : ne pas reprendre le joug de la loi pour être justifié, ne pas faire de la liberté un prétexte pour la chair, mais marcher selon l'Esprit, dont le fruit révèle à qui l'on appartient.</p>
+            <p class="etiquette">Étapes</p>
+            <ol class="etapes" role="list"><li><span class="etape__num" aria-hidden="true">I.</span><span><span class="vh">I. </span><span class="etape__nom">Ne pas reprendre le joug</span> <span class="etape__ref"><span class="nw">Galates 5.1-12</span></span></span></li><li><span class="etape__num" aria-hidden="true">II.</span><span><span class="vh">II. </span><span class="etape__nom">Libres pour servir</span> <span class="etape__ref"><span class="nw">Galates 5.13-15</span>; <span class="nw">Lévitique 19.18</span></span></span></li><li><span class="etape__num" aria-hidden="true">III.</span><span><span class="vh">III. </span><span class="etape__nom">Marcher selon l'Esprit</span> <span class="etape__ref"><span class="nw">Galates 5.16-26</span></span></span></li></ol>
+          </div>
+        </div>
+        <div class="pied-fiche">
+          <details class="repli">
+            <summary><span>Sections de la recherche<span class="vh"> du dimanche 5 : La liberté qui marche selon l'Esprit</span></span></summary>
+            <div class="repli__corps"><ul class="sections" role="list"><li><a href="05-Galates-5/Recherche-MacArthur-Galates-5.html#contexte">Contexte du passage<span class="vh"> (recherche du dimanche 5 : La liberté qui marche selon l'Esprit)</span></a></li><li><a href="05-Galates-5/Recherche-MacArthur-Galates-5.html#arriere-plan">Arrière-plan historique et culturel<span class="vh"> (recherche du dimanche 5 : La liberté qui marche selon l'Esprit)</span></a></li><li><a href="05-Galates-5/Recherche-MacArthur-Galates-5.html#texte">État du texte<span class="vh"> (recherche du dimanche 5 : La liberté qui marche selon l'Esprit)</span></a></li><li><a href="05-Galates-5/Recherche-MacArthur-Galates-5.html#structure">Structure et grammaire<span class="vh"> (recherche du dimanche 5 : La liberté qui marche selon l'Esprit)</span></a></li><li><a href="05-Galates-5/Recherche-MacArthur-Galates-5.html#mots-cles">Étude des mots-clés<span class="vh"> (recherche du dimanche 5 : La liberté qui marche selon l'Esprit)</span></a></li><li><a href="05-Galates-5/Recherche-MacArthur-Galates-5.html#commentateurs">Apports des commentateurs<span class="vh"> (recherche du dimanche 5 : La liberté qui marche selon l'Esprit)</span></a></li><li><a href="05-Galates-5/Recherche-MacArthur-Galates-5.html#renvois">Renvois et passages parallèles<span class="vh"> (recherche du dimanche 5 : La liberté qui marche selon l'Esprit)</span></a></li><li><a href="05-Galates-5/Recherche-MacArthur-Galates-5.html#themes">Thèmes théologiques<span class="vh"> (recherche du dimanche 5 : La liberté qui marche selon l'Esprit)</span></a></li><li><a href="05-Galates-5/Recherche-MacArthur-Galates-5.html#reflexion">Pistes de réflexion<span class="vh"> (recherche du dimanche 5 : La liberté qui marche selon l'Esprit)</span></a></li></ul></div>
+          </details>
+          <details class="repli">
+            <summary><span>Sermons <abbr lang="en" title="Grace to You">GTY</abbr> de la <span class="nw">recherche (15)</span><span class="vh"> du dimanche 5 : La liberté qui marche selon l'Esprit</span></span></summary>
+            <div class="repli__corps"><p class="repli__note">Quinze sermons ont servi. Les douze qui exposent le chapitre en propre <span class="nw">(48-28</span> à <span class="nw">48-39)</span> ont été lus d'un bout à l'autre; <span class="nw">48-26</span> et <span class="nw">48-27</span>, qui exposent <span class="nw">4.21-5.1</span>, et <span class="nw">48-40</span>, qui expose <span class="nw">5.26-6.6</span>, ont été lus pour leurs passages sur 5.1 et 5.26 et parcourus pour le reste.</p><ul class="gty" role="list"><li><span class="gty__code"><span class="nw">48-26</span></span> <span><span class="gty__titre" lang="en">A Perfect Portrait of Saving Faith, <span class="nw">Part 1</span></span> <span class="gty__ref"><span class="nw">Ga 4.21-5.1</span></span></span></li><li><span class="gty__code"><span class="nw">48-27</span></span> <span><span class="gty__titre" lang="en">A Perfect Portrait of Saving Faith, <span class="nw">Part 2</span></span> <span class="gty__ref"><span class="nw">Ga 4.21-5.1</span></span></span></li><li><span class="gty__code"><span class="nw">48-28</span></span> <span><span class="gty__titre" lang="en">The Dangers of a Distorted Gospel</span> <span class="gty__ref"><span class="nw">Ga 5.1-6</span></span></span></li><li><span class="gty__code"><span class="nw">48-29</span></span> <span><span class="gty__titre" lang="en">The Wickedness of Gospel Distorters</span> <span class="gty__ref"><span class="nw">Ga 5.7-12</span></span></span></li><li><span class="gty__code"><span class="nw">48-30</span></span> <span><span class="gty__titre" lang="en">Understanding Christian Freedom</span> <span class="gty__ref"><span class="nw">Ga 5.13-16</span></span></span></li><li><span class="gty__code"><span class="nw">48-31</span></span> <span><span class="gty__titre" lang="en">How Christian Freedom Works</span> <span class="gty__ref"><span class="nw">Ga 5.13-16</span></span></span></li><li><span class="gty__code"><span class="nw">48-32</span></span> <span><span class="gty__titre" lang="en">The Perfect Model of a Spirit-Empowered Life</span> <span class="gty__ref"><span class="nw">Ga 5.16-26</span></span></span></li><li><span class="gty__code"><span class="nw">48-33</span></span> <span><span class="gty__titre" lang="en">The Believer’s Lifelong Battle for Holiness</span> <span class="gty__ref"><span class="nw">Ga 5.16-26</span></span></span></li><li><span class="gty__code"><span class="nw">48-34</span></span> <span><span class="gty__titre" lang="en">Spiritual Power for Holy Living</span> <span class="gty__ref"><span class="nw">Ga 5.16-26</span></span></span></li><li><span class="gty__code"><span class="nw">48-35</span></span> <span><span class="gty__titre" lang="en">Thinking Rightly About the Work of the Spirit</span> <span class="gty__ref"><span class="nw">Ga 5.16-26</span></span></span></li><li><span class="gty__code"><span class="nw">48-36</span></span> <span><span class="gty__titre" lang="en">The Fruit of the Spirit, <span class="nw">Part 1</span></span> <span class="gty__ref"><span class="nw">Ga 5.16-26</span></span></span></li><li><span class="gty__code"><span class="nw">48-37</span></span> <span><span class="gty__titre" lang="en">The Fruit of the Spirit, <span class="nw">Part 2</span></span> <span class="gty__ref"><span class="nw">Ga 5.16-26</span></span></span></li><li><span class="gty__code"><span class="nw">48-38</span></span> <span><span class="gty__titre" lang="en">The Fruit of the Spirit, <span class="nw">Part 3</span></span> <span class="gty__ref"><span class="nw">Ga 5.16-26</span></span></span></li><li><span class="gty__code"><span class="nw">48-39</span></span> <span><span class="gty__titre" lang="en">The Fruit of the Spirit, <span class="nw">Part 4</span></span> <span class="gty__ref"><span class="nw">Ga 5.16-26</span></span></span></li><li><span class="gty__code"><span class="nw">48-40</span></span> <span><span class="gty__titre" lang="en">Restoring the Sinning Brother</span> <span class="gty__ref"><span class="nw">Ga 5.26-6.6</span></span></span></li></ul></div>
+          </details>
+          <div class="transition">
+            <p class="etiquette">Transition</p>
+            <p class="transition__texte">« Ne cherchons pas une vaine gloire » (5.26) : le chapitre 6 montre la seule gloire qui reste au chrétien.</p>
+            <p><a class="transition__lien" href="#sermon-6">Vers le dimanche 6 : Se glorifier de la croix seule<span aria-hidden="true"> ↓</span></a></p>
+          </div>
+          <a class="retour" href="#sommaire">Retour au sommaire <span aria-hidden="true">↑</span></a>
+        </div>
+      </li>
+      <li class="sermon" id="sermon-6" data-nav="sermon-6">
+        <span class="s-n" aria-hidden="true">6</span>
+        <h4 class="s-titre"><span class="s-kicker">Dimanche 6 · <span class="nw">Galates 6</span></span><span class="vh"> : </span><a href="06-Galates-6/Recherche-MacArthur-Galates-6.html">Se glorifier de la croix seule<span class="vh"> (recherche exégétique)</span></a></h4>
+        <p class="s-gty">Sermons <abbr lang="en" title="Grace to You">GTY</abbr> <span class="nw">48-40</span> à <span class="nw">48-42</span></p>
+        <p class="s-phrase"><span class="etiquette">Phrase à faire retenir</span> <span class="s-phrase__txt"><span class="q">«</span> Porter, semer, se glorifier de la croix. <span class="q">»</span></span></p>
+        <div class="s-docs">
+          <a class="btn btn--plein" href="06-Galates-6/Recherche-MacArthur-Galates-6.html"><span>Lire la recherche<span class="vh"> du dimanche 6 : Se glorifier de la croix seule</span></span></a>
+          <a class="btn" href="06-Galates-6/Recherche-MacArthur-Galates-6.pdf"><span><span class="vh">Recherche du dimanche 6 : Se glorifier de la croix seule, version </span>PDF</span></a>
+          <a class="btn" href="06-Galates-6/Recherche-MacArthur-Galates-6.md"><span><span class="vh">Recherche du dimanche 6 : Se glorifier de la croix seule, version </span>Texte (.md)</span></a>
+        </div>
+        <div class="corps">
+          <div class="corps__col">
+            <p class="etiquette">Verset clé</p>
+            <figure class="verset">
+              <blockquote><p><span class="q">«</span> Pour ce qui me concerne, loin de moi la pensée de me glorifier d’autre chose que de la croix de notre Seigneur <span class="nw">Jésus-Christ</span>, par qui le monde est crucifié pour moi, comme je le suis pour le monde! <span class="q">»</span></p></blockquote>
+              <figcaption><span class="nw">Galates 6.14</span> · NEG79</figcaption>
+            </figure>
+          </div>
+          <div class="corps__col">
+            <p class="etiquette">Idée centrale</p>
+            <p class="idee">Ceux qui marchent selon l'Esprit redressent, portent les fardeaux et sèment pour l'Esprit; ils ne se glorifient que de la croix, par laquelle le monde est crucifié pour eux.</p>
+            <p class="etiquette">Étapes</p>
+            <ol class="etapes" role="list"><li><span class="etape__num" aria-hidden="true">I.</span><span><span class="vh">I. </span><span class="etape__nom">Porter les fardeaux</span> <span class="etape__ref"><span class="nw">Galates 6.1-6</span></span></span></li><li><span class="etape__num" aria-hidden="true">II.</span><span><span class="vh">II. </span><span class="etape__nom">Semer pour l'Esprit</span> <span class="etape__ref"><span class="nw">Galates 6.7-10</span></span></span></li><li><span class="etape__num" aria-hidden="true">III.</span><span><span class="vh">III. </span><span class="etape__nom">Se glorifier de la croix</span> <span class="etape__ref"><span class="nw">Galates 6.11-18</span>; <span class="nw">Romains 2.28-29</span>; <span class="nw">Philippiens 3.3</span></span></span></li></ol>
+          </div>
+        </div>
+        <div class="pied-fiche">
+          <details class="repli">
+            <summary><span>Sections de la recherche<span class="vh"> du dimanche 6 : Se glorifier de la croix seule</span></span></summary>
+            <div class="repli__corps"><ul class="sections" role="list"><li><a href="06-Galates-6/Recherche-MacArthur-Galates-6.html#contexte">Contexte du passage<span class="vh"> (recherche du dimanche 6 : Se glorifier de la croix seule)</span></a></li><li><a href="06-Galates-6/Recherche-MacArthur-Galates-6.html#arriere-plan">Arrière-plan historique et culturel<span class="vh"> (recherche du dimanche 6 : Se glorifier de la croix seule)</span></a></li><li><a href="06-Galates-6/Recherche-MacArthur-Galates-6.html#texte">État du texte<span class="vh"> (recherche du dimanche 6 : Se glorifier de la croix seule)</span></a></li><li><a href="06-Galates-6/Recherche-MacArthur-Galates-6.html#structure">Structure et grammaire<span class="vh"> (recherche du dimanche 6 : Se glorifier de la croix seule)</span></a></li><li><a href="06-Galates-6/Recherche-MacArthur-Galates-6.html#mots-cles">Étude des mots-clés<span class="vh"> (recherche du dimanche 6 : Se glorifier de la croix seule)</span></a></li><li><a href="06-Galates-6/Recherche-MacArthur-Galates-6.html#commentateurs">Apports des commentateurs<span class="vh"> (recherche du dimanche 6 : Se glorifier de la croix seule)</span></a></li><li><a href="06-Galates-6/Recherche-MacArthur-Galates-6.html#renvois">Renvois et passages parallèles<span class="vh"> (recherche du dimanche 6 : Se glorifier de la croix seule)</span></a></li><li><a href="06-Galates-6/Recherche-MacArthur-Galates-6.html#themes">Thèmes théologiques<span class="vh"> (recherche du dimanche 6 : Se glorifier de la croix seule)</span></a></li><li><a href="06-Galates-6/Recherche-MacArthur-Galates-6.html#reflexion">Pistes de réflexion<span class="vh"> (recherche du dimanche 6 : Se glorifier de la croix seule)</span></a></li></ul></div>
+          </details>
+          <details class="repli">
+            <summary><span>Sermons <abbr lang="en" title="Grace to You">GTY</abbr> de la <span class="nw">recherche (3)</span><span class="vh"> du dimanche 6 : Se glorifier de la croix seule</span></span></summary>
+            <div class="repli__corps"><ul class="gty" role="list"><li><span class="gty__code"><span class="nw">48-40</span></span> <span><span class="gty__titre" lang="en">Restoring the Sinning Brother</span> <span class="gty__ref"><span class="nw">Ga 5.26-6.6</span></span></span></li><li><span class="gty__code"><span class="nw">48-41</span></span> <span><span class="gty__titre" lang="en">The Inescapable Law of Sowing and Reaping</span> <span class="gty__ref"><span class="nw">Ga 6.7-10</span></span></span></li><li><span class="gty__code"><span class="nw">48-42</span></span> <span><span class="gty__titre" lang="en">The Wonder of the Cross</span> <span class="gty__ref"><span class="nw">Ga 6.11-18</span></span></span></li></ul></div>
+          </details>
+          <a class="retour" href="#sommaire">Retour au sommaire <span aria-hidden="true">↑</span></a>
+        </div>
+      </li>
+      </ol>
+    </section>
+  </section>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <section class="sec conclusion" id="conclusion" aria-labelledby="conclusion-titre" data-nav="">
+    <div class="sec-tete">
+      <p class="kicker">Conclusion de la série</p>
+      <h2 id="conclusion-titre">Rappel de la série en six phrases</h2>
+    </div>
+    <ol class="rappel" role="list"><li><a href="#sermon-1"><span class="rappel__n" aria-hidden="true">1</span><span class="vh">Dimanche 1 : </span><span class="rappel__t">Un seul Évangile</span></a></li><li><a href="#sermon-2"><span class="rappel__n" aria-hidden="true">2</span><span class="vh">Dimanche 2 : </span><span class="rappel__t">Déclaré juste par la foi</span></a></li><li><a href="#sermon-3"><span class="rappel__n" aria-hidden="true">3</span><span class="vh">Dimanche 3 : </span><span class="rappel__t">La promesse avant la loi</span></a></li><li><a href="#sermon-4"><span class="rappel__n" aria-hidden="true">4</span><span class="vh">Dimanche 4 : </span><span class="rappel__t">Fils, non esclave</span></a></li><li><a href="#sermon-5"><span class="rappel__n" aria-hidden="true">5</span><span class="vh">Dimanche 5 : </span><span class="rappel__t">Libre pour marcher selon l'Esprit</span></a></li><li><a href="#sermon-6"><span class="rappel__n" aria-hidden="true">6</span><span class="vh">Dimanche 6 : </span><span class="rappel__t">La croix seule</span></a></li></ol>
+    <div class="ornement" aria-hidden="true"><span>◆</span></div>
+    <p class="etiquette">Phrase de la série</p>
+    <p class="conclusion__phrase">Christ suffit : rien à ajouter, tout à recevoir.</p>
+    <div class="benediction">
+      <p class="etiquette">Bénédiction</p>
+      <figure class="verset">
+        <blockquote><p><span class="q">«</span> Frères, que la grâce de notre Seigneur <span class="nw">Jésus-Christ</span> soit avec votre esprit! Amen! <span class="q">»</span></p></blockquote>
+        <figcaption><span class="nw">Galates 6.18</span> · NEG79</figcaption>
+      </figure>
+    </div>
+  </section>
+</main>
+
+<footer class="pied">
+  <div class="ornement" aria-hidden="true"><span>◆</span></div>
+  <p class="pied__nom">André-Guy Bruneau</p>
+  <p>Étude de <span class="nw">Galates 1-6</span> · Recherches exégétiques des <span class="nw">7 et 13 octobre 2026</span> · Plan de série du <span class="nw">13 octobre 2026</span></p>
+  <p>Citations bibliques : Nouvelle Édition de Genève <span class="nw">1979 (NEG79)</span></p>
+  <p class="pied__sdg" lang="la">Soli Deo Gloria</p>
+</footer>
+<script>
+(function(){
+  /* Amélioration progressive : marque dans la barre la partie en cours de lecture. */
+  var barre=document.querySelector('.barre');
+  if(!barre||!('IntersectionObserver' in window))return;
+  var liens={};
+  [].forEach.call(barre.querySelectorAll('a[href^="#"]'),function(a){liens[a.getAttribute('href').slice(1)]=a;});
+  var zones=[].slice.call(document.querySelectorAll('[data-nav]'));
+  var vues=[],actif=null;
+  function marquer(id){
+    var a=id?liens[id]||null:null;
+    if(a===actif)return;
+    if(actif)actif.removeAttribute('aria-current');
+    if(a)a.setAttribute('aria-current','location');
+    actif=a;
+  }
+  var io=new IntersectionObserver(function(entrees){
+    entrees.forEach(function(en){
+      var i=vues.indexOf(en.target);
+      if(en.isIntersecting&&i<0)vues.push(en.target);
+      if(!en.isIntersecting&&i>=0)vues.splice(i,1);
+    });
+    for(var k=0;k<zones.length;k++){
+      if(vues.indexOf(zones[k])>=0){marquer(zones[k].getAttribute('data-nav'));return;}
+    }
+  },{rootMargin:'-30% 0px -65% 0px'});
+  zones.forEach(function(z){io.observe(z);});
+})();
+</script>
+</body>
+</html>

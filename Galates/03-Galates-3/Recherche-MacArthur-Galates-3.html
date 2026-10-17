@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galates 3 · La promesse avant la loi · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Galates 3 dans la perspective de John MacArthur : La promesse avant la loi.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* État du texte, Structure et grammaire : variantes en fiches (comme .mot), témoins
+     et observations entre filets, plan à gouttière de références. Ces blocs, chargés
+     de translittérations, sont alignés à gauche : pas de rivières. */
+  h3.marge__titre{font-family:inherit;font-weight:500;line-height:1.4;}
+  h3.marge__titre:not(:first-child){margin-top:2.6rem !important;}
+  .critique{max-width:var(--colonne,46rem);margin:0 auto;}  /* sermon-series : section sans grille */
+  .grille--apparat > .grille__texte + .grille__marge{margin-top:2.6rem;}  /* une colonne : la marge suit le texte */
+  .grille--apparat > .grille__texte{padding-top:1.2rem;}
+  .grille--apparat .lead,.critique .lead{text-align:left;}
+  .rangs dd,.temoins li,.encadre p,.section .plan p,.observations dd{
+    margin:0;text-align:left;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;text-wrap:pretty;
+  }
+  .variante{padding:1.2rem 1.5rem .5rem;border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 8px 8px 0;background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));}
+  .variante + .variante{margin-top:1.3rem;}
+  .variante__ref,.observations dt{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.2;color:var(--or-clair);}
+  .variante__ref{margin:0 0 .6rem;font-size:1.45rem;}
+  .rangs{margin:0;}
+  .rangs > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.2rem;padding:.75rem 0;border-top:1px solid var(--filet);}
+  .rangs dt{padding-top:.3rem;}
+  .rangs dd{font-size:.9em;line-height:1.7;color:var(--encre-doux);}
+  .rangs .rangs__portee{color:var(--encre);}
+  .temoins{list-style:none;margin:0 0 2.2rem;padding:0;border-bottom:1px solid var(--filet);}
+  .temoins li{padding:.75rem 0;border-top:1px solid var(--filet);font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .encadre{padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .encadre .marge__titre{margin-bottom:.7rem !important;}
+  .encadre p{font-size:.9em;line-height:1.65;color:var(--encre-doux);}
+  /* Plan : références en gouttière, un filet et un losange par mouvement, le marqueur sous son titre */
+  .plan{--gouttiere:9.6rem;--ecart:1.3rem;list-style:none;margin:0;padding:0;}
+  .plan li{position:relative;display:grid;grid-template-columns:var(--gouttiere) minmax(0,1fr);column-gap:var(--ecart);}
+  .plan li::before{content:"";position:absolute;left:calc(var(--gouttiere) + var(--ecart) - .22rem);top:.62rem;
+    width:.45rem;height:.45rem;background:var(--or);transform:rotate(45deg);}
+  .section .plan .plan__ref{padding-top:.05rem;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.25rem;line-height:1.2;color:var(--or-clair);}
+  .plan__ref span{white-space:nowrap;}
+  .plan__corps{padding:0 0 1.6rem 1.5rem;border-left:1px solid var(--filet-fort);}
+  .plan li:last-child .plan__corps{padding-bottom:.2rem;}
+  .plan li:first-child,.plan li:first-child .plan__corps{border-image:linear-gradient(transparent .7rem,var(--filet-fort) 0) 1;}
+  .section .plan .plan__titre{margin-bottom:.55rem;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.3rem;line-height:1.3;color:var(--encre);text-wrap:balance;}
+  .section .plan .plan__marqueur{font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .rangs dt,.plan__marqueur .mot__label{font-size:.8rem;}
+  .observations{margin:0;}
+  .observations > div + div{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--filet);}
+  .observations dt{margin-bottom:.4rem;font-size:1.25rem;}
+  .observations dd{font-size:.9em;line-height:1.72;color:var(--encre-doux);}
+  @media (max-width:35rem){
+    .rangs > div{grid-template-columns:1fr;}
+    .rangs dt{padding-top:0;}
+    .variante{padding:1rem 1.1rem .4rem;}
+    .plan li{display:block;padding:0 0 1.4rem 1.3rem;border-left:1px solid var(--filet-fort);}
+    .plan li:last-child{padding-bottom:.2rem;}
+    .plan li::before{left:-.25rem;top:.45rem;}
+    .section .plan .plan__ref{margin-bottom:.25rem;text-align:left;}
+    .plan__corps,.plan li:last-child .plan__corps{padding:0;border:0;}
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .recherche .grille--apparat{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+    .grille--apparat > .grille__texte + .grille__marge{margin-top:0;}
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">Galates 3</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">Galates 3</span></p>
+    <h1 class="hero__title">La promesse avant la loi</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;Christ nous a rachetés de la malédiction de la loi, étant devenu malédiction pour nous – car il est écrit: Maudit est quiconque est pendu au bois – afin que la bénédiction d’Abraham ait pour les païens son accomplissement en Jésus-Christ, et que nous recevions par la foi l’Esprit qui avait été promis.&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">Galates 3.13-⁠14 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 13 octobre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">Galates 3</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Galates 3 ouvre la partie doctrinale de la lettre : Paul ne défend plus son apostolat, il prouve que l'Esprit, la justice et l'héritage se reçoivent par la foi, et que la loi, venue après la promesse, ne l'annule pas ni ne la complète.</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">Comme Abraham crut à Dieu, et que cela lui fut imputé à justice, reconnaissez donc que ce sont ceux qui ont la foi qui sont fils d’Abraham.</p><cite class="verse__ref">Galates 3.6-⁠7 · NEG</cite></figure><figure class="verse"><p class="verse__text">Voici ce que je veux dire: un testament, que Dieu a confirmé antérieurement, ne peut pas être annulé, et ainsi la promesse rendue sans effet, par la loi survenue quatre cent trente ans plus tard.</p><cite class="verse__ref">Galates 3.17 · NEG</cite></figure><figure class="verse"><p class="verse__text">Ainsi la loi a été comme un précepteur pour nous conduire à Christ, afin que nous soyons justifiés par la foi.</p><cite class="verse__ref">Galates 3.24 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>MacArthur divise la lettre en trois blocs : l'autorité apostolique de Paul (1-⁠2), la vérité de l'Évangile (3-⁠4), la liberté dans la vie chrétienne (5-⁠6) (48-⁠11, 48-⁠12). Dans le chapitre 3, il distingue deux preuves : « Les versets 1 à 5 traitent de la défense de l'Évangile par leur expérience. Puis, du verset 6 à la fin du chapitre 4, c'est une défense de l'Évangile de la grâce à partir de l'Écriture » (48-⁠11). La preuve par l'Écriture repose sur sept citations de l'Ancien Testament : Genèse 15.6 (3.6), Genèse 12.3 et 18.18 (3.8), Deutéronome 27.26 (3.10), Habacuc 2.4 (3.11), Lévitique 18.5 (3.12), Deutéronome 21.23 (3.13) et la formule « et à ta descendance » de Genèse 13.15 et 17.8 (3.16). Deux sont introduites par « il est écrit » (<i>gegraptai</i>, 3.10, 3.13).</p><p>Le genre est celui d'une argumentation serrée. Les versets 1 à 5 alignent six questions; la suite avance par des connecteurs (« donc », 3.7; « Ainsi », 3.9; « Car », 3.10) et par une objection que Paul se fait à lui-même : « Pourquoi donc la loi? » (3.19), suivie de « Loin de là! » (3.21). MacArthur y entend un Juif imaginaire qui pose la question (48-⁠17). Les pronoms suivent l'argument : « vous » pour l'expérience des Galates (3.1-⁠5), « nous » pour les rachetés (3.13-⁠14) et pour ceux qui étaient gardés sous la loi (3.23-⁠25), « vous tous » pour les fils de Dieu (3.26-⁠28); MacArthur relève ce passage du « nous » au « vous » (48-⁠18). Le mot « promesse » porte la seconde moitié du chapitre : le nom <i>epangelia</i> revient huit fois (3.14, 3.16, 3.17, 3.18 deux fois, 3.21, 3.22, 3.29), le verbe une fois (3.19), et le nom d'Abraham huit fois.</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">Galates 3</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">Les Églises de Galatie étaient formées surtout de païens convertis, sans lien avec la loi de Moïse (48-⁠15), qui avaient reçu l'Esprit en croyant (3.2); des maîtres venus après Paul leur demandaient la circoncision et l'observance de la loi. MacArthur les identifie à ceux d'Actes 15.1 et 15.5, des Juifs venus de Judée, que le récit présente comme croyants (48-⁠12).</p><div class="body"><p>Leur argument, tel que MacArthur le reconstitue, s'appuyait sur deux figures. Abraham d'abord, père de la nation : les Juifs comptaient sur leur ascendance abrahamique, et Paul retourne contre eux leur héros : « Ils veulent qu'Abraham défende leur système d'œuvres. Il va prendre Abraham et défendre la foi seule à partir d'Abraham » (48-⁠12). Moïse ensuite : ils pouvaient admettre que le salut était par la foi avant la loi, mais soutenir que le don de la loi avait changé la voie du salut, devenue la foi plus l'obéissance à la loi de Moïse (48-⁠15). Paul répond à cette objection par la chronologie (3.17) et par la question « Pourquoi donc la loi? » (3.19).</p><p>Plusieurs institutions de l'Ancien Testament forment l'arrière-plan du chapitre. La sentence citée en 3.10 clôt la cérémonie de Deutéronome 27, où six tribus se tenaient sur le mont Garizim « pour bénir le peuple » et six sur le mont Ebal « pour prononcer la malédiction » (27.12-⁠13); MacArthur la situe à Sichem, dans la vallée étroite entre les deux monts, et lit Deutéronome 27 et 28 pour montrer ce qu'est la malédiction (48-⁠13). Le Sinaï, où la loi fut donnée dans la fumée, le tonnerre et l'interdiction d'approcher (Exode 19), contraste avec la manière dont l'Éternel parlait à Abraham, jusqu'à venir manger chez lui (Genèse 18) : MacArthur tire de ce contraste l'infériorité des médiateurs de la loi (48-⁠17).</p></div></div><aside class="grille__marge"><p class="marge__titre">Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>L'affiche publique.</b> Thayer range le verbe <i>proegraphē</i> (3.1), « a été peint », sous le sens de dépeindre ou de représenter ouvertement : les Galates avaient eu sous les yeux le tableau de Jésus-Christ crucifié, un enseignement très clair sur l'efficacité de sa mort. Il signale que d'autres, comme Lightfoot, retiennent « afficher, écrire publiquement ». C'est la lecture de MacArthur : le mot désignait les écriteaux qu'on exposait au forum, sur la place du marché, faute de livres et de journaux (48-⁠11). Les deux images s'accordent avec « aux yeux de qui » (<i>kat’ ophthalmous</i>), et toutes deux s'opposent au verbe <i>ebaskanen</i>, « fascinés », que Thayer rattache au mauvais œil et aux artifices qui égarent.</li><li><b>L'alliance entre les animaux partagés.</b> Paul appelle la promesse un testament « confirmé antérieurement » par Dieu (3.17). MacArthur renvoie à Genèse 15 : dans l'Antiquité, on scellait un engagement en coupant des animaux en deux et en passant entre les morceaux (48-⁠16). Le récit s'y prête : Abram coupe les animaux « par le milieu » (Genèse 15.10), un profond sommeil tombe sur lui (15.12), puis « une fournaise fumante, et des flammes passèrent entre les animaux partagés » (15.17). MacArthur en tire que Dieu seul s'est engagé : « Ce n'était pas une alliance entre Dieu et Abraham, c'est une alliance entre Dieu et Dieu » (48-⁠16). Galates le dit à sa manière : le médiateur suppose deux parties, « tandis que Dieu est un seul » (3.20).</li><li><b>Le pendu exposé.</b> La loi de Deutéronome 21.22-⁠23 visait le corps d'un homme exécuté pour un crime capital : « Si l’on fait mourir un homme [...] et que tu l’aies pendu à un bois, son cadavre ne passera point la nuit sur le bois ». MacArthur précise que ces condamnés n'étaient pas crucifiés, mais lapidés, puis leur cadavre attaché à un poteau ou à un arbre, signe visible de leur rejet par Dieu (48-⁠14) : « Ce n'est pas parce qu'on était attaché à un arbre qu'on était maudit; c'est parce qu'on était maudit de Dieu qu'on y était attaché » (48-⁠14). Le texte de la loi place bien la pendaison après la mise à mort; Paul applique la sentence à la croix (3.13).</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">Galates 3</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Les variantes qui touchent le sens, la leçon que suit la NEG79 et leur portée, puis les témoins consultés et la numérotation.</p></div><div class="grille__texte"><h3 class="marge__titre">Variantes</h3><section class="variante"><h4 class="variante__ref">Galates 3.1</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>tis humas ebaskanen</i> et <i>proegraphē estaurōmenos</i> (SBLGNT, Nestle 1904, Westcott et Hort), ou <i>tis humas ebaskanen tē alētheia mē peithesthai</i> et <i>proegraphē en humin estaurōmenos</i> (texte byzantin, Église orthodoxe grecque, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>La NEG79 et la LSG suivent la leçon courte; la S21 met l'ajout entre crochets (« [pour que vous n’obéissiez plus à la vérité] »), la Darby rend <i>en humin</i> (« crucifié au milieu de vous »).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">MacArthur commente la variante : l'ajout figure dans d'anciens manuscrits, mais non dans les plus anciens, et vient sans doute de 5.7 (48-⁠11); « Même si ce n'est pas dans le texte original, c'est assurément une évaluation exacte » (48-⁠11). Aucun effet sur le sens.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Galates 3.12</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>Ho poiēsas auta zēsetai en autois</i> (SBLGNT, Nestle 1904, Westcott et Hort), ou <i>Ho poiēsas auta anthrōpos zēsetai en autois</i> (texte byzantin, Église orthodoxe grecque, Textus Receptus). De même en 3.10, le texte byzantin, l'Église orthodoxe grecque et le Textus Receptus lisent <i>emmenei en pasin</i>, sans <i>hoti</i>, là où le SBLGNT a <i>hoti ... emmenei pasin</i>.</dd></div><div><dt class="mot__label">NEG79</dt><dd>« Celui qui mettra ces choses en pratique vivra par elles » : la NEG79, la LSG, la Darby et la NBS suivent la leçon courte; la S21 a « L’homme qui mettra ces règles en pratique », comme la leçon longue.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Les deux ajouts rapprochent les citations de la Septante (<i>anthrōpos</i> en Lévitique 18.5, <i>en pasin</i> en Deutéronome 27.26) : harmonisation probable, sans effet sur le sens. Romains 10.5 cite Lévitique 18.5 avec « L’homme qui mettra ces choses en pratique » (NEG79).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Galates 3.17</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>diathēkēn prokekurōmenēn hupo tou theou</i> (SBLGNT, Nestle 1904, Westcott et Hort), ou <i>hupo tou theou eis Christon</i> (texte byzantin, Église orthodoxe grecque, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« un testament, que Dieu a confirmé antérieurement » : la NEG79 suit la leçon courte, comme la LSG, la S21, la Darby et la NBS.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">La leçon longue rend explicite le lien que 3.16 établit déjà (« c’est-à-dire à Christ ») : aucun effet sur l'argument.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Galates 3.23</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>sunkleiomenoi</i>, participe présent (SBLGNT, Nestle 1904, Westcott et Hort), ou <i>sunkekleismenoi</i>, participe parfait (texte byzantin, Église orthodoxe grecque, Textus Receptus); Thayer signale les deux leçons.</dd></div><div><dt class="mot__label">NEG79</dt><dd>« nous étions enfermés sous la garde de la loi » : la NEG79 et la LSG rendent les deux verbes par une seule expression; la Darby les distingue (« nous étions gardés sous la loi, renfermés »).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Le présent décrit un enfermement qui accompagne la garde (imparfait <i>ephrouroumetha</i>), le parfait un état d'enfermement : même sens. MacArthur, qui lit la NASB, a le présent (« étant enfermés », 48-⁠18).</dd></div></dl></section></div><div class="grille__marge"><h3 class="marge__titre">Témoins consultés</h3><ul class="temoins" role="list"><li>grec : SBLGNT et les signes de son apparat (bible.audio), lus aux 29 versets du chapitre</li><li>grec : Nestle 1904, Westcott et Hort 1881, texte byzantin 2005, Église orthodoxe grecque 1904, Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub), lus aux douze versets où l'apparat place un signe (3.1, 3.7, 3.10, 3.12, 3.13, 3.14, 3.17, 3.19, 3.21, 3.23, 3.28, 3.29) et en 3.5-⁠7 et 3.26 pour la ponctuation</li><li>Septante, texte du CCAT (Blue Letter Bible), aux passages cités ou évoqués (Genèse 1.27, 12.3, 12.7, 13.15, 15.6, 17.8, 18.18, 22.18, 24.7, Exode 12.40, Lévitique 18.5, Deutéronome 21.22-⁠23, 27.26, 28.58, 33.2, Habacuc 2.4)</li><li>hébreu massorétique (interlinéaire Bible Hub) aux mêmes passages</li><li>versions françaises : NEG79 (BibleGateway et bible.audio), LSG, S21 et Darby (bible.audio), NBS (bible.com), lues aux 29 versets du chapitre</li></ul><div class="encadre"><h3 class="marge__titre">Numérotation</h3><p>Aucun écart de versets : la NEG79, le grec et les sermons comptent les mêmes 29 versets, découpés de la même façon. Seule la ponctuation de 3.6 diffère, et elle touche les bornes. La NEG79 et la LSG font de 3.6 la subordonnée de 3.7 (« Comme Abraham crut à Dieu [...] reconnaissez donc »); le SBLGNT, le Nestle 1904 et Westcott et Hort mettent un point après 3.6 et une majuscule à <i>Ginōskete</i> (3.7), ce qui rattache <i>kathōs</i> à la question de 3.5, comme la Darby (« comme Abraham a cru Dieu »). MacArthur ouvre au verset 6 l'argument tiré de l'Écriture (48-⁠11, 48-⁠12) : dans les deux lectures, 3.6 sert de charnière entre l'expérience et l'Écriture.</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">Galates 3</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><h3 class="marge__titre">Plan de la péricope</h3><ol class="plan" role="list"><li><p class="plan__ref"><span>Galates</span> <span>3.1-⁠5</span></p><div class="plan__corps"><p class="plan__titre">L'expérience des Galates : l'Esprit reçu par la foi</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> vocatif <i>Ō anoētoi Galatai</i> (3.1), repris en 3.3 (<i>houtōs anoētoi este?</i>); l'alternative <i>ex ergōn nomou ... ē ex akoēs pisteōs</i> revient en 3.2 et 3.5; six questions.</p></div></li><li><p class="plan__ref"><span>Galates</span> <span>3.6-⁠9</span></p><div class="plan__corps"><p class="plan__titre">Abraham justifié par la foi, père de ceux qui croient</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>kathōs Abraam</i> (3.6), charnière avec 3.5; <i>Ginōskete ara</i> (3.7); <i>hōste</i> (3.9); <i>hoi ek pisteōs</i> encadre la section (3.7, 3.9).</p></div></li><li><p class="plan__ref"><span>Galates</span> <span>3.10-⁠14</span></p><div class="plan__corps"><p class="plan__titre">La malédiction de la loi, portée par Christ</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>gegraptai</i> et <i>epikataratos</i> reviennent en 3.10 et 3.13; <i>dēlon</i>, « cela est évident » (3.11); deux <i>hina</i> (3.14).</p></div></li><li><p class="plan__ref"><span>Galates</span> <span>3.15-⁠18</span></p><div class="plan__corps"><p class="plan__titre">La promesse ratifiée, que la loi n'annule pas</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Adelphoi, kata anthrōpon legō</i>, « Frères (je parle à la manière des hommes) » (3.15); <i>touto de legō</i>, « Voici ce que je veux dire » (3.17); <i>epangelia</i> en 3.16, 3.17 et deux fois en 3.18.</p></div></li><li><p class="plan__ref"><span>Galates</span> <span>3.19-⁠22</span></p><div class="plan__corps"><p class="plan__titre">Pourquoi donc la loi? Ajoutée pour un temps, impuissante à donner la vie</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Ti oun ho nomos?</i> (3.19); <i>Ho oun nomos kata tōn epangeliōn tou theou? mē genoito</i> (3.21); <i>alla sunekleisen hē graphē</i> (3.22).</p></div></li><li><p class="plan__ref"><span>Galates</span> <span>3.23-⁠29</span></p><div class="plan__corps"><p class="plan__titre">Sous le précepteur, puis fils de Dieu, revêtus de Christ, héritiers</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Pro tou de elthein tēn pistin</i> (3.23) et <i>elthousēs de tēs pisteōs</i> (3.25); <i>pantes gar</i> (3.26), où le Nestle 1904 et Westcott et Hort mettent une majuscule; <i>kat’ epangelian klēronomoi</i> clôt le chapitre (3.29).</p></div></li></ol></div><div class="grille__marge"><h3 class="marge__titre">Observations grammaticales</h3><dl class="observations"><div><dt>Galates 3.1</dt><dd>Le verbe principal est un aoriste passif, <i>proegraphē</i>, « a été peint » : la prédication de Paul est un fait passé. Le participe <i>estaurōmenos</i>, « crucifié », est un parfait passif : l'acte accompli et l'état qui en résulte. MacArthur en tire que la croix garde son effet et sa puissance (48-⁠11) : « Le légalisme ne prend pas le relais là où la croix s'est arrêtée, car la croix ne s'arrête jamais » (48-⁠11). Le parfait dit un résultat qui demeure, non un acte répété; MacArthur rejette d'ailleurs toute répétition du sacrifice (48-⁠14).</dd></div><div><dt>Galates 3.3-⁠4</dt><dd><i>enarxamenoi</i>, « Après avoir commencé », est un participe aoriste; <i>epiteleisthe</i>, « finir », un présent, moyen ou passif; les datifs <i>pneumati</i> et <i>sarki</i> s'opposent terme à terme. La NEG79 rend le présent par une intention (« voulez-vous maintenant finir »); MacArthur, avec la NASB, lit un passif : être rendu parfait par la chair, comme si l'œuvre de l'Esprit était incomplète (48-⁠11). En 3.4, <i>epathete</i> est rendu « souffert » par la NEG79, la LSG, la S21 et la Darby, mais la NBS a « fait tant d'expériences » : Thayer range Galates 3.4 sous le sens favorable du verbe, celui d'expériences heureuses, et MacArthur lit « expérience » (48-⁠11). Le contexte appuie ce sens, puisque 3.2 et 3.5 parlent de l'Esprit reçu et des miracles, non de persécutions.</dd></div><div><dt>Galates 3.10-⁠12</dt><dd>La préposition <i>ek</i> désigne le principe dont on relève : <i>hosoi ... ex ergōn nomou eisin</i>, « tous ceux qui s’attachent aux œuvres de la loi » (3.10), s'oppose à <i>hoi ek pisteōs</i>, « ceux qui ont la foi » (3.7, 3.9); la Darby rend chaque fois « sur le principe de ». Les deux citations de 3.11 et 3.12 ont le même verbe, <i>zēsetai</i>, « vivra », avec deux principes : <i>ek pisteōs</i> et <i>en autois</i>. Entre elles, <i>ho de nomos ouk estin ek pisteōs</i>, « la loi ne procède pas de la foi », sépare les deux voies. MacArthur : « Ils s'excluent mutuellement » (48-⁠13).</dd></div><div><dt>Galates 3.13-⁠14</dt><dd><i>exēgorasen</i>, « nous a rachetés », est un aoriste. Thayer définit <i>exagorazō</i> « racheter, c'est-à-dire, par le paiement d'un prix, reprendre du pouvoir d'un autre », et range 3.13 sous l'image du Christ qui affranchit de la loi « au prix de sa mort substitutive ». Le participe aoriste <i>genomenos</i>, « étant devenu », dit le moyen. Paul écrit le nom <i>katara</i>, non l'adjectif : Thayer y voit l'abstrait pour le concret. <i>huper hēmōn</i>, « pour nous », dit en faveur de qui; la substitution ressort du parallèle « de la malédiction [...] malédiction », que MacArthur explicite : « Les coupables sont punis, mais un substitut prend la punition » (48-⁠14). Le verset 14 enchaîne deux propositions <i>hina</i>, que MacArthur lit comme deux buts (48-⁠14).</dd></div><div><dt>Galates 3.16-⁠18</dt><dd>Paul argumente sur un nombre : <i>tō spermati</i>, singulier, non <i>tois spermasin</i>, pluriel; <i>hōs epi pollōn</i>, « comme s’il s’agissait de plusieurs », s'oppose à <i>hōs eph’ henos</i>, « d’une seule ». En 3.17, <i>prokekurōmenēn</i>, parfait passif, « confirmé antérieurement », dit une ratification passée qui reste en vigueur, et <i>ho ... gegonōs nomos</i>, « la loi survenue », un fait postérieur. En 3.18, <i>kecharistai</i> est un parfait : le don accordé demeure. Thayer range ce verset sous le sens « se montrer gracieux, bon, bienveillant », en signalant que d'autres sous-entendent l'héritage et lisent « donner gracieusement »; MacArthur prend cette seconde lecture, « a été donné par grâce » (48-⁠16), comme la NEG79 (« Dieu a fait à Abraham ce don de sa grâce »).</dd></div><div><dt>Galates 3.19-⁠23</dt><dd><i>prosetethē</i>, aoriste passif de <i>prostithēmi</i> : Thayer range 3.19 sous le sens d'ajouter à ce qui existe déjà, la loi venant s'ajouter à la promesse. La NEG79 rend « donnée ensuite », la S21, la Darby et la NBS « ajoutée ». <i>achris hou elthē</i>, « jusqu’à ce que vienne », borne la loi dans le temps. En 3.21, <i>ei edothē ... ontōs ek nomou an ēn hē dikaiosunē</i> est une condition irréelle : aucune loi capable de « procurer la vie » n'a été donnée. Suivent deux verbes d'enfermement : l'aoriste <i>sunekleisen</i>, « a tout renfermé », dont le sujet est l'Écriture (3.22), et l'imparfait <i>ephrouroumetha</i>, « nous étions [...] sous la garde », qui dit une garde prolongée, avec le participe <i>sunkleiomenoi</i> (3.23). MacArthur relève ce redoublement : la loi était une prison (48-⁠18).</dd></div></dl></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Cinq mots-clés</p></header>
+<p class="lead">Cinq mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">imputé</a><a href="#mot-2">malédiction</a><a href="#mot-3">testament</a><a href="#mot-4">descendance</a><a href="#mot-5">précepteur</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">imputé</h3><p class="mot__translit">elogisthē (logizomai)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>compter; porter au compte</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer part du sens comptable : compter, calculer, d'où porter au compte de quelqu'un, imputer (Romains 4.6; 2 Corinthiens 5.19). La Septante l'emploie pour l'hébreu <i>ḥāšaḇ</i>, et la tournure <i>logizetai ti eis ti</i> imite l'hébreu : « une chose est comptée comme étant quelque chose, c'est-à-dire comme valant pour cette chose ou lui équivalant ». Thayer range sous cette tournure Genèse 15.6, Galates 3.6, Romains 4.3-⁠24 et Jacques 2.23 (<i>hē pistis eis dikaiosunēn</i>). Le verbe est un mot de Paul : environ vingt-sept emplois dans ses épîtres hors citations, quatre dans le reste du Nouveau Testament.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur lit une imputation : quand un homme croit, Dieu porte la justice à son compte (48-⁠15), et « C'est la foi d'Abraham qui a amené Dieu à lui créditer la justice divine » (48-⁠12). Le lexique et la lecture concordent sur le sens comptable. Que la justice portée au compte soit celle de Dieu, et non la foi elle-même tenue pour justice, va au-delà du lexique : c'est une décision d'interprétation, que Romains 4.6 (« Dieu impute la justice sans les œuvres ») et 2 Corinthiens 5.21 (« afin que nous devenions en lui justice de Dieu ») appuient. L'hébreu de Genèse 15.6 a l'actif, Dieu sujet; la Septante et Paul ont le passif <i>elogisthē</i>.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> compté comme justice</li><li><b>NEG79</b> imputé à justice</li><li class="ecart"><b>Darby</b> compté à justice</li><li><b>LSG</b> imputé à justice</li><li class="ecart"><b>NBS</b> compté comme justice</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">malédiction</h3><p class="mot__translit">katara (epikataratos)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>imprécation; malédiction</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : exécration, imprécation, malédiction, opposée à <i>eulogia</i>, la bénédiction; la Septante l'emploie surtout pour l'hébreu <i>qəlālâ</i>, le mot de Deutéronome 21.23. Il explique <i>hupo kataran einai</i> (3.10) par « être passible de la peine fixée pour qui est maudit », et range 3.13 sous deux emplois : racheter quelqu'un qui est exposé à la peine dont la malédiction menace, puis, avec <i>genomenos ... katara</i>, l'abstrait pour le concret, « celui en qui la malédiction se montre, c'est-à-dire qui subit la peine fixée ». L'adjectif <i>epikataratos</i> (3.10, 3.13), propre à la Bible et aux écrits ecclésiastiques, veut dire maudit, exposé à la vengeance divine, sous la malédiction de Dieu; la Septante l'emploie souvent pour <i>ʾārûr</i>.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur oppose aussi <i>katara</i> à la bénédiction : être maudit, c'est recevoir tout ce qui est mauvais, être « méprisé et condamné, voué à la destruction » (48-⁠13). Il précise l'auteur de la malédiction, « ils ne sont pas maudits par Satan, ils sont maudits par Dieu » (48-⁠13), et sa portée : « Maudit est quiconque » vise toute la race humaine (48-⁠13, 48-⁠14). Le lexique et la lecture concordent sur le sens d'une peine prononcée par Dieu; l'extension à tous les hommes et la durée éternelle de la peine vont au-delà du lexique : c'est une décision d'interprétation, que le « quiconque » de 3.10 et l'Écriture qui « a tout renfermé sous le péché » (3.22) appuient.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> sous la malédiction</li><li><b>NEG79</b> sous la malédiction</li><li class="ecart"><b>Darby</b> sous malédiction</li><li><b>LSG</b> sous la malédiction</li><li><b>NBS</b> sous la malédiction</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">testament</h3><p class="mot__translit">diathēkē</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>disposition; alliance</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer distingue deux sens. D'abord une disposition, un arrangement qu'on veut voir valoir, en particulier la dernière disposition de ses biens, le testament : il range 3.15 sous ce sens, la disposition d'un homme servant d'exemple. Ensuite le pacte, l'alliance, très souvent pour l'hébreu <i>bərîṯ</i> : la relation que Dieu a établie avec Noé, avec Abraham, Isaac et Jacob, puis par Moïse avec Israël. Il range 3.17 sous ce second sens, la <i>diathēkē</i> y étant l'arrangement de Dieu, c'est-à-dire la promesse faite à Abraham; Galates 4.24 parle de deux alliances. Les participes <i>kekurōmenēn</i> (3.15) et <i>prokekurōmenēn</i> (3.17) veulent dire ratifiée et ratifiée d'avance.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur lit « alliance » aux deux versets : la <i>diathēkē</i> est par définition « une promesse qui lie, un accord qui lie » (48-⁠16), et Paul raisonne « du moindre au plus grand » : si personne ne retouche l'alliance ratifiée d'un homme, Dieu ne laissera pas changer la sienne (48-⁠16). Le lexique lit plutôt « testament » en 3.15 et « alliance » en 3.17; les versions, elles, gardent un seul mot aux deux versets (« testament » pour la NEG79, la S21 et la NBS, « alliance » pour la Darby, « disposition » pour la LSG). L'argument tient dans les deux lectures, puisque Paul parle d'une disposition ratifiée par une seule partie : c'est ce que MacArthur souligne (Dieu seul s'est engagé, 48-⁠16), et Thayer le rejoint en faisant de l'alliance de 3.17 la promesse.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> testament</li><li><b>NEG79</b> testament</li><li class="ecart"><b>Darby</b> alliance</li><li class="ecart"><b>LSG</b> disposition</li><li><b>NBS</b> testament</li></ul></article><article class="mot" id="mot-4"><header class="mot__tete"><h3 class="mot__fr">descendance</h3><p class="mot__translit">sperma</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>semence; postérité</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer donne d'abord la semence des plantes, puis, par métonymie, la descendance, la postérité, « au singulier, soit d'un seul, soit collectivement de plusieurs ». Il range 3.29 sous le sens collectif : ceux qu'on appelle postérité d'Abraham à cause de la foi qui les apparente à lui. Sur 3.16, il juge que Paul, « par une méthode rabbinique d'interprétation », contraire à l'usage de l'hébreu <i>zeraʿ</i>, qui désigne la descendance d'une ou de plusieurs personnes, appuie sur le singulier de Genèse 13.15 et 17.8 pour l'appliquer à un seul descendant, le Messie; il ajoute que cette insistance n'est pas tout à fait étrangère au grec des Juifs, qui employait le pluriel pour de nombreux descendants (4 Maccabées 18.1).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur répond par l'usage de l'Ancien Testament : le mot désigne parfois un seul individu, Seth (Genèse 4.25), Ismaël (21.13), Samuel (1 Samuel 1.11), Salomon (2 Samuel 7.12), parfois un collectif (48-⁠16). Paul restreint la descendance à Christ « parce que ce n'est qu'en Christ que les hommes sont bénis » (48-⁠16), et MacArthur suit la ligne d'une descendance unique depuis Genèse 3.15 (48-⁠16). Le lexique et la lecture divergent : Thayer parle d'une exégèse rabbinique, MacArthur d'une lecture conforme à l'usage. Le chapitre tient lui-même les deux sens, le singulier en 3.16 et le collectif en 3.29 (« vous êtes donc la descendance d’Abraham »), et MacArthur les relie : la descendance d'Abraham est Christ, et ceux qui sont en lui reçoivent les promesses qui lui appartiennent (48-⁠18). C'est une décision d'interprétation, que la reprise de 3.29 appuie.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> descendance</li><li><b>NEG79</b> descendance</li><li class="ecart"><b>Darby</b> semence</li><li class="ecart"><b>LSG</b> postérité</li><li><b>NBS</b> descendance</li></ul></article><article class="mot" id="mot-5"><header class="mot__tete"><h3 class="mot__fr">précepteur</h3><p class="mot__translit">paidagōgos</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>conducteur d'enfants</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : de <i>pais</i>, enfant, et <i>agōgos</i>, « guide, escorte »; un gardien et guide des garçons. Chez les Grecs et les Romains, des esclaves de confiance chargés de surveiller la vie et les mœurs des garçons de bonne famille, sans qui ceux-ci ne sortaient pas de la maison avant l'âge d'homme; ils se distinguent des maîtres qui enseignent (<i>didaskaloi</i>). Le nom porte une idée de sévérité (1 Corinthiens 4.15). En 3.24-⁠25, la loi lui est comparée parce qu'elle éveille la conscience du péché, et elle est dite <i>paidagōgos eis Christon</i> parce qu'elle prépare l'âme à Christ : ceux qui ont appris par elle qu'ils ne peuvent être recommandés à Dieu par leurs œuvres accueillent d'autant mieux l'espérance du salut.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur écarte le maître d'école : « Maître, c'est <i>didaskalos</i>, un autre mot. Ici, c'est un gardien, et il désignait en particulier le gardien des jeunes garçons » (48-⁠18), souvent un disciplinaire sévère (48-⁠18). Il ajoute un détail romain : le garçon attendait le jour de la <i>toga virilis</i>, qui le libérait de ce gardien (48-⁠18), et il rapproche cette toge du croyant revêtu de Christ en 3.27, la robe de justice (48-⁠18). Le lexique et la lecture concordent sur la fonction. Le lien entre la toge et 3.27 est un rapprochement de MacArthur, que le texte ne fait pas : c'est une décision d'interprétation, que le verbe <i>enedusasthe</i>, « vous avez revêtu », rend possible sans l'imposer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> le guide</li><li><b>NEG79</b> un précepteur</li><li class="ecart"><b>Darby</b> notre conducteur</li><li class="ecart"><b>LSG</b> un pédagogue</li><li class="ecart"><b>NBS</b> notre surveillant</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">Galates 3</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">La question qui commande le chapitre est double : par quel moyen les Galates ont-ils reçu l'Esprit, « par les œuvres de la loi » ou « par la prédication de la foi » (3.2, 3.5), et, si la promesse se reçoit par la foi, « Pourquoi donc la loi? » (3.19). MacArthur répond que le salut a toujours été par la foi seule, même dans l'Ancien Testament : « Il n'y a pas eu un salut par les œuvres dans l'Ancien Testament, et par la foi dans le Nouveau » (48-⁠12). La loi, venue quatre cent trente ans après la promesse, n'a pas changé la voie du salut : elle est un ajout, non un remplacement (48-⁠15), insérée pour un temps, afin de manifester le péché et de conduire à Christ (48-⁠15, 48-⁠17).</p></div><aside class="grille__marge grille__marge--collante"><nav class="sommaire" aria-label="Dans cette section"><p class="sommaire__titre">Dans cette section</p><ol><li><a href="#t1-galates-3-1-5-l-esprit-recu-par-la-foi"><span class="sommaire__ref">Galates 3.1-⁠5</span><span class="sommaire__lib">L'Esprit reçu par la foi</span></a></li><li><a href="#t2-galates-3-6-9-abraham-le-croyant"><span class="sommaire__ref">Galates 3.6-⁠9</span><span class="sommaire__lib">Abraham le croyant</span></a></li><li><a href="#t3-galates-3-10-14-la-malediction-portee"><span class="sommaire__ref">Galates 3.10-⁠14</span><span class="sommaire__lib">La malédiction portée</span></a></li><li><a href="#t4-galates-3-15-18-la-promesse-ratifiee"><span class="sommaire__ref">Galates 3.15-⁠18</span><span class="sommaire__lib">La promesse ratifiée</span></a></li><li><a href="#t5-galates-3-19-22-pourquoi-donc-la-loi"><span class="sommaire__ref">Galates 3.19-⁠22</span><span class="sommaire__lib">Pourquoi donc la loi?</span></a></li><li><a href="#t6-galates-3-23-29-fils-de-dieu-revetus-de-christ-heritiers"><span class="sommaire__ref">Galates 3.23-⁠29</span><span class="sommaire__lib">Fils de Dieu, revêtus de Christ, héritiers</span></a></li></ol></nav><details class="sources"><summary><span class="sources__niveau">Niveau 1</span>Sources de l'exposition : 8 sermons Grace to You</summary><div class="sources__corps"><p>Niveau 1 : sermons Grace to You sur Galates 3.1 à 3.29 (48-⁠11 à 48-⁠18, série « Galatians », août à octobre 2017)</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">48-11</span></th><td><a href="https://www.gty.org/sermons/48-11" target="_blank" rel="noopener">Bewitched by False Doctrine</a></td><td>Ga 3.1-⁠5</td></tr><tr><th scope="row"><span class="mot-fr">48-12</span></th><td><a href="https://www.gty.org/sermons/48-12" target="_blank" rel="noopener">Works or Grace?, Part 1</a></td><td>Ga 3.6-⁠14</td></tr><tr><th scope="row"><span class="mot-fr">48-13</span></th><td><a href="https://www.gty.org/sermons/48-13" target="_blank" rel="noopener">Works or Grace?, Part 2</a></td><td>Ga 3.10-⁠14</td></tr><tr><th scope="row"><span class="mot-fr">48-14</span></th><td><a href="https://www.gty.org/sermons/48-14" target="_blank" rel="noopener">Works or Grace?, Part 3</a></td><td>Ga 3.10-⁠14</td></tr><tr><th scope="row"><span class="mot-fr">48-15</span></th><td><a href="https://www.gty.org/sermons/48-15" target="_blank" rel="noopener">The Big Picture of Salvation</a></td><td>Ga 3.15-⁠18</td></tr><tr><th scope="row"><span class="mot-fr">48-16</span></th><td><a href="https://www.gty.org/sermons/48-16" target="_blank" rel="noopener">God’s Eternal Covenant of Promise</a></td><td>Ga 3.15-⁠18</td></tr><tr><th scope="row"><span class="mot-fr">48-17</span></th><td><a href="https://www.gty.org/sermons/48-17" target="_blank" rel="noopener">The Inferiority of the Law</a></td><td>Ga 3.15-⁠22</td></tr><tr><th scope="row"><span class="mot-fr">48-18</span></th><td><a href="https://www.gty.org/sermons/48-18" target="_blank" rel="noopener">Deliverance from Bondage to the Law</a></td><td>Ga 3.23-⁠29</td></tr></tbody></table></div></div></details></aside><div class="grille__texte"><div class="body"><h3 class="intertitre" id="t1-galates-3-1-5-l-esprit-recu-par-la-foi"><span class="intertitre__ref">Galates 3.1-⁠5</span>L'Esprit reçu par la foi</h3><p>Pour MacArthur, les Galates sont de vrais croyants, et pourtant ensorcelés : le chapitre les dit « tous fils de Dieu par la foi » (3.26), et ils ont « commencé par l’Esprit » (3.3) (48-⁠11). Il en tire une leçon pour l'Église : « L'ensorcellement vient de ceux qui reconnaissent l'Évangile, l'acceptent, puis ajoutent des œuvres à l'Évangile » (48-⁠11). Le verbe <i>baskainō</i>, employé ici seulement dans le Nouveau Testament, voulait dire charmer de manière trompeuse, chercher à nuire par le mensonge ou de fausses promesses (48-⁠11). <i>anoētoi</i>, « dépourvus de sens », vise une intelligence qui n'examine pas la vérité parce que le cœur ne s'y attache pas (48-⁠11).</p><p>MacArthur lit les versets 1 à 5 selon la Trinité : le Fils crucifié présenté sous leurs yeux (3.1), l'Esprit reçu par la foi (3.2-⁠3), le Père qui accorde l'Esprit et opère des miracles (3.5) (48-⁠11). Il reconnaît le Père dans « Celui qui vous accorde l’Esprit » d'après les paroles de Jésus sur l'Esprit que le Père envoie (Luc 11.13; Jean 14.16, 26) (48-⁠11). Il donne au participe <i>epichorēgōn</i> le sens d'une abondance généreuse (48-⁠11), alors que Thayer s'en tient à « fournir, procurer, présenter » : l'abondance est une nuance de lecture, non de lexique. Les « miracles » de 3.5 sont peut-être les miracles apostoliques, et plus encore peut-être le miracle de la régénération (48-⁠11); le sermon suivant tient les deux ensemble (48-⁠12). Pour les trois personnes, la conclusion est la même : l'œuvre du Fils, celle de l'Esprit et celle du Père sont complètes, et la loi n'y ajoute rien (48-⁠11).</p><h3 class="intertitre" id="t2-galates-3-6-9-abraham-le-croyant"><span class="intertitre__ref">Galates 3.6-⁠9</span>Abraham le croyant</h3><p>Les judaïsants faisaient d'Abraham leur héros; Paul les bat sur leur propre terrain (48-⁠12). MacArthur appelle les versets 6 à 9 « la preuve positive que le salut de l'Ancien Testament est par la foi seule » (48-⁠12). Abraham a été déclaré juste en Genèse 15.6, au moins quatorze ans avant d'être circoncis (48-⁠12; Genèse 16.16 et 17.24 donnent quatre-vingt-six et quatre-vingt-dix-neuf ans), et des siècles avant la loi : « Il n'y avait pas de loi. Il n'y avait pas de circoncision quand Abraham a été déclaré juste. Et c'est précisément le point de Paul » (48-⁠12). MacArthur ajoute qu'Abraham était un païen quand Dieu l'a sauvé (48-⁠12).</p><p>« L’Ecriture » de 3.8 est personnifiée : pour MacArthur, c'est la voix de Dieu, comme en 4.30 (48-⁠12). Elle « a d’avance annoncé cette bonne nouvelle à Abraham » : la promesse que toutes les nations seraient bénies en lui contenait déjà l'Évangile de la justification des païens par la foi, et la question n'est pas la généalogie, mais l'héritage de la foi (48-⁠12). Le titre de 3.9, « Abraham le croyant » (<i>tō pistō Abraam</i>), devient selon lui le nom des chrétiens du Nouveau Testament (48-⁠12), et il précise : « La foi n'est pas une œuvre juste, la foi est une main vide qui reçoit la justice » (48-⁠12).</p><h3 class="intertitre" id="t3-galates-3-10-14-la-malediction-portee"><span class="intertitre__ref">Galates 3.10-⁠14</span>La malédiction portée</h3><p>MacArthur voit dans le passage deux malédictions : « la malédiction divine sur tous les hommes » (3.10-⁠12) et « la malédiction divine sur un seul homme » (3.13-⁠14) (48-⁠13, 48-⁠14). La première est universelle, parce que tous ont l'obligation d'obéir à Dieu et que personne ne garde toute la loi : « Tout, tout le temps » (48-⁠13), avec Matthieu 5.48 et Jacques 2.10. Il distingue trois degrés : maudits par le péché, doublement maudits par la confiance dans les œuvres, triplement par la propagation d'un évangile d'œuvres (48-⁠13). Paul ne parle pas de tous les hommes, mais de « tous ceux qui s’attachent aux œuvres de la loi » : étendre la phrase à toute l'humanité est une décision d'interprétation, que la citation (« quiconque ») et 3.22 appuient.</p><p>Les deux citations de 3.11-⁠12 opposent deux principes, qui ne se combinent pas : « Ce ne sont pas des partenaires; ce sont des ennemis » (48-⁠14). MacArthur relève qu'Habacuc a écrit des siècles après Moïse : avant comme après la loi, le juste vit par la foi (48-⁠15). Puis vient la bonne nouvelle, qui n'a de poids que sur ce fond (48-⁠13) : Christ « nous a rachetés », ce que MacArthur glose « Il nous a achetés, payés, libérés, délivrés » (48-⁠13).</p><p>MacArthur pose ensuite la question de Proverbes 17.15 : comment Dieu peut-il justifier l'impie sans faire ce que ce verset déclare une abomination? Par la substitution de 2 Corinthiens 5.21 : la peine n'est pas supprimée, elle est subie par un autre (48-⁠14). MacArthur précise la portée de cette mort : Christ a racheté « ses brebis », selon Jean 10 (48-⁠14), et « C'est une expiation objective; c'est une expiation définitive; et c'est une expiation efficace » (48-⁠14). Le verset 14 donne deux buts : que la bénédiction d'Abraham, la justice comptée par la foi, parvienne aux païens sans passer par la loi de Moïse, que la plupart des hommes ignorent, et que « nous recevions par la foi l’Esprit qui avait été promis » (48-⁠14). « La grâce qui justifie apporte la puissance qui sanctifie » (48-⁠14).</p><h3 class="intertitre" id="t4-galates-3-15-18-la-promesse-ratifiee"><span class="intertitre__ref">Galates 3.15-⁠18</span>La promesse ratifiée</h3><p>MacArthur reconstitue l'objection que Paul prévient : avant Moïse, le salut était par la foi; avec la loi, Dieu aurait changé de plan (48-⁠15). Paul répond par la nature des alliances. Les alliances de promesse, avec Abraham, avec David et la nouvelle alliance de Jérémie 31, sont divines et donc inconditionnelles, éternelles et donc irrévocables, gracieuses et donc imméritées (48-⁠16); en face, « L'alliance de Moïse n'était pas unilatérale, mais bilatérale; non pas inconditionnelle, mais conditionnelle; non pas éternelle, mais temporaire; et non pas gracieuse, mais sans grâce » (48-⁠16). Dans l'une, Dieu s'engage; dans l'autre, il exige sous menace (48-⁠16).</p><p>Sur 3.15-⁠18, MacArthur donne quatre raisons de la supériorité de la promesse (48-⁠16). Sa confirmation : on ne retouche pas un testament ratifié, même humain, et en Genèse 15 Dieu seul est passé entre les animaux, pendant qu'Abram dormait (48-⁠16). Son centre, Christ : la descendance de 3.16 est Christ, parce que les bénédictions ne viennent qu'en union avec lui (48-⁠16). Sa chronologie : les « quatre cent trente ans » viennent d'Exode 12.40 et se comptent, selon MacArthur, depuis la dernière réitération de la promesse à Jacob, avant sa descente en Égypte; depuis Abraham, il y aurait plus de six cents ans (48-⁠16, 48-⁠17). Sa plénitude : si l'héritage venait de la loi, il ne viendrait plus de la promesse (3.18), et le parfait <i>kecharistai</i> dit un don de grâce (48-⁠16). MacArthur résume : « La loi dit : “Fais ceci, et tu vivras.” L'Évangile dit : “Reçois ceci, et tu vivras. C'est un don.” » (48-⁠16).</p><h3 class="intertitre" id="t5-galates-3-19-22-pourquoi-donc-la-loi"><span class="intertitre__ref">Galates 3.19-⁠22</span>Pourquoi donc la loi?</h3><p>La réponse de MacArthur tient en trois mots : la loi est un ajout, une insertion, une instruction (48-⁠15). Ajoutée « à cause des transgressions » (3.19), c'est-à-dire, selon lui, pour les produire ou les manifester (48-⁠17), elle définit le péché, l'excite, le montre comme une rébellion contre Dieu, et surtout, au long de l'histoire d'Israël, elle a prouvé qu'elle ne pouvait sauver personne : « Le but de la loi est donc inférieur; il n'est pas de guérir le péché, mais de maudire le pécheur » (48-⁠17). Insérée « jusqu’à ce que vienne la descendance », elle est temporaire (48-⁠15, 48-⁠17). MacArthur l'entend de ses formes mosaïques, ses éléments extérieurs, cérémonies, sacrifices et sacerdoce, et non de la loi morale, reflet du caractère de Dieu, qui reste pour le croyant une instruction : « Autrefois, c'était une instruction pour le salut; maintenant, c'est une instruction pour la sainteté » (48-⁠15).</p><p>La loi est encore inférieure par ses médiateurs : « De Dieu, aux anges, à Moïse, au peuple » (48-⁠17). MacArthur appuie la mention des anges sur Deutéronome 33.2, Psaume 68.17, Actes 7.38 et 7.53, et Hébreux 2.2 (48-⁠17). En Deutéronome 33.2, l'hébreu parle de « saintes myriades » (NEG79) et d'un « feu de la loi » envoyé de la droite de Dieu; la Septante y lit des anges à sa droite (<i>ek dexiōn autou angeloi met’ autou</i>), forme qui rejoint 3.19. À l'inverse, Dieu a parlé à Abraham directement : « La promesse vient de Dieu de première main, la menace de troisième main » (48-⁠17). Le verset 20 ne reçoit que quelques phrases : un médiateur suppose deux parties, et Dieu n'en avait pas besoin pour sa promesse, une alliance faite avec lui-même (48-⁠17).</p><p>En 3.21, Paul refuse que la loi soit contre les promesses : <i>mē genoito</i>, « Loin de là! », est pour MacArthur une négation forte (48-⁠17). La loi ne peut donner la vie : elle tue, l'Esprit vivifie (2 Corinthiens 3.6) (48-⁠17). Elle a fait autre chose : elle a enfermé tous les hommes comme en prison, afin que la promesse soit donnée à ceux qui croient (3.22) (48-⁠17). MacArthur cite Luther : celui qui sait distinguer la loi et la grâce peut se savoir vrai chrétien (48-⁠17).</p><h3 class="intertitre" id="t6-galates-3-23-29-fils-de-dieu-revetus-de-christ-heritiers"><span class="intertitre__ref">Galates 3.23-⁠29</span>Fils de Dieu, revêtus de Christ, héritiers</h3><p>MacArthur lit 3.23-⁠29 comme un contraste : ce que la loi nous a fait (3.23-⁠24), ce que la foi fait pour nous (3.25-⁠29) (48-⁠18). Le « nous » de 3.23 est, selon lui, celui des croyants, Juifs et païens : il admet que la phrase vise peut-être aussi les Juifs, mais juge meilleur de l'entendre des croyants (48-⁠18). « Avant que la foi vienne » désigne à la fois la venue historique de Christ et celle de la foi dans chaque vie (48-⁠18). La loi y est deux choses, une prison et un précepteur (48-⁠18) : un gardien sévère, non un maître (voir les mots-clés), sous lequel on reste jusqu'à ce qu'on vienne à Christ (48-⁠18).</p><p>Le « nous » devient « vous » en 3.26 (48-⁠18) : « vous êtes tous fils de Dieu », et non seulement fils d'Abraham, avec le droit de s'approcher de Dieu et de lui dire « Abba » (4.6) (48-⁠18). Le baptême de 3.27 n'est pas, pour MacArthur, le baptême d'eau : « Il ne s'agit pas du baptême d'eau, mais simplement du mot immersion. Il est employé ici dans un sens sec » (48-⁠18), comme en Romains 6.3; être revêtu de Christ, c'est l'imputation de sa justice, reçue par la foi (48-⁠18). Il ajoute que si Paul avait voulu lier le baptême à la circoncision, ce verset en était le lieu, et il en tire un argument contre le baptême des enfants comme circoncision de la nouvelle alliance (48-⁠18).</p><p>Sur 3.28, MacArthur dit que Paul parle spirituellement : les distinctions demeurent, et « Dieu n'entend pas effacer la distinction », mais en Christ elles ne comptent pas, car tous sont un (48-⁠18). Il refuse d'en tirer l'abolition des rôles et renvoie aux ordres donnés aux esclaves et aux maîtres, aux femmes et aux maris (48-⁠18); il en tire aussi l'exclusion de tout racisme dans l'Église (48-⁠18). Le verset 29 ferme l'argument : la descendance d'Abraham est Christ, et ceux qui sont en lui reçoivent les promesses qui lui appartiennent (48-⁠18).</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>Galates 3.2 et 3.5.</b> La même alternative revient deux fois, « par les œuvres de la loi, ou par la prédication de la foi », et les participes de 3.5 sont au présent (<i>epichorēgōn</i>, <i>energōn</i>) : l'Esprit que Dieu « accorde » et les miracles qu'il « opère » sont l'argument. Paul ne demande pas aux Galates ce qu'ils croient, mais comment ils ont reçu ce qu'ils ont.</li><li><b>Galates 3.7 et 3.9.</b> <i>hoi ek pisteōs</i>, « ceux qui ont la foi » (3.7) et « ceux qui croient » (3.9), encadre la section : la filiation (« fils d’Abraham ») et la bénédiction (« bénis avec Abraham le croyant ») sont définies par la foi, non par l'ascendance; le titre donné à Abraham est <i>ho pistos</i>, le croyant.</li><li><b>Galates 3.11-⁠12.</b> Les deux citations ont le même verbe : « Le juste vivra par la foi » (Habacuc 2.4), « Celui qui mettra ces choses en pratique vivra par elles » (Lévitique 18.5). Entre elles, « la loi ne procède pas de la foi » : Paul ne dit pas que la loi est mauvaise (3.21), il dit qu'elle relève d'un autre principe que la foi.</li><li><b>Galates 3.16 et 3.29.</b> Paul tire argument du singulier, « d’une seule [...] c’est-à-dire à Christ » (3.16), puis revient au collectif : « vous êtes donc la descendance d’Abraham » (3.29). Le passage de l'un à l'autre se fait par « si vous êtes à Christ » (3.29) : le chapitre tient les deux sens que Thayer distingue.</li><li><b>Galates 3.17-⁠19 et 3.23-⁠25.</b> Le chapitre borne la loi des deux côtés : elle est « survenue quatre cent trente ans plus tard » (3.17), et donnée « jusqu’à ce que vienne la descendance » (3.19); les versets 23 et 25 répètent la borne finale, « Avant que la foi vienne », « La foi étant venue ». Une loi encadrée par une promesse antérieure et par une venue postérieure ne peut être la voie du salut.</li><li><b>Galates 3.28.</b> Les deux premières paires sont niées par <i>oude</i> (<i>Ioudaios oude Hellēn</i>, <i>doulos oude eleutheros</i>); la troisième change de conjonction : <i>arsen kai thēlu</i>, mâle et femelle, les mots mêmes de Genèse 1.27 dans la Septante (<i>arsen kai thēlu epoiēsen autous</i>). Le verset renvoie ainsi à la création, ce que la NEG79 ne laisse pas voir (« ni homme ni femme »). MacArthur ne relève pas ce détail; il lit le verset comme une unité spirituelle qui laisse subsister les distinctions (48-⁠18).</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Huit passages</p></header>
+<p class="lead">Huit passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Genèse 15.6</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Galates 3.6 reproduit la Septante (<i>episteusen ... tō theō kai elogisthē autō eis dikaiosunēn</i>), avec Abraham là où la Septante a encore Abram, et l'introduit par <i>kathōs</i>. L'hébreu massorétique a l'actif, <i>wayyaḥšəḇehā lô ṣədāqâ</i>, « et il le lui compta comme justice » (NEG79 : « Abram eut confiance en l’Eternel, qui le lui imputa à justice »); la Septante et Paul ont le passif <i>elogisthē</i>, Dieu restant le sujet implicite. Dans la Genèse, cette foi répond à la promesse d'une descendance innombrable (15.5) et précède la circoncision (17.24); Paul en tire que « ce sont ceux qui ont la foi qui sont fils d’Abraham » (3.7).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Genèse 12.3 et 18.18</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">La forme de 3.8, <i>Eneulogēthēsontai en soi panta ta ethnē</i>, combine deux textes de la Septante : « en toi » (<i>en soi</i>) vient de Genèse 12.3, où la bénédiction porte sur « toutes les familles de la terre » (<i>pasai hai phulai tēs gēs</i>), et « toutes les nations » (<i>panta ta ethnē</i>) de Genèse 18.18, où elles sont bénies « en lui ». Paul omet « de la terre ». L'hébreu a aux deux endroits le nifal <i>wəniḇrəḵû</i>, « seront bénies », avec <i>mišpəḥōṯ hāʾădāmâ</i> en 12.3 et <i>gôyê hāʾāreṣ</i> en 18.18. Le choix de « nations » sert l'argument : ce sont les païens que Dieu justifierait par la foi (3.8). MacArthur voit dans la promesse de Genèse 12 une famille de croyants issue de toutes les nations par le Messie (48-⁠12).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Deutéronome 27.26</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Paul suit la Septante, qui ajoute deux fois « tout » à l'hébreu : <i>epikataratos pas anthrōpos hos ouk emmenei en pasin tois logois tou nomou toutou</i>. L'hébreu massorétique dit seulement « Maudit soit celui qui n’accomplit point les paroles de cette loi » (NEG79), sans <i>kōl</i>. Paul omet <i>anthrōpos</i> et la préposition <i>en</i>, et remplace « les paroles de cette loi » par « tout ce qui est écrit dans le livre de la loi », formule proche de Deutéronome 28.58 (Septante <i>ta gegrammena en tō bibliō toutō</i>; hébreu <i>hakkəṯûḇîm bassēp̄er hazzeh</i>). La sentence clôt les malédictions prononcées sur le mont Ebal, et tout le peuple y répond « Amen! »; MacArthur lit Deutéronome 27 et 28, puis Jérémie 11, pour montrer la malédiction exécutée sur Israël (48-⁠13).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Habacuc 2.4 et Lévitique 18.5</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Habacuc 2.4 : l'hébreu dit <i>beʾĕmûnāṯô</i>, « par sa foi » (NEG79 : « Mais le juste vivra par sa foi »), la Septante <i>ek pisteōs mou</i>, « par ma foi », et Paul <i>ek pisteōs</i>, sans pronom (3.11). Lévitique 18.5 : l'hébreu dit « l’homme qui les mettra en pratique vivra par elles » (NEG79), la Septante <i>ha poiēsas anthrōpos zēsetai en autois</i>; Paul écrit <i>Ho poiēsas auta zēsetai en autois</i>, sans <i>anthrōpos</i>, que le texte byzantin rétablit (voir l'état du texte). Pour MacArthur, Lévitique 18.5 énonce l'exigence de la loi : qui veut vivre par elle doit la pratiquer parfaitement (48-⁠13).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Deutéronome 21.23</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">L'hébreu dit <i>qillaṯ ʾĕlōhîm tālûy</i>, « malédiction de Dieu, le pendu » (NEG79 : « celui qui est pendu est un objet de malédiction auprès de Dieu »); la Septante <i>kekatēramenos hupo theou pas kremamenos epi xulou</i>, « maudit par Dieu, quiconque est pendu au bois ». Paul garde de la Septante <i>pas ... kremamenos epi xulou</i>, avec l'article, mais remplace <i>kekatēramenos hupo theou</i> par <i>epikataratos</i>, l'adjectif de sa citation de 3.10 : les deux sentences se répondent, la malédiction de la loi (3.10) et celle que Christ a prise (3.13). Le texte source visait le cadavre d'un condamné, qui ne devait pas rester la nuit sur le bois; MacArthur y voit l'image dont Jésus est l'accomplissement ultime (48-⁠14).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Genèse 13.15 et 17.8</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">La formule de 3.16, <i>Kai tō spermati sou</i>, « et à ta descendance », est mot pour mot celle de la Septante en Genèse 13.15, 17.8 et 24.7 (<i>tō spermati sou</i> en 12.7); elle rend l'hébreu <i>ûləzarʿăḵā</i>, nom singulier avec suffixe. Dans ces textes, la promesse porte sur le pays donné à Abram et à sa postérité (NEG79, 13.15 : « je le donnerai à toi et à ta postérité pour toujours »). Thayer voit dans l'argument du singulier une méthode rabbinique; MacArthur rappelle que le mot désigne parfois un seul individu, et pense qu'Abraham connaissait la promesse d'une descendance unique faite en Genèse 3.15 (48-⁠16).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Exode 12.40</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Le chiffre de 3.17 est celui d'Exode 12.40-⁠41. L'hébreu massorétique compte quatre cent trente ans de séjour « en Egypte » (NEG79 : « Le séjour des enfants d’Israël en Egypte fut de quatre cent trente ans »); la Septante ajoute « et dans le pays de Canaan » (<i>kai en gē Chanaan</i>), ce qui fait partir le compte du temps des patriarches. MacArthur rattache le chiffre à Exode 12.40 et le fait partir de la dernière réitération de la promesse à Jacob, avant la descente en Égypte (48-⁠16, 48-⁠17), ce qui correspond au compte de l'hébreu; le lien avec la promesse à Jacob est sa lecture, le verset d'Exode ne parlant que du séjour. Paul ne précise pas son point de départ : dans les deux comptes, la loi vient après la promesse.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Romains 4.9-⁠16</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Paul y reprend l'argument de Galates 3 dans le même ordre : la justice comptée à Abraham avant sa circoncision (« Il n’était pas encore circoncis, il était incirconcis », Romains 4.10), la promesse qui ne dépend pas de la loi (« ce n’est pas par la loi que l’héritage du monde a été promis à Abraham ou à sa postérité, c’est par la justice de la foi », 4.13), et la loi qui « produit la colère » (4.15). MacArthur lit Romains 4 avec Galates 3.6-⁠9 (48-⁠12) et cite Romains 4.15 sur 3.10 (48-⁠13).</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Cinq axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">La justice comptée par la foi, d'Abraham aux païens</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>« Comme Abraham crut à Dieu, et que cela lui fut imputé à justice » (3.6); « ce sont ceux qui ont la foi qui sont fils d’Abraham » (3.7); « Dieu justifierait les païens par la foi » (3.8); « Le juste vivra par la foi » (3.11).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Sotériologie : la justification par la foi seule et l'imputation de la justice (<i>Biblical Doctrine</i>; <i>The Gospel According to Paul</i>, que MacArthur range parmi ses livres sur l'Évangile, 48-⁠11). Pour lui, le salut a toujours été par la foi, dans l'Ancien Testament comme dans le Nouveau (48-⁠12), et la foi n'est pas une œuvre, mais ce qui reçoit (48-⁠12).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Genèse 15.6 compte la foi d'Abram à justice avant la circoncision (Genèse 17.24) et avant la loi; Habacuc 2.4 le redit sous la loi; Galates 3 l'étend aux païens, et Romains 4 développe l'argument de la circoncision venue après (Romains 4.10-⁠11).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Une assemblée peut tenir la justification par la foi dans sa confession et compter, en pratique, sur son appartenance, sa tradition ou sa conduite, comme les judaïsants sur leur ascendance abrahamique. Le texte ramène chacun à la question de 3.2 : comment avez-vous reçu ce que vous avez?</p></div></div></section><section class="theme"><h3 class="theme__title">Christ devenu malédiction pour nous</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>« tous ceux qui s’attachent aux œuvres de la loi sont sous la malédiction » (3.10); « Christ nous a rachetés de la malédiction de la loi, étant devenu malédiction pour nous » (3.13); « afin que la bénédiction d’Abraham ait pour les païens son accomplissement en Jésus-Christ » (3.14).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Christologie et sotériologie : l'expiation substitutive et la propitiation (<i>Biblical Doctrine</i>). MacArthur parle de la satisfaction de la justice divine (48-⁠14, avec 1 Jean 2.2) et d'une expiation objective, définitive et efficace (48-⁠14); il dit que Christ a racheté ses brebis (48-⁠14), ce qui se rattache à la rédemption particulière.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>La loi prononçait la malédiction sur quiconque ne l'observe pas (Deutéronome 27.26) et exposait le pendu comme maudit (Deutéronome 21.23); Ésaïe 53, que MacArthur lit sur ce texte, annonçait le serviteur blessé pour nos péchés (48-⁠14); Galates 3.13 montre la malédiction tombée sur Christ, et 2 Corinthiens 5.21 le dit en termes de péché.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le sermon doit d'abord faire entendre la malédiction : MacArthur reproche aux prédicateurs de taire que tous sont sous la malédiction de Dieu (48-⁠13). La bonne nouvelle de 3.13 n'a de poids que sur ce fond; pour le croyant accablé, elle dit que la malédiction a été épuisée sur un autre.</p></div></div></section><section class="theme"><h3 class="theme__title">La promesse ratifiée par Dieu seul</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>« un testament, que Dieu a confirmé antérieurement, ne peut pas être annulé » (3.17); « c’est par la promesse que Dieu a fait à Abraham ce don de sa grâce » (3.18); « héritiers selon la promesse » (3.29).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Les alliances bibliques (<i>Biblical Doctrine</i>) : MacArthur distingue les alliances de promesse, avec Abraham, avec David et la nouvelle alliance, divines, éternelles et gracieuses, de l'alliance mosaïque, bilatérale, conditionnelle et temporaire (48-⁠16); toutes les promesses se résolvent en Christ, selon 2 Corinthiens 1.20 (48-⁠17). L'avenir national d'Israël dans ces alliances relève du rattachement à <i>Biblical Doctrine</i> (eschatologie) : les sermons lus mentionnent la promesse du pays (48-⁠16) sans l'exposer à partir de Galates.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>La promesse faite à Abram (Genèse 12.3; 15.5-⁠6), scellée par Dieu seul entre les animaux partagés (Genèse 15.17) et confirmée par serment (Hébreux 6.13-⁠18), précède le Sinaï; Galates révèle que la descendance est Christ (3.16); Hébreux 6.17 parle de « l’immuabilité de sa résolution ».</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>L'assurance du croyant repose sur une promesse que Dieu seul a ratifiée : aucune condition ajoutée après coup, ni loi ni rite, ne peut l'annuler ni la compléter (3.15). Prêcher l'assurance, c'est renvoyer à ce que Dieu a promis et confirmé, non à ce que l'auditeur y ajoute.</p></div></div></section><section class="theme"><h3 class="theme__title">La loi à sa place : ajoutée, temporaire, conduisant à Christ</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>« Pourquoi donc la loi? Elle a été donnée ensuite à cause des transgressions, jusqu’à ce que vienne la descendance » (3.19); « La loi est-elle donc contre les promesses de Dieu? Loin de là! » (3.21); « la loi a été comme un précepteur pour nous conduire à Christ » (3.24).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>La loi et ses usages (<i>Biblical Doctrine</i>). MacArthur distingue la loi cérémonielle, qui séparait Israël des nations, la loi sacrificielle, qui annonçait le Rédempteur, et la loi morale, qui exprime la nature immuable de Dieu (48-⁠15). Les deux premières ont pris fin en Christ; la loi morale reste pour le croyant une instruction à la sainteté, contre le légalisme et contre l'antinomisme : « Je ne peux pas être sauvé en gardant la loi, et je ne serai pas sanctifié en l'ignorant » (48-⁠15).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Donnée au Sinaï dans la crainte (Exode 19), par des anges et un médiateur (Deutéronome 33.2 dans la Septante; Actes 7.53), la loi a été suivie de la promesse d'une alliance nouvelle, avec la loi écrite dans le cœur (Jérémie 31.31-⁠33); Galates 3 la borne jusqu'à Christ, Romains 10.4 dit que « Christ est la fin de la loi », et Hébreux 8, que MacArthur cite, déclare la première alliance vieillie (48-⁠17).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>La loi garde sa fonction de miroir : elle accuse et conduit à Christ (48-⁠15). Une prédication qui en fait un chemin vers Dieu retombe dans l'erreur des judaïsants; une prédication qui la congédie aussi pour la vie chrétienne tombe dans l'erreur inverse, que MacArthur juge aussi ruineuse (48-⁠15).</p></div></div></section><section class="theme"><h3 class="theme__title">Fils de Dieu, revêtus de Christ, un en lui</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>« Car vous êtes tous fils de Dieu par la foi en Jésus-Christ » (3.26); « vous tous, qui avez été baptisés en Christ, vous avez revêtu Christ » (3.27); « car tous vous êtes un en Jésus-Christ » (3.28).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Sotériologie et ecclésiologie : l'union avec Christ et l'adoption (<i>Biblical Doctrine</i>). MacArthur lit 3.27 de l'immersion spirituelle en Christ, comme Romains 6.3, non du baptême d'eau (48-⁠18), et 3.28 d'une unité spirituelle qui ne supprime ni les sexes ni les rôles (48-⁠18).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Dieu a créé l'homme et la femme (Genèse 1.27) et promis la bénédiction de toutes les familles de la terre en Abram (Genèse 12.3); Galates 3.28-⁠29 montre les croyants de toutes origines réunis en un seul en Christ, et Galates 4.4-⁠7 développera l'adoption et l'héritage.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>L'unité de l'assemblée ne vient pas de l'effacement des différences, mais de l'appartenance commune à Christ : « Et si vous êtes à Christ » (3.29). MacArthur en tire que toute hostilité ethnique est étrangère à l'Église (48-⁠18); le texte en fait une conséquence de la foi, non un programme à part.</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Sept questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>Paul ne réfute pas d'abord les judaïsants par un texte, mais par une question sur l'expérience (3.2, 3.5). Quand un auditeur ajoute des conditions à son salut, comment l'interroger sur la manière dont il a reçu l'Esprit, sans faire de l'expérience la norme de la vérité?</li><li>MacArthur étend la malédiction de 3.10 à toute l'humanité (48-⁠13), alors que le texte vise « tous ceux qui s’attachent aux œuvres de la loi ». Ce passage du groupe à l'humanité est-il tenu par la citation (« quiconque ») et par 3.22? Comment le prêcher à des auditeurs qui ne se pensent pas « sous la loi »?</li><li>En 3.13, Christ est devenu « malédiction », un nom et non un adjectif. Comment faire entendre l'échange sans en faire une image, et sans affaiblir le scandale que Deutéronome 21.23 représentait pour un auditeur juif?</li><li>Thayer juge rabbinique l'argument du singulier en 3.16; MacArthur le juge conforme à l'usage de l'Ancien Testament (48-⁠16). Comment montrer à l'assemblée, à partir de 3.29, que Paul connaît aussi le sens collectif, et que les deux se rejoignent en Christ?</li><li>La loi est « survenue quatre cent trente ans plus tard » (3.17) et donnée « jusqu’à ce que vienne la descendance » (3.19). Quels usages de la loi, dans votre assemblée, la font passer avant la promesse ou survivre à sa fonction, et lesquels la congédient aussi pour la vie chrétienne?</li><li>MacArthur lit le baptême de 3.27 comme l'immersion spirituelle en Christ (48-⁠18). Qu'est-ce qui, dans le verset (« vous avez revêtu Christ ») et dans le contexte (la foi, 3.26), appuie cette lecture, et comment l'exposer sans vider de son sens le baptême d'eau ailleurs dans le Nouveau Testament?</li><li>En 3.28, la troisième paire reprend les mots de Genèse 1.27 dans la Septante. Qu'est-ce que ce rappel de la création change à la manière de prêcher l'unité « en Jésus-Christ » sans effacer ce que Dieu a créé?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · Galates 3 · 13 octobre 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-Galates-3.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

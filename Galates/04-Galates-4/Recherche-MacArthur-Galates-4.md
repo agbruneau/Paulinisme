@@ -1,0 +1,259 @@
+# Recherche exégétique (perspective MacArthur) : Galates 4
+
+**Fils, et non plus esclave**
+
+> « Ainsi tu n’es plus esclave, mais fils; et si tu es fils, tu es aussi héritier par la grâce de Dieu. » (Galates 4.7, NEG)
+
+13 octobre 2026 · André-Guy Bruneau
+
+---
+
+## Contexte du passage
+
+> « mais, lorsque les temps ont été accomplis, Dieu a envoyé son Fils, né d’une femme, né sous la loi, afin qu’il rachète ceux qui étaient sous la loi, afin que nous recevions l’adoption. » (Galates 4.4-5, NEG)
+
+> « Mes enfants, pour qui j’éprouve de nouveau les douleurs de l’enfantement, jusqu’à ce que Christ soit formé en vous, » (Galates 4.19, NEG)
+
+> « C’est pourquoi, frères, nous ne sommes pas enfants de l’esclave, mais de la femme libre. » (Galates 4.31, NEG)
+
+Galates 4 achève la partie scripturaire de la lettre : ceux que 3.29 appelle « héritiers selon la promesse » sont des fils adoptés, non des esclaves, et revenir à la loi serait retourner à la servitude. Le chapitre va de l'héritier mineur (4.1) aux enfants de la femme libre (4.31), et sa conclusion est 5.1 : « C’est pour la liberté que Christ nous a affranchis ».
+
+MacArthur situe le chapitre dans le plan qu'il donne à la lettre : les chapitres 1 et 2 défendent l'Évangile par l'expérience de Paul, les chapitres 3 et 4 par l'Écriture, les chapitres 5 et 6 en tirent les implications (48-26, 48-27). En 4.21-5.1, Paul donne sa dernière preuve tirée de l'Écriture, qui n'est pas, selon lui, un argument de plus, mais une illustration (48-26). Il tient 5.1 pour la fin de cette section : « On aurait dû déplacer le titre du chapitre d'un verset » (48-26).
+
+Le chapitre change trois fois de registre. En 4.1-11, Paul raisonne à partir d'une image juridique, l'héritier encore mineur, puis du calendrier que les Galates adoptent (4.10). En 4.12-20, il quitte l'argument pour l'appel personnel : MacArthur n'y trouve ni raisonnement théologique ni renvoi à l'Ancien Testament, sinon une seule déclaration doctrinale, celle de 4.19 (48-22). En 4.21-31, Paul revient à l'Écriture par des formules de citation (« il est écrit », 4.22 et 4.27; « que dit l’Ecriture? », 4.30) et conclut par « C’est pourquoi, frères » (4.31). Les vocatifs « frères » (4.12, 4.28, 4.31) et « Mes enfants » (4.19) portent l'appel.
+
+## Arrière-plan historique et culturel
+
+Les Galates sont d'anciens païens : « vous serviez des dieux qui ne le sont pas de leur nature » (4.8). Les maîtres venus après Paul leur font adopter le calendrier de la loi : « Vous observez les jours, les mois, les temps et les années! » (4.10).
+
+MacArthur précise que ces maîtres imposaient la loi extérieure, non la loi morale : les lois cérémonielles, rituelles et festives, les jours, les mois, les années (48-21). Ces ordonnances, données pour mettre Israël à part dans un monde idolâtre, étaient l'ombre; à la venue de Christ, qui est la substance, elles ont pris fin (48-21, 48-27). Il rattache les judaïsants au parti des pharisiens qui, au concile de Jérusalem, exigeait la circoncision des païens (Actes 15.5) (48-27). Le texte laisse voir leur méthode : « Le zèle qu’ils ont pour vous n’est pas pur, mais ils veulent vous détacher de nous, afin que vous soyez zélés pour eux » (4.17); MacArthur en fait un verset qui définit tous les faux docteurs (48-22).
+
+Paul était venu en Galatie la première fois « à cause d’une infirmité de la chair » (4.13). MacArthur en conclut que la Galatie ne figurait pas au plan du premier voyage et que la maladie l'y a retenu (48-22). Il relève aussi que Paul, écrivant à des païens, évoque Abraham, Agar, Sara, le Sinaï et Jérusalem sans raconter l'histoire : signe, pour lui, que Paul leur avait enseigné l'Ancien Testament, la seule Bible dont il prêchait (48-26). C'est une déduction, que l'absence de récit en 4.21-31 rend plausible.
+
+Trois détails échappent au lecteur moderne.
+
+- **L'âge fixé par le père.** L'héritier mineur reste « sous des tuteurs et des administrateurs jusqu’au temps marqué par le père » (4.2). Thayer range Galates 4.2 sous l'*epitropos* qui a la garde d'enfants dont le père vit encore, définit l'*oikonomos* comme l'intendant, le plus souvent affranchi ou esclave, qui donne à chacun sa part, même aux enfants mineurs, et rend *prothesmia* par « le temps fixé d'avance ». MacArthur rappelle trois passages à l'âge adulte : la bar-mitsva juive, qu'il place à douze ans; chez les Grecs, l'entrée dans un clan puis le service de l'éphèbe; chez les Romains, la fête des *Liberalia*, entre quatorze et dix-sept ans, où l'enfant déposait ses jouets (48-19). Paul, dit-il, reprend cette idée (48-19).
+- **L'adopté qu'on ne déshérite pas.** Pour MacArthur, l'adoption de 4.5 est une notion romaine, l'Ancien Testament n'ayant pas de loi d'adoption (48-21). À Rome, on adoptait presque toujours un homme adulte, de vingt ans à plus de trente, pour donner un héritier à une famille de rang (48-21). Il en tire quatre effets : un nouveau père, l'héritage, l'effacement des dettes et de la vie passée, un prix payé (48-21), et cite un recueil de droit syro-romain : « Un homme ne peut désavouer un fils adopté » (48-21). D'où sa conclusion : l'adopté est plus sûr de son héritage qu'un fils de naissance (48-21). Il rapporte enfin, d'après une source qu'il ne nomme pas, que la cérémonie exigeait sept témoins, et rapproche ce nombre de l'Esprit qui atteste l'adoption (4.6) (48-21) : c'est une analogie de MacArthur, que le texte de Galates ne fait pas.
+- **La maladie qui discréditait.** « mis à l’épreuve par ma chair, vous n’avez témoigné ni mépris ni dégoût » (4.14). Thayer rend *exouthenēsate* par « tenir pour rien, mépriser entièrement » et *exeptusate* par « cracher », au figuré « rejeter, repousser, avoir en dégoût »; il ne cite que Galates 4.14 pour ce second verbe. MacArthur glose les deux verbes de même (48-22) et voit dans l'épreuve une question d'abord théologique : Juifs et païens tenaient la maladie pour un signe du jugement divin, comme les amis de Job ou les habitants de Malte devant la vipère (Actes 28.4) (48-22). Sur la nature du mal, il avance le paludisme, qui peut atteindre le nerf optique, sans être dogmatique (48-22), et rapproche les yeux que les Galates auraient donnés (4.15) des « grandes lettres » de 6.11 (48-22).
+
+## État du texte
+
+Sources consultées : grec : SBLGNT et les signes de son apparat (bible.audio), lus aux 32 versets de 4.1-5.1; grec : Nestle 1904, Westcott et Hort 1881, texte byzantin 2005, Église orthodoxe grecque 1904, Tischendorf 8e édition (donnée en lemmes), Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub), lus aux mêmes versets; Septante, texte de Swete (Bible Hub), et hébreu massorétique (interlinéaire Bible Hub), pour Genèse 21.9-10 et Ésaïe 54.1; versions françaises : NEG79 (BibleGateway), LSG, S21 et Darby (bible.audio), NBS (bible.com), lues aux 32 versets; lexique : Thayer (Bible Hub). **Numérotation.** La NEG79 ouvre 4.13 par « Vous ne m’avez fait aucun tort », que le grec (*ouden me ēdikēsate*), la S21, la Darby et la NBS placent à la fin de 4.12, comme MacArthur (« la fin du verset 12 », 48-22); la LSG suit la NEG79. La ponctuation diffère en 4.18-20 : le SBLGNT, le Nestle 1904 et Westcott et Hort rattachent 4.19 à 4.18 par une virgule et le ferment par un point en haut, ce que suit la NBS; le texte byzantin et le Textus Receptus de Scrivener ferment 4.18 par un point et lient 4.19 à 4.20, comme la NEG79. Aucun autre écart. MacArthur tient 5.1 pour la fin de la section ouverte en 4.21 (48-26).
+
+- **Galates 4.6.** *eis tas kardias hēmōn* (SBLGNT, Nestle 1904, Westcott et Hort, Église orthodoxe grecque, Tischendorf), ou *eis tas kardias humōn* (texte byzantin, Textus Receptus). **NEG79.** « Dieu a envoyé dans nos cœurs l’Esprit de son Fils » : la NEG79 suit *hēmōn*, comme la LSG, la Darby et la NBS (« dans notre cœur »); la S21 suit *humōn* (« dans votre cœur »). **Portée.** Après « vous êtes fils », *hēmōn* fait passer Paul au « nous » : le don de l'Esprit est commun à tous les fils, Juifs et païens; *humōn* harmonise la personne. MacArthur lit « nos cœurs » (48-20). Aucun effet sur la doctrine.
+- **Galates 4.7.** *klēronomos dia theou* (SBLGNT, Nestle 1904, Westcott et Hort, Tischendorf), ou *klēronomos theou dia Christou* (texte byzantin, Église orthodoxe grecque, Textus Receptus). **NEG79.** « tu es aussi héritier par la grâce de Dieu » : la NEG79 et la LSG suivent la leçon courte en ajoutant « la grâce », absente du grec; la Darby (« héritier aussi par Dieu ») et la NBS (« du fait de Dieu ») suivent la leçon courte, la S21 la longue (« héritier de Dieu par Christ »). **Portée.** Les deux leçons rapportent l'héritage à Dieu. MacArthur lit la leçon courte et appuie sur la préposition : *dia*, « par l'action immédiate de Dieu »; « Dieu choisit un héritier » (48-21). La prédication de 4.7 peut s'appuyer sur « héritier » et sur Dieu, non sur « la grâce », ajout de traduction.
+- **Galates 4.14-15.** En 4.14, *ton peirasmon humōn en tē sarki mou*, votre épreuve dans ma chair (SBLGNT, Nestle 1904, Westcott et Hort, Tischendorf), ou *ton peirasmon mou ton en tē sarki mou*, mon épreuve (texte byzantin, Église orthodoxe grecque, Textus Receptus). En 4.15, *pou oun ho makarismos humōn*, où donc est, ou *tis oun ēn ho makarismos humōn*, quel était donc (mêmes témoins respectifs). **NEG79.** « mis à l’épreuve par ma chair » et « Où donc est l’expression de votre bonheur? » : la NEG79 suit *humōn* et *pou*, comme la LSG, la S21 et la NBS; la Darby suit les deux autres leçons (« ma tentation qui était en ma chair », « était donc votre bonheur »). **Portée.** Avec *humōn*, la maladie de Paul était une épreuve pour les Galates, et c'est la lecture de MacArthur : « Ma maladie était une épreuve pour vous », la tentation de le rejeter comme un homme frappé par Dieu (48-22). Avec *mou*, l'épreuve est celle de Paul. En 4.15, le présent demande où est passé ce bonheur, le passé rappelle ce qu'il était : même sens.
+- **Galates 4.19.** *tekna mou* (SBLGNT, Nestle 1904, Tischendorf), ou le diminutif *teknia mou* (Westcott et Hort, texte byzantin, Église orthodoxe grecque, Textus Receptus). Thayer range Galates 4.19 sous *teknion*, en signalant la leçon *tekna* de plusieurs éditions critiques. **NEG79.** « Mes enfants » : la NEG79 et les autres versions françaises ne marquent pas le diminutif. **Portée.** MacArthur lit *teknia*, « mes petits enfants », un mot que Paul n'emploierait qu'ici, alors que Jean l'emploie souvent (48-22). Cette remarque ne vaut que pour la leçon *teknia*; avec *tekna*, la tendresse du verset tient à l'image de l'enfantement, que les deux leçons partagent. La ponctuation (voir Numérotation) rattache le verset à 4.18 ou à 4.20 sans en changer le sens.
+- **Galates 4.25.** *to de Hagar Sina oros estin en tē Arabia* (SBLGNT, Nestle 1904, Westcott et Hort), ou *to gar Hagar* (texte byzantin, Église orthodoxe grecque, Textus Receptus); Tischendorf n'a pas le nom d'Agar et lit seulement que le Sinaï est une montagne d'Arabie. À la fin du verset, *douleuei gar* (SBLGNT, Nestle 1904, Westcott et Hort, Tischendorf) ou *douleuei de* (texte byzantin, Église orthodoxe grecque, Textus Receptus). **NEG79.** « car Agar, c’est le mont Sina en Arabie » : la NEG79 et la LSG rendent *gar*; la Darby met « Agar » entre guillemets, ce qui rend l'article neutre *to*. **Portée.** La leçon de Tischendorf ferait de ce membre une note de géographie. Les autres, que suit la NEG79, identifient Agar au Sinaï, ce qui fonde la chaîne que MacArthur déroule : Agar, Ismaël, le Sinaï, la Jérusalem actuelle, la chair, la loi, la servitude, la condamnation (48-27). *gar* ou *de* ne change pas le sens.
+- **Galates 4.26.** *mētēr hēmōn* (SBLGNT, Nestle 1904, Westcott et Hort, Tischendorf), ou *mētēr pantōn hēmōn*, mère de nous tous (texte byzantin, Église orthodoxe grecque, Textus Receptus). **NEG79.** « c’est notre mère » : la NEG79 et les autres versions françaises suivent la leçon courte. **Portée.** La leçon longue dit en toutes lettres ce que le pronom dit déjà. MacArthur lit « notre mère » (48-27). Aucun effet sur le sens.
+- **Galates 4.28.** *humeis ... tekna este* (SBLGNT, Nestle 1904, Tischendorf), ou *hēmeis ... tekna esmen* (Westcott et Hort, texte byzantin, Église orthodoxe grecque, Textus Receptus). **NEG79.** « Pour vous, frères, comme Isaac, vous êtes enfants de la promesse » : la NEG79, la LSG, la Darby et la NBS suivent *humeis*; la S21 suit *hēmeis* (« Nous, frères et sœurs »). **Portée.** MacArthur lit la deuxième personne et ouvre là l'exhortation personnelle (48-27). Paul s'inclut ou non, mais 4.31 dit de toute façon « nous » : aucun effet sur le sens.
+- **Galates 5.1.** *Tē eleutheria hēmas Christos ēleutherōsen; stēkete oun* (SBLGNT, Nestle 1904, Westcott et Hort, Tischendorf), ou *Tē eleutheria oun hē Christos hēmas ēleutherōsen, stēkete* (texte byzantin, Église orthodoxe grecque, Textus Receptus). **NEG79.** « C’est pour la liberté que Christ nous a affranchis. Demeurez donc fermes » : la NEG79 suit la leçon du SBLGNT, le « donc » portant sur l'impératif; la Darby rend autrement le datif (« Christ nous a placés dans la liberté en nous affranchissant »). **Portée.** Dans la leçon longue, le « donc » rattache la liberté à 4.31 et l'ordre suit; dans la leçon courte, 5.1 est une déclaration suivie d'un ordre, qui conclut l'illustration et ouvre l'exhortation. MacArthur, sur la leçon courte, ouvre 48-27 par ce verset, qu'il donne pour le résumé du passage et de toute la lettre (48-27), et clôt la section en 5.1 (48-26).
+
+## Structure et grammaire
+
+**Plan de la péricope**
+
+- **Galates 4.1-7.** L'héritier mineur devenu fils : l'adoption par l'envoi du Fils et de l'Esprit. Marqueur : *Legō de*, « je dis » (4.1); *hote de ēlthen to plērōma tou chronou*, « lorsque les temps ont été accomplis » (4.4); *exapesteilen ho theos*, « Dieu a envoyé », deux fois (4.4, 4.6); conclusion *hōste ouketi ei doulos alla huios*, « Ainsi tu n’es plus esclave, mais fils » (4.7).
+- **Galates 4.8-11.** Autrefois asservis à de faux dieux, maintenant connus de Dieu : le retour aux principes élémentaires. Marqueur : *Alla tote men* ... *nun de*, « Autrefois » ... « à présent » (4.8-9); question *pōs epistrephete palin*, « comment retournez-vous » (4.9); *phoboumai humas*, « Je crains » (4.11).
+- **Galates 4.12-20.** L'appel personnel : souvenir, avertissement, enfantement. Marqueur : impératif *Ginesthe hōs egō*, « Soyez comme moi » (4.12); vocatifs *adelphoi* (4.12) et *tekna mou* (4.19); *aporoumai en humin*, « je suis dans l’inquiétude à votre sujet » (4.20).
+- **Galates 4.21-5.1.** Agar et Sara : deux alliances, deux mères, et la liberté à garder. Marqueur : *Legete moi*, « Dites-moi » (4.21); *gegraptai gar*, « il est écrit » (4.22, 4.27); *hatina estin allēgoroumena* (4.24); *alla ti legei hē graphē?* (4.30); *dio, adelphoi* (4.31); *stēkete oun*, « Demeurez donc fermes » (5.1).
+
+**Observations grammaticales**
+
+- **Galates 4.4-5.** *exapesteilen* est un aoriste de *exapostellō* : l'envoi est un acte daté, « lorsque les temps ont été accomplis ». Deux participes aoristes de *ginomai* qualifient le Fils : *genomenon ek gunaikos, genomenon hupo nomon*, « né d’une femme, né sous la loi ». Deux propositions finales s'enchaînent, *hina tous hupo nomon exagorasē*, puis *hina tēn huiothesian apolabōmen* : la seconde dépend de la première, et le sujet passe de « ceux qui étaient sous la loi » à « nous ». MacArthur tire du verbe la préexistence du Fils : « Il ne dit pas qu'il a créé son Fils, il dit qu'il l'a envoyé. Il existait déjà » (48-19). C'est une décision d'interprétation, que 4.6 appuie : le même verbe envoie l'Esprit, qui n'est pas créé à ce moment-là.
+- **Galates 4.6-7.** *Hoti de este huioi* est causal : toutes les versions lues rendent « parce que ». La filiation est donc le motif de l'envoi de l'Esprit, et MacArthur le lit ainsi : « Parce que vous êtes fils, Dieu fait cela » (48-20). Le participe *krazon* est neutre et s'accorde avec *pneuma* : c'est l'Esprit qui crie. En Romains 8.15, c'est le croyant (« par lequel nous crions »); MacArthur tient les deux ensemble, « une distinction, mais indiscernable » (48-20). En 4.7, le passage au singulier (*ouketi ei*, « tu n’es plus ») adresse la conclusion à chaque lecteur, et la condition *ei de huios, kai klēronomos* est elliptique : fils, donc héritier.
+- **Galates 4.9.** *gnontes theon, mallon de gnōsthentes hupo theou* : un participe aoriste actif aussitôt corrigé par un aoriste passif, « ou plutôt que vous avez été connus de Dieu ». Paul se reprend : la connaissance part de Dieu. MacArthur : « Vous ne pouvez le connaître avant qu'il ait d'abord mis son amour sur vous » (48-21), et il donne au verbe connaître le sens d'une relation intime, comme en Amos 3.2 (48-21). Le présent *epistrephete*, « retournez-vous », décrit un mouvement en cours, que *palin*, puis *palin anōthen*, « encore », soulignent. Le même verbe dit la conversion des Thessaloniciens, « vous vous êtes convertis à Dieu » (1 Thessaloniciens 1.9), et MacArthur parle d'une conversion à rebours (48-21); Thayer range Galates 4.9 sous le sens « retourner, revenir ».
+- **Galates 4.19.** *hous palin ōdinō* : le relatif masculin *hous* reprend le neutre *tekna* selon le sens, puisqu'il s'agit de personnes. Le présent *ōdinō*, avec *palin*, dit une douleur qui recommence. *mechris hou morphōthē Christos en humin* : *mechris hou* et le subjonctif aoriste passif fixent le terme visé, et le sujet du passif est Christ, non les Galates. Le même verbe revient en 4.27 (*hē ouk ōdinousa*, « toi qui n’as pas éprouvé les douleurs de l’enfantement »), ce que MacArthur relève (48-24) : l'apôtre en travail et la stérile qui n'a pas enfanté se répondent.
+- **Galates 4.24-25.** *hatina estin allēgoroumena* : un participe présent passif avec *estin*, « Ces faits ont une valeur allégorique »; le relatif neutre *hatina* renvoie aux faits racontés en 4.22-23. En 4.25, l'article neutre de *to de Hagar* désigne le nom d'Agar plutôt que la femme. *sustoichei*, « correspond », est de la famille de *stoicheia* (4.3, 4.9) : se tenir dans le même rang. MacArthur : le verbe veut dire « appartenir à une rangée, à une série de colonnes » (48-27).
+- **Galates 4.30-31.** « Chasse l’esclave et son fils, car le fils de l’esclave n’héritera pas » : l'impératif aoriste *Ekbale*, puis *ou mē* avec le futur *klēronomēsei* (SBLGNT; le texte byzantin a le subjonctif aoriste), forme la plus forte de la négation. Paul introduit la phrase par « que dit l’Ecriture? » : la parole de Sara (Genèse 21.10), que Dieu ratifie (« Accorde à Sara tout ce qu’elle te demandera », Genèse 21.12), devient parole de l'Écriture. La conclusion tombe avec *dio*, « C’est pourquoi » (4.31), et l'article manque devant *paidiskēs* (d'une esclave), alors que *tēs eleutheras*, « la femme libre », l'a.
+
+## Étude des mots-clés
+
+Le sens vient du lexique; les versions montrent des rendus, non le sens.
+
+| Français | Translit. | Sens littéral | Lexique et lecture retenue | Traductions comparées |
+|---|---|---|---|---|
+| **adoption** | *huiothesia* | placement comme fils | **Lexique (Thayer).** Thayer forme le mot de *huios* (fils) et de *thesis* (action de poser), et le rend « adoption, adoption comme fils »; les auteurs profanes disaient *thetos huios*, « fils adoptif ». Il distingue deux emplois dans le Nouveau Testament : la relation que Dieu a établie entre lui et les Israélites de préférence aux autres nations (Romains 9.4); la nature et la condition des vrais disciples de Christ, qui deviennent fils de Dieu en recevant l'Esprit de Dieu (Romains 8.15, Galates 4.5, Éphésiens 1.5). Le mot comprend aussi l'état final, attendu au retour de Christ, qui rendra manifeste leur filiation (Romains 8.23). Tous ces emplois sont de Paul. **Lecture retenue.** MacArthur forme le mot de même, *huios* et un verbe qui veut dire placer : « placer quelqu'un comme fils » (48-21), et il note que Paul est le seul à l'employer dans le Nouveau Testament (48-21), ce que confirme la liste de Thayer. Il en fait une notion romaine, l'adoption d'un adulte pour lui transmettre un héritage : « l'adoption a pour but l'héritage » (48-21); elle ne concerne pas la réception de la vie éternelle, que dit la nouvelle naissance, mais l'héritage (48-20). Il la rattache à l'élection d'Éphésiens 1.4-5 : « La doctrine de l'élection a pour but la doctrine de l'adoption » (48-19). Le sens du mot concorde avec le lexique; la distinction entre nouvelle naissance (la nature) et adoption (l'héritage) est une décision d'interprétation, que 4.7 appuie (« si tu es fils, tu es aussi héritier »). | *S21* le statut d’enfants adoptifs · *NEG79* l’adoption · *Darby* l’adoption · *LSG* l’adoption · *NBS* l'adoption filiale |
+| **Abba** | *Abba* | père (araméen, état emphatique) | **Lexique (Thayer).** Thayer y voit l'araméen *abba*, « père », à l'état emphatique, c'est-à-dire *ho patēr*, le père, un « titre habituel de Dieu dans la prière ». Dans ses trois emplois du Nouveau Testament (Marc 14.36, Romains 8.15, Galates 4.6), le mot est suivi de sa traduction grecque : employé souvent dans la prière, l'araméen avait pris la valeur d'un nom très sacré, auquel les Juifs de langue grecque ajoutaient le nom commun de leur langue. Le verbe qui l'introduit, *krazō*, veut dire au propre croasser, puis crier, élever la voix, souvent de cris inarticulés; Thayer range Galates 4.6 et Romains 8.15 sous l'emploi de ceux qui adressent à Dieu des « prières ardentes et pressantes ». **Lecture retenue.** MacArthur fait d'*Abba* un diminutif araméen, « Papa », et y entend l'enfant qui court vers son père (48-20). Thayer n'y voit pas de diminutif, mais l'état emphatique et un titre de prière : sur ce point, la lecture de MacArthur va au-delà du lexique. Pour le verbe, il parle d'« un cri fort et pressant de quelqu'un qui souffre profondément » (48-20); Thayer parle de prières ardentes, sans y attacher la souffrance. C'est une décision d'interprétation, que MacArthur appuie sur Marc 14.36, le seul « Abba » rapporté de la bouche de Jésus, à Gethsémané (48-20). Le texte, lui, fait de ce cri l'œuvre de « l’Esprit de son Fils » (4.6). | *S21* Abba ! Père ! · *NEG79* Abba! Père! · *Darby* Abba, Père · *LSG* Abba ! Père ! · *NBS* Abba ! Père ! |
+| **principes élémentaires** | *stoicheia (stoicheion); sustoicheō* | éléments d'une rangée; rudiments | **Lexique (Thayer).** Thayer part de *stoichos*, rangée, série : le *stoicheion* est ce dont une série est faite, l'élément premier. Il relève les lettres de l'alphabet, les éléments du monde physique (2 Pierre 3.10, 12), les corps célestes chez des auteurs ecclésiastiques, et les rudiments d'une discipline, « notre abc ». Il range Galates 4.3 et 4.9 sous ce dernier sens : les rudiments dans lesquels l'humanité, comme des enfants (*nēpioi*), était instruite avant Christ, les préceptes cérémoniels communs au culte des Juifs et des païens; il juge malheureuse la lecture qui y voit les astres réglant les fêtes, et note que ces préceptes, difficiles à observer, sont un joug (Actes 15.10, Galates 5.1). Le verbe *sustoicheō* (4.25) veut dire se tenir dans la même file, comme des soldats, puis correspondre à : Thayer le dit d'un type de l'Ancien Testament qui répond à l'antitype du Nouveau. **Lecture retenue.** MacArthur lit le mot comme Thayer, des « choses en rang », l'abc (48-19), et en tire que toute religion sans Christ est élémentaire : « Même la loi est une chose élémentaire » (48-19). Il lui donne une double portée, la loi pour les Juifs, une fausse religion pour les païens (48-21); le texte l'appuie, puisque d'anciens idolâtres (4.8) se voient demander : « comment retournez-vous » à ces principes (4.9). Sur *sustoichei* (4.25), il revient à l'image : Agar, Ismaël, le Sinaï et la Jérusalem actuelle sont « dans la même ligne » (48-27). Le lexique et la lecture concordent; le rapprochement des deux mots, que le grec autorise, n'est pas fait par Thayer. | *S21* principes élémentaires · *NEG79* principes élémentaires · *Darby* éléments · *LSG* rudiments · *NBS* éléments du monde |
+| **formé** | *morphōthē (morphoō)* | être formé, prendre forme | **Lexique (Thayer).** Thayer rend *morphoō* par « former » et ne cite que Galates 4.19, au figuré : jusqu'à ce qu'« une pensée et une vie en complète harmonie avec la pensée et la vie de Christ » aient été formées en vous. Pour le nom *morphē*, il donne d'abord la forme sous laquelle on voit une personne, l'apparence extérieure, tout en rapportant la distinction de Lightfoot et de Trench : *morphē*, ce qui est intrinsèque et essentiel, *schēma*, ce qui est extérieur et accidentel. Le verbe voisin, *ōdinō*, veut dire éprouver les douleurs de l'enfantement (4.27); en 4.19, Thayer le glose : ceux dont « je m'efforce, avec un effort et une angoisse intenses », de conformer l'âme à la pensée de Christ. **Lecture retenue.** MacArthur définit la sanctification à partir de ce verset : « l'œuvre par laquelle le Saint-Esprit, au moyen de la Parole de Dieu, façonne le chrétien à la ressemblance de Christ » (48-24). Christ est déjà dans le croyant (2.20, 4.6); Paul veut qu'il y soit pleinement formé (48-24). Le verbe, dit-il, ne vise pas « la forme extérieure » (48-24), ce qui concorde avec la glose de Thayer. Il rattache le verset à 2 Corinthiens 3.18 : le croyant est transformé en contemplant la gloire du Seigneur dans l'Écriture (48-24, 48-25). Que cette formation soit « inévitable » en tout vrai chrétien (48-24) dépasse le lexique et le verset : c'est une décision d'interprétation, que MacArthur fonde sur Romains 8.29 (48-24), non sur le verbe de 4.19. | *S21* soit formé · *NEG79* soit formé · *Darby* ait été formé · *LSG* soit formé · *NBS* soit formé |
+| **valeur allégorique** | *allēgoroumena (allēgoreō)* | dire une chose et en signifier une autre | **Lexique (Thayer).** Thayer décompose le verbe avec Quintilien : montrer une chose par les mots, une autre par le sens. Il le rend « parler allégoriquement ou en figure », ne cite que Galates 4.24 pour le Nouveau Testament et renvoie à Philon, à Josèphe et à Plutarque. Le lexique ne tranche pas entre allégorie et figure. **Lecture retenue.** MacArthur décompose le verbe de même, *allos* et *agoreuō* : « parler d'une chose en se référant à une autre » (48-26). Il refuse pourtant le mot « allégorie », qu'il définit comme un récit, fictif ou vrai, dont le sens n'est pas dans le récit (48-26) : « Ce n'est pas une allégorie; c'est une figure de style. C'est une analogie. C'est une illustration » (48-27). Il oppose cette lecture à l'allégorisme des interprètes d'Alexandrie et de l'exégèse catholique (48-26). Le lexique admet les deux sens; la lecture de MacArthur est une décision d'interprétation, que le texte appuie : Paul introduit les faits par « il est écrit » (4.22) et les tient pour une histoire, dont il tire une conséquence présente, « ainsi en est-il encore maintenant » (4.29). | *S21* ont une valeur allégorique · *NEG79* ont une valeur allégorique · *Darby* doivent être prises dans un sens allégorique · *LSG* sont allégoriques · *NBS* Il y a là une allégorie |
+
+## Apports des commentateurs
+
+**Niveau de source**
+
+Niveau 1 : sermons Grace to You sur Galates 4.1 à 5.1 (48-19 à 48-27, série « Galatians », octobre 2017 à janvier 2018)
+
+**Couverture des sources**
+
+Les neuf transcriptions (48-19 à 48-27, de 5 100 à 8 100 mots environ, 59 000 en tout) ont été lues en entier. Elles couvrent 4.1 à 5.1 sans trou : la fin de chaque plage a été retrouvée dans la transcription (4.7 en 48-19, 4.6 en 48-20, 4.11 en 48-21, 4.18 en 48-22, 4.20 en 48-23 et 48-24, 4.23 en 48-26, 5.1 en 48-27). L'index ne décrit pas toujours le contenu : 48-19, annoncé sur 4.1-11, expose 4.1-5 et ne fait que nommer 4.7; 48-22, annoncé sur 4.12-18, lit jusqu'à 4.20 et annonce 4.19; 48-26 expose 4.21-23, et 48-27 reprend 4.24 à 5.1. La couverture est inégale : 4.19 reçoit trois sermons entiers (48-23 à 48-25), dont une grande part porte sur l'état de l'Église contemporaine plutôt que sur le texte; 4.8-11 n'occupe que la seconde moitié de 48-21, 4.10 un paragraphe et 4.20 quelques phrases. Les citations bibliques des sermons suivent une version anglaise que MacArthur ne nomme pas; en 4.19, il commente le diminutif *teknia*, que cette version ne rend pas (voir État du texte). Quelques mots grecs sont mal transcrits (allgore pour *allēgoreō*, tithmi pour *tithēmi*), ainsi qu'une phrase de 48-24 sur *morphoō*, dont seule la négation, la forme extérieure, est retenue. Aucune position n'est prêtée à MacArthur au-delà des phrases retrouvées.
+
+**Sermons Grace to You**
+
+| Code | Sermon | Passage |
+|---|---|---|
+| 48-19 | [The Adoption of the Believer](https://www.gty.org/sermons/48-19) | Ga 4.1-11 |
+| 48-20 | [The Christian’s Assurance of Salvation](https://www.gty.org/sermons/48-20) | Ga 4.1-6 |
+| 48-21 | [The Inheritance You Can’t Lose](https://www.gty.org/sermons/48-21) | Ga 4.7-11 |
+| 48-22 | [Paul’s Plea: Cling to the Gospel!](https://www.gty.org/sermons/48-22) | Ga 4.12-18 |
+| 48-23 | [The Primary Importance of Sanctification](https://www.gty.org/sermons/48-23) | Ga 4.19-20 |
+| 48-24 | [The Right Motive in Sanctification](https://www.gty.org/sermons/48-24) | Ga 4.19 |
+| 48-25 | [The Starting Point of Sanctification](https://www.gty.org/sermons/48-25) | Ga 4.19 |
+| 48-26 | [A Perfect Portrait of Saving Faith, Part 1](https://www.gty.org/sermons/48-26) | Ga 4.21-5.1 |
+| 48-27 | [A Perfect Portrait of Saving Faith, Part 2](https://www.gty.org/sermons/48-27) | Ga 4.21-5.1 |
+
+La question qui commande le chapitre est celle de 4.9 : puisque les Galates sont fils et héritiers, pourquoi retourner à la servitude dont Christ les a rachetés? MacArthur résume ainsi l'argument de Paul : « Vous avez déjà été adoptés comme fils de Dieu, avec tous les droits et privilèges de cette filiation. Pourquoi pensez-vous qu'il manque quelque chose? » (48-21). Le chapitre répond trois fois : par l'adoption (4.1-11), par le souvenir de l'Évangile reçu (4.12-20), par l'Écriture (4.21-5.1).
+
+### Galates 4.1-7 · l'héritier devenu fils
+
+MacArthur suit le passage en quatre temps : la préparation de la filiation (4.1-3), sa réalisation (4.4-5), sa confirmation (4.6), son accomplissement (4.7) (48-19, 48-20, 48-21). L'héritier mineur est héritier de droit, non de fait (48-19); tuteurs et administrateurs étaient, comme le précepteur de 3.24, des esclaves de confiance (48-19). L'accomplissement des temps désigne simplement l'âge nouveau du salut, l'arrivée du Messie (48-19), que l'histoire avait préparée : Israël guéri de l'idolâtrie après l'exil, le canon de l'Ancien Testament achevé, une langue grecque commune, les routes de la paix romaine (48-19). Le Fils envoyé existait déjà; « né d’une femme », il est pleinement homme pour prendre la place du pécheur; « né sous la loi », il l'a gardée entière, ce que MacArthur appelle son obéissance active, sa mort à notre place étant son obéissance passive (48-19).
+
+L'Esprit envoyé « parce que vous êtes fils » (4.6) répond, pour MacArthur, à la question de l'assurance : comment savoir qu'on a réellement cru (48-20)? Croire que Christ peut sauver n'est pas encore être assuré d'avoir été sauvé (48-20). La preuve que donne Paul est précise : l'Esprit qui crie « Abba! Père! ». MacArthur la situe dans l'épreuve : au plus sombre de la souffrance, le vrai croyant court vers son Père, ce que l'incroyant ne fait pas (48-20). Le cri est à la fois celui de l'Esprit (Galates 4.6) et celui du croyant (Romains 8.15) (48-20). La filiation ouvre l'héritage, « si tu es fils, tu es aussi héritier » (4.7), et l'adopté romain ne pouvait être déshérité (48-21).
+
+### Galates 4.8-11 · le retour aux principes élémentaires
+
+MacArthur appelle cette section la responsabilité de la filiation (48-21). Les Galates ne connaissaient pas Dieu; ils le connaissent maintenant parce qu'il les a connus le premier (48-21). Retourner aux « faibles et pauvres principes élémentaires », c'est régresser : aucune des observances du calendrier juif n'est imposée à l'Église dans le Nouveau Testament, et Colossiens 2.16-17 en fait une ombre (48-21). Il va jusqu'à dire : « Même le judaïsme d'avant Christ est une forme de paganisme »; sans Christ, il ne reste que des rites et une religion superficielle (48-21). Il rapproche ce retour de celui d'Israël au désert, qui regrettait l'Égypte après tant de miracles (Exode 14, 16, 17) (48-21). Sur la crainte de 4.11, il distingue : les Galates, il les tient pour de vrais croyants, Paul parlant « dans l'ensemble, autant qu'il le sache »; ceux qui s'en vont pour de bon montrent qu'ils n'en étaient pas (1 Jean 2.19) (48-21).
+
+### Galates 4.12-20 · Christ formé en vous
+
+Le ton change : plus de raisonnement ni de citation de l'Ancien Testament, mais le cœur de l'apôtre, que MacArthur suit en quatre temps : l'appel, le souvenir, l'avertissement, le désir (48-22). « Soyez comme moi » veut dire : libres de la loi de Moïse, comme Paul, qui s'était fait comme les païens en venant chez eux (1 Corinthiens 9.21) (48-22); il s'agit des ordonnances extérieures, non de la loi morale, qui demeure (48-22). Les Galates l'avaient reçu malgré sa maladie, alors que les Juifs le traitaient de blasphémateur devant eux (Actes 13.45) (48-22); s'il est devenu leur ennemi en leur disant la vérité (4.16), MacArthur conclut qu'ils ne veulent plus la vérité (48-22). Le zèle des faux docteurs (4.17) cherche à les exclure de la liberté en Christ pour les attacher à eux; MacArthur y ajoute le motif de l'argent, qu'il prête à tous les faux docteurs (48-22), ce que 4.17 ne dit pas.
+
+4.19 est, pour MacArthur, « la clé pour comprendre la sanctification » (48-22), et il y consacre trois sermons (48-23 à 48-25). Paul avait enfanté les Galates une première fois, jusqu'à ce que Christ soit en eux; il souffre de nouveau jusqu'à ce que Christ soit formé en eux (48-23). Christ y est déjà, pleinement présent, mais non pleinement manifesté (48-25). La sanctification, séparation progressive du péché entre la justification et la glorification, est l'œuvre de l'Esprit au moyen de la Parole (48-24), mais non sans l'obéissance du croyant (48-23); son moteur est l'amour pour Christ, qui croît à mesure qu'on le connaît (48-23), et son moyen, le regard porté sur sa gloire dans l'Écriture (2 Corinthiens 3.18) (48-23, 48-24).
+
+MacArthur oppose ce verset à deux erreurs : le légaliste dit qu'il faut garder la loi pour plaire à Dieu, l'antinomiste qu'il faut la rejeter pour lui plaire; tous deux définissent la vie chrétienne par la loi, alors que Paul la définit par Christ. Il ne dit pas « je suis en travail jusqu'à ce que vous obéissiez tous à la loi », mais jusqu'à ce que Christ soit formé en vous (48-24). « Le légalisme et l'antinomisme ne sont pas des contraires » (48-24). En 4.20, *aporoumai* dit un apôtre qui ne sait plus comment s'y prendre : Thayer glose « je ne sais comment agir avec vous, sur quel ton vous parler », et MacArthur rapporte la traduction « je suis à bout » (48-23).
+
+### Galates 4.21-5.1 · deux mères, deux alliances
+
+MacArthur lit le passage en trois temps : l'illustration historique (4.22-23), l'interprétation divine (4.24-27), l'exhortation personnelle (4.28-5.1) (48-26, 48-27). Pour MacArthur, « vous qui voulez être sous la loi » vise les judaïsants, mais plus encore les Galates égarés : s'ils veulent la loi, qu'ils l'écoutent, car elle maudit quiconque ne l'observe pas entièrement (3.10) (48-26). Ismaël est né d'un plan humain pour accomplir la promesse : la chair refuse d'attendre et prend par ses propres forces ce que Dieu donne; Isaac est né par la puissance de Dieu, d'un couple qui ne pouvait plus avoir d'enfant (48-26). Ismaël illustre ceux qui veulent le salut par les œuvres, Isaac le salut par la foi seule (48-26).
+
+Les deux femmes sont deux alliances. L'ancienne, dit MacArthur, se résume à « Tu feras, ou sinon », la nouvelle à « Je ferai » (48-27). D'un côté, il aligne Agar, Ismaël, le Sinaï, la Jérusalem actuelle, la chair, la loi, la servitude, la condamnation; de l'autre, Sara, Isaac, la Jérusalem d'en haut, la foi, la liberté (48-27). La Jérusalem d'en haut est celle d'Hébreux 12.22, la « Jérusalem céleste » (48-27). Ésaïe 54.1, dit-il, consolait les exilés de Babylone par la promesse d'un peuple nombreux, que Dieu a tenue au retour; Paul l'applique à la stérile devenue mère par la promesse (48-27). La question n'est pas de savoir si Abraham est votre père, mais qui est votre mère (48-27).
+
+L'exhortation en tire les conséquences. Nés « comme Isaac » (4.28), les croyants le sont par miracle, par une grâce souveraine (48-27). Ils doivent s'attendre à la persécution : Ismaël haïssait Isaac (Genèse 21.8-9), et « le plus grand persécuteur de la vraie Église est la fausse religion » (48-27). « Chasse l’esclave et son fils » interdit, pour MacArthur, toute coexistence entre la religion des œuvres et celle de la grâce, et il l'applique à l'œcuménisme (48-27). Le cérémoniel servait à définir un peuple ethnique; en Christ, « il n'y a plus de peuple ethnique de Dieu », mais le seul peuple de Dieu, Juifs et païens, l'Église (48-27). D'où 5.1 : libres, les croyants doivent tenir ferme et ne pas retourner au système dont Christ les a délivrés (48-27).
+
+**Indices du texte**
+
+- **Galates 4.4 et 4.6.** Le même verbe, *exapesteilen ho theos*, « Dieu a envoyé », ouvre les deux phrases : Dieu envoie « son Fils » (4.4), puis « l’Esprit de son Fils » (4.6). Le Père envoie, le Fils rachète, l'Esprit crie : le texte unit les trois personnes dans l'adoption.
+- **Galates 4.1, 4.7 et 4.30.** Le vocabulaire de l'héritage encadre le chapitre : « l’héritier » qui « ne diffère en rien d’un esclave » (4.1), « tu es aussi héritier » (4.7), « le fils de l’esclave n’héritera pas » (4.30). L'enjeu du chapitre est l'héritage, et la réponse est la filiation.
+- **Galates 4.9.** « à présent que vous avez connu Dieu, ou plutôt que vous avez été connus de Dieu » : Paul se reprend et passe de l'actif au passif (*gnontes*, *gnōsthentes*). Le retour aux principes élémentaires est d'autant plus absurde que la relation est venue de Dieu.
+- **Galates 4.19 et 4.27.** Le verbe *ōdinō* revient deux fois : Paul « éprouve de nouveau les douleurs de l’enfantement » (4.19), et la stérile d'Ésaïe est celle qui « n’as pas éprouvé les douleurs de l’enfantement » (4.27). L'apôtre en travail sert la promesse qui donne des enfants à la délaissée.
+- **Galates 4.3, 4.9 et 4.25.** *stoicheia* (4.3, 4.9) et *sustoichei* (4.25) sont de la même famille : les « principes élémentaires » qui asservissent et Agar qui « correspond » à la Jérusalem actuelle se tiennent dans le même rang, ce que MacArthur relève sur les deux mots (48-19, 48-27).
+- **Galates 4.21, 4.22, 4.27 et 4.30.** À « vous qui voulez être sous la loi » (4.21), Paul répond par la loi elle-même, en trois formules : « il est écrit » (4.22), « car il est écrit » (4.27), « que dit l’Ecriture? » (4.30). L'illustration d'Agar et de Sara repose sur la Genèse et sur Ésaïe.
+
+## Renvois et passages parallèles
+
+**Romains 8.14-17** · *Parallèle direct*
+
+Paul y reprend les termes de Galates 4.5-7 : « vous avez reçu un Esprit d’adoption, par lequel nous crions: Abba! Père! » (Romains 8.15, NEG79), puis « si nous sommes enfants, nous sommes aussi héritiers » (Romains 8.17). En Galates, c'est l'Esprit qui crie; en Romains, le croyant : MacArthur y voit une seule réalité, l'Esprit qui agit par notre foi (48-20). Romains 8.23 ajoute que l'adoption est encore attendue, avec la rédemption du corps.
+
+**Éphésiens 1.4-5** · *Lien thématique*
+
+« il nous a prédestinés dans son amour à être ses enfants d’adoption par Jésus-Christ » (Éphésiens 1.5, NEG79). MacArthur s'appuie sur ce verset pour rattacher l'adoption de Galates 4.5 à l'élection : Dieu nous a choisis pour nous adopter (48-19, 48-20). Galates 4 ne parle pas d'élection; le lien vient d'Éphésiens.
+
+**Marc 14.36** · *Lien thématique*
+
+« Abba, Père, toutes choses te sont possibles » (Marc 14.36, NEG79) : la même formule araméenne et grecque, dans la bouche de Jésus à Gethsémané. MacArthur y voit le seul « Abba » rapporté de Jésus, à l'heure la plus sombre, et le modèle du cri du croyant éprouvé (48-20); Thayer relève que la formule est, dans ses trois emplois, suivie de sa traduction grecque.
+
+**Genèse 21.9-12** · *Citation ou allusion*
+
+Galates 4.30 cite Genèse 21.10 selon la Septante, qui porte *Ekbale tēn paidiskēn tautēn kai ton huion autēs; ou gar mē klēronomēsei ho huios tēs paidiskēs meta tou huiou mou Isaak* (Swete). Paul omet *tautēn* et remplace *meta tou huiou mou Isaak* par *meta tou huiou tēs eleutheras* : la parole de Sara devient une règle. L'hébreu a deux fois le démonstratif (*hāʾāmâ hazzōʾt*), comme la NEG79 de la Genèse : « Chasse cette servante et son fils, car le fils de cette servante n’héritera pas avec mon fils, avec Isaac ». Dieu ratifie la parole de Sara (Genèse 21.12). En 4.29, Paul lit comme une persécution Genèse 21.9, où l'hébreu dit seulement que le fils d'Agar riait ou se moquait (*məṣaḥēq*) et la Septante qu'il jouait avec Isaac (*paizonta meta Isaak*); MacArthur parle de la haine d'Ismaël pour Isaac (48-27).
+
+**Ésaïe 54.1** · *Citation ou allusion*
+
+Galates 4.27 reproduit la Septante mot pour mot, sans la formule finale *eipen gar Kurios*. L'hébreu a *ʿăqārâ lōʾ yālādâ* (stérile qui n'a pas enfanté) et *lōʾ ḥālâ* (qui n'a pas été en travail), verbe que la Septante rend par *ōdinō* selon Thayer : le verbe même de 4.19. La NEG79 traduit Ésaïe autrement que Galates (« toi qui n’enfantes plus! [...] toi qui n’as plus de douleurs! »). Dans Ésaïe, l'oracle promet à la délaissée plus de fils qu'à la femme mariée et lui nomme son époux, son créateur (54.5); MacArthur le situe dans la consolation des exilés de Babylone, promesse tenue au retour (48-27), et Paul l'applique à « la Jérusalem d’en haut » (4.26).
+
+**Hébreux 12.18-24** · *Lien thématique*
+
+Même opposition de deux montagnes : « Vous ne vous êtes pas approchés d’une montagne qu’on pouvait toucher » (12.18), « Mais vous vous êtes approchés de la montagne de Sion, de la cité du Dieu vivant, la Jérusalem céleste » (12.22). MacArthur lit Galates 4.25-26 avec ce passage : le Sinaï terrifiant de la loi d'un côté, la Jérusalem céleste des croyants de l'autre (48-27).
+
+**Colossiens 2.8, 16-20** · *Lien thématique*
+
+Seul autre passage où revient l'expression « principes élémentaires du monde » (Colossiens 2.8, 2.20), à côté des fêtes, des nouvelles lunes et des sabbats, appelés « l’ombre des choses à venir » (2.17). MacArthur s'en sert pour définir les *stoicheia* de Galates 4.3, la philosophie, la tradition, les règles humaines, mais aussi la loi (48-19), et pour dire que le calendrier de 4.10 n'oblige pas l'Église (48-21).
+
+**2 Corinthiens 3.18** · *Lien thématique*
+
+« nous sommes transformés en la même image, de gloire en gloire, par l’Esprit du Seigneur » (2 Corinthiens 3.18, NEG79). MacArthur y trouve le moyen de la formation de Christ de Galates 4.19 : en contemplant dans l'Écriture la gloire du Seigneur, le croyant est transformé par l'Esprit (48-24, 48-25). Le verbe, *metamorphoō*, est un composé de *morphoō*, que Thayer renvoie de l'un à l'autre.
+
+## Thèmes théologiques
+
+### Le Fils envoyé, né sous la loi, pour racheter
+
+**Dans le texte**
+
+« lorsque les temps ont été accomplis, Dieu a envoyé son Fils, né d’une femme, né sous la loi, afin qu’il rachète ceux qui étaient sous la loi » (4.4-5); « Dieu a envoyé dans nos cœurs l’Esprit de son Fils » (4.6).
+
+**Ancrage doctrinal**
+
+Christologie : la préexistence du Fils, l'incarnation, l'obéissance active et passive de Christ (*Biblical Doctrine*). MacArthur tire la préexistence du verbe « envoyé » (48-19), voit dans « né d’une femme » la pleine humanité requise pour la substitution, et dans « né sous la loi » une obéissance parfaite à la loi, imputée au croyant comme ses péchés l'ont été à Christ (48-19). Sotériologie : la rédemption comme rachat à un prix (Thayer sur *exagorazō*; 48-19).
+
+**Révélation progressive**
+
+La loi tenait Israël sous tutelle jusqu'au temps marqué (3.23-25, 4.2); Galates 4.4 date l'envoi du Fils à l'accomplissement des temps; Romains 8.3, que MacArthur cite (48-19), dira que Dieu a fait ce que la loi ne pouvait faire en envoyant son Fils dans une chair semblable à celle du péché.
+
+**Pour votre assemblée**
+
+Le salut ne commence pas par l'effort de l'homme, mais par un envoi de Dieu, daté dans l'histoire. Une prédication qui présente Christ comme un exemple sans le présenter comme le substitut né sous la loi a perdu le centre de 4.4-5 : l'obéissance qui compte devant Dieu est celle du Fils, reçue par la foi.
+
+### Adoptés et héritiers, attestés par l'Esprit
+
+**Dans le texte**
+
+« afin que nous recevions l’adoption » (4.5); « Et parce que vous êtes fils, Dieu a envoyé dans nos cœurs l’Esprit de son Fils, lequel crie: Abba! Père! » (4.6); « Ainsi tu n’es plus esclave, mais fils; et si tu es fils, tu es aussi héritier » (4.7).
+
+**Ancrage doctrinal**
+
+Sotériologie : l'adoption, distincte de la régénération, et l'assurance du salut (*Biblical Doctrine*). MacArthur rattache l'adoption à l'élection (48-19) et à l'héritage (48-20, 48-21), en souligne la permanence à partir du droit romain (48-21), et fonde l'assurance sur le témoignage de l'Esprit dans le cri filial (48-20). La persévérance des saints se rattache à son usage de Romains 8.28-39 (48-21).
+
+**Révélation progressive**
+
+L'adoption appartenait à Israël (Romains 9.4, selon Thayer); Galates l'étend aux païens qui croient, par l'Esprit du Fils; Romains 8.15-23 la montre déjà reçue et encore attendue, avec la rédemption du corps.
+
+**Pour votre assemblée**
+
+Le croyant ne vit pas à l'essai : il est fils et héritier, et l'Esprit le lui fait dire. Au chrétien qui doute, le texte ne renvoie pas d'abord à ses performances, mais au Père qui a envoyé le Fils et l'Esprit, et au cri qui le porte vers Dieu dans l'épreuve (48-20).
+
+### Christ formé en vous
+
+**Dans le texte**
+
+« Mes enfants, pour qui j’éprouve de nouveau les douleurs de l’enfantement, jusqu’à ce que Christ soit formé en vous » (4.19); « c’est Christ qui vit en moi » (2.20).
+
+**Ancrage doctrinal**
+
+Sanctification progressive et union avec Christ (*Biblical Doctrine*). MacArthur définit la sanctification comme l'œuvre de l'Esprit qui, au moyen de la Parole, façonne le chrétien à la ressemblance de Christ (48-24); il la fonde sur l'union avec Christ, de l'élection à la glorification, qu'il dit organique, légale, vitale, spirituelle et permanente (48-25), et l'oppose au légalisme comme à l'antinomisme (48-24).
+
+**Révélation progressive**
+
+Les prophètes annonçaient un cœur nouveau et l'Esprit donné (Ézéchiel 36, que MacArthur cite en 48-20); Galates 4.19 nomme le but, Christ formé dans le croyant; Romains 8.29 et 2 Corinthiens 3.18 en montrent le dessein et le moyen, et la glorification l'achèvera (48-24).
+
+**Pour votre assemblée**
+
+Le but d'une assemblée n'est pas d'abord la fréquentation, mais Christ formé en chacun (48-24). Le moyen n'est ni la liste de règles ni l'indifférence à la loi, mais un regard sur Christ dans l'Écriture qui produit l'amour et l'obéissance; un pasteur peut mesurer son désir à la douleur de Paul.
+
+### Deux alliances : la servitude du Sinaï, la liberté de la Jérusalem d'en haut
+
+**Dans le texte**
+
+« comment retournez-vous à ces faibles et pauvres principes élémentaires » (4.9); « ces femmes sont deux alliances » (4.24); « Mais la Jérusalem d’en haut est libre, c’est notre mère » (4.26); « C’est pour la liberté que Christ nous a affranchis » (5.1).
+
+**Ancrage doctrinal**
+
+Les alliances et la loi mosaïque; ecclésiologie (*Biblical Doctrine*). MacArthur distingue la loi morale, reflet de la nature de Dieu, qui demeure, et la loi cérémonielle, donnée pour définir un peuple ethnique et abolie à la venue de Christ (48-26, 48-27); il oppose l'ancienne alliance, « Tu feras, ou sinon », à la nouvelle, « Je ferai » (48-27). L'avenir national d'Israël relève du rattachement à *Biblical Doctrine* (eschatologie) : les sermons lus n'en traitent pas à partir de Galates 4.
+
+**Révélation progressive**
+
+La promesse faite à Abraham précède Sinaï (3.17); Ésaïe 54 promettait à la délaissée une descendance nombreuse; Galates lit Agar et Sara comme deux alliances; Hébreux 12.18-24 opposera de même le Sinaï et la Jérusalem céleste.
+
+**Pour votre assemblée**
+
+Revenir aux jours, aux rites et aux observances pour se rendre agréable à Dieu n'est pas un progrès spirituel, mais une régression (48-21). Une assemblée garde la liberté de 5.1 en refusant d'ajouter des conditions à la grâce, et elle s'attend, comme Isaac, à l'opposition de la religion des œuvres (4.29).
+
+## Pistes de réflexion
+
+1. En 4.6, l'Esprit est envoyé « parce que vous êtes fils » : la filiation précède le cri. Comment prêcher l'assurance à partir de cet ordre, sans faire du cri « Abba! Père! » une condition à remplir ni un sentiment à produire?
+2. MacArthur entend dans *Abba* un « Papa » affectueux (48-20), alors que Thayer y voit l'état emphatique (*ho patēr*, le père) et un titre de prière. Que garder de l'intimité du mot sans dépasser le lexique, et quel poids donner au cri de Gethsémané (Marc 14.36)?
+3. « Vous observez les jours, les mois, les temps et les années » (4.10) : quelles observances votre assemblée pourrait-elle transformer en principes élémentaires, et à quoi distinguer une pratique utile d'une condition ajoutée à la grâce?
+4. Paul est en travail « jusqu’à ce que Christ soit formé en vous » (4.19). Mesuré à ce verset, quel est le but réel de votre ministère, et à quoi ressemblerait une prédication qui le vise sans légalisme ni antinomisme (48-24)?
+5. MacArthur refuse de parler d'allégorie en 4.24 (48-26, 48-27). En vous appuyant sur « il est écrit » (4.22) et sur « ainsi en est-il encore maintenant » (4.29), jusqu'où pouvez-vous établir des correspondances entre Agar, Sara et votre auditoire, et où devez-vous vous arrêter?
+6. « Suis-je devenu votre ennemi en vous disant la vérité? » (4.16) : quelle vérité avez-vous à dire à votre assemblée au risque de perdre son affection, et comment le ton de 4.12-20, fait de souvenir, de supplication et de douleur, peut-il la porter?
+7. En 4.29, Paul lit comme une persécution le rire d'Ismaël (Genèse 21.9), et MacArthur y voit la fausse religion qui persécute la vraie Église (48-27). Comment prêcher ce verset et l'ordre de 4.30 contre un système de salut par les œuvres sans en faire un mot d'ordre contre des personnes?
