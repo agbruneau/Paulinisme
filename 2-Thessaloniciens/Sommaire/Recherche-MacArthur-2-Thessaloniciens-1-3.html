@@ -1,0 +1,838 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2 Thessaloniciens 1-⁠3 · La consolation dans l&#x27;épreuve, la vérité sur le jour du Seigneur et la marche ordonnée des élus · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de 2 Thessaloniciens 1-⁠3 dans la perspective de John MacArthur : La consolation dans l&#x27;épreuve, la vérité sur le jour du Seigneur et la marche ordonnée des élus.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* État du texte, Structure et grammaire : variantes en fiches (comme .mot), témoins
+     et observations entre filets, plan à gouttière de références. Ces blocs, chargés
+     de translittérations, sont alignés à gauche : pas de rivières. */
+  h3.marge__titre{font-family:inherit;font-weight:500;line-height:1.4;}
+  h3.marge__titre:not(:first-child){margin-top:2.6rem !important;}
+  .critique{max-width:var(--colonne,46rem);margin:0 auto;}  /* sermon-series : section sans grille */
+  .grille--apparat > .grille__texte + .grille__marge{margin-top:2.6rem;}  /* une colonne : la marge suit le texte */
+  .grille--apparat > .grille__texte{padding-top:1.2rem;}
+  .grille--apparat .lead,.critique .lead{text-align:left;}
+  .rangs dd,.temoins li,.encadre p,.section .plan p,.observations dd{
+    margin:0;text-align:left;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;text-wrap:pretty;
+  }
+  .variante{padding:1.2rem 1.5rem .5rem;border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 8px 8px 0;background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));}
+  .variante + .variante{margin-top:1.3rem;}
+  .variante__ref,.observations dt{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.2;color:var(--or-clair);}
+  .variante__ref{margin:0 0 .6rem;font-size:1.45rem;}
+  .rangs{margin:0;}
+  .rangs > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.2rem;padding:.75rem 0;border-top:1px solid var(--filet);}
+  .rangs dt{padding-top:.3rem;}
+  .rangs dd{font-size:.9em;line-height:1.7;color:var(--encre-doux);}
+  .rangs .rangs__portee{color:var(--encre);}
+  .temoins{list-style:none;margin:0 0 2.2rem;padding:0;border-bottom:1px solid var(--filet);}
+  .temoins li{padding:.75rem 0;border-top:1px solid var(--filet);font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .encadre{padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .encadre .marge__titre{margin-bottom:.7rem !important;}
+  .encadre p{font-size:.9em;line-height:1.65;color:var(--encre-doux);}
+  /* Plan : références en gouttière, un filet et un losange par mouvement, le marqueur sous son titre */
+  .plan{--gouttiere:9.6rem;--ecart:1.3rem;list-style:none;margin:0;padding:0;}
+  .plan li{position:relative;display:grid;grid-template-columns:var(--gouttiere) minmax(0,1fr);column-gap:var(--ecart);}
+  .plan li::before{content:"";position:absolute;left:calc(var(--gouttiere) + var(--ecart) - .22rem);top:.62rem;
+    width:.45rem;height:.45rem;background:var(--or);transform:rotate(45deg);}
+  .section .plan .plan__ref{padding-top:.05rem;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.25rem;line-height:1.2;color:var(--or-clair);}
+  .plan__ref span{white-space:nowrap;}
+  .plan__corps{padding:0 0 1.6rem 1.5rem;border-left:1px solid var(--filet-fort);}
+  .plan li:last-child .plan__corps{padding-bottom:.2rem;}
+  .plan li:first-child,.plan li:first-child .plan__corps{border-image:linear-gradient(transparent .7rem,var(--filet-fort) 0) 1;}
+  .section .plan .plan__titre{margin-bottom:.55rem;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.3rem;line-height:1.3;color:var(--encre);text-wrap:balance;}
+  .section .plan .plan__marqueur{font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .rangs dt,.plan__marqueur .mot__label{font-size:.8rem;}
+  .observations{margin:0;}
+  .observations > div + div{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--filet);}
+  .observations dt{margin-bottom:.4rem;font-size:1.25rem;}
+  .observations dd{font-size:.9em;line-height:1.72;color:var(--encre-doux);}
+  @media (max-width:35rem){
+    .rangs > div{grid-template-columns:1fr;}
+    .rangs dt{padding-top:0;}
+    .variante{padding:1rem 1.1rem .4rem;}
+    .plan li{display:block;padding:0 0 1.4rem 1.3rem;border-left:1px solid var(--filet-fort);}
+    .plan li:last-child{padding-bottom:.2rem;}
+    .plan li::before{left:-.25rem;top:.45rem;}
+    .section .plan .plan__ref{margin-bottom:.25rem;text-align:left;}
+    .plan__corps,.plan li:last-child .plan__corps{padding:0;border:0;}
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .recherche .grille--apparat{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+    .grille--apparat > .grille__texte + .grille__marge{margin-top:0;}
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">2 Thessaloniciens 1-⁠3</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">2 Thessaloniciens 1-⁠3</span></p>
+    <h1 class="hero__title">La consolation dans l'épreuve, la vérité sur le jour du Seigneur et la marche ordonnée des élus</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;Pour nous, frères bien-aimés du Seigneur, nous devons à votre sujet rendre continuellement grâces à Dieu, parce que Dieu vous a choisis dès le commencement pour le salut, par la sanctification de l’Esprit et par la foi en la vérité. C’est à quoi il vous a appelés par notre Evangile, pour que vous possédiez la gloire de notre Seigneur Jésus-Christ. Ainsi donc, frères, demeurez fermes, et retenez les instructions que vous avez reçues, soit par notre parole, soit par notre lettre.&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">2 Thessaloniciens 2.13-⁠15 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 23 octobre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">2 Thessaloniciens 1-⁠3</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Rédigée par l'apôtre Paul depuis Corinthe (avec Silvain et Timothée) vers 50 ou 51 apr. J.-C., quelques mois seulement après la première épître aux Thessaloniciens, cette seconde lettre répond à trois urgences pastorales apparues dans la jeune assemblée macédonienne : l'intensification des persécutions qui menaçait de décourager les croyants (chapitre 1), le trouble provoqué par de faux enseignements et une lettre contrefaite affirmant que le jour du Seigneur était déjà arrivé (chapitre 2), et le refus obstiné de certains membres de travailler de leurs mains sous prétexte d'attente eschatologique (chapitre 3) (53-⁠1, 53-⁠7, 53-⁠14).</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">Nous devons, frères, rendre continuellement grâces à Dieu à votre sujet, comme cela est juste, parce que votre foi fait de grands progrès, et que l’amour de chacun de vous tous à l’égard des autres augmente de plus en plus. Aussi nous glorifions-nous de vous dans les Eglises de Dieu, à cause de votre persévérance et de votre foi au milieu de toutes vos persécutions et des afflictions que vous avez à supporter.</p><cite class="verse__ref">2 Thessaloniciens 1.3-⁠4 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car il est de la justice de Dieu de rendre l’affliction à ceux qui vous affligent, et de vous donner, à vous qui êtes affligés, du repos avec nous, lorsque le Seigneur Jésus apparaîtra du ciel avec les anges de sa puissance, au milieu d’une flamme de feu, pour punir ceux qui ne connaissent pas Dieu et ceux qui n’obéissent pas à l’Evangile de notre Seigneur Jésus.</p><cite class="verse__ref">2 Thessaloniciens 1.6-⁠8 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est pourquoi aussi nous prions continuellement pour vous, afin que notre Dieu vous juge dignes de la vocation, et qu’il accomplisse par sa puissance tous les desseins bienveillants de sa bonté, et l’œuvre de votre foi; ainsi le nom de notre Seigneur Jésus sera glorifié en vous, et vous serez glorifiés en lui, selon la grâce de notre Dieu et du Seigneur Jésus-Christ.</p><cite class="verse__ref">2 Thessaloniciens 1.11-⁠12 · NEG</cite></figure><figure class="verse"><p class="verse__text">Pour ce qui concerne l’avènement de notre Seigneur Jésus-Christ et notre réunion avec lui, nous vous prions, frères, de ne pas vous laisser facilement ébranler dans votre bon sens, et de ne pas vous laisser troubler, soit par quelque inspiration, soit par une parole, ou par une lettre qui semblerait venir de nous, comme si le jour du Seigneur était déjà là. Que personne ne vous séduise d’aucune manière; car il faut que l’apostasie soit arrivée auparavant, et qu’on ait vu paraître l’homme impie, le fils de la perdition,</p><cite class="verse__ref">2 Thessaloniciens 2.1-⁠3 · NEG</cite></figure><figure class="verse"><p class="verse__text">Et alors paraîtra l’impie, que le Seigneur Jésus détruira par le souffle de sa bouche, et qu’il écrasera par l’éclat de son avènement.</p><cite class="verse__ref">2 Thessaloniciens 2.8 · NEG</cite></figure><figure class="verse"><p class="verse__text">Le Seigneur est fidèle, il vous affermira et vous préservera du malin.</p><cite class="verse__ref">2 Thessaloniciens 3.3 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car, lorsque nous étions chez vous, nous vous disions expressément: Si quelqu’un ne veut pas travailler, qu’il ne mange pas non plus. Nous apprenons, cependant, qu’il y en a parmi vous quelques-uns qui vivent dans le désordre, qui ne travaillent pas, mais qui s’occupent de futilités. Nous invitons ces gens-là, et nous les exhortons par le Seigneur Jésus-Christ, à manger leur propre pain, en travaillant paisiblement.</p><cite class="verse__ref">2 Thessaloniciens 3.10-⁠12 · NEG</cite></figure><figure class="verse"><p class="verse__text">Que le Seigneur de la paix vous donne lui-même la paix en tout temps, de toute manière! Que le Seigneur soit avec vous tous!</p><cite class="verse__ref">2 Thessaloniciens 3.16 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>Sur le plan littéraire, le document relève du genre de l'épître pastorale, prophétique et disciplinaire. MacArthur souligne que la structure de 2 Thessaloniciens épouse exactement les trois chapitres du livre, chacun correspondant à une fonction vitale du ministère pastoral et s'achevant par une prière de bénédiction au mode optatif ou subjonctif (1.11-⁠12; 2.16-⁠17; 3.5, 16-⁠18) : le chapitre 1 apporte la <i>consolation</i> pastorale face à la persécution en dévoilant la juste rétribution de Jésus-Christ lors de sa révélation en gloire; le chapitre 2 apporte la <i>correction</i> doctrinale face à l'erreur prophétique en établissant la chronologie de l'apostasie, de la retenue par le Saint-Esprit et de la carrière de l'homme impie avant d'ancrer les croyants dans leur élection éternelle; le chapitre 3 apporte la <i>confrontation</i> pratique face à la vie désordonnée en appelant à la prière mutuelle, au travail honnête et à la discipline fraternelle sous la paix du Seigneur (53-⁠1, 53-⁠8, 53-⁠13).</p><p>Un lien organique unit ces trois chapitres : c'est parce que les Thessaloniciens traversaient de rudes afflictions (1.4) qu'ils ont prêté l'oreille au mensonge selon lequel ils subissaient déjà la colère du jour du Seigneur (2.2), et c'est parce que certains croyaient ce jour déjà présent qu'ils avaient abandonné leur métier pour vivre dans une oisiveté indisciplinée aux dépens de l'Église (3.6-⁠12) (53-⁠7, 53-⁠8, 53-⁠14). En rétablissant la vérité sur le retour de Christ, Paul restaure du même coup l'espérance des affligés, la stabilité doctrinale des ébranlés et l'éthique quotidienne du travail chrétien.</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">2 Thessaloniciens 1-⁠3</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">Fondée lors du deuxième voyage missionnaire de Paul après son ministère à Philippes (Actes 17.1-⁠9), l'Église de Thessalonique vivait au cœur de la capitale administrative et commerciale de la province romaine de Macédoine, sur la grande voie impériale <i>Via Egnatia</i> (53-⁠1). Après le départ forcé des missionnaires vers Bérée, Athènes puis Corinthe (Actes 17.10-⁠18.5), le retour de Timothée avec de bonnes nouvelles avait motivé l'envoi de la première épître aux Thessaloniciens (1 Thessaloniciens 3.6). Mais lorsque le porteur de cette première lettre revint à Corinthe quelques mois plus tard, il rapporta à Paul une évolution dramatique de la situation à Thessalonique (53-⁠1, 53-⁠8).</p><div class="body"><p>Premièrement, les prières de 1 Thessaloniciens 3.10-⁠12 avaient été puissamment exaucées : la foi des Thessaloniciens faisait « de grands progrès » (<i>huperauxanei</i>) et leur amour mutuel augmentait « de plus en plus » (<i>pleonazei</i>, 1.3), bien que les persécutions (<i>diōgmois</i>) et les tribulations (<i>thlipsesin</i>, 1.4) se fussent aggravées (53-⁠1). Deuxièmement, des faux docteurs avaient profité de cette fournaise d'afflictions pour faire circuler dans l'assemblée une prétendue révélation spirituelle, un discours et même une fausse lettre forgée sous le nom de Paul (2.2), soutenant que le jour du Seigneur était déjà présent (<i>enestēken</i>) et que l'enlèvement promis en 1 Thessaloniciens 4.13-⁠18 avait été manqué ou mal compris (53-⁠8). Troisièmement, la minorité d'oisifs que Paul avait déjà avertie de vive voix (3.10) puis par écrit (1 Thessaloniciens 4.11-⁠12; 5.14) refusait toujours de travailler, combinant le mépris grec du travail manuel avec une fièvre eschatologique qui perturbait toute l'assemblée (3.6-⁠15) (53-⁠14, 53-⁠15).</p><p>Pendant ce temps, à Corinthe même, Paul exerçait son métier de fabricant de tentes aux côtés d'Aquilas et de Priscille (Actes 18.3) tout en affrontant l'opposition féroce des Juifs incrédules qui cherchaient à le faire condamner devant Gallion (Actes 18.6, 12-⁠17; cf. 2 Thessaloniciens 3.1-⁠2) (53-⁠13, 53-⁠15). C'est de ce champ de bataille corinthien qu'il dicte cette seconde épître et la scelle de sa propre main (3.17) (53-⁠17).</p></div></div><aside class="grille__marge"><p class="marge__titre">Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>La théophanie de feu (1.7-⁠8) et la prophétie de Daniel sur l'homme impie (2.3-⁠4).</b> Les deux premiers chapitres déploient deux tableaux prophétiques complémentaires ancrés dans l'Ancien Testament. Au chapitre 1, la révélation (<i>apokalupsis</i>) du Seigneur Jésus « du ciel avec les anges de sa puissance, au milieu d'une flamme de feu » (1.7-⁠8) reprend la gloire ardente de la <i>Shekinah</i> divine (Exode 3.2; 19.18) et l'oracle d'Ésaïe 66.15 pour montrer que Jésus-Christ exercera lui-même le jugement eschatologique de YHWH : rétribution éternelle (<i>ekdikēsis</i>, <i>olethros aiōnios</i>) loin de sa face pour les persécuteurs qui n'obéissent pas à l'Évangile (Ésaïe 2.10, 19, 21), et soulagement (<i>anesis</i>, le relâchement d'un arc tendu) pour les croyants affligés (53-⁠2, 53-⁠3, 53-⁠4). Au chapitre 2, Paul s'appuie sur la chronologie des soixante-dix semaines de Daniel 9.24-⁠27 (les 69 premières semaines de 483 ans allant du décret d'Artaxerxès en nisan / mars 444 av. J.-C. jusqu'à l'entrée triomphale du 30 mars 33 apr. J.-C., et la 70e semaine future de sept ans) ainsi que sur Daniel 7.25, 8.23-⁠25 et 11.36-⁠37 pour prouver que le jour du Seigneur ne peut commencer avant la grande apostasie et l'intronisation blasphématoire de l'homme impie dans le sanctuaire (<i>naos</i>) du temple reconstruit à Jérusalem au milieu de la tribulation (2.3-⁠4; Matthieu 24.15) (53-⁠7, 53-⁠8).</li><li><b>Le ministère de retenue du Saint-Esprit (2.6-⁠7) et les cinq maillons du salut (2.13-⁠14).</b> En 2.6-⁠7, MacArthur démontre que la force (« ce qui le retient », <i>to katechon</i>, neutre) et la Personne (« celui qui le retient », <i>ho katechōn</i>, masculin) qui empêchent le mystère de l'iniquité de dévoiler l'Antichrist avant l'heure fixée par Dieu ne peuvent être ni l'Empire romain, ni le gouvernement humain, ni un ange, mais uniquement le Saint-Esprit (désigné en grec tantôt au neutre avec <i>to Pneuma</i>, tantôt au masculin avec <i>ekeinos</i>, Jean 16.13-⁠14), seul plus puissant que Satan (53-⁠9). Lors de l'enlèvement de l'Église dans laquelle il habite, l'Esprit « s'écartera du milieu » (<i>ek mesou genētai</i>, cessant sa retenue spécifique tout en demeurant omniprésent pour sauver des âmes durant la tribulation) (53-⁠9). Quant aux croyants actuels, Paul les rassure en 2.13-⁠14 par un traité miniature de sotériologie en cinq maillons indestructibles : aimés par le Seigneur (<i>ēgapēmenoi hupo Kuriou</i>), choisis dès le commencement pour le salut (<i>heilato ... ap' archēs eis sōtērian</i>), transformés par la sanctification de l'Esprit et la foi en la vérité, appelés efficacement par l'Évangile (<i>ekalesen</i>) et destinés à posséder la gloire de Christ (<i>eis peripoiēsin doxēs</i>) (53-⁠11).</li><li><b>La théologie biblique du travail, la troisième étape de Matthieu 18 et la signature de Paul (3.6-⁠17).</b> Au chapitre 3, MacArthur oppose la théologie biblique du travail (mandat créationnel d'Éden avant la chute en Genèse 2.15, don de Dieu dans l'Ecclésiaste, service sacré rendu à Christ en Colossiens 3.23-⁠24, réhabilité par Martin Luther) au mépris grec du travail manuel, au dédain rabbinique du Talmud, au dualisme clérical d'Eusèbe de Césarée (« vie parfaite » contre « vie permise ») et au fanatisme eschatologique de Thessalonique (53-⁠14). Après un premier avertissement oral lors de sa visite (3.10) et un deuxième avertissement écrit en 1 Thessaloniciens 4.11 et 5.14, Paul déclenche en 3.6 et 3.14-⁠15 la troisième étape de la discipline d'Église de Matthieu 18.15-⁠17 : l'assemblée doit noter le frère récalcitrant et suspendre les relations fraternelles avec lui afin qu'il éprouve une honte salutaire (<i>hina entrapē</i>), sans toutefois le traiter déjà comme un ennemi (étape 4), mais en l'avertissant comme un frère (<i>noutheteite hōs adelphon</i>) (53-⁠14, 53-⁠16). Enfin, en 3.17, Paul prend lui-même le roseau des mains de son secrétaire pour tracer sa salutation autographe, instituant un signe d'authenticité (<i>sēmeion</i>) contre les faux courriers dénoncés en 2.2 (53-⁠17).</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">2 Thessaloniciens 1-⁠3</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Les variantes qui touchent le sens, la leçon que suit la NEG79 et leur portée, puis les témoins consultés et la numérotation.</p></div><div class="grille__texte"><h3 class="marge__titre">Variantes</h3><section class="variante"><h4 class="variante__ref">2 Thessaloniciens 1.4</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>Ordre <i>autous hēmas</i> et verbe composé <i>enkauchasthai</i> (SBLGNT, Nestle 1904, Westcott et Hort, Tregelles), ou ordre <i>hēmas autous</i> et verbe simple <i>kauchasthai</i> (texte byzantin, Église orthodoxe grecque, Textus Receptus; Tischendorf a <i>autous hēmas ... kauchasthai</i>).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« Aussi nous glorifions-nous de vous » (NEG79, LSG; S21 et NBS : « sommes-nous fiers de vous »; Darby : « en sorte que nous-mêmes nous nous glorifions de vous »).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Le composé <i>enkauchaomai</i> et le simple <i>kauchaomai</i> ont le même sens; le pronom intensif « nous-mêmes » souligne la fierté légitime de l'apôtre devant toutes les Églises (53-⁠1).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">2 Thessaloniciens 1.8</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>en phlogi puros</i>, « dans une flamme de feu » (SBLGNT, Tregelles), ou <i>en puri phlogos</i>, « dans un feu de flamme » (Nestle 1904, Westcott et Hort, Tischendorf, texte byzantin, Église orthodoxe grecque, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« au milieu d'une flamme de feu » (NEG79, LSG, S21; Darby : « en flammes de feu »; NBS : « dans un feu flamboyant »).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Les deux tournures (dont <i>en phlogi puros</i> reproduit mot pour mot Ésaïe 66.15 LXX) expriment de manière identique la gloire ardente de la <i>Shekinah</i> lors du retour en jugement du Seigneur Jésus (53-⁠2).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">2 Thessaloniciens 1.10</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>Participe aoriste <i>en pasin tois pisteusasin</i>, « dans tous ceux qui auront cru / ont cru » (SBLGNT, Nestle 1904, Westcott et Hort, Tischendorf, texte byzantin, Église orthodoxe grecque), ou participe présent <i>tois pisteuousin</i> (Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« et admiré dans tous ceux qui auront cru » : toutes les versions françaises consultées et le texte anglais commenté par MacArthur (53-⁠4) suivent l'aoriste.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">MacArthur souligne la valeur de cet aoriste : au jour de sa venue, Christ sera admiré dans tous ceux qui, durant leur vie terrestre, ont cru une fois pour toutes au témoignage apostolique (53-⁠4).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">2 Thessaloniciens 2.2</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>hē hēmera tou Kuriou</i>, « le jour du Seigneur » (SBLGNT, Nestle 1904, Westcott et Hort, Tregelles, Tischendorf), ou <i>hē hēmera tou Christou</i>, « le jour du Christ » (texte byzantin, Église orthodoxe grecque, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« comme si le jour du Seigneur était déjà là » : les cinq versions françaises consultées (NEG79, LSG, S21, Darby, NBS) et MacArthur (53-⁠8) suivent la leçon « du Seigneur ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">La leçon <i>tou Kuriou</i> renvoie directement au « jour du Seigneur » de 1 Thessaloniciens 5.2 et des prophètes de l'Ancien Testament, désignant la période du jugement eschatologique divin (53-⁠8).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">2 Thessaloniciens 2.3</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>ho anthrōpos tēs anomias</i>, « l'homme de l'iniquité / sans loi » (SBLGNT, Nestle 1904, Westcott et Hort, Tregelles, Tischendorf), ou <i>ho anthrōpos tēs hamartias</i>, « l'homme du péché » (texte byzantin, Église orthodoxe grecque, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« l'homme impie » (NEG79, avec note « l'homme du péché »; NBS : « la personnification du mal »), tandis que la LSG, la S21 et la Darby ont « l'homme du péché / de péché ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">MacArthur explique conjointement les deux lectures en chaire (53-⁠7, 53-⁠8) : puisque le péché est la transgression de la loi (1 Jean 3.4) et que les versets 7 et 8 l'appellent l'artisan du « mystère de l'iniquité » (<i>anomias</i>) et « l'impie / le sans-loi » (<i>ho anomos</i>), le sens est identique.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">2 Thessaloniciens 2.8</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>hon ho Kurios Iēsous anelei</i>, « que le Seigneur Jésus détruira / fera périr » (SBLGNT, Nestle 1904, Westcott et Hort, Tregelles, Tischendorf), ou <i>hon ho Kurios analōsei</i>, « que le Seigneur consumera » (texte byzantin, Église orthodoxe grecque, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« que le Seigneur Jésus détruira par le souffle de sa bouche » (NEG79, LSG, NBS; S21 : « le Seigneur [Jésus] détruira »; Darby : « le Seigneur Jésus consumera »).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">La leçon <i>anelei</i> reprend le verbe exact de la Septante d'Ésaïe 11.4 (<i>anelei asebē</i>), soulignant l'exécution judiciaire instantanée de l'Antichrist par la parole du Messie (53-⁠9).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">2 Thessaloniciens 2.13</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>hoti heilato humas ho Theos ap' archēs eis sōtērian</i>, « dès le commencement » (Nestle 1904, Westcott et Hort, Tregelles, Tischendorf, texte byzantin, Église orthodoxe grecque, Textus Receptus), ou <i>aparchēn eis sōtērian</i>, « comme prémices » (SBLGNT, NA27/28).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« parce que Dieu vous a choisis dès le commencement pour le salut » : la NEG79, la LSG, la S21 et la Darby suivent <i>ap' archēs</i> (seule la NBS traduit « comme prémices »).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">MacArthur retient résolument <i>ap' archēs</i> (« dès le commencement », avant la fondation du monde, Éphésiens 1.4) : les Thessaloniciens n'étaient pas les prémices chronologiques de la Macédoine (après Philippes), et Paul ancre ici leur sécurité dans l'éternité du décret divin (53-⁠11).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">2 Thessaloniciens 3.6 et 3.14</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>En 3.6, <i>parelabosan</i> (SBLGNT), <i>parelabete</i> (Nestle 1904, Westcott et Hort), <i>parelabon</i> (texte byzantin) ou <i>parelaben</i> (Textus Receptus). En 3.14, infinitif impératif <i>mē sunanamignusthai</i> (SBLGNT, Nestle 1904, Westcott et Hort, Tischendorf) ou impératif <i>kai mē sunanamignusthe</i> (texte byzantin, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>En 3.6 : « selon les instructions que vous avez reçues de nous »; en 3.14 : « notez-le, et n'ayez point de relations avec lui ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">En 3.6, la tradition apostolique reçue est la même quelle que soit la personne grammaticale du verbe; en 3.14, l'infinitif et l'impératif prescrivent tous deux la suspension des relations fraternelles avec le frère rebelle afin qu'il éprouve une honte salutaire (53-⁠15, 53-⁠16).</dd></div></dl></section></div><div class="grille__marge"><h3 class="marge__titre">Témoins consultés</h3><ul class="temoins" role="list"><li>grec : SBLGNT (bible.audio) et son apparat critique (sblgntapp de 2 Thessaloniciens, LogosBible), lus aux quarante-sept versets de l'épître</li><li>grec : Nestle 1904, Westcott et Hort 1881, texte byzantin de Robinson-Pierpont 2005, Église orthodoxe grecque 1904, Tischendorf 8e édition, Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub), lus à tous les versets où l'apparat signale une variante</li><li>Septante (Swete, Bible Hub) et hébreu massorétique (Codex de Léningrad, Bible Hub), pour les citations et allusions vétérotestamentaires (Ésaïe 2.10, 19, 21; 11.4; 66.15; Psaume 79.6; 147.15; Jérémie 10.25; Daniel 11.36; Ézéchiel 28.2; Deutéronome 33.12)</li><li>versions françaises : NEG79 (BibleGateway et bible.audio), LSG, S21, Darby et NBS, lues sur l'ensemble de l'épître</li></ul><div class="encadre"><h3 class="marge__titre">Numérotation</h3><p>La numérotation des quarante-sept versets de l'épître (12 au chapitre 1, 17 au chapitre 2, 18 au chapitre 3) est strictement identique entre toutes les éditions grecques, la NEG79, les autres versions françaises et les traductions anglaises suivies par MacArthur.</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">2 Thessaloniciens 1-⁠3</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><h3 class="marge__titre">Plan de la péricope</h3><ol class="plan" role="list"><li><p class="plan__ref"><span>2 Thessaloniciens</span> <span>1.1-⁠5</span></p><div class="plan__corps"><p class="plan__titre">Salutation et action de grâces pour une Église exemplaire dans la fournaise : foi surabondante, amour croissant et persévérance comme preuve du juste jugement de Dieu</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Suscription <i>Paulos kai Silouanos kai Timotheos tē ekklēsia Thessalonikeōn en Theō Patri hēmōn kai Kuriō Iēsou Christō</i> (1.1-⁠2); obligation d'action de grâces <i>Eucharistein opheilomen ... hoti huperauxanei hē pistis humōn kai pleonazei hē agapē</i> (1.3); consécutive <i>hōste autous hēmas en humin enkauchasthai</i> (1.4) et apposition <i>endeigma tēs dikaias kriseōs tou Theou</i> (1.5).</p></div></li><li><p class="plan__ref"><span>2 Thessaloniciens</span> <span>1.6-⁠12</span></p><div class="plan__corps"><p class="plan__titre">La révélation ardente du Seigneur Jésus (rétribution des impies et repos des saints) et la prière pour la glorification mutuelle du nom de Jésus et des croyants</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Conditionnelle d'évidence <i>eiper dikaion para Theō antapodounai</i> opposant <i>thlipsin</i> pour les oppresseurs (1.6) et <i>anesin</i> pour les affligés lors de l'<i>apokalupsis tou Kuriou Iēsou ... en phlogi puros</i> (1.7-⁠8); ruine éternelle des rebelles <i>olethron aiōnion apo prosōpou tou Kuriou</i> (1.9) contre glorification dans les saints (1.10); prière <i>Eis ho kai proseuchometha pantote ... hopōs endoxasthē to onoma tou Kuriou hēmōn Iēsou en humin, kai humeis en autō</i> (1.11-⁠12).</p></div></li><li><p class="plan__ref"><span>2 Thessaloniciens</span> <span>2.1-⁠12</span></p><div class="plan__corps"><p class="plan__titre">La rectification prophétique sur le jour du Seigneur : l'apostasie, la retenue du Saint-Esprit, la carrière et la destruction de l'homme impie, et le jugement d'égarement sur les incrédules</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Transition thématique <i>Erōtōmen de humas, adelphoi, huper tēs parousias ... kai hēmōn episunagōgēs ep' auton</i> (2.1); défense <i>Mē tis humas exapatēsē ... hoti ean mē elthē hē apostasia prōton kai apokaluphthē ho anthrōpos tēs anomias</i> (2.3-⁠5); rôle de <i>to katechon</i> / <i>ho katechōn</i> jusqu'à <i>ek mesou genētai</i> (2.6-⁠7); apparition et destruction de <i>ho anomos</i> par le Seigneur Jésus (2.8-⁠9) et jugement d'aveuglement <i>dia touto pempei autois ho Theos energeian planēs</i> (2.10-⁠12).</p></div></li><li><p class="plan__ref"><span>2 Thessaloniciens</span> <span>2.13-⁠17</span></p><div class="plan__corps"><p class="plan__titre">L'ancrage sotériologique et pastoral des croyants : les cinq maillons de l'élection éternelle, l'ordre de tenir ferme dans les traditions et la prière de consolation</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Contraste solennel <i>Hēmeis de opheilomen eucharistein ... adelphoi ēgapēmenoi hupo Kuriou, hoti heilato humas ho Theos ap' archēs eis sōtērian</i> jusqu'à <i>eis peripoiēsin doxēs</i> (2.13-⁠14); inférence impérative <i>Ara oun, adelphoi, stēkete, kai krateite tas paradoseis</i> (2.15) et prière de souhait au singulier <i>Autos de ho Kurios ... kai Theos ho Patēr ... parakalesai ... kai stērixai</i> (2.16-⁠17).</p></div></li><li><p class="plan__ref"><span>2 Thessaloniciens</span> <span>3.1-⁠5</span></p><div class="plan__corps"><p class="plan__titre">L'appel à la prière mutuelle : intercession pour la course de la Parole, assurance dans la fidélité du Seigneur et souhait de direction des cœurs</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Charnière pratique <i>To loipon proseuchesthe, adelphoi, peri hēmōn, hina ho logos tou Kuriou trechē kai doxazētai</i> (3.1-⁠2); jeu de mots et promesse <i>Pistos de estin ho Kurios, hos stērixei humas kai phulaxei apo tou ponērou</i> (3.3); confiance <i>pepoithamen de en Kuriō</i> (3.4) et prière à l'optatif <i>Ho de Kurios kateuthunai humōn tas kardias</i> (3.5).</p></div></li><li><p class="plan__ref"><span>2 Thessaloniciens</span> <span>3.6-⁠18</span></p><div class="plan__corps"><p class="plan__titre">La discipline du travail honnête face aux oisifs, la restauration fraternelle, la bénédiction de paix et la signature autographe de Paul</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Injonctions scandées par <i>parangellomen</i> (3.6, 10, 12); modèle apostolique de travail nuit et jour (3.7-⁠9); axiome <i>ei tis ou thelei ergazesthai mēde esthietō</i> (3.10) et paronomase <i>mēden ergazomenous alla periergazomenous</i> (3.11); appel <i>mē enkakēsēte kalopoiountes</i> (3.13) et discipline graduée <i>touton sēmeiousthe ... alla noutheteite hōs adelphon</i> (3.14-⁠15); bénédiction <i>Autos de ho Kurios tēs eirēnēs dōē humin tēn eirēnēn</i> (3.16), sceau autographe (3.17) et grâce finale (3.18).</p></div></li></ol></div><div class="grille__marge"><h3 class="marge__titre">Observations grammaticales</h3><dl class="observations"><div><dt>2 Thessaloniciens 1.1-⁠2 et 1.12</dt><dd>Dès l'ouverture du chapitre 1, une seule préposition grecque (<i>en</i> en 1.1, <i>apo</i> en 1.2) régit conjointement <i>Theō Patri hēmōn</i> et <i>Kuriō Iēsou Christō</i>, et en 1.12 un seul article défini <i>tou</i> gouverne <i>tou Theou hēmōn kai Kuriou Iēsou Christou</i>. MacArthur souligne que cette syntaxe place le Père et le Seigneur Jésus-Christ sur un pied de stricte égalité ontologique : Jésus-Christ est pleinement Dieu, co-source de la grâce et de la paix et porteur du « Nom » divin (<i>to onoma tou Kuriou</i>, 1.12) (53-⁠1, 53-⁠6).</dd></div><div><dt>2 Thessaloniciens 1.3-⁠8</dt><dd>En 1.3 (comme en 2.13), Paul écrit <i>Eucharistein opheilomen</i> (« Nous devons rendre continuellement grâces »), exprimant une dette morale de gratitude devant l'œuvre surnaturelle que Dieu accomplit par les verbes d'abondance <i>huperauxanei</i> et <i>pleonazei</i> (53-⁠1). En 1.6-⁠7, la conditionnelle de première classe <i>eiper dikaion para Theō</i> pose comme un axiome la justice rétributive de Dieu dans le polyptote <i>tois thlibousin humas thlipsin kai humin tois thlibomenois anesin</i>, tandis qu'en 1.8 l'unique article initial <i>tois</i> englobe les deux participes <i>mē eidosin Theon kai tois mē hupakouousin tō euangeliō</i> pour décrire la double culpabilité de tous les incrédules jugés lors de l'<i>apokalupsis</i> de Christ (53-⁠2, 53-⁠3).</dd></div><div><dt>2 Thessaloniciens 2.1-⁠3</dt><dd>En 2.1, l'unique article défini <i>tēs</i> devant <i>parousias tou Kuriou hēmōn Iēsou Christou kai hēmōn episunagōgēs ep' auton</i> lie en un seul événement la venue du Seigneur et notre rassemblement auprès de lui lors de l'enlèvement (53-⁠8). En 2.2, le parfait résultatif <i>enestēken hē hēmera tou Kuriou</i> signifie que les faux docteurs prétendaient que le jour du Seigneur « était déjà là / présent »; Paul leur oppose en 2.3 la protase elliptique <i>hoti ean mē elthē hē apostasia prōton kai apokaluphthē ho anthrōpos tēs anomias</i>, où l'article défini <i>hē</i> désigne l'événement unique de la grande apostasie finale (53-⁠8).</dd></div><div><dt>2 Thessaloniciens 2.6-⁠8</dt><dd>L'alternance entre le participe présent neutre <i>to katechon</i> (« ce qui le retient », 2.6) et le participe présent masculin <i>ho katechōn</i> (« celui qui le retient », 2.7) reflète la grammaire même du Saint-Esprit dans le Nouveau Testament (<i>to Pneuma</i>, neutre grammatical, mais repris par des pronoms masculins en Jean 14 à 16 parce qu'il est une Personne divine) (53-⁠9). En 2.8, la proposition relative <i>hon ho Kurios Iēsous anelei tō pneumati tou stomatos autou kai katargēsei tē epiphaneia tēs parousias autou</i> encadre toute la carrière de l'impie par la certitude de sa destruction instantanée (53-⁠9).</dd></div><div><dt>2 Thessaloniciens 2.13-⁠17</dt><dd>Après la chaîne sotériologique des versets 13 et 14 (participe parfait passif d'amour permanent <i>ēgapēmenoi</i>, aoriste moyen d'élection <i>heilato ... ap' archēs</i>, aoriste actif d'appel efficace <i>ekalesen</i>), les versets 16 et 17 unissent le sujet double <i>Autos de ho Kurios hēmōn Iēsous Christos kai Theos ho Patēr hēmōn</i> à deux participes au singulier (<i>ho agapēsas ... kai dous</i>) et à deux optatifs aoristes au singulier (<i>parakalesai ... kai stērixai</i>), scellant l'unité d'essence et d'opération du Fils et du Père (53-⁠11, 53-⁠12).</dd></div><div><dt>2 Thessaloniciens 3.10-⁠16</dt><dd>En 3.10, la conditionnelle <i>ei tis ou thelei ergazesthai mēde esthietō</i> emploie le verbe de volonté <i>ou thelei</i> (« ne veut pas ») pour cibler le refus délibéré de travailler, suivi en 3.11 de la paronomase <i>mēden ergazomenous alla periergazomenous</i> (« ne travaillant pas du tout, mais se mêlant de tout / s'occupant de futilités ») (53-⁠15, 53-⁠16). En 3.14-⁠15, le subjonctif aoriste passif <i>hina entrapē</i> (« afin qu'il éprouve de la honte ») et l'impératif <i>noutheteite hōs adelphon</i> marquent le but restaurateur de la discipline, avant l'optatif final <i>Autos de ho Kurios tēs eirēnēs dōē humin tēn eirēnēn dia pantos en panti tropō</i> (3.16) (53-⁠16, 53-⁠17).</dd></div></dl></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Cinq mots-clés</p></header>
+<p class="lead">Cinq mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">repos</a><a href="#mot-2">ruine</a><a href="#mot-3">apostasie</a><a href="#mot-4">retient</a><a href="#mot-5">dans le désordre</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">repos</h3><p class="mot__translit">anesin (anesis)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>relâchement d'une tension, détente, soulagement</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>D'après l'étymologie exposée par Thayer, <i>anesis</i> dérive du verbe composé <i>aniēmi</i> (« relâcher, détendre »). Utilisé au sens propre par les auteurs grecs pour le relâchement de la corde tendue d'un arc ou d'une lyre, il désigne dans le Nouveau Testament un allègement de la captivité (Actes 24.23), une détente après l'angoisse ou l'affliction (2 Corinthiens 2.13; 7.5; 8.13) et, en 2 Thessaloniciens 1.7, le soulagement eschatologique accordé aux croyants persécutés lors de la révélation du Seigneur Jésus.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En 1.6-⁠7, MacArthur met en relief l'antithèse directe entre <i>thlipsis</i> (« pression écrasante, tribulation ») et <i>anesis</i> (« relâchement de la corde d'un arc, soulagement ») (53-⁠2, 53-⁠4). Alors que les croyants fidèles subissent aujourd'hui la tension constante de l'hostilité du monde, l'apparition flamboyante de Jésus-Christ relâchera définitivement cette pression en les introduisant dans le repos du royaume messianique et de l'éternité (Actes 3.19-⁠21; Apocalypse 14.13) (53-⁠4).</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> du repos</li><li><b>NEG79</b> du repos</li><li><b>Darby</b> du repos</li><li><b>LSG</b> du repos</li><li><b>NBS</b> du repos</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">ruine</h3><p class="mot__translit">olethron (olethros)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>ruine, perte irrémédiable, destruction du bien-être</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer définit <i>olethros</i> (employé uniquement par Paul dans le Nouveau Testament : 1 Corinthiens 5.5; 1 Thessaloniciens 5.3; 2 Thessaloniciens 1.9; 1 Timothée 6.9) comme « ruine, destruction, perte de tout ce qui donne valeur à l'existence », et précise qu'en 2 Thessaloniciens 1.9 il désigne la perte irrévocable d'une vie bénie dans la communion avec Dieu après la mort, la misère éternelle.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur s'appuie sur <i>olethron aiōnion</i> (« une ruine éternelle », 1.9) pour réfuter l'annihilationnisme (53-⁠3). Le mot grec ne signifie jamais l'extinction de l'être ou la cessation de la conscience, mais la ruine totale et sans fin de tout bien-être, vécue dans le bannissement conscient « loin de la face du Seigneur et de la gloire de sa force » (1.9; Matthieu 25.41, 46; Apocalypse 14.10-⁠11) (53-⁠3).</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> une ruine</li><li><b>NEG79</b> une ruine</li><li class="ecart"><b>Darby</b> d’une destruction</li><li><b>LSG</b> une ruine</li><li class="ecart"><b>NBS</b> une destruction</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">apostasie</h3><p class="mot__translit">apostasia</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>défection, révolte, abandon délibéré d'une position</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie indiquée par Thayer, <i>apostasia</i> dérive du verbe composé <i>aphistēmi</i> (de <i>apo</i>, « loin de », et <i>histēmi</i>, « se tenir » : faire défection, se rebeller). Dans la Septante et ses deux seuls emplois néotestamentaires (Actes 21.21; 2 Thessaloniciens 2.3), il désigne une désertion religieuse délibérée et une rébellion ouverte contre Dieu et sa vérité.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En 2.3 (« car il faut que l'apostasie soit arrivée auparavant »), MacArthur souligne la présence de l'article défini grec (<i>hē apostasia</i>) et sa coordination étroite avec le dévoilement de l'homme impie (53-⁠8) : au-delà de l'apostasie générale qui traverse l'histoire de l'Église, il s'agit de l'événement ultime et mondial de défection religieuse qui se produira au milieu de la tribulation lorsque l'Antichrist s'assiéra dans le temple de Dieu à Jérusalem en se proclamant lui-même Dieu (2.4) (53-⁠8).</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> l’apostasie</li><li><b>NEG79</b> l’apostasie</li><li><b>Darby</b> l’apostasie</li><li><b>LSG</b> l’apostasie</li><li class="ecart"><b>NBS</b> l'apostasie</li></ul></article><article class="mot" id="mot-4"><header class="mot__tete"><h3 class="mot__fr">retient</h3><p class="mot__translit">katechon / katechōn (katechō)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>tenir fermement, retenir, contenir, faire obstacle</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>D'après l'étymologie exposée par Thayer, <i>katechō</i> (composé de <i>kata</i> et de <i>echō</i>) signifie soit « retenir, empêcher d'avancer, réprimer, contenir » (Luc 4.42; Romains 1.18; 2 Thessaloniciens 2.6-⁠7), soit « garder fermement en sa possession, retenir » (Luc 8.15; 1 Corinthiens 11.2; 1 Thessaloniciens 5.21).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En 2.6-⁠7, MacArthur montre que seule la toute-puissance divine du Saint-Esprit peut contenir à l'échelle mondiale « le mystère de l'iniquité » animé par Satan (2.9) : désigné au neutre en 2.6 (<i>to katechon</i>, la force de retenue de l'Esprit) puis au masculin en 2.7 (<i>ho katechōn</i>, la Personne de l'Esprit), il bride le déferlement final du mal jusqu'à ce qu'il « s'écarte du milieu » (<i>ek mesou genētai</i>) après l'enlèvement de l'Église pour laisser paraître l'impie au moment fixé par Dieu (53-⁠9).</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> ce qui le retient / celui qui le retient</li><li><b>NEG79</b> ce qui le retient / celui qui le retient</li><li class="ecart"><b>Darby</b> ce qui retient / celui qui retient</li><li><b>LSG</b> ce qui le retient / celui qui le retient</li><li class="ecart"><b>NBS</b> ce qui retient / celui qui retient</li></ul></article><article class="mot" id="mot-5"><header class="mot__tete"><h3 class="mot__fr">dans le désordre</h3><p class="mot__translit">ataktōs / ētaktesamen (ataktōs / atakteō)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>hors des rangs, sans discipline, d'une manière désordonnée</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie donnée par Thayer, la famille de <i>ataktos</i> (1 Thessaloniciens 5.14), <i>ataktōs</i> (2 Thessaloniciens 3.6, 11) et <i>atakteō</i> (2 Thessaloniciens 3.7) est formée d'<i>alpha</i> privatif et de la racine de <i>tassō</i> (« ranger en ordre militaire »). À l'origine employé pour des soldats qui quittent les rangs, il désigne dans la koinè et chez Paul une conduite insubordonnée, indisciplinée et oisive qui se soustrait au devoir du travail quotidien.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur souligne que les quatre occurrences néotestamentaires de cette famille étymologique se trouvent toutes dans les lettres aux Thessaloniciens (53-⁠15). Refuser de travailler pour vivre aux crochets des frères et se mêler des affaires d'autrui (<i>periergazomenous</i>, 3.11) constitue une désertion de poste et une rébellion contre la tradition apostolique (3.6) qui appelle la mise à l'écart disciplinaire (3.6, 14) et l'avertissement fraternel (3.15) (53-⁠15, 53-⁠16).</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> une vie désordonnée / au désordre</li><li><b>NEG79</b> dans le désordre</li><li><b>Darby</b> dans le désordre</li><li><b>LSG</b> dans le désordre</li><li class="ecart"><b>NBS</b> dans l'indiscipline</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">2 Thessaloniciens 1-⁠3</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Dans sa série de dix-sept prédications sur la deuxième épître aux Thessaloniciens (GTY 53-⁠1 à 53-⁠17), John MacArthur présente ce livre comme un chef-d'œuvre d'équilibre pastoral où l'apôtre Paul console une Église persécutée (chapitre 1), rétablit la vérité prophétique face à la séduction et au trouble eschatologique (chapitre 2), et restaure la discipline pratique du travail quotidien sous la garde du Seigneur de la paix (chapitre 3).</p></div><aside class="grille__marge grille__marge--collante"><details class="sources"><summary><span class="sources__niveau">Niveau 1</span>Sources de l'exposition : 17 sermons Grace to You</summary><div class="sources__corps"><p>Niveau 1 : dix-sept sermons Grace to You sur 2 Thessaloniciens 1.1 à 3.18 (53-⁠1 à 53-⁠17, série « 2 Thessalonians », janvier à juillet 1992)</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">53-1</span></th><td><a href="https://www.gty.org/sermons/53-1" target="_blank" rel="noopener">A Church to Be Proud Of</a></td><td>2 Th 1.1-⁠5</td></tr><tr><th scope="row"><span class="mot-fr">53-2</span></th><td><a href="https://www.gty.org/sermons/53-2" target="_blank" rel="noopener">The Vengeance of the Lord Jesus, Part 1</a></td><td>2 Th 1.6-⁠10</td></tr><tr><th scope="row"><span class="mot-fr">53-3</span></th><td><a href="https://www.gty.org/sermons/53-3" target="_blank" rel="noopener">The Vengeance of the Lord Jesus, Part 2</a></td><td>2 Th 1.6-⁠10</td></tr><tr><th scope="row"><span class="mot-fr">53-4</span></th><td><a href="https://www.gty.org/sermons/53-4" target="_blank" rel="noopener">The Vengeance of the Lord Jesus, Part 3</a></td><td>2 Th 1.6-⁠10</td></tr><tr><th scope="row"><span class="mot-fr">53-5</span></th><td><a href="https://www.gty.org/sermons/53-5" target="_blank" rel="noopener">Praying for the Right Things, Part 1</a></td><td>2 Th 1.11-⁠12</td></tr><tr><th scope="row"><span class="mot-fr">53-6</span></th><td><a href="https://www.gty.org/sermons/53-6" target="_blank" rel="noopener">Praying for the Right Things, Part 2</a></td><td>2 Th 1.11-⁠12</td></tr><tr><th scope="row"><span class="mot-fr">53-7</span></th><td><a href="https://www.gty.org/sermons/53-7" target="_blank" rel="noopener">The Coming Man of Sin, Part 1</a></td><td>2 Th 2.1-⁠3</td></tr><tr><th scope="row"><span class="mot-fr">53-8</span></th><td><a href="https://www.gty.org/sermons/53-8" target="_blank" rel="noopener">The Coming Man of Sin, Part 2</a></td><td>2 Th 2.1-⁠5</td></tr><tr><th scope="row"><span class="mot-fr">53-9</span></th><td><a href="https://www.gty.org/sermons/53-9" target="_blank" rel="noopener">The Coming Man of Sin, Part 3</a></td><td>2 Th 2.6-⁠10a</td></tr><tr><th scope="row"><span class="mot-fr">53-10</span></th><td><a href="https://www.gty.org/sermons/53-10" target="_blank" rel="noopener">The Coming Man of Sin, Part 4</a></td><td>2 Th 2.10b-12</td></tr><tr><th scope="row"><span class="mot-fr">53-11</span></th><td><a href="https://www.gty.org/sermons/53-11" target="_blank" rel="noopener">The Coming Man of Sin, Part 5</a></td><td>2 Th 2.13-⁠14</td></tr><tr><th scope="row"><span class="mot-fr">53-12</span></th><td><a href="https://www.gty.org/sermons/53-12" target="_blank" rel="noopener">The Coming Man of Sin, Part 6</a></td><td>2 Th 2.13-⁠17</td></tr><tr><th scope="row"><span class="mot-fr">53-13</span></th><td><a href="https://www.gty.org/sermons/53-13" target="_blank" rel="noopener">The Pastor's Desire for His People</a></td><td>2 Th 3.1-⁠5</td></tr><tr><th scope="row"><span class="mot-fr">53-14</span></th><td><a href="https://www.gty.org/sermons/53-14" target="_blank" rel="noopener">Work: A Noble Christian Duty, Part 1</a></td><td>2 Th 3.6-⁠15</td></tr><tr><th scope="row"><span class="mot-fr">53-15</span></th><td><a href="https://www.gty.org/sermons/53-15" target="_blank" rel="noopener">Work: A Noble Christian Duty, Part 2</a></td><td>2 Th 3.6-⁠10</td></tr><tr><th scope="row"><span class="mot-fr">53-16</span></th><td><a href="https://www.gty.org/sermons/53-16" target="_blank" rel="noopener">Work: A Noble Christian Duty, Part 3</a></td><td>2 Th 3.10-⁠15</td></tr><tr><th scope="row"><span class="mot-fr">53-17</span></th><td><a href="https://www.gty.org/sermons/53-17" target="_blank" rel="noopener">Peace in Every Circumstance</a></td><td>2 Th 3.16-⁠18</td></tr></tbody></table></div></div></details></aside><div class="grille__texte"><div class="body"><p class="p-cle"><b>Chapitre 1 (1.1-⁠12) · La consolation dans l'affliction : une Église dont on est fier, la vengeance de Jésus-Christ et la prière qui glorifie son nom</b></p><p>Paul ouvre sa lettre en exprimant sa fierté pastorale devant les cinq marques spirituelles de l'assemblée de Thessalonique (1.1-⁠5; 53-⁠1) : 1) une conversion authentique logée « en Dieu notre Père et en Jésus-Christ le Seigneur » (1.1-⁠2); 2) une foi qui fait de grands progrès (<i>huperauxanei</i>, 1.3a) en réponse directe à la prière de 1 Thessaloniciens 3.10, prouvant que la persécution brûle la fausse foi mais fortifie la foi véritable; 3) un amour mutuel qui abonde chez chacun (<i>pleonazei</i>, 1.3b), exauçant 1 Thessaloniciens 3.12; 4) une espérance persévérante (<i>hupomonē</i>) au milieu des persécutions et des afflictions (1.4); 5) une attitude tournée vers le royaume, leur souffrance étant la preuve (<i>endeigma</i>) du juste discernement de Dieu qui les déclare dignes de son royaume (1.5) (53-⁠1).</p><p>Aux versets 6 à 10 (53-⁠2 à 53-⁠4), Paul console ces croyants affligés par la certitude de la révélation (<i>apokalupsis</i>) du Seigneur Jésus, lorsqu'il apparaîtra « du ciel », « avec les anges de sa puissance », « au milieu d'une flamme de feu » (la gloire ardente de la <i>Shekinah</i>, Ésaïe 66.15) (53-⁠2). Cette venue aura un double effet parfaitement conforme à la justice de Dieu (1.6) : d'une part, la <i>rétribution</i> (<i>ekdikēsis</i>) contre les persécuteurs qui ne connaissent pas Dieu et n'obéissent pas au commandement de l'Évangile (1.8), lesquels subiront « une ruine éternelle (<i>olethron aiōnion</i>, la perte irrévocable de tout bien-être, et non l'annihilation), loin de la face du Seigneur et de la gloire de sa force » (1.9; Ésaïe 2.10, 19, 21) (53-⁠3); d'autre part, le <i>soulagement</i> (<i>anesis</i>, le relâchement de la corde d'un arc) accordé aux croyants affligés (1.7), lorsque Christ viendra « en ce jour-là pour être glorifié dans ses saints et admiré dans tous ceux qui auront cru » (1.10) (53-⁠4). En vue de cette destinée, Paul prie sans cesse (1.11-⁠12; 53-⁠5, 53-⁠6) non pour leur confort matériel (à l'opposé des « cultes du cargo » et de l'évangile de la prospérité), mais pour trois requêtes spirituelles : que Dieu les juge dignes de leur appel, qu'il accomplisse tous les desseins bienveillants de sa bonté et qu'il revête de puissance l'œuvre de leur foi, afin que le nom du Seigneur Jésus soit glorifié en eux et eux en lui (53-⁠5, 53-⁠6).</p><p class="p-cle"><b>Chapitre 2 (2.1-⁠17) · La correction de l'erreur prophétique : l'homme impie à venir et l'assurance inébranlable des élus</b></p><p>Au chapitre 2 (53-⁠7 à 53-⁠12), Paul traite la crise doctrinale qui secouait l'Église : ébranlés dans leur bon sens (<i>saleuthēnai apo tou noos</i>) et troublés (<i>throeisthai</i>) par un esprit, une parole ou une fausse lettre attribuée à Paul (<i>hōs di' hēmōn</i>), les Thessaloniciens croyaient que « le jour du Seigneur était déjà là » (<i>enestēken</i>, 2.2) et craignaient d'avoir manqué l'enlèvement (« l'avènement de notre Seigneur Jésus-Christ et notre réunion [<i>episunagōgē</i>] avec lui », 2.1) (53-⁠8). MacArthur dégage cinq exhortations qui dissipent toute peur :
+1) <i>Ne soyez pas séduits</i> (2.3a; 53-⁠8).
+2) <i>Ne soyez pas oublieux</i> (2.3b-5; 53-⁠8) : deux grands événements doivent nécessairement précéder le jugement du jour du Seigneur : « l'apostasie » (<i>hē apostasia</i>, la défection mondiale finale) et la révélation de « l'homme impie (<i>ho anthrōpos tēs anomias</i>), le fils de la perdition, l'adversaire », qui s'élèvera au-dessus de tout ce qu'on adore et s'assiéra au milieu de la soixante-dixième semaine de Daniel dans le sanctuaire intérieur (<i>naos</i>) du temple reconstruit de Jérusalem en se proclamant lui-même Dieu (2.3-⁠4; Daniel 9.27; 11.36; Matthieu 24.15).
+3) <i>Ne soyez pas ignorants</i> (2.6-⁠10a; 53-⁠9) : si le mystère de l'iniquité agit déjà, l'impie est actuellement retenu par une puissance (<i>to katechon</i>, 2.6) et une Personne (<i>ho katechōn</i>, 2.7), le Saint-Esprit; lorsque celui-ci s'écartera du chemin (<i>ek mesou genētai</i>) après l'enlèvement de l'Église, alors paraîtra l'impie avec toutes sortes de miracles, signes et prodiges mensongers opérés par Satan (2.9), mais le Seigneur Jésus le détruira instantanément par le souffle de sa bouche (Ésaïe 11.4) et l'écrasera (<i>katargēsei</i>) par l'éclat de son avènement (2.8).
+4) <i>Ne soyez pas incrédules</i> (2.10b-12; 53-⁠10) : ceux qui périssent succombent parce qu'ils ont volontairement refusé « l'amour de la vérité pour être sauvés » (2.10b); en retour, Dieu leur envoie judiciairement « une puissance d'égarement (<i>energeian planēs</i>), pour qu'ils croient au mensonge », afin que soient condamnés tous ceux qui ont pris plaisir à l'injustice (2.11-⁠12).
+5) <i>Ne soyez ni inquiets quant à votre salut (2.13-⁠14; 53-⁠11), ni faibles dans votre fermeté (2.15-⁠17; 53-⁠12)</i> : les croyants sont au bénéfice des cinq maillons indestructibles du salut (aimés du Seigneur, choisis dès le commencement pour le salut, sanctifiés par l'Esprit et croyant la vérité, appelés par l'Évangile et destinés à posséder la gloire de Christ, 2.13-⁠14); c'est pourquoi ils doivent demeurer fermes (<i>stēkete</i>) et retenir les instructions (<i>paradoseis</i>) apostoliques (2.15), appuyés sur la consolation éternelle et l'affermissement du Seigneur Jésus-Christ et de Dieu notre Père (2.16-⁠17).</p><p class="p-cle"><b>Chapitre 3 (3.1-⁠18) · La confrontation de la vie désordonnée : la prière, le devoir du travail et la paix du Seigneur</b></p><p>Au chapitre 3 (53-⁠13 à 53-⁠17), Paul passe à l'application pratique dans la vie de l'assemblée. En 3.1-⁠5 (53-⁠13), il exprime les quatre désirs du pasteur pour son peuple : 1) qu'ils prient pour la course rapide et le triomphe de la Parole (Psaume 147.15) ainsi que pour la délivrance des messagers face aux hommes méchants et pervers (<i>atopōn kai ponērōn</i>, 3.1-⁠2); 2) qu'ils se confient dans le Seigneur fidèle (<i>pistos</i>) qui les affermira et les gardera du malin (3.3); 3) qu'ils obéissent aux préceptes apostoliques (3.4); 4) que le Seigneur dirige (<i>kateuthunai</i>) leurs cœurs vers l'amour de Dieu et la patience de Christ (3.5).</p><p>En 3.6-⁠15 (53-⁠14 à 53-⁠16), après deux avertissements antérieurs (lors de sa visite et en 1 Thessaloniciens 4.11; 5.14), Paul applique la troisième étape de Matthieu 18.15-⁠17 à ceux qui persistent à vivre dans le désordre (<i>ataktōs</i>) en refusant de travailler. Il déploie six motivations au travail honnête : 1) la rupture de communion fraternelle (<i>stellesthai</i>, 3.6); 2) l'exemple apostolique de Paul qui a travaillé nuit et jour dans la fatigue et la peine à fabriquer des tentes en renonçant à son droit (<i>exousia</i>) pour leur servir de modèle (<i>tupos</i>, 3.7-⁠9); 3) la loi de la survie (« Si quelqu'un ne veut pas travailler, qu'il ne mange pas non plus », 3.10); 4) l'harmonie de l'Église, menacée par ceux « qui ne travaillent pas, mais qui s'occupent de futilités » (<i>mēden ergazomenous alla periergazomenous</i>, 3.11-⁠12), tandis que les fidèles ne doivent pas se lasser de faire le bien (3.13); 5) la honte salutaire produite par la mise à l'écart (<i>sēmeiousthe</i>, <i>mē sunanamignusthai</i>, <i>hina entrapē</i>, 3.14); 6) l'amour fraternel qui avertit le rebelle comme un frère et non comme un ennemi (<i>noutheteite hōs adelphon</i>, 3.15). Enfin, en 3.16-⁠18 (53-⁠17), Paul clôt l'épître par quatre ressources divines : la paix du Seigneur donnée « en tout temps, de toute manière » (3.16a), la force de sa présence (« Que le Seigneur soit avec vous tous! », 3.16b), la sûreté de la vérité garantie par sa signature autographe (3.17) et la grâce suffisante du Seigneur Jésus-Christ (3.18).</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>2 Thessaloniciens 1.3, 2.13 et 3.5, 16.</b> L'architecture globale de l'épître repose sur deux obligations d'action de grâces identiques (<i>Eucharistein opheilomen tō Theō pantote peri humōn, adelphoi</i> en 1.3 et <i>Hēmeis de opheilomen eucharistein tō Theō pantote peri humōn, adelphoi</i> en 2.13) et sur quatre prières pastorales qui closent chaque mouvement (1.11-⁠12; 2.16-⁠17; 3.5; 3.16, 18).</li><li><b>2 Thessaloniciens 1.1-⁠2, 1.12 et 2.16-⁠17.</b> À travers toute la lettre, l'égalité divine du Père et du Fils est inscrite dans la syntaxe même : une seule préposition les régit conjointement en 1.1 (<i>en</i>) et 1.2 (<i>apo</i>), un seul article défini les unit en 1.12 (<i>tou Theou hēmōn kai Kuriou Iēsou Christou</i>), et en 2.16-⁠17 le sujet double <i>Autos de ho Kurios hēmōn Iēsous Christos kai Theos ho Patēr hēmōn</i> gouverne des participes et des verbes à l'optatif au singulier (<i>agapēsas</i>, <i>dous</i>, <i>parakalesai</i>, <i>stērixai</i>).</li><li><b>2 Thessaloniciens 1.7-⁠8 et 2.8.</b> Le dévoilement du Seigneur Jésus (<i>en tē apokalupsei tou Kuriou Iēsou</i>, 1.7) et l'éclat de son avènement (<i>tē epiphaneia tēs parousias autou</i>, 2.8) répondent symétriquement au triple dévoilement passif de l'homme impie (<i>apokaluphthē</i> en 2.3; <i>apokaluphthēnai</i> en 2.6; <i>apokaluphthēsetai</i> en 2.8) et à sa <i>parousia</i> satanique (2.9).</li><li><b>2 Thessaloniciens 1.10-⁠12 et 2.13-⁠14.</b> Le but ultime de l'histoire rédemptrice est formulé dans les mêmes termes aux chapitres 1 et 2 : l'appel efficace de Dieu (<i>tēs klēseōs</i> en 1.11; <i>ekalesen humas</i> en 2.14) vise la glorification réciproque du Christ et des siens (<i>endoxasthēnai en tois hagiois autou</i> en 1.10; <i>endoxasthē to onoma ... en humin, kai humeis en autō</i> en 1.12; <i>eis peripoiēsin doxēs tou Kuriou hēmōn Iēsou Christou</i> en 2.14).</li><li><b>2 Thessaloniciens 2.2, 2.15 et 3.6, 14, 17.</b> Le fil conducteur de l'autorité apostolique écrite et orale relie les chapitres 2 et 3 : face à la fausse parole et à la fausse lettre de 2.2 (<i>mēte dia logou mēte di' epistolēs hōs di' hēmōn</i>), Paul oppose la tradition légitime reçue « soit par notre parole, soit par notre lettre » (<i>tas paradoseis ... eite dia logou eite di' epistolēs hēmōn</i>, 2.15; cf. <i>paradosin</i> en 3.6), exige l'obéissance à « ce que nous disons par cette lettre » (<i>tō logō hēmōn dia tēs epistolēs</i>, 3.14) et appose son sceau autographe « dans toutes mes lettres » (<i>en pasē epistolē</i>, 3.17).</li><li><b>2 Thessaloniciens 2.17 et 3.3.</b> La transition entre la fin du chapitre 2 et le début du chapitre 3 est scellée par la reprise du verbe <i>stērizō</i> (« affermir ») : ce que Paul demande dans la prière de 2.17 (<i>parakalesai humōn tas kardias kai stērixai</i>), il l'affirme comme une promesse certaine fondée sur la fidélité du Seigneur en 3.3 (<i>Pistos de estin ho Kurios, hos stērixei humas</i>).</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Huit passages</p></header>
+<p class="lead">Huit passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">1 Thessaloniciens 3.10-⁠13 et 4.11-⁠5.14</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">toile de fond directe de toute la seconde épître : 2 Thessaloniciens 1.3-⁠4 constate l'exaucement des prières de 1 Thessaloniciens 3.10-⁠12 pour la croissance de leur foi et de leur amour; 2 Thessaloniciens 2.1-⁠14 clarifie l'ordre entre l'enlèvement de 1 Thessaloniciens 4.13-⁠18 et le jour du Seigneur de 5.1-⁠9; et 2 Thessaloniciens 3.6-⁠15 porte au stade disciplinaire les exhortations au travail paisible de 1 Thessaloniciens 4.11-⁠12 et 5.14 (53-⁠1, 53-⁠8, 53-⁠14).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Ésaïe 66.15 et 2.10, 19, 21</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Sources vétérotestamentaires de la théophanie judiciaire de 2 Thessaloniciens 1.7-⁠9 : en Ésaïe 66.15, le texte hébreu massorétique annonce que YHWH viendra dans le feu (<i>bā'ēsh yāvō'</i>) et ses menaces en flammes de feu (<i>bəlahăvē-'ēsh</i>), traduit dans le grec de la Septante (LXX) par <i>en phlogi puros didonai ekdikēsin</i> (repris en 1.8); en Ésaïe 2.10, 19, 21, l'hébreu massorétique <i>mippənē paḥad YHWH ūmēhădar gə'ōnō</i> est traduit mot pour mot dans la Septante par <i>apo prosōpou tou phobou Kuriou kai apo tēs doxēs tēs ischuos autou</i>, que Paul applique au bannissement loin de la face du Seigneur Jésus en 1.9 (53-⁠2, 53-⁠3).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Daniel 9.24-⁠27 et 11.36-⁠37</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Fondement prophétique de 2 Thessaloniciens 2.3-⁠4 : l'alliance de la soixante-dixième semaine rompue au milieu des sept ans par l'abomination du dévastateur dans le temple (Daniel 9.27) et le portrait du roi qui, dans le texte hébreu massorétique de Daniel 11.36, s'élève et se glorifie au-dessus de tout dieu (<i>wəyitrōmēm wəyitgaddēl 'al-kāl-'ēl</i>; grec LXX/Théodotion : <i>hupsōthēsetai kai megalunthēsetai epi panta theon</i>), repris par Paul en 2.4 avec <i>huperairomenos epi panta legomenon theon ē sebasma</i> (53-⁠7, 53-⁠8).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Ésaïe 11.4</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Source messianique directe de 2 Thessaloniciens 2.8 (« que le Seigneur Jésus détruira par le souffle de sa bouche ») : là où l'hébreu massorétique d'Ésaïe 11.4 déclare que le Messie fera mourir le méchant par le souffle de ses lèvres (<i>ūvərūaḥ śəfātāyw yāmît rāshā'</i>), le grec de la Septante (LXX) traduit <i>kai en pneumati dia cheileōn anelei asebē</i>, repris par Paul avec <i>hon ho Kurios Iēsous anelei tō pneumati tou stomatos autou</i> (53-⁠9).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Matthieu 24.15-⁠31</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Discours de Jésus sur le mont des Oliviers unifiant les chapitres 1 et 2 de 2 Thessaloniciens : l'abomination de la désolation établie dans le lieu saint (Matthieu 24.15; cf. 2.4), les grands prodiges et miracles mensongers (24.24; cf. 2.9), puis la venue glorieuse du Fils de l'homme du ciel avec ses anges puissants (24.30-⁠31; cf. 1.7-⁠8 et 2.8) (53-⁠2, 53-⁠7, 53-⁠8).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Romains 8.29-⁠30 (et Éphésiens 1.4-⁠5)</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Parallèle doctrinal direct de la synthèse du salut en 2 Thessaloniciens 2.13-⁠14 : l'amour éternel et l'élection avant la fondation du monde (<i>heilato ... ap' archēs eis sōtērian</i>), l'appel efficace par l'Évangile (<i>ekalesen</i>) et la glorification finale (<i>eis peripoiēsin doxēs</i>) (53-⁠11).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Psaume 147.15</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Source de l'image de la course de la Parole en 2 Thessaloniciens 3.1 (« afin que la parole du Seigneur se répande [litt. : coure] », <i>hina ho logos tou Kuriou trechē</i>) : dans l'hébreu massorétique du Psaume 147.15, la parole de Dieu court avec vitesse (<i>'ad-məhērāh yārūṣ dəvārō</i>), rendu dans le grec de la Septante (LXX, Psaume 147.4) par le même verbe <i>trechō</i> (<i>heōs tachous drameitai ho logos autou</i>) (53-⁠13).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Matthieu 18.15-⁠17 (et Genèse 2.15; 3.19)</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Double fondement de 2 Thessaloniciens 3.6-⁠15 : d'une part, le mandat créationnel du travail et la loi de la subsistance à la sueur du front (Genèse 2.15; 3.19; cf. 3.10); d'autre part, la troisième étape de la discipline ecclésiale instituée par Christ (Matthieu 18.17a) qui ordonne à l'assemblée entière de se retirer du frère rebelle pour l'amener à une honte salutaire tout en l'avertissant comme un frère (3.6, 14-⁠15) (53-⁠14, 53-⁠16).</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Cinq axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">La valeur purificatrice de l'épreuve et la justice rétributive du retour de Christ</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>La persévérance et la foi croissante des Thessaloniciens au milieu des persécutions sont une preuve du juste jugement de Dieu pour qu'ils soient déclarés dignes de son royaume (1.3-⁠5), tandis que le Seigneur Jésus apparaîtra du ciel dans une flamme de feu pour donner du repos aux affligés et infliger une ruine éternelle à ceux qui ne connaissent pas Dieu et n'obéissent pas à l'Évangile (1.6-⁠10).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Dieu utilise souverainement la souffrance présente pour éprouver, purifier et faire grandir la foi et l'amour de ses enfants en vue de son royaume (53-⁠1). Parallèlement, la justice immuable de Dieu garantit qu'au dévoilement glorieux de Jésus-Christ, tous les comptes seront soldés : les persécuteurs qui rejettent le commandement de l'Évangile subiront le bannissement conscient et éternel de l'enfer (<i>olethros aiōnios</i>), tandis que les saints entreront dans le repos et refléteront la gloire même de leur Sauveur (53-⁠2, 53-⁠3, 53-⁠4).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Le chapitre 1 pose le cadre de la justice eschatologique de Dieu (1.5-⁠10); le chapitre 2 en précise l'acte culminant dans la destruction de l'homme impie et la condamnation de ses adeptes (2.8-⁠12); le chapitre 3 en tire la paix présente du croyant gardé du malin (3.3, 16).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le chrétien persécuté n'a ni à douter de l'amour de Dieu ni à chercher à se venger lui-même : il endure l'épreuve avec patience et prie avant tout pour une marche digne de sa vocation et pour la gloire du nom de Jésus (1.11-⁠12) (53-⁠3, 53-⁠5, 53-⁠6).</p></div></div></section><section class="theme"><h3 class="theme__title">L'ordre prophétique du jour du Seigneur : l'enlèvement, la retenue de l'Esprit et l'homme impie</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>En vue de l'avènement du Seigneur Jésus-Christ et de notre réunion avec lui, les croyants ne doivent pas se laisser troubler comme si le jour du Seigneur était déjà là, car il faut que viennent d'abord l'apostasie et la révélation de l'homme impie, actuellement contenu par Celui qui le retient jusqu'à ce qu'il s'écarte du milieu (2.1-⁠8).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Le programme prophétique de Dieu suit un ordre précis et irréversible : l'Église est promise à être rassemblée auprès du Seigneur lors de l'enlèvement (2.1; 1 Thessaloniciens 4.16-⁠17) avant que ne se déchaîne le jugement du jour du Seigneur (53-⁠8). Tant que le Saint-Esprit exerce son ministère de retenue par sa présence dans l'Église, l'homme de l'iniquité ne peut se manifester; lorsque l'Esprit s'écartera au milieu de la tribulation, l'Antichrist s'intronisera dans le temple reconstruit de Jérusalem avec la puissance mensongère de Satan, avant d'être anéanti par le souffle de la bouche du Seigneur Jésus à son retour en gloire (2.3-⁠9) (53-⁠8, 53-⁠9).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Cette révélation centrale de 2.1-⁠9 complète l'enseignement de 1 Thessaloniciens 4.13-⁠5.11 et corrige à la racine la panique eschatologique qui alimentait le désordre social dénoncé au chapitre 3.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Une compréhension exacte de la Parole prophétique garde le croyant de toute frayeur devant les soubresauts du monde et le protège contre les faux prophètes et les spéculations sensationnalistes (53-⁠8, 53-⁠9).</p></div></div></section><section class="theme"><h3 class="theme__title">L'aveuglement judiciaire des rebelles et l'élection éternelle des rachetés</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Ceux qui périssent reçoivent de Dieu une puissance d'égarement pour croire au mensonge et être condamnés parce qu'ils n'ont pas reçu l'amour de la vérité mais ont pris plaisir à l'injustice (2.10-⁠12); en revanche, les frères bien-aimés du Seigneur ont été choisis par Dieu dès le commencement pour le salut, par la sanctification de l'Esprit et par la foi en la vérité, et appelés par l'Évangile à posséder la gloire de Jésus-Christ (2.13-⁠14).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>L'Écriture maintient côte à côte l'entière responsabilité morale de l'homme dans sa perdition et l'entière souveraineté de la grâce de Dieu dans le salut : les incrédules sont condamnés et judiciairement livrés au mensonge parce qu'ils rejettent volontairement la vérité par amour du péché (53-⁠10), tandis que les croyants sont sauvés et gardés jusqu'à la gloire uniquement parce que Dieu les a souverainement aimés, élus dès l'éternité, sanctifiés par l'Esprit et appelés par l'Évangile (53-⁠11).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Le contraste entre ceux qui n'obéissent pas à l'Évangile et ceux qui ont cru au témoignage apostolique traverse les trois chapitres : 1.8-⁠10, 2.10-⁠14 et 3.2-⁠3 (« car tous n'ont pas la foi. Mais le Seigneur est fidèle »).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>La conscience que notre salut repose tout entier sur le choix éternel et l'amour immuable de Dieu produit en nous une gratitude humble et une sécurité inébranlable au cœur de l'apostasie (53-⁠11).</p></div></div></section><section class="theme"><h3 class="theme__title">La suffisance de la tradition apostolique écrite et l'affermissement divin</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Face aux prétendues révélations et aux lettres falsifiées (2.2), Paul ordonne de demeurer fermes et de retenir les instructions reçues par sa parole ou par sa lettre (2.15; 3.6, 14), prie que le Seigneur Jésus-Christ et Dieu notre Père affermissent leurs cœurs en toute bonne œuvre et parole (2.16-⁠17; 3.3), et appose sa signature autographe au bas de l'épître (3.17).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>La vérité divine qui fait autorité pour la foi et la conduite de l'Église ne se trouve pas dans des impressions subjectives ou des prophéties extra-bibliques, mais exclusivement dans l'enseignement apostolique authentique consigné dans l'Écriture (53-⁠8, 53-⁠12, 53-⁠17). Tandis que le croyant est appelé à saisir fermement cette Parole, c'est le Seigneur fidèle lui-même qui affermit son cœur et le garde du malin (53-⁠12, 53-⁠13).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Après avoir démasqué la fausse lettre en 2.2, Paul établit la norme de la tradition apostolique en 2.15, en fait le critère de la discipline ecclésiale en 3.6 et 3.14, et scelle matériellement sa lettre par sa signature en 3.17.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Demeurer ferme aujourd'hui exige de soumettre toute doctrine et toute pratique à l'autorité exclusive de l'Écriture écrite, tout en priant pour que la Parole du Seigneur poursuive sa course et soit glorifiée (2.15; 3.1) (53-⁠12, 53-⁠13).</p></div></div></section><section class="theme"><h3 class="theme__title">La vocation chrétienne du travail et la discipline fraternelle sous la paix du Seigneur</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Suivant l'exemple de Paul qui a travaillé nuit et jour pour n'être à la charge de personne, chacun doit travailler paisiblement pour manger son propre pain selon la règle « Si quelqu'un ne veut pas travailler, qu'il ne mange pas non plus » (3.7-⁠12); l'assemblée doit s'éloigner de tout frère qui vit dans le désordre afin qu'il éprouve de la honte, tout en l'avertissant comme un frère sous la garde du Seigneur de la paix (3.6, 13-⁠16).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Le travail quotidien honnête fait partie intégrante de la sainteté chrétienne et de l'ordre créationnel de Dieu : il honore Christ, prévient l'oisiveté médisante et permet d'exercer la bienfaisance (53-⁠14, 53-⁠15). Lorsqu'un frère professe la foi mais refuse obstinément d'obéir à cet ordre apostolique, l'Église doit exercer une discipline graduée, ferme et aimante visant sa repentance et sa restauration, tout en comptant sur le Seigneur de la paix pour garder l'assemblée en tout temps et de toute manière (53-⁠16, 53-⁠17).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Le chapitre 3 traduit dans le concret de l'atelier et de la vie communautaire la dignité de la vocation demandée en 1.11 et l'affermissement « en toute bonne œuvre » demandé en 2.17.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Une assemblée bibliquement saine unit le labeur paisible de chacun, la générosité infatigable envers les vrais nécessiteux, le courage d'exercer la discipline restauratrice et la jouissance constante de la paix et de la grâce de Jésus-Christ (3.12-⁠18) (53-⁠16, 53-⁠17).</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Six questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>En suivant le fil conducteur des trois chapitres de 2 Thessaloniciens, comment voyez-vous s'articuler les trois fonctions essentielles du ministère pastoral : consoler les affligés par l'espérance (chapitre 1), corriger l'erreur par la saine doctrine (chapitre 2) et confronter le désordre par une discipline aimante (chapitre 3)?</li><li>Comment la double révélation du chapitre 1 (la croissance de la foi et de l'amour dans l'épreuve en 1.3-⁠5 et la juste rétribution de Jésus-Christ à son retour en 1.6-⁠10) transforme-t-elle notre manière de prier lorsque nous-mêmes ou nos frères traversons la souffrance (1.11-⁠12) (53-⁠1 à 53-⁠6)?</li><li>Pourquoi l'ennemi des âmes cherche-t-il constamment, comme en 2.1-⁠2, soit à détourner les chrétiens de la vérité prophétique par la peur et la confusion, soit à utiliser une attente déformée du retour de Christ pour les pousser à l'oisiveté (3.6-⁠11) (53-⁠8, 53-⁠14)?</li><li>Que nous révèle le contraste saisissant de 2.10-⁠14 sur la différence entre la cause de la perdition des incrédules (leur refus moral d'aimer la vérité et leur plaisir dans l'injustice) et la cause du salut des croyants (l'amour éternel, l'élection, la sanctification de l'Esprit et l'appel efficace de Dieu) (53-⁠10, 53-⁠11)?</li><li>À la lumière de 3.6-⁠15, comment notre compréhension du travail quotidien et de la discipline ecclésiale doit-elle être réformée pour éviter à la fois le piège d'une charité naïve qui entretient la paresse et celui d'une sévérité sans amour qui traite un frère désobéissant comme un ennemi (53-⁠14 à 53-⁠16)?</li><li>En relevant les quatre prières pastorales qui jalonnent l'épître (1.11-⁠12; 2.16-⁠17; 3.5; 3.16, 18), comment l'union constante de la souveraineté divine et de la responsabilité humaine nourrit-elle en nous « la paix en tout temps, de toute manière » (53-⁠5, 53-⁠12, 53-⁠17)?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · 2 Thessaloniciens 1-⁠3 · 23 octobre 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-2-Thessaloniciens-1-3.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

@@ -13,8 +13,8 @@ Galates ouvre la série parce que MacArthur la tient pour la première lettre de
 | Rang | Épître | Date (apr. J.-C.) | Lieu de rédaction | État dans le dépôt | Source |
 |---:|---|---|---|---|---|
 | 1 | Galates | probablement vers 49-50 | non précisé par MacArthur | étudiée : [Galates](Galates/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/gal) |
-| 2 | 1 Thessaloniciens | vers 51 | Corinthe | à venir | [introduction](https://www.myopenbible.com/bible/intro/gty/1th) |
-| 3 | 2 Thessaloniciens | fin 51 ou début 52 | Corinthe | à venir | [introduction](https://www.myopenbible.com/bible/intro/gty/2th) |
+| 2 | 1 Thessaloniciens | vers 51 | Corinthe | étudiée : [1 Thessaloniciens](1-Thessaloniciens/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/1th) |
+| 3 | 2 Thessaloniciens | fin 51 ou début 52 | Corinthe | étudiée : [2 Thessaloniciens](2-Thessaloniciens/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/2th) |
 | 4 | 1 Corinthiens | très probablement dans la première moitié de 55 | Éphèse | à venir | [introduction](https://www.myopenbible.com/bible/intro/gty/1co) |
 | 5 | 2 Corinthiens | très probablement fin 55 ou tout début 56 | peut-être Philippes, en Macédoine | à venir | [introduction](https://www.myopenbible.com/bible/intro/gty/2co) |
 | 6 | Romains | très probablement en 56 | Corinthe | à venir | [introduction](https://www.myopenbible.com/bible/intro/gty/rom) |

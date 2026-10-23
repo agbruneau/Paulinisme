@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2 Thessaloniciens 3 · Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de 2 Thessaloniciens 3 dans la perspective de John MacArthur : Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* État du texte, Structure et grammaire : variantes en fiches (comme .mot), témoins
+     et observations entre filets, plan à gouttière de références. Ces blocs, chargés
+     de translittérations, sont alignés à gauche : pas de rivières. */
+  h3.marge__titre{font-family:inherit;font-weight:500;line-height:1.4;}
+  h3.marge__titre:not(:first-child){margin-top:2.6rem !important;}
+  .critique{max-width:var(--colonne,46rem);margin:0 auto;}  /* sermon-series : section sans grille */
+  .grille--apparat > .grille__texte + .grille__marge{margin-top:2.6rem;}  /* une colonne : la marge suit le texte */
+  .grille--apparat > .grille__texte{padding-top:1.2rem;}
+  .grille--apparat .lead,.critique .lead{text-align:left;}
+  .rangs dd,.temoins li,.encadre p,.section .plan p,.observations dd{
+    margin:0;text-align:left;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;text-wrap:pretty;
+  }
+  .variante{padding:1.2rem 1.5rem .5rem;border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 8px 8px 0;background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));}
+  .variante + .variante{margin-top:1.3rem;}
+  .variante__ref,.observations dt{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.2;color:var(--or-clair);}
+  .variante__ref{margin:0 0 .6rem;font-size:1.45rem;}
+  .rangs{margin:0;}
+  .rangs > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.2rem;padding:.75rem 0;border-top:1px solid var(--filet);}
+  .rangs dt{padding-top:.3rem;}
+  .rangs dd{font-size:.9em;line-height:1.7;color:var(--encre-doux);}
+  .rangs .rangs__portee{color:var(--encre);}
+  .temoins{list-style:none;margin:0 0 2.2rem;padding:0;border-bottom:1px solid var(--filet);}
+  .temoins li{padding:.75rem 0;border-top:1px solid var(--filet);font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .encadre{padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .encadre .marge__titre{margin-bottom:.7rem !important;}
+  .encadre p{font-size:.9em;line-height:1.65;color:var(--encre-doux);}
+  /* Plan : références en gouttière, un filet et un losange par mouvement, le marqueur sous son titre */
+  .plan{--gouttiere:9.6rem;--ecart:1.3rem;list-style:none;margin:0;padding:0;}
+  .plan li{position:relative;display:grid;grid-template-columns:var(--gouttiere) minmax(0,1fr);column-gap:var(--ecart);}
+  .plan li::before{content:"";position:absolute;left:calc(var(--gouttiere) + var(--ecart) - .22rem);top:.62rem;
+    width:.45rem;height:.45rem;background:var(--or);transform:rotate(45deg);}
+  .section .plan .plan__ref{padding-top:.05rem;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.25rem;line-height:1.2;color:var(--or-clair);}
+  .plan__ref span{white-space:nowrap;}
+  .plan__corps{padding:0 0 1.6rem 1.5rem;border-left:1px solid var(--filet-fort);}
+  .plan li:last-child .plan__corps{padding-bottom:.2rem;}
+  .plan li:first-child,.plan li:first-child .plan__corps{border-image:linear-gradient(transparent .7rem,var(--filet-fort) 0) 1;}
+  .section .plan .plan__titre{margin-bottom:.55rem;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.3rem;line-height:1.3;color:var(--encre);text-wrap:balance;}
+  .section .plan .plan__marqueur{font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .rangs dt,.plan__marqueur .mot__label{font-size:.8rem;}
+  .observations{margin:0;}
+  .observations > div + div{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--filet);}
+  .observations dt{margin-bottom:.4rem;font-size:1.25rem;}
+  .observations dd{font-size:.9em;line-height:1.72;color:var(--encre-doux);}
+  @media (max-width:35rem){
+    .rangs > div{grid-template-columns:1fr;}
+    .rangs dt{padding-top:0;}
+    .variante{padding:1rem 1.1rem .4rem;}
+    .plan li{display:block;padding:0 0 1.4rem 1.3rem;border-left:1px solid var(--filet-fort);}
+    .plan li:last-child{padding-bottom:.2rem;}
+    .plan li::before{left:-.25rem;top:.45rem;}
+    .section .plan .plan__ref{margin-bottom:.25rem;text-align:left;}
+    .plan__corps,.plan li:last-child .plan__corps{padding:0;border:0;}
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .recherche .grille--apparat{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+    .grille--apparat > .grille__texte + .grille__marge{margin-top:0;}
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">2 Thessaloniciens 3</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">2 Thessaloniciens 3</span></p>
+    <h1 class="hero__title">Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;Car, lorsque nous étions chez vous, nous vous disions expressément: Si quelqu’un ne veut pas travailler, qu’il ne mange pas non plus. Nous apprenons, cependant, qu’il y en a parmi vous quelques-uns qui vivent dans le désordre, qui ne travaillent pas, mais qui s’occupent de futilités. Nous invitons ces gens-là, et nous les exhortons par le Seigneur Jésus-Christ, à manger leur propre pain, en travaillant paisiblement.&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">2 Thessaloniciens 3.10-⁠12 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 23 octobre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">2 Thessaloniciens 3</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Le chapitre 3 forme la troisième grande partie et la conclusion pratique de la deuxième épître aux Thessaloniciens. Introduit par la formule de transition « Au reste, frères » (<i>To loipon, adelphoi</i>, 3.1; cf. 1 Thessaloniciens 4.1), il tire les conséquences concrètes de la consolation eschatologique du chapitre 1 et de la rectification prophétique du chapitre 2 : puisque le jour du Seigneur n'est pas encore là et que Dieu a souverainement choisi les croyants pour posséder la gloire de Christ tout en leur ordonnant de retenir les traditions apostoliques (2.13-⁠15), l'Église doit maintenant prier pour l'avancement de la Parole (3.1-⁠5), exercer une discipline ferme mais fraternelle envers ceux qui refusent de travailler (3.6-⁠15) et s'appuyer sur la paix, la présence, la vérité et la grâce du Seigneur (3.16-⁠18).</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">Au reste, frères, priez pour nous, afin que la parole du Seigneur se répande et soit glorifiée comme elle l’est chez vous,</p><cite class="verse__ref">2 Thessaloniciens 3.1 · NEG</cite></figure><figure class="verse"><p class="verse__text">et afin que nous soyons délivrés des hommes méchants et pervers; car tous n’ont pas la foi.</p><cite class="verse__ref">2 Thessaloniciens 3.2 · NEG</cite></figure><figure class="verse"><p class="verse__text">Le Seigneur est fidèle, il vous affermira et vous préservera du malin.</p><cite class="verse__ref">2 Thessaloniciens 3.3 · NEG</cite></figure><figure class="verse"><p class="verse__text">Nous avons à votre égard cette confiance dans le Seigneur que vous faites et que vous ferez les choses que nous recommandons.</p><cite class="verse__ref">2 Thessaloniciens 3.4 · NEG</cite></figure><figure class="verse"><p class="verse__text">Que le Seigneur dirige vos cœurs vers l’amour de Dieu et vers la patience de Christ!</p><cite class="verse__ref">2 Thessaloniciens 3.5 · NEG</cite></figure><figure class="verse"><p class="verse__text">Nous vous recommandons, frères, au nom de notre Seigneur Jésus-Christ, de vous éloigner de tout frère qui vit dans le désordre, et non selon les instructions que vous avez reçues de nous.</p><cite class="verse__ref">2 Thessaloniciens 3.6 · NEG</cite></figure><figure class="verse"><p class="verse__text">Vous savez vous-mêmes comment il faut nous imiter, car nous n’avons pas vécu parmi vous dans le désordre.</p><cite class="verse__ref">2 Thessaloniciens 3.7 · NEG</cite></figure><figure class="verse"><p class="verse__text">Nous n’avons mangé gratuitement le pain de personne; mais, dans le travail et dans la peine, nous avons été nuit et jour à l’œuvre, pour n’être à la charge d’aucun de vous.</p><cite class="verse__ref">2 Thessaloniciens 3.8 · NEG</cite></figure><figure class="verse"><p class="verse__text">Ce n’est pas que nous n’en ayons le droit, mais nous avons voulu vous donner en nous-mêmes un modèle à imiter.</p><cite class="verse__ref">2 Thessaloniciens 3.9 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car, lorsque nous étions chez vous, nous vous disions expressément: Si quelqu’un ne veut pas travailler, qu’il ne mange pas non plus.</p><cite class="verse__ref">2 Thessaloniciens 3.10 · NEG</cite></figure><figure class="verse"><p class="verse__text">Nous apprenons, cependant, qu’il y en a parmi vous quelques-uns qui vivent dans le désordre, qui ne travaillent pas, mais qui s’occupent de futilités.</p><cite class="verse__ref">2 Thessaloniciens 3.11 · NEG</cite></figure><figure class="verse"><p class="verse__text">Nous invitons ces gens-là, et nous les exhortons par le Seigneur Jésus-Christ, à manger leur propre pain, en travaillant paisiblement.</p><cite class="verse__ref">2 Thessaloniciens 3.12 · NEG</cite></figure><figure class="verse"><p class="verse__text">Pour vous, frères, ne vous lassez pas de faire le bien.</p><cite class="verse__ref">2 Thessaloniciens 3.13 · NEG</cite></figure><figure class="verse"><p class="verse__text">Et si quelqu’un n’obéit pas à ce que nous disons par cette lettre, notez-le, et n’ayez point de relations avec lui, afin qu’il éprouve de la honte.</p><cite class="verse__ref">2 Thessaloniciens 3.14 · NEG</cite></figure><figure class="verse"><p class="verse__text">Ne le regardez pas comme un ennemi, mais avertissez-le comme un frère.</p><cite class="verse__ref">2 Thessaloniciens 3.15 · NEG</cite></figure><figure class="verse"><p class="verse__text">Que le Seigneur de la paix vous donne lui-même la paix en tout temps, de toute manière! Que le Seigneur soit avec vous tous!</p><cite class="verse__ref">2 Thessaloniciens 3.16 · NEG</cite></figure><figure class="verse"><p class="verse__text">Je vous salue, moi Paul, de ma propre main. C’est là ma signature dans toutes mes lettres; c’est ainsi que j’écris.</p><cite class="verse__ref">2 Thessaloniciens 3.17 · NEG</cite></figure><figure class="verse"><p class="verse__text">Que la grâce de notre Seigneur Jésus-Christ soit avec vous tous!</p><cite class="verse__ref">2 Thessaloniciens 3.18 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>Sur le plan littéraire, ce chapitre relève du genre de la parénèse pastorale, de l'ordonnance disciplinaire apostolique et de la bénédiction épistolaire finale. MacArthur souligne l'équilibre remarquable entre la douceur pastorale et l'autorité apostolique qui traverse ces dix-huit versets : Paul commence par solliciter humblement l'intercession de son troupeau tout en affirmant sa confiance dans la fidélité du Seigneur (3.1-⁠5; 53-⁠13); il emploie ensuite quatre fois le verbe militaire de commandement <i>parangellō</i> (3.4, 6, 10, 12) pour ordonner la mise à l'écart des oisifs indisciplinés qui vivaient aux crochets de l'assemblée (3.6-⁠15; 53-⁠14 à 53-⁠16); puis il referme la lettre par deux prières de bénédiction et par sa signature autographe (3.16-⁠18; 53-⁠17).</p><p>MacArthur divise le chapitre en trois mouvements : premièrement, les quatre désirs du pasteur pour son peuple (3.1-⁠5 : qu'ils soient fervents dans la prière en 3.1-⁠2, confiants dans la fidélité du Seigneur en 3.3, obéissants aux préceptes en 3.4 et croissants dans l'amour de Dieu et la patience de Christ en 3.5; 53-⁠13); deuxièmement, les six motivations chrétiennes au travail honnête et à la discipline fraternelle (3.6-⁠15 : la rupture de communion en 3.6, l'exemple apostolique en 3.7-⁠9, la survie en 3.10, l'harmonie de l'Église en 3.11-⁠13, la honte salutaire en 3.14 et l'amour fraternel en 3.15; 53-⁠14 à 53-⁠16); troisièmement, les quatre ressources divines accordées aux croyants pour accomplir ces devoirs (3.16-⁠18 : la paix du Seigneur en 3.16a, la force de sa présence en 3.16b, la vérité garantie par la signature de Paul en 3.17 et la grâce suffisante en 3.18; 53-⁠17).</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">2 Thessaloniciens 3</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">Rédigé depuis Corinthe peu après la première épître (vers 50 ou 51 apr. J.-C.), ce troisième chapitre reflète à la fois la situation périlleuse de Paul en Achaïe et la crise disciplinaire qui s'était aggravée au sein de l'Église de Thessalonique. À Corinthe, Paul faisait face à une hostilité virulente de la part des Juifs incrédules, qui blasphémaient, s'opposaient à son message et allaient jusqu'à le traîner devant le tribunal du proconsul Gallion (Actes 18.6, 12-⁠17) (53-⁠13). C'est au cœur de cette opposition menaçante que Paul demande aux Thessaloniciens de prier pour que la Parole du Seigneur poursuive sa course rapide comme à Thessalonique et qu'il soit délivré « des hommes méchants et pervers » (<i>atopōn kai ponērōn anthrōpōn</i>, 3.1-⁠2) (53-⁠13).</p><div class="body"><p>Parallèlement, à Thessalonique, le problème de l'oisiveté désordonnée s'était envenimé malgré deux avertissements antérieurs. Lors de son séjour fondateur, Paul avait déjà travaillé nuit et jour de ses propres mains à fabriquer des tentes (Actes 18.3) chez Jason et énoncé la règle : « Si quelqu'un ne veut pas travailler, qu'il ne mange pas non plus » (3.7-⁠10) (53-⁠15). Quelques mois plus tard, en 1 Thessaloniciens 4.11-⁠12 et 5.14, il les avait de nouveau exhortés à travailler de leurs mains et à avertir les désordonnés (<i>ataktous</i>). Or, le porteur de la première lettre venait de rapporter à Paul que certains membres refusaient toujours obstinément de travailler, abusaient de la générosité charitable des frères et passaient leurs journées à s'ingérer dans les affaires d'autrui (<i>mēden ergazomenous alla periergazomenous</i>, 3.11) (53-⁠14, 53-⁠16).</p><p>Comme l'explique MacArthur (53-⁠14, 53-⁠15), deux facteurs culturels et spirituels alimentaient ce refus du travail à Thessalonique : d'une part, l'héritage de la culture grecque, qui méprisait le travail manuel comme une corvée servile indigne d'un homme libre; d'autre part, la fièvre eschatologique attisée par les faux docteurs du chapitre 2 (2.2), qui poussait certains illuminés à quitter leur emploi sous prétexte que le jour du Seigneur était déjà là. Face à cette désobéissance persistante après deux avertissements, Paul déclenche en 3.6-⁠15 la troisième étape du processus de discipline ecclésiale institué par Christ en Matthieu 18.15-⁠17 (53-⁠14, 53-⁠16).</p></div></div><aside class="grille__marge"><p class="marge__titre">Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>La théologie biblique du travail contre le mépris grec et le dualisme clérical.</b> Dans le sermon 53-⁠14, MacArthur déploie une fresque complète de la théologie biblique du travail pour éclairer 3.6-⁠15. Le travail n'est pas une conséquence de la chute : Dieu l'a institué dès la création en plaçant l'homme dans le jardin d'Éden pour le cultiver et le garder (Genèse 1.26-⁠28; 2.15). La chute n'a pas créé le travail, mais y a introduit la pénibilité, la sueur et la frustration (Genèse 3.17-⁠19). Dans toute l'Écriture, le travail honnête est présenté comme un don de Dieu permettant de jouir du fruit de son labeur (Ecclésiaste 2.24; 3.13; 5.18-⁠19), un commandement divin (Exode 20.9; Proverbes 6.6-⁠11), une imitation de Dieu et de Christ qui travaillent continuellement (Jean 5.17; Psaume 104.14, 23), le moyen ordonné pour subvenir aux besoins de sa famille et secourir les indigents (Éphésiens 4.28; 1 Timothée 5.8) et un service sacré accompli directement pour le Seigneur (Éphésiens 6.5-⁠8; Colossiens 3.22-⁠24). MacArthur retrace ensuite la corruption historique de cette vérité : le mépris des philosophes grecs pour le labeur manuel relégué aux esclaves, le dédain des rabbins du Talmud qui jugeaient l'artisanat incompatible avec la sagesse, et surtout la distinction néfaste introduite au IVe siècle par Eusèbe de Césarée entre la « vie parfaite » (monastique et cléricale) et la « vie permise » (le travail séculier), jusqu'à ce que Martin Luther et la Réforme réhabilitent toute profession légitime comme une vocation sainte devant Dieu (53-⁠14).</li><li><b>La troisième étape de Matthieu 18.15-⁠17 et la limite fraternelle de la sanction.</b> Pourquoi Paul ordonne-t-il soudainement en 3.6 et 3.14 de « s'éloigner » (<i>stellesthai</i>) et de « ne point avoir de relations » (<i>mē sunanamignusthai</i>) avec le frère oisif? MacArthur montre que Paul applique rigoureusement les étapes de la discipline d'Église de Matthieu 18.15-⁠17 (53-⁠14, 53-⁠15, 53-⁠16). La première étape (la reprise individuelle en face à face) avait eu lieu lorsque Paul était à Thessalonique (3.10); la deuxième étape (la reprise confirmée par deux ou trois témoins : Paul, Silvain et Timothée) avait été formulée en 1 Thessaloniciens 4.11-⁠12 et 5.14; devant le refus d'obéir de certains (3.11), Paul passe ici à la troisième étape (« dis-le à l'Église », Matthieu 18.17a) : toute l'assemblée doit noter (<i>sēmeiousthe</i>) le récalcitrant et suspendre la communion fraternelle et la participation aux agapes et à la table du Seigneur afin qu'il éprouve une honte salutaire (<i>hina entrapē</i>, 3.14) (53-⁠16). Toutefois, précise MacArthur, on n'en est pas encore à la quatrième étape finale (« qu'il soit pour toi comme un païen et un publicain », Matthieu 18.17b) : c'est pourquoi Paul ajoute immédiatement en 3.15 : « Ne le regardez pas comme un ennemi, mais avertissez-le (<i>noutheteite</i>) comme un frère » (53-⁠16).</li><li><b>Le métier de fabricant de tentes de Paul et le sceau autographe de ses épîtres.</b> En 3.7-⁠9, Paul rappelle qu'à Thessalonique, bien qu'ayant pleinement le droit apostolique (<i>exousia</i>) d'être soutenu financièrement par ceux à qui il prêchait l'Évangile (1 Corinthiens 9.4-⁠14; Galates 6.6; 1 Timothée 5.17-⁠18), il a renoncé volontairement à ce privilège pour leur servir de modèle (<i>tupos</i>) (53-⁠15). Comme chaque rabbi juif devait enseigner un métier manuel à son fils (selon la maxime rabbinique voulant que ne pas apprendre un métier à son fils revienne à en faire un voleur), Saul de Tarse avait appris dans sa Cilicie natale la fabrication de tentes en poil de chèvre ou en cuir (Actes 18.3), travaillant « nuit et jour » dans la fatigue (<i>kopō</i>) et la peine (<i>mochthō</i>) pour payer son propre pain chez Jason (3.8) (53-⁠15). Enfin, en 3.17, Paul dicte sa lettre à un secrétaire mais prend lui-même le calame à la fin pour tracer en grands caractères reconnaissables (cf. Galates 6.11; 1 Corinthiens 16.21; Colossiens 4.18) la salutation finale et la bénédiction de 3.17-⁠18 : cette signature autographe devient désormais le signe (<i>sēmeion</i>) d'authenticité protégeant l'Église contre les fausses lettres dénoncées en 2.2 (53-⁠17).</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">2 Thessaloniciens 3</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Les variantes qui touchent le sens, la leçon que suit la NEG79 et leur portée, puis les témoins consultés et la numérotation.</p></div><div class="grille__texte"><h3 class="marge__titre">Variantes</h3><section class="variante"><h4 class="variante__ref">2 Thessaloniciens 3.4</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>hoti ha parangellomen kai poieite kai poiēsete</i> sans pronom datif après <i>parangellomen</i> (SBLGNT, Nestle 1904, Westcott et Hort, Tregelles, Tischendorf), ou <i>hoti ha parangellomen humin</i> avec l'ajout de <i>humin</i>, « à vous » (texte byzantin, Église orthodoxe grecque, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« que vous faites et que vous ferez les choses que nous recommandons » : la NEG79, la LSG et la Darby suivent la leçon courte; la S21 met « [vous] » entre crochets et la NBS traduit « que nous vous enjoignons de faire ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Le destinataire du commandement est déjà exprimé par <i>eph' humas</i> (« à votre égard ») dans la même phrase. Aucune incidence sur le sens.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">2 Thessaloniciens 3.6</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>À la fin du verset, <i>kata tēn paradosin hēn parelabosan par' hēmōn</i>, 3e personne du pluriel aoriste à désinence alexandrine <i>-osan</i>, « qu'ils ont reçue » (SBLGNT, NA27/28, attesté par Aleph*, A), ou <i>parelabete</i>, 2e personne du pluriel, « que vous avez reçue » (Nestle 1904, Westcott et Hort, Tregelles, attesté par B, F, G), ou <i>parelabon</i>, 3e personne du pluriel classique, « qu'ils ont reçue » (texte byzantin, Église orthodoxe grecque), ou <i>parelaben</i>, 3e personne du singulier, « qu'il a reçue » (Textus Receptus de Stephanus et de Scrivener, accordé avec <i>pantos adelphou</i>).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« selon les instructions que vous avez reçues de nous » (NEG79, LSG, suivant <i>parelabete</i>; S21 et NBS emploient le participe sans pronom sujet : « reçues / reçue de nous »; Darby suit le singulier du Textus Receptus : « qu'il a reçu de nous »; MacArthur lit « <i>which you received from us</i> », 53-⁠15).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">La forme rare <i>parelabosan</i> explique aisément la naissance des variantes <i>parelabon</i>, <i>parelabete</i> et <i>parelaben</i>. Que le verbe vise toute l'assemblée (« vous ») ou les frères désordonnés (« ils » / « il »), il s'agit de la même tradition apostolique reçue lors du ministère de Paul à Thessalonique (53-⁠15).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">2 Thessaloniciens 3.8</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>Génitif de temps <i>nuktos kai hēmeras</i>, « de nuit et de jour » (SBLGNT, Nestle 1904, Westcott et Hort, Tregelles, Tischendorf), ou accusatif de durée <i>nukta kai hēmeran</i>, « durant la nuit et le jour » (texte byzantin, Église orthodoxe grecque, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« nous avons été nuit et jour à l'œuvre » : toutes les versions françaises traduisent « nuit et jour ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Simple nuance grammaticale entre le génitif de temps (qualifiant le travail poursuivi de nuit comme de jour, comme en 1 Thessaloniciens 2.9 et 3.10) et l'accusatif d'extension temporelle. Le sens demeure strictement identique (53-⁠15).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">2 Thessaloniciens 3.12</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>parangellomen kai parakaloumen en Kuriō Iēsou Christō</i> (SBLGNT, Nestle 1904, Westcott et Hort, Tregelles, Tischendorf), ou <i>dia tou Kuriou hēmōn Iēsou Christou</i> (texte byzantin, Église orthodoxe grecque, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« et nous les exhortons par le Seigneur Jésus-Christ » (NEG79, LSG; S21 : « par notre Seigneur Jésus-Christ »; Darby et NBS suivent <i>en</i> : « dans le Seigneur Jésus-Christ »).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">La formule <i>dia tou Kuriou hēmōn Iēsou Christou</i> rapproche le verset de 1 Thessaloniciens 4.1-⁠2, tandis que <i>en Kuriō Iēsou Christō</i> reprend la tournure de 3.4 (<i>en Kuriō</i>). Dans les deux cas, l'injonction à travailler paisiblement s'appuie sur l'autorité souveraine du Seigneur Jésus-Christ (53-⁠16).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">2 Thessaloniciens 3.13-⁠14</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>En 3.13, orthographe du subjonctif aoriste <i>mē enkakēsēte</i> (SBLGNT, Nestle 1904; Westcott et Hort : <i>enkakēsēte</i>) ou <i>mē ekkakēsēte</i> (Tischendorf, texte byzantin, Église orthodoxe grecque, Textus Receptus). En 3.14, infinitif à valeur impérative <i>mē sunanamignusthai autō</i> sans conjonction (SBLGNT, Nestle 1904, Westcott et Hort, Tregelles, Tischendorf; l'Église orthodoxe a <i>kai mē sunanamignusthai</i>) ou impératif présent <i>kai mē sunanamignusthe autō</i> (texte byzantin, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>En 3.13 : « ne vous lassez pas de faire le bien »; en 3.14 : « notez-le, et n'ayez point de relations avec lui » (toutes les versions françaises rendent un impératif coordonné).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee"><i>Enkakeō</i> et sa forme tardive <i>ekkakeō</i> ont le même sens (« perdre courage, se lasser »; MacArthur cite Galates 6.9, 53-⁠16). En 3.14, que <i>sunanamignusthai</i> soit l'infinitif expliquant le but ou le contenu de <i>sēmeiousthe</i> (« notez-le, de manière à ne pas avoir de relations avec lui ») ou l'impératif <i>sunanamignusthe</i>, l'ordre de suspendre la fréquentation fraternelle du rebelle demeure identique (53-⁠16).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">2 Thessaloniciens 3.18</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>Fin de l'épître sur <i>meta pantōn humōn</i> sans addition (SBLGNT, Nestle 1904, Westcott et Hort, Tregelles, Tischendorf), ou addition finale de <i>Amēn</i> (texte byzantin, Église orthodoxe grecque, Textus Receptus; le Textus Receptus ajoute en outre la souscription tardive <i>pros Thessalonikeis deutera egraphē apo Athēnōn</i>, « la seconde aux Thessaloniciens fut écrite d'Athènes »).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« Que la grâce de notre Seigneur Jésus-Christ soit avec vous tous! » : les cinq versions françaises consultées (NEG79, LSG, S21, Darby, NBS) et le texte anglais de MacArthur (53-⁠17) suivent la leçon sans « Amen ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">L'ajout liturgique d'« Amen » est fréquent en fin d'épître dans les manuscrits byzantins; quant à la souscription mentionnant Athènes, elle est contredite par Actes 18.1-⁠5 et 1 Thessaloniciens 3.6 qui montrent que Paul écrivait depuis Corinthe (53-⁠1, 53-⁠17).</dd></div></dl></section></div><div class="grille__marge"><h3 class="marge__titre">Témoins consultés</h3><ul class="temoins" role="list"><li>grec : SBLGNT (bible.audio) et son apparat critique (sblgntapp de 2 Thessaloniciens, LogosBible), lus aux 18 versets du chapitre</li><li>grec : Nestle 1904, Westcott et Hort 1881, texte byzantin de Robinson-Pierpont 2005, Église orthodoxe grecque 1904, Tischendorf 8e édition, Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub), lus aux versets où l'apparat marque une variante (3.4, 3.6, 3.8, 3.12, 3.13, 3.14, 3.18)</li><li>Septante (Swete, Bible Hub) et hébreu massorétique (Codex de Léningrad, Bible Hub), pour Psaume 147.15 (LXX 147.4) et Ésaïe 57.19-⁠21</li><li>versions françaises : NEG79 (BibleGateway et bible.audio), LSG, S21, Darby et NBS, lues sur tout le chapitre</li></ul><div class="encadre"><h3 class="marge__titre">Numérotation</h3><p>Aucune divergence de numérotation des versets entre les éditions grecques, la NEG79, les autres versions françaises et le texte anglais commenté par MacArthur (3.1 à 3.18). En 3.14-⁠15, la ponctuation de certaines éditions (et de traductions modernes mineures) a parfois tenté de rattacher <i>di' epistolēs</i> (« par une lettre ») à <i>touton sēmeiousthe</i> (« notez-le dans une lettre »), mais toutes nos éditions grecques (SBLGNT, Nestle 1904, Westcott et Hort, texte byzantin, Textus Receptus), les cinq versions françaises consultées et MacArthur (53-⁠16) placent la virgule après <i>dia tēs epistolēs</i> (« si quelqu'un n'obéit pas à ce que nous disons par cette lettre, notez-le »).</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">2 Thessaloniciens 3</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><h3 class="marge__titre">Plan de la péricope</h3><ol class="plan" role="list"><li><p class="plan__ref"><span>2 Thessaloniciens</span> <span>3.1-⁠5</span></p><div class="plan__corps"><p class="plan__titre">La prière mutuelle du pasteur et du troupeau : intercession pour la course de la Parole, assurance dans la fidélité du Seigneur et souhait de croissance spirituelle</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Transition <i>To loipon proseuchesthe, adelphoi, peri hēmōn</i> suivie de deux propositions finales en <i>hina</i> (<i>hina ho logos tou Kuriou trechē ... kai hina rhusthōmen</i>, 3.1-⁠2), antithèse sur la fidélité divine <i>Pistos de estin ho Kurios</i> (3.3), déclaration de confiance pastorale <i>pepoithamen de en Kuriō</i> (3.4) et prière de souhait au mode optatif <i>Ho de Kurios kateuthunai humōn tas kardias</i> (3.5).</p></div></li><li><p class="plan__ref"><span>2 Thessaloniciens</span> <span>3.6-⁠10</span></p><div class="plan__corps"><p class="plan__titre">L'injonction disciplinaire contre la vie désordonnée, l'exemple du travail manuel de Paul et l'axiome apostolique</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Commandement solennel <i>Parangellomen de humin, adelphoi, en onomati tou Kuriou hēmōn Iēsou Christou stellesthai humas apo pantos adelphou ataktōs peripatountos</i> (3.6), rappel de l'exemple apostolique introduit par <i>autoi gar oidate pōs dei mimeisthai hēmas</i> (3.7-⁠9) et rappel de la règle orale à l'imparfait <i>kai gar hote ēmen pros humas, touto parēngellomen humin, hoti ei tis ou thelei ergazesthai mēde esthietō</i> (3.10).</p></div></li><li><p class="plan__ref"><span>2 Thessaloniciens</span> <span>3.11-⁠15</span></p><div class="plan__corps"><p class="plan__titre">La confrontation des oisifs indisciplinés, l'encouragement des fidèles à ne pas se lasser de faire le bien et la procédure de restauration fraternelle</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Motif de l'intervention <i>akouomen gar tinas peripatountas en humin ataktōs, mēden ergazomenous alla periergazomenous</i> (3.11), ordre direct aux oisifs <i>tois de toioutois parangellomen kai parakaloumen ... hina meta hēsuchias ergazomenoi ton heautōn arton esthiōsin</i> (3.12), apostrophe aux fidèles <i>Humeis de, adelphoi, mē enkakēsēte kalopoiountes</i> (3.13) et consigne conditionnelle de discipline <i>Ei de tis ouch hupakouei ... touton sēmeiousthe ... alla noutheteite hōs adelphon</i> (3.14-⁠15).</p></div></li><li><p class="plan__ref"><span>2 Thessaloniciens</span> <span>3.16-⁠18</span></p><div class="plan__corps"><p class="plan__titre">La bénédiction de paix et de présence du Seigneur, le sceau autographe de Paul et la grâce finale</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Quatrième prière de souhait de l'épître à l'optatif <i>Autos de ho Kurios tēs eirēnēs dōē humin tēn eirēnēn dia pantos en panti tropō</i> suivie du vœu de présence <i>ho Kurios meta pantōn humōn</i> (3.16), signature autographe <i>Ho aspasmos tē emē cheiri Paulou, ho estin sēmeion en pasē epistolē; houtōs graphō</i> (3.17) et bénédiction finale de grâce (3.18).</p></div></li></ol></div><div class="grille__marge"><h3 class="marge__titre">Observations grammaticales</h3><dl class="observations"><div><dt>2 Thessaloniciens 3.1-⁠3</dt><dd>En 3.1, l'impératif présent <i>proseuchesthe</i> (« priez continuellement pour nous ») gouverne le subjonctif présent <i>trechē</i> (« que la parole du Seigneur coure / se répande sans obstacle », métaphore athlétique du coureur au stade inspirée du Psaume 147.15) et le passif présent <i>doxazētai</i> (« et soit glorifiée »), suivis en 3.2 du subjonctif aoriste passif <i>rhusthōmen</i> (« que nous soyons délivrés ») (53-⁠13). Entre la fin du verset 2 et le début du verset 3, Paul opère un jeu de mots délibéré sur la famille de <i>pistis</i> : <i>ou gar pantōn hē pistis. Pistos de estin ho Kurios</i> (« car tous n'ont pas la foi [<i>pistis</i>]. Mais le Seigneur est fidèle [<i>pistos</i>] »). Même face à l'incrédulité hostile des hommes, la fidélité du Seigneur garantit les deux futurs <i>stērixei</i> (affermissement intérieur) et <i>phulaxei apo tou ponērou</i> (garde extérieure contre « le malin », masculin désignant Satan d'après l'usage paulinien; cf. Éphésiens 6.16) (53-⁠13).</dd></div><div><dt>2 Thessaloniciens 3.4-⁠5</dt><dd>En 3.4, le parfait à valeur de présent <i>pepoithamen de en Kuriō</i> (« Nous avons cette confiance dans le Seigneur ») montre que l'assurance du pasteur à l'égard de son troupeau ne repose pas sur un optimisme humain naïf, mais sur l'œuvre du Seigneur en eux, qui produit l'obéissance présente (<i>poieite</i>) et future (<i>poiēsete</i>) (53-⁠13). En 3.5, l'optatif aoriste de souhait <i>kateuthunai</i> (« Que le Seigneur dirige / aplanisse vos cœurs », déjà employé en 1 Thessaloniciens 3.11) conduit vers deux génitifs : <i>eis tēn agapēn tou Theou kai eis tēn hupomonēn tou Christou</i>. En citant J. B. Lightfoot, MacArthur note que ces deux génitifs sont plénier (à la fois subjectifs et objectifs) : l'amour que Dieu a pour nous et qui produit notre amour pour lui, et l'endurance patiente que Christ a lui-même manifestée et qu'il produit en nous (53-⁠13).</dd></div><div><dt>2 Thessaloniciens 3.6-⁠10</dt><dd>Le verbe d'autorité militaire <i>parangellō</i> (« ordonner, enjoindre sous l'autorité d'un supérieur ») structure toute la section disciplinaire par ses quatre occurrences (3.4, 6, 10, 12) (53-⁠15). En 3.8, le couple synonymique <i>en kopō kai mochthō</i> (« dans le travail épuisant et dans la peine douloureuse », déjà uni en 1 Thessaloniciens 2.9) souligne l'effort physique intense consenti par Paul nuit et jour. En 3.10, l'imparfait <i>touto parēngellomen humin</i> (« nous vous disions expressément / nous vous répétions cet ordre ») prouve que Paul avait maintes fois inculqué cette règle durant son séjour, tandis que la conditionnelle <i>ei tis ou thelei ergazesthai mēde esthietō</i> (« Si quelqu'un ne veut pas travailler, qu'il ne mange pas non plus », avec le présent de volonté <i>ou thelei</i> et l'impératif de troisième personne <i>esthietō</i>) vise expressément celui qui <i>refuse</i> volontairement de travailler, et non celui qui en est physiquement incapable (53-⁠15, 53-⁠16).</dd></div><div><dt>2 Thessaloniciens 3.11-⁠15</dt><dd>En 3.11, Paul emploie une paronomase célèbre (jeu de mots sur les composés d'<i>ergazomai</i>) : <i>mēden ergazomenous alla periergazomenous</i> (« qui ne travaillent pas du tout, mais qui s'affairent autour des affaires des autres », littéralement « pas occupés, mais pré-occupés de futilités / fouineurs », rendu en anglais par <i>not busy, but busybodies</i>) (53-⁠16). En 3.13, le pronom emphatique <i>Humeis de, adelphoi</i> (« Pour vous, frères ») s'adresse à la majorité fidèle et travailleuse pour qu'elle ne se décourage pas de pratiquer la bienfaisance légitime (<i>mē enkakēsēte kalopoiountes</i>) à cause des abus de quelques parasites (53-⁠16). En 3.14, le subjonctif aoriste passif à sens réfléchi <i>hina entrapē</i> (« afin qu'il soit tourné sur lui-même / qu'il éprouve une honte salutaire ») indique le but rédempteur de la mise à l'écart, confirmé par l'antithèse de 3.15 : <i>mē hōs echthron hēgeisthe, alla noutheteite hōs adelphon</i> (53-⁠16).</dd></div><div><dt>2 Thessaloniciens 3.16-⁠18</dt><dd>En 3.16, le pronom intensif en tête de phrase <i>Autos de ho Kurios tēs eirēnēs</i> (« Que le Seigneur de la paix lui-même ») reprend la structure exacte de 1 Thessaloniciens 5.23 (<i>Autos de ho Theos tēs eirēnēs</i>), attribuant ici au Seigneur Jésus le titre divin « de la paix » avec l'optatif aoriste <i>dōē</i> (« vous donne ») et la double expression d'universalité <i>dia pantos en panti tropō</i> (« en tout temps, de toute manière ») (53-⁠17). En 3.17, le datif instrumental <i>tē emē cheiri Paulou</i> (« de ma propre main, à moi Paul », où le génitif <i>Paulou</i> est en apposition au pronom possessif <i>emē</i>) et le présent <i>houtōs graphō</i> (« c'est ainsi que j'écris ») signalent le moment précis où Paul prend lui-même le roseau pour écrire les versets 17 et 18 (53-⁠17).</dd></div></dl></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Cinq mots-clés</p></header>
+<p class="lead">Cinq mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">pervers</a><a href="#mot-2">dirige</a><a href="#mot-3">vous éloigner</a><a href="#mot-4">dans le désordre</a><a href="#mot-5">avertissez-le</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">pervers</h3><p class="mot__translit">atopōn (atopos)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>hors de place, déplacé, absurde, pervers</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie indiquée par Thayer, <i>atopos</i> est composé d'<i>alpha</i> privatif et de <i>topos</i> (« lieu, place ») et signifie littéralement « qui n'est pas à sa place ». De ce sens premier découlent les acceptions d'« étrange, inhabituel, funeste » (Actes 28.6, en parlant du mal causé par le venin d'une vipère) et, au plan moral en parlant des actions ou des personnes, « inconvenant, déréglé, inique, pervers » (Luc 23.41; Actes 25.5; 2 Thessaloniciens 3.2; fréquent dans la Septante pour traduire l'hébreu <i>'āwen</i>, l'iniquité).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En 3.2 (« et afin que nous soyons délivrés des hommes méchants et pervers; car tous n'ont pas la foi »), MacArthur met en relief la force étymologique d'<i>atopos</i> (« hors de sa place légitime ») associé à <i>ponērōn</i> (« activement mauvais et nuisibles ») (53-⁠13). Les adversaires de l'Évangile à Corinthe et à Thessalonique (en particulier les agitateurs juifs incrédules d'Actes 17.5, 13 et 18.6, 12) étaient des hommes moralement dévoyés, sortis de l'ordre voulu par Dieu, qui s'acharnaient à entraver la course de la Parole et à nuire aux messagers parce qu'ils étaient dépourvus de la foi (53-⁠13).</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> méchants</li><li><b>NEG79</b> méchants</li><li class="ecart"><b>Darby</b> fâcheux</li><li><b>LSG</b> méchants</li><li><b>NBS</b> méchants</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">dirige</h3><p class="mot__translit">kateuthunai (kateuthunō)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>rendre tout droit, aplanir une route, diriger directement vers un but</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>D'après l'étymologie donnée par Thayer, <i>kateuthunō</i> est composé de la préposition intensive <i>kata</i> et de <i>euthunō</i> (« redresser, rendre droit », de l'adjectif <i>euthus</i>, « droit »). Le verbe signifie rendre droit ce qui est tortueux, dégager les obstacles d'un chemin pour ouvrir une voie directe, et diriger droit vers une destination : il s'emploie dans le Nouveau Testament pour guider nos pas dans le chemin de la paix (Luc 1.79), pour aplanir l'itinéraire géographique de Paul vers Thessalonique (1 Thessaloniciens 3.11) et pour diriger les cœurs des croyants vers l'amour de Dieu et la patience de Christ (2 Thessaloniciens 3.5).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>Dans le sermon 53-⁠13, MacArthur rapproche l'emploi de <i>kateuthunai</i> en 3.5 de celui de 1 Thessaloniciens 3.11 : là-bas, Paul demandait à Dieu de déblayer les barrages dressés par Satan sur la route géographique menant à Thessalonique; ici, il demande au Seigneur de déblayer les obstacles spirituels intérieurs (le doute, l'égoïsme, la peur, le découragement) qui encombrent le cœur des croyants, afin d'ouvrir en eux une voie droite et dégagée vers une expérience plus profonde de l'amour de Dieu et de la persévérance patiente de Christ (53-⁠13).</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> dirige</li><li><b>NEG79</b> dirige</li><li class="ecart"><b>Darby</b> incline</li><li><b>LSG</b> dirige</li><li><b>NBS</b> dirige</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">vous éloigner</h3><p class="mot__translit">stellesthai (stellō)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>placer, disposer, carguer les voiles, se tenir à l'écart de</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie exposée par Thayer, <i>stellō</i> signifie d'abord « placer, apprêter », puis, dans la langue nautique et médicale, « resserrer, contracter, carguer ou replier les voiles d'un navire » pour ralentir ou éviter un écueil. De là provient, à la voix moyenne, le sens figuré de « se rétracter, se retirer par précaution, éviter, se tenir à distance de quelqu'un ou de quelque chose » (dans le Nouveau Testament uniquement en 2 Corinthiens 8.20, éviter tout soupçon de malversation, et en 2 Thessaloniciens 3.6, s'éloigner de tout frère qui marche dans le désordre).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En 3.6 (« Nous vous recommandons, frères, au nom de notre Seigneur Jésus-Christ, de vous éloigner de tout frère qui vit dans le désordre »), MacArthur souligne l'image maritime de <i>stellesthai</i> (replier les voiles, prendre ses distances) et la complète par le second verbe de 3.14, <i>mē sunanamignusthai</i> (« ne pas se mêler intimement avec lui ») (53-⁠15, 53-⁠16). Lorsque qu'un croyant persiste à marcher hors des rangs (<i>ataktōs</i>) au mépris de l'enseignement apostolique, l'assemblée ne doit ni financer sa paresse ni maintenir avec lui une communion sociale normale aux repas fraternels, afin que cet isolement disciplinaire le ramène à la repentance (53-⁠15, 53-⁠16).</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> de vous éloigner</li><li><b>NEG79</b> de vous éloigner</li><li class="ecart"><b>Darby</b> de vous retirer</li><li><b>LSG</b> de vous éloigner</li><li><b>NBS</b> de vous éloigner</li></ul></article><article class="mot" id="mot-4"><header class="mot__tete"><h3 class="mot__fr">dans le désordre</h3><p class="mot__translit">ataktōs / ētaktesamen (ataktōs / atakteō)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>hors des rangs, sans discipline, d'une manière désordonnée</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>D'après l'étymologie présentée par Thayer, la famille de l'adjectif <i>ataktos</i> (1 Thessaloniciens 5.14), de l'adverbe <i>ataktōs</i> (2 Thessaloniciens 3.6, 11) et du verbe <i>atakteō</i> (2 Thessaloniciens 3.7) est formée d'<i>alpha</i> privatif et de la racine de <i>tassō</i> (« ranger en ordre de bataille, assigner un poste »). À l'origine terme militaire désignant des soldats qui rompent les rangs ou désertent leur poste, il en est venu dans la koinè des papyrus et chez Paul à désigner celui qui se soustrait à ses devoirs, mène une vie indisciplinée, insubordonnée et oisive, en refusant de s'acquitter de son travail quotidien.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur relève que les quatre seuls emplois de cette famille de mots dans tout le Nouveau Testament se trouvent dans les deux épîtres aux Thessaloniciens (1 Thessaloniciens 5.14; 2 Thessaloniciens 3.6, 7, 11) (53-⁠15). Comme un soldat qui quitte la colonne en marche ou qui refuse de monter la garde, le chrétien qui refuse de travailler rompt les rangs de la vie ordonnée par Dieu (3.10). Loin d'être un détail secondaire, cette insubordination oisive détruit l'harmonie de l'assemblée en transformant des membres appelés à être productifs en parasites qui « s'occupent de futilités » (<i>periergazomenous</i>, 3.11) (53-⁠15, 53-⁠16).</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> une vie désordonnée / au désordre</li><li><b>NEG79</b> dans le désordre</li><li><b>Darby</b> dans le désordre</li><li><b>LSG</b> dans le désordre</li><li class="ecart"><b>NBS</b> dans l'indiscipline</li></ul></article><article class="mot" id="mot-5"><header class="mot__tete"><h3 class="mot__fr">avertissez-le</h3><p class="mot__translit">noutheteite (noutheteō)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>mettre dans l'esprit, reprendre pour corriger, exhorter solennellement</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie indiquée par Thayer, <i>noutheteō</i> est composé de <i>nous</i> (« esprit, intelligence, entendement ») et de <i>tithēmi</i> (« placer, poser »). Il signifie littéralement « déposer dans l'esprit », d'où « avertir, admonester, reprendre avec douceur ou fermeté en vue de corriger une conduite erronée ». Dans le Nouveau Testament, ce verbe n'est employé que par Luc une fois (Actes 20.31, dans le discours de Paul aux anciens d'Éphèse) et par Paul sept fois (Romains 15.14; 1 Corinthiens 4.14; Colossiens 1.28; 3.16; 1 Thessaloniciens 5.12, 14; 2 Thessaloniciens 3.15).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En 3.15 (« Ne le regardez pas comme un ennemi, mais avertissez-le comme un frère »), MacArthur montre que le but de toute discipline ecclésiale (3.6, 14) n'est jamais d'écraser ou de rejeter avec mépris, mais de restaurer un frère égaré (Galates 6.1) (53-⁠16). Tant que le pécheur n'a pas franchi le seuil ultime de l'endurcissement qui oblige à le traiter comme un inconverti (Matthieu 18.17b), l'assemblée ne doit faire de lui ni un compagnon intime (<i>mē sunanamignusthai</i>, 3.14) ni un ennemi (<i>mē hōs echthron</i>, 3.15), mais l'avertir fraternellement (<i>noutheteite hōs adelphon</i>) chaque fois qu'elle le croise afin de le ramener à l'obéissance (53-⁠16).</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> avertissez-le</li><li><b>NEG79</b> avertissez-le</li><li><b>Darby</b> avertissez-le</li><li><b>LSG</b> avertissez-le</li><li><b>NBS</b> avertissez-le</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">2 Thessaloniciens 3</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Dans ses cinq prédications sur 2 Thessaloniciens 3 (GTY 53-⁠13 à 53-⁠17), John MacArthur montre comment l'apôtre Paul conclut son épître en passant de la doctrine prophétique (chapitres 1 et 2) à la vie quotidienne de l'assemblée : les relations mutuelles entre le pasteur et le troupeau dans la prière (3.1-⁠5), la discipline chrétienne du travail honnête (3.6-⁠15) et la bénédiction finale de la paix et de la grâce du Seigneur (3.16-⁠18).</p></div><aside class="grille__marge grille__marge--collante"><nav class="sommaire" aria-label="Dans cette section"><p class="sommaire__titre">Dans cette section</p><ol><li><a href="#t1-2-thessaloniciens-3-1-5-les-quatre-desirs-du-pasteur-pour-son-peuple"><span class="sommaire__ref">2 Thessaloniciens 3.1-⁠5</span><span class="sommaire__lib">Les quatre désirs du pasteur pour son peuple</span></a></li><li><a href="#t2-2-thessaloniciens-3-6-15-le-travail-un-noble-devoir-chretien-six-motivations"><span class="sommaire__ref">2 Thessaloniciens 3.6-⁠15</span><span class="sommaire__lib">Le travail, un noble devoir chrétien : six motivations</span></a></li><li><a href="#t3-2-thessaloniciens-3-16-18-la-paix-en-toute-circonstance-quatre-ressources-divines"><span class="sommaire__ref">2 Thessaloniciens 3.16-⁠18</span><span class="sommaire__lib">La paix en toute circonstance : quatre ressources divines</span></a></li></ol></nav><details class="sources"><summary><span class="sources__niveau">Niveau 1</span>Sources de l'exposition : cinq sermons Grace to You</summary><div class="sources__corps"><p>Niveau 1 : cinq sermons Grace to You sur 2 Thessaloniciens 3.1 à 3.18 (53-⁠13 à 53-⁠17, série « 2 Thessalonians », mai à juillet 1992)</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">53-13</span></th><td><a href="https://www.gty.org/sermons/53-13" target="_blank" rel="noopener">The Pastor's Desire for His People</a></td><td>2 Th 3.1-⁠5</td></tr><tr><th scope="row"><span class="mot-fr">53-14</span></th><td><a href="https://www.gty.org/sermons/53-14" target="_blank" rel="noopener">Work: A Noble Christian Duty, Part 1</a></td><td>2 Th 3.6-⁠15</td></tr><tr><th scope="row"><span class="mot-fr">53-15</span></th><td><a href="https://www.gty.org/sermons/53-15" target="_blank" rel="noopener">Work: A Noble Christian Duty, Part 2</a></td><td>2 Th 3.6-⁠10</td></tr><tr><th scope="row"><span class="mot-fr">53-16</span></th><td><a href="https://www.gty.org/sermons/53-16" target="_blank" rel="noopener">Work: A Noble Christian Duty, Part 3</a></td><td>2 Th 3.10-⁠15</td></tr><tr><th scope="row"><span class="mot-fr">53-17</span></th><td><a href="https://www.gty.org/sermons/53-17" target="_blank" rel="noopener">Peace in Every Circumstance</a></td><td>2 Th 3.16-⁠18</td></tr></tbody></table></div></div></details></aside><div class="grille__texte"><div class="body"><h3 class="intertitre" id="t1-2-thessaloniciens-3-1-5-les-quatre-desirs-du-pasteur-pour-son-peuple"><span class="intertitre__ref">2 Thessaloniciens 3.1-⁠5</span>Les quatre désirs du pasteur pour son peuple</h3><p>Dans le sermon 53-⁠13 (<i>The Pastor's Desire for His People</i>), MacArthur rappelle d'abord la responsabilité mutuelle qui unit les conducteurs spirituels et les brebis (Hébreux 13.7, 17; 1 Thessaloniciens 5.12-⁠13), puis dégage des versets 1 à 5 les quatre grands désirs du cœur de Paul pour son Église :
+1) <i>Qu'ils soient un peuple de prière</i> (3.1-⁠2) : « Au reste, frères, priez pour nous » (reprenant 1 Thessaloniciens 5.25). Paul sollicite leur intercession constante pour deux sujets précis : premièrement, le succès du message (« afin que la parole du Seigneur se répande [<i>trechē</i>, coure rapidement comme un athlète sans entrave, Psaume 147.15] et soit glorifiée [accueillie avec honneur par des conversions, Actes 13.48] comme elle l'est chez vous », 3.1); deuxièmement, la protection des messagers (« et afin que nous soyons délivrés des hommes méchants [<i>atopōn</i>, dévoyés] et pervers [<i>ponērōn</i>]; car tous n'ont pas la foi », 3.2), allusion directe à la féroce hostilité des Juifs incrédules à Corinthe (Actes 18.6, 12-⁠17) (53-⁠13).
+2) <i>Qu'ils soient confiants dans le Seigneur</i> (3.3) : « Le Seigneur est fidèle (<i>pistos</i>, en contraste avec ceux qui n'ont pas la <i>pistis</i> au verset 2), il vous affermira (<i>stērixei</i>, intérieurement) et vous préservera du malin (<i>apo tou ponērou</i>, extérieurement contre Satan) ». Dieu ne laissera jamais Satan détruire la foi de ses élus (Jean 17.15; 1 Corinthiens 10.13; 1 Jean 5.18) (53-⁠13).
+3) <i>Qu'ils soient obéissants</i> (3.4) : « Nous avons à votre égard cette confiance dans le Seigneur que vous faites et que vous ferez les choses que nous recommandons ». L'assurance du pasteur quant à l'obéissance de son troupeau est logée « dans le Seigneur » qui opère en eux le vouloir et le faire (Philippiens 2.13) (53-⁠13).
+4) <i>Qu'ils grandissent spirituellement</i> (3.5) : « Que le Seigneur dirige (<i>kateuthunai</i>, dégage de tout obstacle) vos cœurs vers l'amour de Dieu et vers la patience de Christ! » (53-⁠13).</p><h3 class="intertitre" id="t2-2-thessaloniciens-3-6-15-le-travail-un-noble-devoir-chretien-six-motivations"><span class="intertitre__ref">2 Thessaloniciens 3.6-⁠15</span>Le travail, un noble devoir chrétien : six motivations</h3><p>Après avoir établi dans le sermon 53-⁠14 toute la théologie biblique du travail (institué par Dieu en Genèse 2.15 avant la chute, sanctifié comme un service rendu à Christ en Éphésiens 6.5-⁠8 et Colossiens 3.22-⁠24, et réhabilité par les Réformateurs contre le mépris grec et le dualisme clérical d'Eusèbe), MacArthur expose dans les sermons 53-⁠15 et 53-⁠16 les <i>six motivations au travail</i> que Paul déploie en 3.6-⁠15 pour régler le cas des oisifs :
+1) <i>La rupture de communion (disfellowship)</i> (3.6) : « Nous vous recommandons (<i>parangellomen</i>, ordre militaire), frères, au nom de notre Seigneur Jésus-Christ, de vous éloigner (<i>stellesthai</i>) de tout frère qui vit dans le désordre (<i>ataktōs</i>, hors des rangs), et non selon les instructions (<i>paradosin</i>) que vous avez reçues de nous ». Après l'avertissement oral de sa visite (3.10) et l'avertissement écrit de 1 Thessaloniciens 4.11 et 5.14, Paul met en œuvre la troisième étape de Matthieu 18.17 : l'ostracisme fraternel envers celui qui refuse d'obéir à la Parole apostolique (53-⁠15).
+2) <i>L'exemple apostolique</i> (3.7-⁠9) : « Vous savez vous-mêmes comment il faut nous imiter (<i>mimeisthai</i>)... ». Bien que Paul eût pleinement le droit (<i>exousia</i>, 3.9) de vivre de l'Évangile (1 Corinthiens 9.4-⁠14; 1 Timothée 5.17-⁠18), il a travaillé nuit et jour dans la fatigue et la peine à fabriquer des tentes (Actes 18.3), payant son propre pain chez Jason (3.8) afin d'offrir à ces convertis issus du paganisme grec un « modèle » (<i>tupos</i>, 3.9) de labeur honnête (53-⁠15).
+3) <i>La survie</i> (3.10) : « Car, lorsque nous étions chez vous, nous vous disions expressément : Si quelqu'un ne veut pas (<i>ou thelei</i>) travailler, qu'il ne mange pas non plus ». La charité de l'Église est destinée aux veuves, aux orphelins et aux infirmes qui <i>ne peuvent pas</i> travailler, mais jamais à celui qui <i>ne veut pas</i> travailler : la faim est le remède institué par Dieu pour guérir la paresse (Proverbes 16.26) (53-⁠15, 53-⁠16).
+4) <i>L'harmonie de l'assemblée</i> (3.11-⁠13) : Paul dénonce ceux « qui ne travaillent pas, mais qui s'occupent de futilités » (<i>mēden ergazomenous alla periergazomenous</i>, 3.11) : le désœuvrement engendre inévitablement l'ingérence, le commérage et la discorde (cf. 1 Timothée 5.13). Il leur ordonne de travailler paisiblement (<i>meta hēsuchias</i>) pour manger leur propre pain (3.12), tout en exhortant les croyants fidèles à ne pas se lasser de faire le bien (3.13) afin que l'abus de quelques profiteurs n'éteigne pas la générosité envers les vrais nécessiteux (Galates 2.10; 6.9-⁠10) (53-⁠16).
+5) <i>La honte salutaire</i> (3.14) : « Et si quelqu'un n'obéit pas à ce que nous disons par cette lettre, notez-le (<i>sēmeiousthe</i>), et n'ayez point de relations (<i>mē sunanamignusthai</i>) avec lui, afin qu'il éprouve de la honte (<i>hina entrapē</i>) ». Le retrait de la communion fraternelle vise à retourner la conscience du rebelle sur elle-même pour le convaincre de son péché (53-⁠16).
+6) <i>L'amour fraternel</i> (3.15) : « Ne le regardez pas comme un ennemi, mais avertissez-le (<i>noutheteite</i>) comme un frère ». La discipline demeure empreinte d'amour et vise la restauration (53-⁠16).</p><h3 class="intertitre" id="t3-2-thessaloniciens-3-16-18-la-paix-en-toute-circonstance-quatre-ressources-divines"><span class="intertitre__ref">2 Thessaloniciens 3.16-⁠18</span>La paix en toute circonstance : quatre ressources divines</h3><p>Dans le dernier sermon de la série (53-⁠17, <i>Peace in Every Circumstance</i>), MacArthur souligne que la vie chrétienne fidèle et disciplinée exige des ressources surnaturelles que Paul résume en quatre dons dans sa conclusion :
+1) <i>La paix du Seigneur</i> (3.16a) : « Que le Seigneur de la paix vous donne lui-même la paix en tout temps, de toute manière! » Citant le puritain Thomas Watson, MacArthur rappelle que Dieu le Père est le Dieu de paix (1 Thessaloniciens 5.23; Hébreux 13.20), le Fils est le Prince et le Seigneur de la paix (Ésaïe 9.5; Éphésiens 2.14) et l'Esprit produit le fruit de la paix (Galates 5.22). Contrairement à la fausse paix des méchants (Ésaïe 57.19-⁠21), cette paix objective avec Dieu (Romains 5.1) et cette tranquillité intérieure du cœur (Jean 14.27; Philippiens 4.7) sont accordées aux croyants « en tout temps, de toute manière », indépendamment des tribulations extérieures (chapitre 1), des troubles prophétiques (chapitre 2) ou des tensions ecclésiales (chapitre 3) (53-⁠17).
+2) <i>La force de sa présence</i> (3.16b) : « Que le Seigneur soit avec vous tous! » Il ne s'agit pas de la simple omniprésence divine (Psaume 139.7-⁠10), mais de la présence agissante, protectrice et fortifiante du Seigneur ressuscité aux côtés des siens dans l'épreuve (Matthieu 28.20; Actes 18.9-⁠10; 2 Timothée 4.17) (53-⁠17).
+3) <i>La vérité garantie par l'écriture apostolique</i> (3.17) : « Je vous salue, moi Paul, de ma propre main. C'est là ma signature (<i>sēmeion</i>) dans toutes mes lettres; c'est ainsi que j'écris ». Par ce sceau autographe qui protège l'Église contre les faux écrits (2.2), le Seigneur leur garantit la sûreté infaillible de sa Parole révélée (53-⁠17).
+4) <i>La grâce suffisante</i> (3.18) : « Que la grâce de notre Seigneur Jésus-Christ soit avec vous tous! » L'épître s'achève là où elle avait commencé (1.2), sur la faveur imméritée et la puissance opérante du Christ qui soutient tous les croyants jusqu'à la gloire (53-⁠17).</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>2 Thessaloniciens 3.2-⁠3.</b> La transition entre le danger humain et la sécurité divine repose sur le polyptote <i>pistis</i> / <i>pistos</i> : <i>ou gar pantōn hē pistis. Pistos de estin ho Kurios</i> (« car tous n'ont pas la foi. Mais le Seigneur est fidèle »).</li><li><b>2 Thessaloniciens 3.4, 6, 10 et 12.</b> Le verbe d'injonction <i>parangellō</i> (« recommander avec autorité, ordonner ») scande quatre fois le chapitre (<i>ha parangellomen</i> en 3.4; <i>Parangellomen de humin</i> en 3.6; <i>touto parēngellomen humin</i> en 3.10; <i>tois de toioutois parangellomen</i> en 3.12), unifiant toute l'instruction disciplinaire.</li><li><b>2 Thessaloniciens 3.6, 7 et 11.</b> La famille militaire de l'indiscipline (<i>atakt-</i>) encadre tout le réquisitoire contre l'oisiveté : <i>pantos adelphou ataktōs peripatountos</i> (3.6), le contre-modèle apostolique <i>ouk ētaktesamen en humin</i> (3.7) et le constat <i>tinas peripatountas en humin ataktōs</i> (3.11).</li><li><b>2 Thessaloniciens 3.8 et 3.12.</b> L'image du « pain » (<i>arton</i>) gagné par le travail relie l'exemple de Paul au devoir des membres : Paul n'a « mangé gratuitement le pain de personne » mais a travaillé nuit et jour (<i>oude dōrean arton ephagomen para tinos ... ergazomenoi</i>, 3.8), afin que les oisifs apprennent « à manger leur propre pain, en travaillant paisiblement » (<i>ergazomenoi ton heautōn arton esthiōsin</i>, 3.12).</li><li><b>2 Thessaloniciens 3.11.</b> La paronomase grecque <i>mēden ergazomenous alla periergazomenous</i> oppose terme à terme l'absence de travail utile (<i>ergazomenous</i>) et l'activisme indiscret de ceux qui se mêlent des affaires d'autrui (<i>periergazomenous</i>).</li><li><b>2 Thessaloniciens 2.2 et 3.17.</b> La signature autographe de 3.17 (<i>Ho aspasmos tē emē cheiri Paulou, ho estin sēmeion en pasē epistolē</i>) répond directement à l'alerte de 2.2 contre une fausse lettre circulant sous le nom des apôtres (<i>mēte di' epistolēs hōs di' hēmōn</i>).</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Sept passages</p></header>
+<p class="lead">Sept passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Psaume 147.15</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Arrière-plan poétique de la métaphore de 2 Thessaloniciens 3.1 (« afin que la parole du Seigneur se répande [litt. : coure] », <i>hina ho logos tou Kuriou trechē</i>) : dans le texte hébreu massorétique du Psaume 147.15, Dieu envoie son ordre sur la terre et « sa parole court avec vitesse » (<i>'ad-məhērāh yārūṣ dəvārō</i>), ce que le grec de la Septante (LXX, Psaume 147.4) traduit exactement avec le même futur du verbe <i>trechō</i> : <i>heōs tachous drameitai ho logos autou</i> (53-⁠13).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Actes 18.1-⁠17</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Contexte historique direct à la fois du travail de fabricant de tentes de Paul (Actes 18.3; cf. 2 Thessaloniciens 3.7-⁠9), de l'opposition des « hommes méchants et pervers » contre lesquels il demande la prière de l'Église (Actes 18.6, 12-⁠17; cf. 3.2) et de la promesse du Seigneur « Je suis avec toi » qui éclaire la bénédiction de présence en 3.16b (Actes 18.9-⁠10) (53-⁠13, 53-⁠15, 53-⁠17).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">1 Thessaloniciens 4.11-⁠12 et 5.14</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Deuxième avertissement apostolique adressé quelques mois plus tôt aux mêmes croyants de Thessalonique : Paul les exhortait déjà à mettre leur honneur à vivre tranquilles (<i>hēsuchazein</i>; cf. <i>meta hēsuchias</i> en 2 Thessaloniciens 3.12), à s'occuper de leurs propres affaires et à travailler de leurs mains (4.11), puis à avertir les désordonnés (<i>noutheteite tous ataktous</i>, 5.14), vocabulaire repris et porté au stade disciplinaire en 2 Thessaloniciens 3.6-⁠15 (53-⁠14, 53-⁠15, 53-⁠16).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Matthieu 18.15-⁠17</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Fondement ecclésiologique de la procédure ordonnée en 2 Thessaloniciens 3.6, 14-⁠15 : après la reprise individuelle lors de la visite de Paul (étape 1; cf. 3.10) et l'exhortation écrite des trois missionnaires en 1 Thessaloniciens (étape 2), Paul prescrit ici la troisième étape (« dis-le à l'Église », Matthieu 18.17a) par la mise à l'écart fraternelle visant la honte salutaire (3.6, 14), sans encore franchir la quatrième étape de l'exclusion comme païen et ennemi (3.15) (53-⁠14, 53-⁠16).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Genèse 2.15 et 3.17-⁠19</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">Fondement créationnel de la théologie du travail exposée en 53-⁠14 et de l'axiome de 2 Thessaloniciens 3.10 (« Si quelqu'un ne veut pas travailler, qu'il ne mange pas non plus ») : institué par Dieu dès l'Éden avant la chute (Genèse 2.15), le travail est devenu après la chute la loi universelle de la subsistance humaine (« C'est à la sueur de ton visage que tu mangeras du pain », Genèse 3.19) (53-⁠14, 53-⁠15).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">1 Corinthiens 9.4-⁠18</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Développement complet du principe énoncé en 2 Thessaloniciens 3.8-⁠9 (« Ce n'est pas que nous n'en ayons le droit [<i>exousia</i>], mais nous avons voulu vous donner en nous-mêmes un modèle à imiter ») : Paul y démontre le droit biblique des prédicateurs de vivre de l'Évangile, tout en expliquant pourquoi il a volontairement renoncé à ce droit afin de ne créer aucun obstacle à l'Évangile (53-⁠15).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Ésaïe 57.19-⁠21 (et Jean 14.27; Philippiens 4.6-⁠9)</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Éclaire la bénédiction finale de 2 Thessaloniciens 3.16 (« Que le Seigneur de la paix vous donne lui-même la paix en tout temps, de toute manière! ») : alors qu'« il n'y a point de paix pour les méchants » (Ésaïe 57.21), le Seigneur de la paix accorde aux rachetés réconciliés par son sang une paix continuelle qui surpasse toute intelligence et garde leurs cœurs au milieu de toutes les circonstances (53-⁠17).</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Quatre axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">L'intercession mutuelle pour la course de la Parole et la fidélité protectrice du Seigneur</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Paul demande aux frères de prier pour que la parole du Seigneur se répande et soit glorifiée et que les messagers soient délivrés des hommes méchants et pervers, tout en affirmant que le Seigneur est fidèle pour les affermir, les préserver du malin et diriger leurs cœurs vers l'amour de Dieu et la patience de Christ (3.1-⁠5).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Le ministère de la Parole repose sur l'intercession mutuelle du pasteur et de l'assemblée : la puissance souveraine de la Parole de Dieu est libérée dans sa course par la prière des saints (53-⁠13). Parallèlement, face à l'incrédulité des hommes pervers et aux assauts de Satan (« le malin »), la sécurité spirituelle et l'obéissance persévérante des croyants reposent sur la fidélité infaillible du Seigneur qui les affermit intérieurement et les garde extérieurement (53-⁠13).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Après avoir prié pour les Thessaloniciens en 1.11-⁠12 et 2.16-⁠17, Paul sollicite en retour leurs prières en 3.1-⁠2, avant d'élever ses troisième et quatrième prières de souhait en 3.5 et 3.16.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Un troupeau fidèle soutient constamment ses conducteurs par la prière afin que la Parole de Dieu triomphe sans entrave, tout en puisant son propre courage dans la fidélité du Seigneur plutôt que dans les circonstances (53-⁠13).</p></div></div></section><section class="theme"><h3 class="theme__title">La dignité sacrée du travail et l'exemple apostolique</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Rappelant qu'il n'a mangé gratuitement le pain de personne mais a travaillé nuit et jour dans la fatigue et la peine afin de se donner lui-même en modèle, Paul réaffirme l'ordre : « Si quelqu'un ne veut pas travailler, qu'il ne mange pas non plus », et enjoint à chacun de manger son propre pain en travaillant paisiblement (3.7-⁠12).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Institué par Dieu dès la création et sanctifié en Christ, le travail honnête est une vocation noble et obligatoire pour tout croyant valide : il pourvoit aux besoins personnels et familiaux, préserve l'assemblée du parasitisme et de l'agitation stérile, permet de secourir ceux qui sont réellement dans le besoin et honore l'Évangile devant le monde (53-⁠14, 53-⁠15, 53-⁠16). En outre, les conducteurs spirituels doivent prêcher cette éthique non seulement par leurs paroles, mais par l'exemple irréprochable de leur propre labeur (3.7-⁠9) (53-⁠15).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Déjà prescrite en 1 Thessaloniciens 2.9, 4.11-⁠12 et 5.12-⁠14, cette éthique du travail laborieux et paisible reçoit ici sa formulation la plus solennelle pour corriger les dérives d'une attente déréglée du retour de Christ.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>L'attente du retour du Seigneur ne justifie jamais l'oisiveté ni la négligence des responsabilités terrestres; au contraire, elle appelle chaque chrétien à accomplir son travail quotidien avec ardeur, intégrité et tranquillité comme pour le Seigneur (53-⁠14, 53-⁠15).</p></div></div></section><section class="theme"><h3 class="theme__title">La discipline ecclésiale rédemptrice : fermeté dans la séparation et amour fraternel</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Paul ordonne au nom du Seigneur Jésus-Christ de s'éloigner de tout frère qui vit dans le désordre : si quelqu'un n'obéit pas à cette lettre, il faut le noter et n'avoir point de relations avec lui afin qu'il éprouve de la honte, sans toutefois le regarder comme un ennemi, mais en l'avertissant comme un frère (3.6, 14-⁠15).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>La pureté et l'harmonie de l'Église exigent l'exercice fidèle et gradué de la discipline ecclésiale envers tout membre qui persiste dans la désobéissance aux préceptes apostoliques (53-⁠15, 53-⁠16). La suspension de la communion fraternelle n'est pas un acte de haine vindicative, mais un moyen de grâce ordonné par Christ pour produire une honte salutaire dans la conscience du frère rebelle et le ramener à la repentance par des avertissements empreints d'amour fraternel (53-⁠16).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Ce commandement de 3.6-⁠15 constitue l'aboutissement concret de l'appel de 2.15 (« demeurez fermes, et retenez les instructions que vous avez reçues ») : retenir la tradition apostolique implique de reprendre ceux qui la foulent aux pieds dans leur conduite.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Une Église qui aime véritablement ses membres refuse aussi bien le laxisme complaisant qui tolère le péché public que la dureté sans amour qui traite d'emblée un frère égaré comme un ennemi, tout en veillant à ne jamais se lasser de faire le bien (3.13-⁠15) (53-⁠16).</p></div></div></section><section class="theme"><h3 class="theme__title">La paix, la présence et la grâce souveraines du Seigneur en toute circonstance</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Paul conclut en demandant que le Seigneur de la paix lui-même leur donne la paix en tout temps et de toute manière, que le Seigneur soit avec eux tous, et que la grâce de notre Seigneur Jésus-Christ demeure avec eux tous, après avoir apposé sa signature autographe (3.16-⁠18).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>La paix véritable n'est pas l'absence de conflit extérieur, mais un attribut divin et un don surnaturel que le Seigneur Jésus-Christ, Prince de la paix, accorde continuellement à ceux qui lui appartiennent, quelle que soit la nature de leurs épreuves (53-⁠17). Accompagnée de la présence fortifiante du Christ ressuscité, de la certitude infaillible de l'Écriture apostolique et de sa grâce habilitante, cette paix garde le croyant jusqu'au jour de la gloire (53-⁠17).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Ouverte par le souhait de grâce et de paix de 1.2, toute la deuxième épître culmine dans cette bénédiction finale de 3.16-⁠18 qui répond aux trois crises du livre : la paix dans la persécution (chapitre 1), la paix face aux troubles prophétiques (chapitre 2) et la paix au sein de la vie ecclésiale (chapitre 3) (53-⁠17).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Puisque le Seigneur de la paix est lui-même avec nous en tout temps et que sa grâce nous suffit, nous pouvons traverser chaque épreuve et accomplir chaque devoir dans une paix intérieure que le monde ne peut ni donner ni ravir (53-⁠17).</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Six questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>En 3.1-⁠2, Paul demande avant tout que l'Église prie pour que « la parole du Seigneur se répande et soit glorifiée » et que ses serviteurs soient protégés : quelle place cette double requête occupe-t-elle dans notre intercession pour nos pasteurs et nos missionnaires (53-⁠13)?</li><li>Comment la promesse de 3.3 (« Le Seigneur est fidèle, il vous affermira et vous préservera du malin ») répond-elle à la crainte de voir notre foi succomber devant l'opposition des hommes ou les attaques de Satan (53-⁠13)?</li><li>En quoi la théologie biblique du travail exposée à partir de 3.6-⁠12 corrige-t-elle à la fois la vision mondaine qui ne voit dans le métier qu'un gagne-pain pénible et le faux piétisme qui méprise les tâches séculières au profit des seules activités religieuses (53-⁠14, 53-⁠15)?</li><li>Pourquoi Paul lie-t-il si étroitement l'oisiveté (<i>mēden ergazomenous</i>) et l'ingérence dans les affaires d'autrui (<i>periergazomenous</i>) en 3.11, et comment le travail paisible protège-t-il l'unité d'une assemblée locale (53-⁠16)?</li><li>Comment concilier concrètement la fermeté de 3.6 et 3.14 (« notez-le, et n'ayez point de relations avec lui, afin qu'il éprouve de la honte ») avec la tendresse de 3.15 (« Ne le regardez pas comme un ennemi, mais avertissez-le comme un frère ») et l'exhortation de 3.13 (« ne vous lassez pas de faire le bien ») (53-⁠16)?</li><li>Que signifie recevoir la paix du Seigneur « en tout temps, de toute manière » (3.16), et comment la présence et la grâce de Jésus-Christ (3.16b, 18) rendent-elles cette paix possible au milieu même des tempêtes (53-⁠17)?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · 2 Thessaloniciens 3 · 23 octobre 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-2-Thessaloniciens-3.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

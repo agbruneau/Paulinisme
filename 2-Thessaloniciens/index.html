@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Étude de 2 Thessaloniciens 1-3</title>
+<meta name="description" content="Accueil de l&#x27;étude de 2 Thessaloniciens 1-3 dans la perspective de John MacArthur : recherche exégétique sur tout le livre, plan de série « La consolation dans l&#x27;épreuve, la vérité sur le jour du Seigneur et la marche ordonnée des élus » et recherches des trois sermons.">
+<meta name="author" content="André-Guy Bruneau">
+<meta name="color-scheme" content="dark">
+<style>
+  :root{
+    /* ---- Palette des recherches : noir et orange ---- */
+    --nuit:#0a0a0a;
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;
+    --encre:#f3f0ec;
+    --encre-doux:#c9c2ba;
+    --or:#e8843c;
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    /* Contour des éléments interactifs : au moins 3:1 sur la page et sur les cartes */
+    --filet-fort:rgba(232,132,60,.65);
+    --titre:"Cormorant Garamond","EB Garamond",Georgia,"Times New Roman",serif;
+    --texte:"EB Garamond",Georgia,"Times New Roman",serif;
+    --max:82rem;
+    --colonne:46rem;
+    --gout:clamp(1rem,4vw,2.5rem);
+    /* Étiquettes : jamais sous 14 px */
+    --etiq:max(.875rem,.7em);
+    /* Hauteur de la barre collante : deux rangées sur téléphone, une ensuite */
+    --barre:6.6rem;
+    color-scheme:dark;
+  }
+  @media (min-width:48rem){:root{--barre:3.7rem;}}
+  @media (max-height:30rem){:root{--barre:0rem;}}
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:calc(var(--barre) + .9rem);}
+  body{
+    margin:0;
+    font-family:var(--texte);
+    /* Grands caractères pour des lecteurs aînés, comme les recherches */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.75;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 70% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-repeat:no-repeat;
+    overflow-wrap:break-word;
+  }
+  /* Grain de parchemin et vignette, très discrets */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .vignette{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+  .tete,main,.pied{position:relative;z-index:1;}
+
+  a{color:var(--feuille);}
+  :focus-visible{outline:3px solid var(--feuille-vif);outline-offset:3px;border-radius:4px;}
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  .nw{white-space:nowrap;}
+  .vh{
+    position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;
+    overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0;
+  }
+  abbr[title]{text-decoration:underline dotted;text-decoration-thickness:1px;text-underline-offset:.18em;cursor:help;}
+  .q{color:var(--or);font-style:normal;}
+
+  /* ---- Lien d'évitement ---- */
+  .evitement{
+    position:absolute;left:1rem;top:-8rem;z-index:100;
+    padding:.6rem 1rem;border-radius:4px;
+    background:var(--or);color:var(--nuit);font-weight:600;text-decoration:none;
+  }
+  .evitement:focus{top:.6rem;}
+
+  /* ---- Barre de navigation collante ---- */
+  .barre{
+    position:sticky;top:0;z-index:30;
+    background:rgba(10,10,10,.95);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--filet);
+  }
+  @media (max-height:30rem){.barre{position:relative;}}
+  .barre__in{
+    max-width:var(--max);margin:0 auto;padding:.3rem var(--gout);
+    display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:.2rem .6rem;
+  }
+  .barre a{text-decoration:none;}
+  .barre__marque{
+    display:inline-flex;align-items:center;min-height:2.75rem;
+    font-family:var(--titre);font-weight:600;font-size:1.3rem;letter-spacing:.06em;white-space:nowrap;
+    color:var(--or-clair);
+  }
+  .barre ul{margin:0;padding:0;list-style:none;}
+  .barre__liens{display:flex;justify-content:flex-end;gap:.2rem;}
+  .barre__liens a{
+    display:inline-flex;align-items:center;justify-content:center;min-height:2.75rem;padding:0 .75rem;border-radius:5px;
+    font-size:1.1rem;line-height:1.2;color:var(--encre);white-space:nowrap;
+  }
+  .barre__liens a:hover{color:var(--or-clair);background:rgba(232,132,60,.1);}
+  .barre__liens a[aria-current]{color:var(--or-clair);box-shadow:inset 0 -2px 0 var(--or);}
+  .barre__puces{grid-column:1 / -1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.2rem;}
+  /* Chaque pastille rétrécit avec sa cellule au lieu de déborder sur la voisine */
+  .barre__puces li{display:flex;align-items:center;justify-content:center;min-width:0;}
+  .barre__puces a{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:min(2.75rem,100%);height:2.75rem;border:1px solid var(--filet-fort);border-radius:50%;
+    font-family:var(--titre);font-weight:600;font-size:1.35rem;line-height:1;color:var(--encre);
+  }
+  .barre__puces a:hover{border-color:var(--or);color:var(--or-clair);background:rgba(232,132,60,.12);}
+  .barre__puces a[aria-current]{background:var(--or);border-color:var(--or);color:var(--nuit);}
+  @supports (aspect-ratio:1){.barre__puces a{height:auto;aspect-ratio:1;}}
+  @media (max-width:25.99rem){
+    .barre__in{grid-template-columns:minmax(0,1fr);}
+    .barre__marque{display:none;}
+    .barre__liens{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+    .barre__liens a{white-space:normal;text-align:center;}
+  }
+  @media (min-width:48rem){
+    .barre__in{display:flex;gap:.5rem 1rem;}
+    .barre__marque{margin-right:auto;}
+    .barre__puces{display:flex;gap:.3rem;}
+    .barre__puces a{width:2.75rem;}
+  }
+
+  /* ---- En-tête : couverture encadrée, compacte ---- */
+  .tete{max-width:var(--max);margin:0 auto;padding:clamp(1rem,2.5vw,1.8rem) var(--gout) 0;}
+  .tete__cadre{
+    position:relative;text-align:center;
+    padding:clamp(1.8rem,4.5vw,3.2rem) clamp(1rem,4vw,3rem) clamp(1.7rem,4vw,2.8rem);
+    border:1px solid var(--filet);
+    background:radial-gradient(80% 60% at 50% 0%, rgba(240,182,89,.06), transparent 70%);
+  }
+  .tete__cadre::before,.tete__cadre::after{content:"";position:absolute;width:18px;height:18px;pointer-events:none;}
+  .tete__cadre::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .tete__cadre::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+  .tete__kicker{
+    margin:0 0 .5rem;font-size:var(--etiq);letter-spacing:.34em;text-transform:uppercase;color:var(--or);
+  }
+  h1{
+    margin:0 auto;max-width:18em;padding:.04em .06em .16em;
+    font-family:var(--titre);font-weight:600;
+    font-size:clamp(2.2rem,1.35rem + 3.3vw,4.1rem);line-height:1.06;letter-spacing:.015em;
+    text-wrap:balance;
+    color:var(--or-clair);
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 48%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 30px rgba(240,182,89,.22));
+  }
+  @media (forced-colors:active){h1{background:none;-webkit-text-fill-color:CanvasText;filter:none;}}
+  .ornement{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    width:min(20rem,80%);margin:1.2rem auto;color:var(--or);
+  }
+  .ornement::before,.ornement::after{
+    content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornement span{font-size:.8rem;line-height:1;}
+  .tete__verset{margin:0 auto;max-width:48rem;}
+  .tete__verset blockquote{margin:0;}
+  .tete__verset p{
+    margin:0;font-family:var(--titre);font-style:italic;font-weight:500;
+    font-size:clamp(1.3rem,1rem + 1vw,1.85rem);line-height:1.55;color:var(--encre);text-wrap:balance;
+  }
+  .tete__verset figcaption{
+    margin-top:.9rem;font-size:var(--etiq);letter-spacing:.28em;text-transform:uppercase;color:var(--or);
+  }
+  .tete__serie{margin:1.5rem 0 0;}
+  .tete__serie .etiquette{display:block;margin-bottom:.15rem;color:var(--encre-doux);}
+  .tete__phrase{
+    font-family:var(--titre);font-weight:600;font-size:clamp(1.45rem,1.15rem + 1vw,2rem);line-height:1.3;color:var(--feuille);
+  }
+  .tete__meta{margin:1.1rem auto 0;max-width:40rem;font-size:.92em;line-height:1.55;color:var(--encre-doux);}
+
+  /* ---- Sections ---- */
+  main{max-width:var(--max);margin:0 auto;padding:0 var(--gout);}
+  .sec{padding-top:clamp(2.4rem,6vw,4rem);}
+  .sec-tete{text-align:center;margin-bottom:1.6rem;}
+  .kicker{
+    margin:0 0 .5rem;font-size:var(--etiq);letter-spacing:.28em;text-transform:uppercase;color:var(--or);
+  }
+  .kicker::before{content:"\25C6";content:"\25C6" / "";margin-right:.7em;font-size:.72em;vertical-align:.12em;}
+  h2{
+    margin:0;font-family:var(--titre);font-weight:600;
+    font-size:clamp(2.05rem,1.4rem + 2.2vw,3.1rem);line-height:1.1;color:var(--encre);text-wrap:balance;
+  }
+  .sec-tete h2::after{content:"";display:block;width:2.6rem;height:1px;margin:1rem auto 0;background:var(--filet-fort);}
+  .lead{
+    max-width:var(--colonne);margin:0 auto 1rem;padding-left:1.2rem;border-left:3px solid var(--or);
+    font-size:1.04em;line-height:1.7;color:#faf3ec;text-wrap:pretty;
+  }
+  .question{max-width:var(--colonne);margin:0 auto;padding-left:1.2rem;border-left:3px solid transparent;line-height:1.65;color:var(--encre);}
+  .question strong,.carte__question strong{font-family:var(--titre);font-style:italic;font-weight:600;font-size:1.12em;color:var(--feuille);}
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    margin:clamp(2.2rem,5vw,3.4rem) auto 0;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* ---- Étiquettes et boutons ---- */
+  .etiquette{margin:0;font-size:var(--etiq);font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--or);line-height:1.5;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    min-height:2.9rem;padding:.35rem 1rem;
+    border:1px solid var(--filet-fort);border-radius:6px;
+    font-size:max(1.1rem,.95em);line-height:1.2;text-align:center;text-decoration:none;color:var(--encre);
+  }
+  .btn:hover{border-color:var(--or);color:var(--or-clair);background:rgba(232,132,60,.1);}
+  .btn--plein{background:var(--or);border-color:var(--or);color:var(--nuit);font-weight:600;}
+  .btn--plein:hover{background:var(--or-clair);border-color:var(--or-clair);color:var(--nuit);}
+  .actions{display:flex;flex-wrap:wrap;gap:.55rem;}
+  @media (max-width:29.99rem){
+    .actions{display:grid;grid-template-columns:1fr 1fr;}
+    .actions .btn--plein{grid-column:1 / -1;}
+  }
+
+  /* ---- Le livre entier ---- */
+  .livre{display:grid;gap:1.2rem;align-items:start;grid-template-columns:minmax(0,1fr);}
+  @media (min-width:64rem){.livre{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);}}
+  .carte{
+    display:flex;flex-direction:column;gap:.85rem;
+    padding:clamp(1.15rem,3vw,1.6rem) clamp(1.05rem,3vw,1.7rem) clamp(1.2rem,3vw,1.6rem);
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 10px 10px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.78),rgba(18,18,18,.45));
+  }
+  .carte p{margin:0;}
+  .carte h3{
+    margin:0;font-family:var(--titre);font-weight:600;
+    font-size:clamp(1.65rem,1.3rem + 1vw,2.2rem);line-height:1.12;color:var(--or-clair);
+  }
+  .carte__texte{line-height:1.7;color:var(--encre);text-wrap:pretty;}
+  @media (max-width:25.99rem){.carte__sep{display:none;}.carte__date{display:block;}}
+  .carte__question{padding:.75rem 0 .1rem 1rem;border-top:1px solid var(--filet);line-height:1.65;color:var(--encre);border-left:2px solid var(--filet-fort);}
+  .carte__duree{padding:.75rem 1rem .8rem;border:1px solid var(--filet);border-radius:6px;background:rgba(232,132,60,.05);line-height:1.6;}
+  .carte__duree .etiquette{display:block;}
+  .carte .actions{margin-top:0;padding-top:.35rem;}
+  .rubriques{display:grid;gap:.15rem 1.4rem;grid-template-columns:repeat(auto-fill,minmax(min(100%,13rem),1fr));margin:.1rem 0 0;padding:0;list-style:none;}
+  .rubriques li{position:relative;padding-left:1.2rem;line-height:1.5;color:var(--encre);}
+  .rubriques li::before{content:"\25C6";content:"\25C6" / "";position:absolute;left:0;top:.55em;font-size:.55em;color:var(--or);}
+  .sections{display:flex;flex-wrap:wrap;gap:.45rem;margin:0;padding:0;list-style:none;}
+  .sections a{
+    display:inline-flex;align-items:center;min-height:2.75rem;padding:.2rem .9rem;
+    border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.92em;line-height:1.25;color:var(--encre);text-decoration:none;
+  }
+  .sections a:hover{border-color:var(--or);color:var(--or-clair);background:rgba(232,132,60,.08);}
+
+  /* Les six mouvements de la lettre */
+  .mouvements{
+    margin-top:1.2rem;padding:clamp(1.15rem,3vw,1.6rem) clamp(1.05rem,3vw,1.7rem);
+    border:1px solid var(--filet);border-radius:10px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));
+  }
+  .mouvements__tete{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.3rem 1.2rem;margin-bottom:1rem;}
+  .mouvements h3{margin:0;font-family:var(--titre);font-weight:600;font-size:clamp(1.55rem,1.25rem + .9vw,2rem);line-height:1.15;color:var(--or-clair);}
+  .mouvements__lien{display:inline-flex;align-items:center;min-height:2.75rem;font-size:.92em;}
+  .mv{list-style:none;margin:0;padding:0;counter-reset:mv;columns:2 24rem;column-gap:2.6rem;}
+  .mv li{
+    counter-increment:mv;position:relative;break-inside:avoid;
+    margin:0 0 .65rem;padding:.55rem .2rem .6rem 3.2rem;border-top:1px solid var(--filet);
+  }
+  .mv li::before{
+    content:counter(mv);position:absolute;left:0;top:.65rem;
+    display:flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;
+    border:1px solid var(--filet-fort);border-radius:50%;background:rgba(232,132,60,.06);
+    font-family:var(--titre);font-weight:600;font-size:1.2rem;line-height:1;color:var(--or);
+  }
+  .mv__ref{display:block;font-size:var(--etiq);letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .mv__lib{display:block;line-height:1.5;color:var(--encre);}
+
+  /* ---- Les trois sermons ---- */
+  .sommaire{display:grid;gap:1rem 1.4rem;margin:1.8rem 0 .4rem;padding:0;list-style:none;}
+  .sommaire__bloc{min-width:0;}
+  @media (min-width:60rem){
+    .sommaire{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto auto;}
+    .sommaire__bloc{display:grid;grid-template-rows:subgrid;grid-row:span 2;row-gap:0;}
+    .sommaire__nom{align-self:end;}
+  }
+  .sommaire__nom{margin:0 0 .5rem;line-height:1.3;}
+  .sommaire__ch{display:block;font-size:var(--etiq);letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .sommaire__titre{font-family:var(--titre);font-weight:600;font-size:1.12em;color:var(--or-clair);}
+  .sommaire ol{display:grid;gap:.5rem;margin:0;padding:0;list-style:none;}
+  .sommaire ol li{display:flex;}
+  .sommaire ol a{flex:1;}
+  .sommaire a{
+    position:relative;display:flex;flex-direction:column;justify-content:center;min-height:4.2rem;
+    padding:.55rem .9rem .6rem 3.6rem;border:1px solid var(--filet-fort);border-radius:8px;
+    color:var(--encre);text-decoration:none;line-height:1.3;
+    background:rgba(18,18,18,.35);
+  }
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.08);}
+  .sommaire__n{
+    position:absolute;left:.75rem;top:50%;transform:translateY(-50%);
+    display:flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;
+    border:1px solid var(--filet-fort);border-radius:50%;
+    font-family:var(--titre);font-weight:600;font-size:1.25rem;line-height:1;color:var(--or-clair);
+  }
+  .sommaire__ref{font-size:var(--etiq);letter-spacing:.14em;text-transform:uppercase;color:var(--encre-doux);}
+  .sommaire__lib{font-family:var(--titre);font-weight:600;font-size:1.15em;}
+
+  .bloc{margin-top:clamp(1.8rem,4vw,2.6rem);}
+  .bloc__titre{
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:.1rem 1rem;
+    margin:0 0 1rem;padding:.65rem .8rem .55rem;
+    border-bottom:1px solid var(--filet-fort);
+    background:linear-gradient(90deg,rgba(232,132,60,.11),transparent 75%);
+    font-weight:inherit;
+  }
+  .bloc__ch{font-size:var(--etiq);letter-spacing:.22em;text-transform:uppercase;color:var(--or);}
+  .bloc__ch::before{content:"\25C6";content:"\25C6" / "";margin-right:.6em;font-size:.72em;vertical-align:.12em;}
+  .bloc__nom{font-family:var(--titre);font-weight:600;font-size:clamp(1.85rem,1.45rem + 1.3vw,2.6rem);line-height:1.2;color:var(--or-clair);}
+
+  .sermons{display:grid;gap:1.3rem;margin:0;padding:0;list-style:none;}
+  .sermon{
+    position:relative;display:grid;column-gap:.9rem;row-gap:.75rem;
+    grid-template-columns:auto minmax(0,1fr);
+    grid-template-areas:"n titre" "gty gty" "phrase phrase" "docs docs" "corps corps" "pied pied";
+    align-items:start;
+    padding:clamp(1.1rem,3vw,1.6rem) clamp(1rem,3vw,1.7rem) clamp(1rem,2.5vw,1.3rem);
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 10px 10px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.78),rgba(18,18,18,.42));
+  }
+  .sermon:target{border-color:var(--or);box-shadow:0 0 0 1px var(--or),0 0 32px rgba(232,132,60,.22);}
+  .sermon > *{margin:0;min-width:0;}
+  .s-n{
+    grid-area:n;display:flex;align-items:center;justify-content:center;
+    width:2.9rem;height:2.9rem;margin-top:.2rem;border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.08);
+    font-family:var(--titre);font-weight:600;font-size:1.65rem;line-height:1;color:var(--or-clair);
+  }
+  .s-titre{grid-area:titre;font-weight:inherit;}
+  .s-kicker{display:block;margin-bottom:.15rem;font-size:var(--etiq);letter-spacing:.2em;text-transform:uppercase;color:var(--or);line-height:1.4;}
+  @media (max-width:25.99rem){.s-kicker{letter-spacing:.16em;}}
+  .s-titre a{
+    font-family:var(--titre);font-weight:600;font-size:clamp(1.55rem,1.3rem + .8vw,2rem);line-height:1.12;
+    color:var(--encre);text-decoration:underline;text-decoration-color:var(--filet-fort);
+    text-decoration-thickness:1px;text-underline-offset:.16em;text-wrap:balance;
+  }
+  .s-titre a:hover{color:var(--or-clair);text-decoration-color:var(--or);}
+  .s-gty{grid-area:gty;font-size:.92em;color:var(--encre-doux);}
+  .s-phrase{grid-area:phrase;}
+  .s-phrase .etiquette{display:block;}
+  .s-phrase__txt{font-family:var(--titre);font-style:italic;font-size:1.22em;line-height:1.4;color:#faf3ec;}
+  .s-docs{grid-area:docs;display:grid;grid-template-columns:1fr 1fr;gap:.5rem;}
+  .s-docs .btn--plein{grid-column:1 / -1;}
+  .s-docs .btn{padding:.35rem .6rem;}
+
+  .corps{grid-area:corps;display:grid;grid-template-columns:minmax(0,1fr);gap:1.2rem 2.2rem;padding-top:1.05rem;border-top:1px solid var(--filet);}
+  @media (min-width:58rem){.corps{grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);}}
+  .corps__col > .etiquette{margin-bottom:.35rem;}
+  .corps__col > .etiquette ~ .etiquette{margin-top:1.1rem;}
+  .idee{margin:0;line-height:1.68;color:var(--encre);text-wrap:pretty;}
+
+  /* Versets (bloc à filet orange, comme les recherches) */
+  .verset{
+    margin:0;padding:1.05rem 1.2rem 1rem 1.3rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 6px 6px 0;
+    background:linear-gradient(180deg,rgba(232,132,60,.08),rgba(232,132,60,.02));
+  }
+  .verset blockquote{margin:0;}
+  .verset p{margin:0;font-family:var(--titre);font-style:italic;font-size:1.12em;line-height:1.55;color:var(--encre);}
+  .verset figcaption{margin-top:.6rem;font-size:var(--etiq);letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+
+  .etapes{list-style:none;margin:0;padding:0;display:grid;gap:.6rem;}
+  .etapes li{display:grid;grid-template-columns:2.4em minmax(0,1fr);column-gap:.3rem;}
+  .etape__num{font-family:var(--titre);font-weight:600;font-size:1.08em;line-height:1.35;color:var(--or);}
+  .etape__nom{display:block;font-family:var(--titre);font-weight:600;font-size:1.1em;line-height:1.3;color:var(--encre);}
+  .etape__ref{display:block;font-size:.88em;line-height:1.45;color:var(--encre-doux);}
+
+  /* Pied de la fiche : sections, sermons GTY, transition */
+  .pied-fiche{grid-area:pied;display:flex;flex-wrap:wrap;align-items:flex-start;gap:.6rem;padding-top:1rem;border-top:1px solid var(--filet);}
+  .repli{flex:0 1 auto;min-width:0;}
+  .repli[open]{flex-basis:100%;}
+  .repli > summary{
+    display:inline-flex;align-items:center;gap:.6rem;min-height:2.9rem;padding:.3rem 1rem .3rem .75rem;
+    border:1px solid var(--filet-fort);border-radius:6px;cursor:pointer;list-style:none;
+    font-size:max(1.1rem,.95em);line-height:1.25;color:var(--feuille);
+  }
+  .repli > summary::-webkit-details-marker{display:none;}
+  .repli > summary::before{
+    content:"+";content:"+" / "";display:inline-flex;align-items:center;justify-content:center;flex:none;
+    width:1.7rem;height:1.7rem;border:1px solid var(--filet-fort);border-radius:50%;
+    font-size:1.15rem;line-height:1;color:var(--or);
+  }
+  .repli[open] > summary::before{content:"\2212";content:"\2212" / "";}
+  .repli > summary:hover{border-color:var(--or);color:var(--feuille-vif);background:rgba(232,132,60,.08);}
+  .repli__corps{margin-top:.7rem;padding:1rem 1.1rem;border:1px solid var(--filet);border-radius:8px;background:rgba(10,10,10,.35);}
+  .repli__note{max-width:var(--colonne);margin:0 0 .8rem;font-size:.95em;line-height:1.6;color:var(--encre-doux);}
+  .gty{list-style:none;margin:0;padding:0;display:grid;gap:.55rem 2rem;grid-template-columns:repeat(auto-fill,minmax(min(100%,22rem),1fr));}
+  .gty li{display:grid;grid-template-columns:3.6em minmax(0,1fr);column-gap:.5rem;line-height:1.4;}
+  .gty__code{color:var(--or-clair);font-weight:600;}
+  .gty__titre{color:var(--encre);}
+  .gty__ref{display:block;font-size:.88em;color:var(--encre-doux);}
+
+  .transition{flex-basis:100%;margin-top:.3rem;padding:.85rem 1rem .9rem;border-left:2px solid var(--filet-fort);background:linear-gradient(90deg,rgba(232,132,60,.06),transparent 80%);}
+  .transition p{margin:0;}
+  .transition__texte{max-width:var(--colonne);line-height:1.65;color:var(--encre);text-wrap:pretty;}
+  .transition__lien{display:inline-block;padding:.45rem 0;font-weight:600;line-height:1.45;}
+  .retour{display:inline-flex;align-items:center;min-height:2.75rem;margin-left:auto;font-size:.95em;color:var(--feuille);}
+
+  @media (min-width:48rem){
+    .sermon{
+      grid-template-columns:3.6rem minmax(0,1fr);column-gap:1.4rem;
+      grid-template-areas:"n titre" "n gty" "n phrase" "n docs" ". corps" ". pied";
+    }
+    .s-n{width:3.4rem;height:3.4rem;font-size:1.95rem;}
+    .s-docs{display:flex;flex-wrap:wrap;}
+    .s-docs .btn{padding:.35rem 1rem;}
+  }
+  @media (min-width:64rem){
+    .sermon{
+      grid-template-columns:3.6rem minmax(0,1fr) 17rem;
+      grid-template-areas:"n titre docs" "n gty docs" "n phrase docs" ". corps corps" ". pied pied";
+    }
+    .s-docs{display:grid;}
+    .s-docs .btn{padding:.35rem .6rem;}
+  }
+
+  /* ---- Conclusion de la série ---- */
+  .conclusion{text-align:center;}
+  .rappel{
+    display:grid;gap:.6rem;margin:0 auto;padding:0;list-style:none;max-width:68rem;text-align:left;
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));
+  }
+  .rappel a{
+    display:flex;align-items:center;gap:.85rem;min-height:3.4rem;height:100%;padding:.55rem 1rem;
+    border:1px solid var(--filet-fort);border-radius:8px;text-decoration:none;color:var(--encre);background:rgba(18,18,18,.35);
+  }
+  .rappel a:hover{border-color:var(--or);background:rgba(232,132,60,.08);}
+  .rappel__n{
+    flex:none;display:flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;
+    border:1px solid var(--filet-fort);border-radius:50%;
+    font-family:var(--titre);font-weight:600;font-size:1.2rem;line-height:1;color:var(--or-clair);
+  }
+  .rappel__t{font-family:var(--titre);font-style:italic;font-size:1.18em;line-height:1.3;}
+  .conclusion .ornement{margin:1.8rem auto 1.4rem;}
+  .conclusion__phrase{
+    margin:.2rem auto 0;max-width:26em;font-family:var(--titre);font-weight:600;
+    font-size:clamp(1.6rem,1.25rem + 1.4vw,2.35rem);line-height:1.25;color:var(--feuille);text-wrap:balance;
+  }
+  .benediction{max-width:46rem;margin:2rem auto 0;}
+  .benediction .etiquette{margin-bottom:.5rem;}
+  .benediction .verset{text-align:left;}
+  .benediction .verset p{font-size:1.2em;}
+
+  /* ---- Pied de page ---- */
+  .pied{
+    margin-top:clamp(2.6rem,6vw,4rem);padding:2rem var(--gout) 2.6rem;text-align:center;
+    border-top:1px solid var(--filet);
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .pied .ornement{margin:0 auto 1.1rem;}
+  .pied p{margin:.25rem 0;font-size:.92em;line-height:1.55;color:var(--encre-doux);}
+  .pied .pied__nom{margin-bottom:.4rem;font-family:var(--titre);font-weight:600;font-size:1.6rem;color:var(--encre);}
+  .pied .pied__sdg{margin-top:1.3rem;font-size:var(--etiq);letter-spacing:.36em;text-transform:uppercase;color:var(--or);}
+
+  /* ---- Très grande police ou fort zoom (moins de 20 rem de large) : tout se replie, rien ne déborde ---- */
+  @media (max-width:19.99rem){
+    .nw{white-space:normal;}
+    .actions,.s-docs{grid-template-columns:minmax(0,1fr);}
+    .sections a,.sommaire a,.rappel a,.btn,.repli > summary{min-width:0;overflow-wrap:anywhere;-webkit-hyphens:auto;hyphens:auto;}
+  }
+
+  /* ---- Mouvement : seulement si la personne l'accepte ---- */
+  @media (prefers-reduced-motion:no-preference){
+    html{scroll-behavior:smooth;}
+    .btn,.sections a,.barre a,.sommaire a,.rappel a,.repli > summary,.sermon{
+      transition:background-color .2s,border-color .2s,color .2s,box-shadow .3s;
+    }
+  }
+
+  /* ---- Impression ---- */
+  @media print{
+    :root{
+      --encre:#111;--encre-doux:#444;
+      --or:#8a4510;--or-clair:#5c2e0a;--feuille:#5c2e0a;--feuille-vif:#5c2e0a;
+      --filet:#bbb;--filet-fort:#888;
+      color-scheme:light;
+    }
+    body{background:#fff;color:#000;font-size:11pt;}
+    .barre,.evitement,.grain,.vignette{display:none;}
+    h1{background:none;-webkit-text-fill-color:#000;color:#000;filter:none;}
+    .lead,.s-phrase__txt{color:var(--encre);}
+    .carte,.verset,.sermon,.mouvements,.bloc__titre,.tete__cadre{background:none;}
+    .sommaire a,.rappel a,.sections a,.repli__corps,.transition,.carte__duree,.s-n,.mv li::before{background:none;}
+    .btn--plein{background:none;border-color:var(--or);color:var(--encre);}
+    .sermon{break-inside:avoid;}
+    a{color:#000;}
+  }
+
+</style>
+</head>
+<body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<nav class="barre" aria-label="Accès rapide">
+  <div class="barre__in">
+    <a class="barre__marque" href="#haut"><span class="nw">2 Thessaloniciens 1-3</span><span class="vh"> : haut de la page</span></a>
+    <ul class="barre__liens" role="list">
+      <li><a href="#livre">Livre et plan</a></li>
+      <li><a href="#sermons">Sermons</a></li>
+    </ul>
+    <ul class="barre__puces" role="list"><li><a href="#sermon-1"><span class="vh">Sermon </span>1<span class="vh"> (2 Thessaloniciens 1 : Une Église dont on est fier, la vengeance de Jésus-Christ et la prière qui glorifie son nom)</span></a></li><li><a href="#sermon-2"><span class="vh">Sermon </span>2<span class="vh"> (2 Thessaloniciens 2 : L&#x27;homme impie à venir et la sécurité inébranlable des élus face au jour du Seigneur)</span></a></li><li><a href="#sermon-3"><span class="vh">Sermon </span>3<span class="vh"> (2 Thessaloniciens 3 : Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance)</span></a></li></ul>
+  </div>
+</nav>
+
+<header class="tete" id="haut" data-nav="">
+  <div class="tete__cadre">
+    <p class="tete__kicker">Étude · <span class="nw">2 Thessaloniciens 1-3</span></p>
+    <h1>La consolation dans l'épreuve, la vérité sur le jour du Seigneur et la marche ordonnée des élus</h1>
+    <div class="ornement" aria-hidden="true"><span>◆</span></div>
+    <figure class="tete__verset">
+      <blockquote><p><span class="q">«</span> Pour nous, frères bien-aimés du Seigneur, nous devons à votre sujet rendre continuellement grâces à Dieu, parce que Dieu vous a choisis dès le commencement pour le salut, par la sanctification de l’Esprit et par la foi en la vérité. C’est à quoi il vous a appelés par notre Evangile, pour que vous possédiez la gloire de notre Seigneur <span class="nw">Jésus-Christ</span>. Ainsi donc, frères, demeurez fermes, et retenez les instructions que vous avez reçues, soit par notre parole, soit par notre lettre. <span class="q">»</span></p></blockquote>
+      <figcaption><span class="nw">2 Thessaloniciens 2.13-15</span> · NEG79</figcaption>
+    </figure>
+    <p class="tete__serie"><span class="etiquette">Phrase de la série</span><span class="vh"> : </span><span class="tete__phrase">Consolés par le juste retour de Christ, gardés du trouble par sa vérité, fidèles au travail dans sa paix.</span></p>
+    <p class="tete__meta">Recherche exégétique et plan de série · Perspective John MacArthur · <span class="nw">André-Guy Bruneau</span></p>
+  </div>
+</header>
+
+<main id="contenu">
+  <section class="sec" id="livre" aria-labelledby="livre-titre" data-nav="livre">
+    <div class="sec-tete">
+      <p class="kicker">Vue d'ensemble</p>
+      <h2 id="livre-titre">Le livre entier</h2>
+    </div>
+    <div class="livre">
+      <article class="carte" aria-labelledby="carte-recherche">
+        <p class="etiquette"><span class="nw">2 Thessaloniciens 1-3</span><span class="carte__sep"> · </span><span class="carte__date nw">23 octobre 2026</span></p>
+        <h3 id="carte-recherche">Recherche sur tout le livre</h3>
+        <p class="carte__texte">Rédigée depuis Corinthe quelques mois après la première épître, <span class="nw">2 Thessaloniciens</span> déploie les trois fonctions vitales du ministère pastoral face aux urgences de la jeune Église macédonienne : la <em>consolation</em> dans la fournaise de la persécution par la révélation en feu de <span class="nw">Jésus-Christ</span> <span class="nw">(chapitre 1)</span>, la <em>correction</em> doctrinale face au mensonge sur le jour du Seigneur et l'homme impie <span class="nw">(chapitre 2)</span>, et la <em>confrontation</em> disciplinaire et fraternelle de l'oisiveté désordonnée <span class="nw">(chapitre 3)</span>.</p>
+        <p class="carte__question">Le fil conducteur qui unit les trois chapitres et leurs quatre prières pastorales <span class="nw">(1.11-12; 2.16-17; 3.5, 16-18)</span> : <strong>comment la vérité prophétique sur le retour de Christ et l'élection éternelle de Dieu garde-t-elle l'Église du découragement, de la panique doctrinale et du désordre quotidien?</strong></p>
+        <div class="actions">
+          <a class="btn btn--plein" href="Sommaire/Recherche-MacArthur-2-Thessaloniciens-1-3.html"><span>Lire la recherche<span class="vh"> sur tout le livre, <span class="nw">2 Thessaloniciens 1-3</span></span></span></a>
+          <a class="btn" href="Sommaire/Recherche-MacArthur-2-Thessaloniciens-1-3.pdf"><span><span class="vh">Recherche sur tout le livre, version </span>PDF</span></a>
+          <a class="btn" href="Sommaire/Recherche-MacArthur-2-Thessaloniciens-1-3.md"><span><span class="vh">Recherche sur tout le livre, version </span>Texte (.md)</span></a>
+        </div>
+        <p class="etiquette">Sections de la recherche</p>
+        <ul class="sections" role="list"><li><a href="Sommaire/Recherche-MacArthur-2-Thessaloniciens-1-3.html#contexte">Contexte du passage<span class="vh"> (recherche sur tout le livre)</span></a></li><li><a href="Sommaire/Recherche-MacArthur-2-Thessaloniciens-1-3.html#arriere-plan">Arrière-plan historique et culturel<span class="vh"> (recherche sur tout le livre)</span></a></li><li><a href="Sommaire/Recherche-MacArthur-2-Thessaloniciens-1-3.html#texte">État du texte<span class="vh"> (recherche sur tout le livre)</span></a></li><li><a href="Sommaire/Recherche-MacArthur-2-Thessaloniciens-1-3.html#structure">Structure et grammaire<span class="vh"> (recherche sur tout le livre)</span></a></li><li><a href="Sommaire/Recherche-MacArthur-2-Thessaloniciens-1-3.html#mots-cles">Étude des mots-clés<span class="vh"> (recherche sur tout le livre)</span></a></li><li><a href="Sommaire/Recherche-MacArthur-2-Thessaloniciens-1-3.html#commentateurs">Apports des commentateurs<span class="vh"> (recherche sur tout le livre)</span></a></li><li><a href="Sommaire/Recherche-MacArthur-2-Thessaloniciens-1-3.html#renvois">Renvois et passages parallèles<span class="vh"> (recherche sur tout le livre)</span></a></li><li><a href="Sommaire/Recherche-MacArthur-2-Thessaloniciens-1-3.html#themes">Thèmes théologiques<span class="vh"> (recherche sur tout le livre)</span></a></li><li><a href="Sommaire/Recherche-MacArthur-2-Thessaloniciens-1-3.html#reflexion">Pistes de réflexion<span class="vh"> (recherche sur tout le livre)</span></a></li></ul>
+      </article>
+      <article class="carte" aria-labelledby="carte-plan">
+        <p class="etiquette">Plan de série<span class="carte__sep"> · </span><span class="carte__date nw">23 octobre 2026</span></p>
+        <h3 id="carte-plan">Trois sermons, un par chapitre</h3>
+        <p class="carte__texte">La série épouse les trois chapitres et les trois grands blocs que dégage MacArthur : la consolation pastorale dans l'affliction <span class="nw">(chapitre 1)</span>, la correction doctrinale face à l'erreur prophétique <span class="nw">(chapitre 2)</span>, et la confrontation pratique de la vie désordonnée sous la paix du Seigneur <span class="nw">(chapitre 3)</span>.</p>
+        <p class="carte__duree"><span class="etiquette">Durée visée</span><span class="vh"> : </span>environ 45 minutes par sermon, plus la lecture publique du chapitre</p>
+        <p class="etiquette">Pour chaque sermon</p>
+        <ul class="rubriques" role="list"><li>Sermons <abbr lang="en" title="Grace to You">GTY</abbr></li><li>Textes d'appui</li><li>Idée centrale</li><li>Phrase à faire retenir</li><li>But</li><li>Étapes</li></ul>
+        <div class="actions">
+          <a class="btn btn--plein" href="Plan-Serie-2-Thessaloniciens-1-3.pdf"><span>Lire le plan (PDF)<span class="vh"> de la série</span></span></a>
+          <a class="btn" href="Plan-Serie-2-Thessaloniciens-1-3.md"><span><span class="vh">Plan de série, version </span>Texte (.md)</span></a>
+        </div>
+      </article>
+    </div>
+    <section class="mouvements" aria-labelledby="mouvements-titre">
+      <div class="mouvements__tete">
+        <h3 id="mouvements-titre">Les six mouvements de la lettre</h3>
+        <a class="mouvements__lien" href="Sommaire/Recherche-MacArthur-2-Thessaloniciens-1-3.html#structure">Structure et grammaire<span class="vh"> (recherche sur tout le livre)</span> <span aria-hidden="true">→</span></a>
+      </div>
+      <ol class="mv" role="list"><li><span class="mv__ref"><span class="nw">2 Thessaloniciens 1.1-5</span></span> <span class="mv__lib">Salutation et action de grâces pour une Église exemplaire dans la fournaise : foi surabondante, amour croissant et persévérance comme preuve du juste jugement de Dieu</span></li><li><span class="mv__ref"><span class="nw">2 Thessaloniciens 1.6-12</span></span> <span class="mv__lib">La révélation ardente du Seigneur Jésus (rétribution des impies et repos des saints) et la prière pour la glorification mutuelle du nom de Jésus et des croyants</span></li><li><span class="mv__ref"><span class="nw">2 Thessaloniciens 2.1-12</span></span> <span class="mv__lib">La rectification prophétique sur le jour du Seigneur : l'apostasie, la retenue du <span class="nw">Saint-Esprit</span>, la carrière et la destruction de l'homme impie, et le jugement d'égarement sur les incrédules</span></li><li><span class="mv__ref"><span class="nw">2 Thessaloniciens 2.13-17</span></span> <span class="mv__lib">L'ancrage sotériologique et pastoral des croyants : les cinq maillons de l'élection éternelle, l'ordre de tenir ferme dans les traditions et la prière de consolation</span></li><li><span class="mv__ref"><span class="nw">2 Thessaloniciens 3.1-5</span></span> <span class="mv__lib">L'appel à la prière mutuelle : intercession pour la course de la Parole, assurance dans la fidélité du Seigneur et souhait de direction des cœurs</span></li><li><span class="mv__ref"><span class="nw">2 Thessaloniciens 3.6-18</span></span> <span class="mv__lib">La discipline du travail honnête face aux oisifs, la restauration fraternelle, la bénédiction de paix et la signature autographe de Paul</span></li></ol>
+    </section>
+  </section>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <section class="sec" id="sermons" aria-labelledby="sermons-titre">
+    <div data-nav="sermons">
+      <div class="sec-tete">
+        <p class="kicker">Plan de série</p>
+        <h2 id="sermons-titre">Les trois sermons</h2>
+      </div>
+      <p class="lead">MacArthur articule l'épître selon ses trois chapitres, chacun répondant à une urgence précise et s'achevant par une bénédiction pastorale <span class="nw">(1.11-12; 2.16-17; 3.16-18)</span> : la consolation dans l'affliction <span class="nw">(chapitre 1)</span>, la correction de l'erreur prophétique <span class="nw">(chapitre 2)</span>, et la confrontation de la vie désordonnée <span class="nw">(chapitre 3)</span>.</p>
+      <p class="question">Un lien organique unit les trois prédications : <strong>la juste compréhension du retour de <span class="nw">Jésus-Christ</span> console l'Église persécutée, la garde des séductions eschatologiques et sanctifie son travail quotidien.</strong></p>
+      <nav class="sommaire-nav" id="sommaire" aria-label="Sommaire de la série"><ol class="sommaire" role="list"><li class="sommaire__bloc"><p class="sommaire__nom"><span class="sommaire__ch">Chapitre 1</span><span class="vh"> : </span><span class="sommaire__titre">La consolation dans l'affliction</span></p><ol role="list"><li><a href="#sermon-1"><span class="sommaire__n" aria-hidden="true">1</span><span class="sommaire__ref">Dimanche 1 · <span class="nw">2 Thessaloniciens 1</span></span><span class="vh"> : </span><span class="sommaire__lib">Une Église dont on est fier, la vengeance de <span class="nw">Jésus-Christ</span> et la prière qui glorifie son nom</span></a></li></ol></li><li class="sommaire__bloc"><p class="sommaire__nom"><span class="sommaire__ch">Chapitre 2</span><span class="vh"> : </span><span class="sommaire__titre">La correction de l'erreur prophétique</span></p><ol role="list"><li><a href="#sermon-2"><span class="sommaire__n" aria-hidden="true">2</span><span class="sommaire__ref">Dimanche 2 · <span class="nw">2 Thessaloniciens 2</span></span><span class="vh"> : </span><span class="sommaire__lib">L'homme impie à venir et la sécurité inébranlable des élus face au jour du Seigneur</span></a></li></ol></li><li class="sommaire__bloc"><p class="sommaire__nom"><span class="sommaire__ch">Chapitre 3</span><span class="vh"> : </span><span class="sommaire__titre">La confrontation de la vie désordonnée</span></p><ol role="list"><li><a href="#sermon-3"><span class="sommaire__n" aria-hidden="true">3</span><span class="sommaire__ref">Dimanche 3 · <span class="nw">2 Thessaloniciens 3</span></span><span class="vh"> : </span><span class="sommaire__lib">Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance</span></a></li></ol></li></ol></nav>
+    </div>
+    <section class="bloc" id="bloc-1" aria-labelledby="bloc-1-titre">
+      <h3 class="bloc__titre" id="bloc-1-titre"><span class="bloc__ch">Chapitre 1</span><span class="vh"> : </span><span class="bloc__nom">La consolation pastorale dans l'affliction</span></h3>
+      <ol class="sermons" role="list">
+      <li class="sermon" id="sermon-1" data-nav="sermon-1">
+        <span class="s-n" aria-hidden="true">1</span>
+        <h4 class="s-titre"><span class="s-kicker">Dimanche 1 · <span class="nw">2 Thessaloniciens 1</span></span><span class="vh"> : </span><a href="01-2-Thessaloniciens-1/Recherche-MacArthur-2-Thessaloniciens-1.html">Une Église dont on est fier, la vengeance de <span class="nw">Jésus-Christ</span> et la prière qui glorifie son nom<span class="vh"> (recherche exégétique)</span></a></h4>
+        <p class="s-gty">Sermons <abbr lang="en" title="Grace to You">GTY</abbr> <span class="nw">53-1</span> à <span class="nw">53-6</span></p>
+        <p class="s-phrase"><span class="etiquette">Phrase à faire retenir</span> <span class="s-phrase__txt"><span class="q">«</span> Croissants dans l'épreuve, consolés par le juste retour de Christ, priant pour la gloire de son nom. <span class="q">»</span></span></p>
+        <div class="s-docs">
+          <a class="btn btn--plein" href="01-2-Thessaloniciens-1/Recherche-MacArthur-2-Thessaloniciens-1.html"><span>Lire la recherche<span class="vh"> du dimanche 1 : Une Église dont on est fier, la vengeance de Jésus-Christ et la prière qui glorifie son nom</span></span></a>
+          <a class="btn" href="01-2-Thessaloniciens-1/Recherche-MacArthur-2-Thessaloniciens-1.pdf"><span><span class="vh">Recherche du dimanche 1 : Une Église dont on est fier, la vengeance de Jésus-Christ et la prière qui glorifie son nom, version </span>PDF</span></a>
+          <a class="btn" href="01-2-Thessaloniciens-1/Recherche-MacArthur-2-Thessaloniciens-1.md"><span><span class="vh">Recherche du dimanche 1 : Une Église dont on est fier, la vengeance de Jésus-Christ et la prière qui glorifie son nom, version </span>Texte (.md)</span></a>
+        </div>
+        <div class="corps">
+          <div class="corps__col">
+            <p class="etiquette">Verset clé</p>
+            <figure class="verset">
+              <blockquote><p><span class="q">«</span> C’est pourquoi aussi nous prions continuellement pour vous, afin que notre Dieu vous juge dignes de la vocation, et qu’il accomplisse par sa puissance tous les desseins bienveillants de sa bonté, et l’œuvre de votre foi; ainsi le nom de notre Seigneur Jésus sera glorifié en vous, et vous serez glorifiés en lui, selon la grâce de notre Dieu et du Seigneur <span class="nw">Jésus-Christ</span>. <span class="q">»</span></p></blockquote>
+              <figcaption><span class="nw">2 Thessaloniciens 1.11-12</span> · NEG79</figcaption>
+            </figure>
+          </div>
+          <div class="corps__col">
+            <p class="etiquette">Idée centrale</p>
+            <p class="idee">Un pasteur rend grâces à Dieu avec une sainte fierté lorsqu'une Église persécutée croît dans la foi, l'amour et la persévérance; il la console par la certitude que le Seigneur Jésus apparaîtra du ciel dans une flamme de feu pour infliger une ruine éternelle aux rebelles et donner du repos aux saints; et il prie que Dieu accomplisse en elle son appel afin que le nom de Jésus soit glorifié.</p>
+            <p class="etiquette">Étapes</p>
+            <ol class="etapes" role="list"><li><span class="etape__num" aria-hidden="true">I.</span><span><span class="vh">I. </span><span class="etape__nom">Cinq marques d'une Église dont un pasteur peut être fier</span> <span class="etape__ref"><span class="nw">2 Thessaloniciens 1.1-5</span></span></span></li><li><span class="etape__num" aria-hidden="true">II.</span><span><span class="vh">II. </span><span class="etape__nom">La révélation ardente du Seigneur Jésus : rétribution des impies et repos des saints</span> <span class="etape__ref"><span class="nw">2 Thessaloniciens 1.6-10</span>; <span class="nw">Ésaïe 66.15</span>; <span class="nw">2.10, 19, 21</span></span></span></li><li><span class="etape__num" aria-hidden="true">III.</span><span><span class="vh">III. </span><span class="etape__nom">Prier pour les vraies priorités : la ressource, les trois requêtes et la gloire du nom de Jésus</span> <span class="etape__ref"><span class="nw">2 Thessaloniciens 1.11-12</span></span></span></li></ol>
+          </div>
+        </div>
+        <div class="pied-fiche">
+          <details class="repli">
+            <summary><span>Sections de la recherche<span class="vh"> du dimanche 1 : Une Église dont on est fier, la vengeance de Jésus-Christ et la prière qui glorifie son nom</span></span></summary>
+            <div class="repli__corps"><ul class="sections" role="list"><li><a href="01-2-Thessaloniciens-1/Recherche-MacArthur-2-Thessaloniciens-1.html#contexte">Contexte du passage<span class="vh"> (recherche du dimanche 1 : Une Église dont on est fier, la vengeance de Jésus-Christ et la prière qui glorifie son nom)</span></a></li><li><a href="01-2-Thessaloniciens-1/Recherche-MacArthur-2-Thessaloniciens-1.html#arriere-plan">Arrière-plan historique et culturel<span class="vh"> (recherche du dimanche 1 : Une Église dont on est fier, la vengeance de Jésus-Christ et la prière qui glorifie son nom)</span></a></li><li><a href="01-2-Thessaloniciens-1/Recherche-MacArthur-2-Thessaloniciens-1.html#texte">État du texte<span class="vh"> (recherche du dimanche 1 : Une Église dont on est fier, la vengeance de Jésus-Christ et la prière qui glorifie son nom)</span></a></li><li><a href="01-2-Thessaloniciens-1/Recherche-MacArthur-2-Thessaloniciens-1.html#structure">Structure et grammaire<span class="vh"> (recherche du dimanche 1 : Une Église dont on est fier, la vengeance de Jésus-Christ et la prière qui glorifie son nom)</span></a></li><li><a href="01-2-Thessaloniciens-1/Recherche-MacArthur-2-Thessaloniciens-1.html#mots-cles">Étude des mots-clés<span class="vh"> (recherche du dimanche 1 : Une Église dont on est fier, la vengeance de Jésus-Christ et la prière qui glorifie son nom)</span></a></li><li><a href="01-2-Thessaloniciens-1/Recherche-MacArthur-2-Thessaloniciens-1.html#commentateurs">Apports des commentateurs<span class="vh"> (recherche du dimanche 1 : Une Église dont on est fier, la vengeance de Jésus-Christ et la prière qui glorifie son nom)</span></a></li><li><a href="01-2-Thessaloniciens-1/Recherche-MacArthur-2-Thessaloniciens-1.html#renvois">Renvois et passages parallèles<span class="vh"> (recherche du dimanche 1 : Une Église dont on est fier, la vengeance de Jésus-Christ et la prière qui glorifie son nom)</span></a></li><li><a href="01-2-Thessaloniciens-1/Recherche-MacArthur-2-Thessaloniciens-1.html#themes">Thèmes théologiques<span class="vh"> (recherche du dimanche 1 : Une Église dont on est fier, la vengeance de Jésus-Christ et la prière qui glorifie son nom)</span></a></li><li><a href="01-2-Thessaloniciens-1/Recherche-MacArthur-2-Thessaloniciens-1.html#reflexion">Pistes de réflexion<span class="vh"> (recherche du dimanche 1 : Une Église dont on est fier, la vengeance de Jésus-Christ et la prière qui glorifie son nom)</span></a></li></ul></div>
+          </details>
+          <details class="repli">
+            <summary><span>Sermons <abbr lang="en" title="Grace to You">GTY</abbr> de la <span class="nw">recherche (6)</span><span class="vh"> du dimanche 1 : Une Église dont on est fier, la vengeance de Jésus-Christ et la prière qui glorifie son nom</span></span></summary>
+            <div class="repli__corps"><ul class="gty" role="list"><li><span class="gty__code"><span class="nw">53-1</span></span> <span><span class="gty__titre" lang="en">A Church to Be Proud Of</span> <span class="gty__ref"><span class="nw">2 Th 1.1-5</span></span></span></li><li><span class="gty__code"><span class="nw">53-2</span></span> <span><span class="gty__titre" lang="en">The Vengeance of the Lord Jesus, <span class="nw">Part 1</span></span> <span class="gty__ref"><span class="nw">2 Th 1.6-10</span></span></span></li><li><span class="gty__code"><span class="nw">53-3</span></span> <span><span class="gty__titre" lang="en">The Vengeance of the Lord Jesus, <span class="nw">Part 2</span></span> <span class="gty__ref"><span class="nw">2 Th 1.6-10</span></span></span></li><li><span class="gty__code"><span class="nw">53-4</span></span> <span><span class="gty__titre" lang="en">The Vengeance of the Lord Jesus, <span class="nw">Part 3</span></span> <span class="gty__ref"><span class="nw">2 Th 1.6-10</span></span></span></li><li><span class="gty__code"><span class="nw">53-5</span></span> <span><span class="gty__titre" lang="en">Praying for the Right Things, <span class="nw">Part 1</span></span> <span class="gty__ref"><span class="nw">2 Th 1.11-12</span></span></span></li><li><span class="gty__code"><span class="nw">53-6</span></span> <span><span class="gty__titre" lang="en">Praying for the Right Things, <span class="nw">Part 2</span></span> <span class="gty__ref"><span class="nw">2 Th 1.11-12</span></span></span></li></ul></div>
+          </details>
+          <div class="transition">
+            <p class="etiquette">Transition</p>
+            <p class="transition__texte">Si Dieu réserve la colère du jour du Seigneur aux persécuteurs et le repos aux croyants (1.6-10), pourquoi les Thessaloniciens étaient-ils soudain pris de panique? Parce qu'un faux enseignement et une lettre falsifiée leur affirmaient que le jour du Seigneur était déjà commencé. Au chapitre 2, Paul rétablit l'ordre prophétique de Dieu.</p>
+            <p><a class="transition__lien" href="#sermon-2">Vers le dimanche 2 : L'homme impie à venir et la sécurité inébranlable des élus face au jour du Seigneur<span aria-hidden="true"> ↓</span></a></p>
+          </div>
+          <a class="retour" href="#sommaire">Retour au sommaire <span aria-hidden="true">↑</span></a>
+        </div>
+      </li>
+      </ol>
+    </section>
+    <section class="bloc" id="bloc-2" aria-labelledby="bloc-2-titre">
+      <h3 class="bloc__titre" id="bloc-2-titre"><span class="bloc__ch">Chapitre 2</span><span class="vh"> : </span><span class="bloc__nom">La correction doctrinale face à l'erreur prophétique</span></h3>
+      <ol class="sermons" role="list">
+      <li class="sermon" id="sermon-2" data-nav="sermon-2">
+        <span class="s-n" aria-hidden="true">2</span>
+        <h4 class="s-titre"><span class="s-kicker">Dimanche 2 · <span class="nw">2 Thessaloniciens 2</span></span><span class="vh"> : </span><a href="02-2-Thessaloniciens-2/Recherche-MacArthur-2-Thessaloniciens-2.html">L'homme impie à venir et la sécurité inébranlable des élus face au jour du Seigneur<span class="vh"> (recherche exégétique)</span></a></h4>
+        <p class="s-gty">Sermons <abbr lang="en" title="Grace to You">GTY</abbr> <span class="nw">53-7</span> à <span class="nw">53-12</span></p>
+        <p class="s-phrase"><span class="etiquette">Phrase à faire retenir</span> <span class="s-phrase__txt"><span class="q">«</span> Gardés du trouble par la vérité prophétique, élus dès le commencement pour posséder la gloire de Christ. <span class="q">»</span></span></p>
+        <div class="s-docs">
+          <a class="btn btn--plein" href="02-2-Thessaloniciens-2/Recherche-MacArthur-2-Thessaloniciens-2.html"><span>Lire la recherche<span class="vh"> du dimanche 2 : L'homme impie à venir et la sécurité inébranlable des élus face au jour du Seigneur</span></span></a>
+          <a class="btn" href="02-2-Thessaloniciens-2/Recherche-MacArthur-2-Thessaloniciens-2.pdf"><span><span class="vh">Recherche du dimanche 2 : L'homme impie à venir et la sécurité inébranlable des élus face au jour du Seigneur, version </span>PDF</span></a>
+          <a class="btn" href="02-2-Thessaloniciens-2/Recherche-MacArthur-2-Thessaloniciens-2.md"><span><span class="vh">Recherche du dimanche 2 : L'homme impie à venir et la sécurité inébranlable des élus face au jour du Seigneur, version </span>Texte (.md)</span></a>
+        </div>
+        <div class="corps">
+          <div class="corps__col">
+            <p class="etiquette">Verset clé</p>
+            <figure class="verset">
+              <blockquote><p><span class="q">«</span> Pour nous, frères bien-aimés du Seigneur, nous devons à votre sujet rendre continuellement grâces à Dieu, parce que Dieu vous a choisis dès le commencement pour le salut, par la sanctification de l’Esprit et par la foi en la vérité. C’est à quoi il vous a appelés par notre Evangile, pour que vous possédiez la gloire de notre Seigneur <span class="nw">Jésus-Christ</span>. Ainsi donc, frères, demeurez fermes, et retenez les instructions que vous avez reçues, soit par notre parole, soit par notre lettre. <span class="q">»</span></p></blockquote>
+              <figcaption><span class="nw">2 Thessaloniciens 2.13-15</span> · NEG79</figcaption>
+            </figure>
+          </div>
+          <div class="corps__col">
+            <p class="etiquette">Idée centrale</p>
+            <p class="idee">Face aux séductions affirmant que le jour du Seigneur serait déjà présent, Paul démontre que ce jugement ne peut venir avant la grande apostasie et le dévoilement de l'homme impie (actuellement retenu par le <span class="nw">Saint-Esprit</span> avant d'être anéanti par le retour de Christ), et ancre la fermeté des croyants dans les cinq maillons éternels de leur élection et dans la tradition apostolique écrite.</p>
+            <p class="etiquette">Étapes</p>
+            <ol class="etapes" role="list"><li><span class="etape__num" aria-hidden="true">I.</span><span><span class="vh">I. </span><span class="etape__nom">Le trouble eschatologique et les deux précurseurs du jour du Seigneur : l'apostasie et l'homme impie</span> <span class="etape__ref"><span class="nw">2 Thessaloniciens 2.1-5</span>; <span class="nw">Daniel 9.27</span>; <span class="nw">11.36</span></span></span></li><li><span class="etape__num" aria-hidden="true">II.</span><span><span class="vh">II. </span><span class="etape__nom">Le mystère de l'iniquité contenu par l'Esprit, l'anéantissement de l'impie et l'aveuglement judiciaire des incrédules</span> <span class="etape__ref"><span class="nw">2 Thessaloniciens 2.6-12</span>; <span class="nw">Ésaïe 11.4</span></span></span></li><li><span class="etape__num" aria-hidden="true">III.</span><span><span class="vh">III. </span><span class="etape__nom">La sécurité éternelle des élus (les cinq maillons du salut) et la fermeté dans les traditions apostoliques</span> <span class="etape__ref"><span class="nw">2 Thessaloniciens 2.13-17</span>; <span class="nw">Romains 8.29-30</span></span></span></li></ol>
+          </div>
+        </div>
+        <div class="pied-fiche">
+          <details class="repli">
+            <summary><span>Sections de la recherche<span class="vh"> du dimanche 2 : L'homme impie à venir et la sécurité inébranlable des élus face au jour du Seigneur</span></span></summary>
+            <div class="repli__corps"><ul class="sections" role="list"><li><a href="02-2-Thessaloniciens-2/Recherche-MacArthur-2-Thessaloniciens-2.html#contexte">Contexte du passage<span class="vh"> (recherche du dimanche 2 : L'homme impie à venir et la sécurité inébranlable des élus face au jour du Seigneur)</span></a></li><li><a href="02-2-Thessaloniciens-2/Recherche-MacArthur-2-Thessaloniciens-2.html#arriere-plan">Arrière-plan historique et culturel<span class="vh"> (recherche du dimanche 2 : L'homme impie à venir et la sécurité inébranlable des élus face au jour du Seigneur)</span></a></li><li><a href="02-2-Thessaloniciens-2/Recherche-MacArthur-2-Thessaloniciens-2.html#texte">État du texte<span class="vh"> (recherche du dimanche 2 : L'homme impie à venir et la sécurité inébranlable des élus face au jour du Seigneur)</span></a></li><li><a href="02-2-Thessaloniciens-2/Recherche-MacArthur-2-Thessaloniciens-2.html#structure">Structure et grammaire<span class="vh"> (recherche du dimanche 2 : L'homme impie à venir et la sécurité inébranlable des élus face au jour du Seigneur)</span></a></li><li><a href="02-2-Thessaloniciens-2/Recherche-MacArthur-2-Thessaloniciens-2.html#mots-cles">Étude des mots-clés<span class="vh"> (recherche du dimanche 2 : L'homme impie à venir et la sécurité inébranlable des élus face au jour du Seigneur)</span></a></li><li><a href="02-2-Thessaloniciens-2/Recherche-MacArthur-2-Thessaloniciens-2.html#commentateurs">Apports des commentateurs<span class="vh"> (recherche du dimanche 2 : L'homme impie à venir et la sécurité inébranlable des élus face au jour du Seigneur)</span></a></li><li><a href="02-2-Thessaloniciens-2/Recherche-MacArthur-2-Thessaloniciens-2.html#renvois">Renvois et passages parallèles<span class="vh"> (recherche du dimanche 2 : L'homme impie à venir et la sécurité inébranlable des élus face au jour du Seigneur)</span></a></li><li><a href="02-2-Thessaloniciens-2/Recherche-MacArthur-2-Thessaloniciens-2.html#themes">Thèmes théologiques<span class="vh"> (recherche du dimanche 2 : L'homme impie à venir et la sécurité inébranlable des élus face au jour du Seigneur)</span></a></li><li><a href="02-2-Thessaloniciens-2/Recherche-MacArthur-2-Thessaloniciens-2.html#reflexion">Pistes de réflexion<span class="vh"> (recherche du dimanche 2 : L'homme impie à venir et la sécurité inébranlable des élus face au jour du Seigneur)</span></a></li></ul></div>
+          </details>
+          <details class="repli">
+            <summary><span>Sermons <abbr lang="en" title="Grace to You">GTY</abbr> de la <span class="nw">recherche (6)</span><span class="vh"> du dimanche 2 : L'homme impie à venir et la sécurité inébranlable des élus face au jour du Seigneur</span></span></summary>
+            <div class="repli__corps"><ul class="gty" role="list"><li><span class="gty__code"><span class="nw">53-7</span></span> <span><span class="gty__titre" lang="en">The Coming Man of Sin, <span class="nw">Part 1</span></span> <span class="gty__ref"><span class="nw">2 Th 2.1-3</span></span></span></li><li><span class="gty__code"><span class="nw">53-8</span></span> <span><span class="gty__titre" lang="en">The Coming Man of Sin, <span class="nw">Part 2</span></span> <span class="gty__ref"><span class="nw">2 Th 2.1-5</span></span></span></li><li><span class="gty__code"><span class="nw">53-9</span></span> <span><span class="gty__titre" lang="en">The Coming Man of Sin, <span class="nw">Part 3</span></span> <span class="gty__ref"><span class="nw">2 Th 2.6-10a</span></span></span></li><li><span class="gty__code"><span class="nw">53-10</span></span> <span><span class="gty__titre" lang="en">The Coming Man of Sin, <span class="nw">Part 4</span></span> <span class="gty__ref"><span class="nw">2 Th 2.10b-12</span></span></span></li><li><span class="gty__code"><span class="nw">53-11</span></span> <span><span class="gty__titre" lang="en">The Coming Man of Sin, <span class="nw">Part 5</span></span> <span class="gty__ref"><span class="nw">2 Th 2.13-14</span></span></span></li><li><span class="gty__code"><span class="nw">53-12</span></span> <span><span class="gty__titre" lang="en">The Coming Man of Sin, <span class="nw">Part 6</span></span> <span class="gty__ref"><span class="nw">2 Th 2.13-17</span></span></span></li></ul></div>
+          </details>
+          <div class="transition">
+            <p class="etiquette">Transition</p>
+            <p class="transition__texte">En 2.17, Paul prie que le Seigneur affermisse les Thessaloniciens « en toute bonne œuvre et en toute bonne parole ». Au chapitre 3, il s'appuie sur la fidélité du Seigneur qui les affermira (3.3) pour passer de la doctrine à la pratique : l'intercession mutuelle et la confrontation de ceux qui refusaient de travailler.</p>
+            <p><a class="transition__lien" href="#sermon-3">Vers le dimanche 3 : Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance<span aria-hidden="true"> ↓</span></a></p>
+          </div>
+          <a class="retour" href="#sommaire">Retour au sommaire <span aria-hidden="true">↑</span></a>
+        </div>
+      </li>
+      </ol>
+    </section>
+    <section class="bloc" id="bloc-3" aria-labelledby="bloc-3-titre">
+      <h3 class="bloc__titre" id="bloc-3-titre"><span class="bloc__ch">Chapitre 3</span><span class="vh"> : </span><span class="bloc__nom">La confrontation pratique de la vie désordonnée</span></h3>
+      <ol class="sermons" role="list">
+      <li class="sermon" id="sermon-3" data-nav="sermon-3">
+        <span class="s-n" aria-hidden="true">3</span>
+        <h4 class="s-titre"><span class="s-kicker">Dimanche 3 · <span class="nw">2 Thessaloniciens 3</span></span><span class="vh"> : </span><a href="03-2-Thessaloniciens-3/Recherche-MacArthur-2-Thessaloniciens-3.html">Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance<span class="vh"> (recherche exégétique)</span></a></h4>
+        <p class="s-gty">Sermons <abbr lang="en" title="Grace to You">GTY</abbr> <span class="nw">53-13</span> à <span class="nw">53-17</span></p>
+        <p class="s-phrase"><span class="etiquette">Phrase à faire retenir</span> <span class="s-phrase__txt"><span class="q">«</span> Fidèles dans la prière, paisibles dans le travail et restaurateurs dans la discipline sous la garde du Seigneur de la paix. <span class="q">»</span></span></p>
+        <div class="s-docs">
+          <a class="btn btn--plein" href="03-2-Thessaloniciens-3/Recherche-MacArthur-2-Thessaloniciens-3.html"><span>Lire la recherche<span class="vh"> du dimanche 3 : Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance</span></span></a>
+          <a class="btn" href="03-2-Thessaloniciens-3/Recherche-MacArthur-2-Thessaloniciens-3.pdf"><span><span class="vh">Recherche du dimanche 3 : Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance, version </span>PDF</span></a>
+          <a class="btn" href="03-2-Thessaloniciens-3/Recherche-MacArthur-2-Thessaloniciens-3.md"><span><span class="vh">Recherche du dimanche 3 : Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance, version </span>Texte (.md)</span></a>
+        </div>
+        <div class="corps">
+          <div class="corps__col">
+            <p class="etiquette">Verset clé</p>
+            <figure class="verset">
+              <blockquote><p><span class="q">«</span> Car, lorsque nous étions chez vous, nous vous disions expressément: Si quelqu’un ne veut pas travailler, qu’il ne mange pas non plus. Nous apprenons, cependant, qu’il y en a parmi vous quelques-uns qui vivent dans le désordre, qui ne travaillent pas, mais qui s’occupent de futilités. Nous invitons ces gens-là, et nous les exhortons par le Seigneur <span class="nw">Jésus-Christ</span>, à manger leur propre pain, en travaillant paisiblement. <span class="q">»</span></p></blockquote>
+              <figcaption><span class="nw">2 Thessaloniciens 3.10-12</span> · NEG79</figcaption>
+            </figure>
+          </div>
+          <div class="corps__col">
+            <p class="etiquette">Idée centrale</p>
+            <p class="idee">Le pasteur fidèle appelle son troupeau à prier pour la course triomphante de la Parole en se reposant sur le Seigneur fidèle, ordonne au nom de <span class="nw">Jésus-Christ</span> que chacun travaille paisiblement pour manger son propre pain tout en exerçant une discipline fraternelle restauratrice envers les oisifs, et remet l'assemblée à la paix constante et à la grâce du Seigneur.</p>
+            <p class="etiquette">Étapes</p>
+            <ol class="etapes" role="list"><li><span class="etape__num" aria-hidden="true">I.</span><span><span class="vh">I. </span><span class="etape__nom">Les quatre désirs du pasteur : prière pour la Parole, confiance dans le Seigneur fidèle, obéissance et croissance</span> <span class="etape__ref"><span class="nw">2 Thessaloniciens 3.1-5</span>; <span class="nw">Psaume 147.15</span></span></span></li><li><span class="etape__num" aria-hidden="true">II.</span><span><span class="vh">II. </span><span class="etape__nom">Les six motivations au travail honnête et à la discipline fraternelle restauratrice</span> <span class="etape__ref"><span class="nw">2 Thessaloniciens 3.6-15</span>; <span class="nw">Genèse 2.15</span>; <span class="nw">Matthieu 18.15-17</span></span></span></li><li><span class="etape__num" aria-hidden="true">III.</span><span><span class="vh">III. </span><span class="etape__nom">Les quatre ressources divines finales : la paix, la présence, la vérité autographe et la grâce du Seigneur</span> <span class="etape__ref"><span class="nw">2 Thessaloniciens 3.16-18</span></span></span></li></ol>
+          </div>
+        </div>
+        <div class="pied-fiche">
+          <details class="repli">
+            <summary><span>Sections de la recherche<span class="vh"> du dimanche 3 : Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance</span></span></summary>
+            <div class="repli__corps"><ul class="sections" role="list"><li><a href="03-2-Thessaloniciens-3/Recherche-MacArthur-2-Thessaloniciens-3.html#contexte">Contexte du passage<span class="vh"> (recherche du dimanche 3 : Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance)</span></a></li><li><a href="03-2-Thessaloniciens-3/Recherche-MacArthur-2-Thessaloniciens-3.html#arriere-plan">Arrière-plan historique et culturel<span class="vh"> (recherche du dimanche 3 : Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance)</span></a></li><li><a href="03-2-Thessaloniciens-3/Recherche-MacArthur-2-Thessaloniciens-3.html#texte">État du texte<span class="vh"> (recherche du dimanche 3 : Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance)</span></a></li><li><a href="03-2-Thessaloniciens-3/Recherche-MacArthur-2-Thessaloniciens-3.html#structure">Structure et grammaire<span class="vh"> (recherche du dimanche 3 : Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance)</span></a></li><li><a href="03-2-Thessaloniciens-3/Recherche-MacArthur-2-Thessaloniciens-3.html#mots-cles">Étude des mots-clés<span class="vh"> (recherche du dimanche 3 : Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance)</span></a></li><li><a href="03-2-Thessaloniciens-3/Recherche-MacArthur-2-Thessaloniciens-3.html#commentateurs">Apports des commentateurs<span class="vh"> (recherche du dimanche 3 : Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance)</span></a></li><li><a href="03-2-Thessaloniciens-3/Recherche-MacArthur-2-Thessaloniciens-3.html#renvois">Renvois et passages parallèles<span class="vh"> (recherche du dimanche 3 : Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance)</span></a></li><li><a href="03-2-Thessaloniciens-3/Recherche-MacArthur-2-Thessaloniciens-3.html#themes">Thèmes théologiques<span class="vh"> (recherche du dimanche 3 : Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance)</span></a></li><li><a href="03-2-Thessaloniciens-3/Recherche-MacArthur-2-Thessaloniciens-3.html#reflexion">Pistes de réflexion<span class="vh"> (recherche du dimanche 3 : Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance)</span></a></li></ul></div>
+          </details>
+          <details class="repli">
+            <summary><span>Sermons <abbr lang="en" title="Grace to You">GTY</abbr> de la <span class="nw">recherche (5)</span><span class="vh"> du dimanche 3 : Les désirs du pasteur, le devoir sacré du travail et la paix du Seigneur en toute circonstance</span></span></summary>
+            <div class="repli__corps"><ul class="gty" role="list"><li><span class="gty__code"><span class="nw">53-13</span></span> <span><span class="gty__titre" lang="en">The Pastor's Desire for His People</span> <span class="gty__ref"><span class="nw">2 Th 3.1-5</span></span></span></li><li><span class="gty__code"><span class="nw">53-14</span></span> <span><span class="gty__titre" lang="en">Work: A Noble Christian Duty, <span class="nw">Part 1</span></span> <span class="gty__ref"><span class="nw">2 Th 3.6-15</span></span></span></li><li><span class="gty__code"><span class="nw">53-15</span></span> <span><span class="gty__titre" lang="en">Work: A Noble Christian Duty, <span class="nw">Part 2</span></span> <span class="gty__ref"><span class="nw">2 Th 3.6-10</span></span></span></li><li><span class="gty__code"><span class="nw">53-16</span></span> <span><span class="gty__titre" lang="en">Work: A Noble Christian Duty, <span class="nw">Part 3</span></span> <span class="gty__ref"><span class="nw">2 Th 3.10-15</span></span></span></li><li><span class="gty__code"><span class="nw">53-17</span></span> <span><span class="gty__titre" lang="en">Peace in Every Circumstance</span> <span class="gty__ref"><span class="nw">2 Th 3.16-18</span></span></span></li></ul></div>
+          </details>
+          <a class="retour" href="#sommaire">Retour au sommaire <span aria-hidden="true">↑</span></a>
+        </div>
+      </li>
+      </ol>
+    </section>
+  </section>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <section class="sec conclusion" id="conclusion" aria-labelledby="conclusion-titre" data-nav="">
+    <div class="sec-tete">
+      <p class="kicker">Conclusion de la série</p>
+      <h2 id="conclusion-titre">Rappel de la série en trois phrases</h2>
+    </div>
+    <ol class="rappel" role="list"><li><a href="#sermon-1"><span class="rappel__n" aria-hidden="true">1</span><span class="vh">Dimanche 1 : </span><span class="rappel__t">Croissants dans l'épreuve, consolés par le juste retour de Christ</span></a></li><li><a href="#sermon-2"><span class="rappel__n" aria-hidden="true">2</span><span class="vh">Dimanche 2 : </span><span class="rappel__t">Gardés du trouble par la vérité, élus pour la gloire de Christ</span></a></li><li><a href="#sermon-3"><span class="rappel__n" aria-hidden="true">3</span><span class="vh">Dimanche 3 : </span><span class="rappel__t">Fidèles dans la prière et paisibles au travail sous la garde du Seigneur</span></a></li></ol>
+    <div class="ornement" aria-hidden="true"><span>◆</span></div>
+    <p class="etiquette">Phrase de la série</p>
+    <p class="conclusion__phrase">Consolés par le juste retour de Christ, gardés du trouble par sa vérité, fidèles au travail dans sa paix.</p>
+    <div class="benediction">
+      <p class="etiquette">Bénédiction</p>
+      <figure class="verset">
+        <blockquote><p><span class="q">«</span> Que le Seigneur de la paix vous donne lui-même la paix en tout temps, de toute manière! Que le Seigneur soit avec vous tous! Que la grâce de notre Seigneur <span class="nw">Jésus-Christ</span> soit avec vous tous! <span class="q">»</span></p></blockquote>
+        <figcaption><span class="nw">2 Thessaloniciens 3.16, 18</span> · NEG79</figcaption>
+      </figure>
+    </div>
+  </section>
+</main>
+
+<footer class="pied">
+  <div class="ornement" aria-hidden="true"><span>◆</span></div>
+  <p class="pied__nom">André-Guy Bruneau</p>
+  <p>Étude de <span class="nw">2 Thessaloniciens 1-3</span> · Recherches exégétiques et plan de série du <span class="nw">23 octobre 2026</span></p>
+  <p>Citations bibliques : Nouvelle Édition de Genève <span class="nw">1979 (NEG79)</span></p>
+  <p class="pied__sdg" lang="la">Soli Deo Gloria</p>
+</footer>
+<script>
+(function(){
+  /* Amélioration progressive : marque dans la barre la partie en cours de lecture. */
+  var barre=document.querySelector('.barre');
+  if(!barre||!('IntersectionObserver' in window))return;
+  var liens={};
+  [].forEach.call(barre.querySelectorAll('a[href^="#"]'),function(a){liens[a.getAttribute('href').slice(1)]=a;});
+  var zones=[].slice.call(document.querySelectorAll('[data-nav]'));
+  var vues=[],actif=null;
+  function marquer(id){
+    var a=id?liens[id]||null:null;
+    if(a===actif)return;
+    if(actif)actif.removeAttribute('aria-current');
+    if(a)a.setAttribute('aria-current','location');
+    actif=a;
+  }
+  var io=new IntersectionObserver(function(entrees){
+    entrees.forEach(function(en){
+      var i=vues.indexOf(en.target);
+      if(en.isIntersecting&&i<0)vues.push(en.target);
+      if(!en.isIntersecting&&i>=0)vues.splice(i,1);
+    });
+    for(var k=0;k<zones.length;k++){
+      if(vues.indexOf(zones[k])>=0){marquer(zones[k].getAttribute('data-nav'));return;}
+    }
+  },{rootMargin:'-30% 0px -65% 0px'});
+  zones.forEach(function(z){io.observe(z);});
+})();
+</script>
+</body>
+</html>
