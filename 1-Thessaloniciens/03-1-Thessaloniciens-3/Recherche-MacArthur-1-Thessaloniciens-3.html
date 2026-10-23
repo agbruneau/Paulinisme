@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1 Thessaloniciens 3 · Le cœur du pasteur et sa prière pour l&#x27;Église · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de 1 Thessaloniciens 3 dans la perspective de John MacArthur : Le cœur du pasteur et sa prière pour l&#x27;Église.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* État du texte, Structure et grammaire : variantes en fiches (comme .mot), témoins
+     et observations entre filets, plan à gouttière de références. Ces blocs, chargés
+     de translittérations, sont alignés à gauche : pas de rivières. */
+  h3.marge__titre{font-family:inherit;font-weight:500;line-height:1.4;}
+  h3.marge__titre:not(:first-child){margin-top:2.6rem !important;}
+  .critique{max-width:var(--colonne,46rem);margin:0 auto;}  /* sermon-series : section sans grille */
+  .grille--apparat > .grille__texte + .grille__marge{margin-top:2.6rem;}  /* une colonne : la marge suit le texte */
+  .grille--apparat > .grille__texte{padding-top:1.2rem;}
+  .grille--apparat .lead,.critique .lead{text-align:left;}
+  .rangs dd,.temoins li,.encadre p,.section .plan p,.observations dd{
+    margin:0;text-align:left;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;text-wrap:pretty;
+  }
+  .variante{padding:1.2rem 1.5rem .5rem;border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 8px 8px 0;background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));}
+  .variante + .variante{margin-top:1.3rem;}
+  .variante__ref,.observations dt{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.2;color:var(--or-clair);}
+  .variante__ref{margin:0 0 .6rem;font-size:1.45rem;}
+  .rangs{margin:0;}
+  .rangs > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.2rem;padding:.75rem 0;border-top:1px solid var(--filet);}
+  .rangs dt{padding-top:.3rem;}
+  .rangs dd{font-size:.9em;line-height:1.7;color:var(--encre-doux);}
+  .rangs .rangs__portee{color:var(--encre);}
+  .temoins{list-style:none;margin:0 0 2.2rem;padding:0;border-bottom:1px solid var(--filet);}
+  .temoins li{padding:.75rem 0;border-top:1px solid var(--filet);font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .encadre{padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .encadre .marge__titre{margin-bottom:.7rem !important;}
+  .encadre p{font-size:.9em;line-height:1.65;color:var(--encre-doux);}
+  /* Plan : références en gouttière, un filet et un losange par mouvement, le marqueur sous son titre */
+  .plan{--gouttiere:9.6rem;--ecart:1.3rem;list-style:none;margin:0;padding:0;}
+  .plan li{position:relative;display:grid;grid-template-columns:var(--gouttiere) minmax(0,1fr);column-gap:var(--ecart);}
+  .plan li::before{content:"";position:absolute;left:calc(var(--gouttiere) + var(--ecart) - .22rem);top:.62rem;
+    width:.45rem;height:.45rem;background:var(--or);transform:rotate(45deg);}
+  .section .plan .plan__ref{padding-top:.05rem;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.25rem;line-height:1.2;color:var(--or-clair);}
+  .plan__ref span{white-space:nowrap;}
+  .plan__corps{padding:0 0 1.6rem 1.5rem;border-left:1px solid var(--filet-fort);}
+  .plan li:last-child .plan__corps{padding-bottom:.2rem;}
+  .plan li:first-child,.plan li:first-child .plan__corps{border-image:linear-gradient(transparent .7rem,var(--filet-fort) 0) 1;}
+  .section .plan .plan__titre{margin-bottom:.55rem;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.3rem;line-height:1.3;color:var(--encre);text-wrap:balance;}
+  .section .plan .plan__marqueur{font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .rangs dt,.plan__marqueur .mot__label{font-size:.8rem;}
+  .observations{margin:0;}
+  .observations > div + div{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--filet);}
+  .observations dt{margin-bottom:.4rem;font-size:1.25rem;}
+  .observations dd{font-size:.9em;line-height:1.72;color:var(--encre-doux);}
+  @media (max-width:35rem){
+    .rangs > div{grid-template-columns:1fr;}
+    .rangs dt{padding-top:0;}
+    .variante{padding:1rem 1.1rem .4rem;}
+    .plan li{display:block;padding:0 0 1.4rem 1.3rem;border-left:1px solid var(--filet-fort);}
+    .plan li:last-child{padding-bottom:.2rem;}
+    .plan li::before{left:-.25rem;top:.45rem;}
+    .section .plan .plan__ref{margin-bottom:.25rem;text-align:left;}
+    .plan__corps,.plan li:last-child .plan__corps{padding:0;border:0;}
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .recherche .grille--apparat{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+    .grille--apparat > .grille__texte + .grille__marge{margin-top:0;}
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">1 Thessaloniciens 3</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">1 Thessaloniciens 3</span></p>
+    <h1 class="hero__title">Le cœur du pasteur et sa prière pour l'Église</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;Car maintenant nous vivons, puisque vous demeurez fermes dans le Seigneur.&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">1 Thessaloniciens 3.8 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 23 octobre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">1 Thessaloniciens 3</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Le chapitre 3 achève la première grande partie de l'épître (chapitres 1 à 3), de genre apologétique, narratif et pastoral, avant le passage aux exhortations pratiques qui s'ouvrent par « Au reste, frères » en 4.1 (52-⁠12). Après avoir exposé aux chapitres 1 et 2 ce qu'un pasteur fait, ce qu'il dit et ce qu'il est, Paul dévoile au chapitre 3 ce qu'un pasteur <i>ressent</i> au plus profond de lui-même (52-⁠10, 52-⁠11), avant de conclure toute cette section par une prière pastorale solennelle (3.11-⁠13) (52-⁠12).</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">nous envoyâmes Timothée, notre frère, ministre de Dieu dans l’Evangile de Christ, pour vous affermir et vous exhorter au sujet de votre foi, afin que personne ne soit ébranlé au milieu des afflictions présentes; car vous savez vous-mêmes que nous sommes destinés à cela.</p><cite class="verse__ref">1 Thessaloniciens 3.2-⁠3 · NEG</cite></figure><figure class="verse"><p class="verse__text">Mais Timothée, récemment arrivé ici de chez vous, nous a donné de bonnes nouvelles de votre foi et de votre amour, et nous a dit que vous avez toujours de nous un bon souvenir, désirant nous voir comme nous désirons aussi vous voir.</p><cite class="verse__ref">1 Thessaloniciens 3.6 · NEG</cite></figure><figure class="verse"><p class="verse__text">Nuit et jour, nous le prions avec une extrême ardeur de nous permettre de vous voir, et de compléter ce qui manque à votre foi.</p><cite class="verse__ref">1 Thessaloniciens 3.10 · NEG</cite></figure><figure class="verse"><p class="verse__text">Que Dieu lui-même, notre Père, et notre Seigneur Jésus, aplanissent notre route pour que nous allions vers vous! Et que le Seigneur fasse croître et abonder l’amour que vous avez les uns pour les autres, et pour tous, à l’exemple de celui que nous avons pour vous; qu’il affermisse vos cœurs pour qu’ils soient irréprochables dans la sainteté devant Dieu notre Père, lors de l’avènement de notre Seigneur Jésus avec tous ses saints!</p><cite class="verse__ref">1 Thessaloniciens 3.11-⁠13 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>Comme le relève MacArthur en 52-⁠10, la conjonction initiale « C'est pourquoi » (<i>Dio</i>, 3.1) relie directement ce chapitre à la déclaration finale du chapitre 2 (« Oui, vous êtes notre gloire et notre joie », 2.20) : c'est précisément parce que les Thessaloniciens constituent sa joie présente et sa couronne éternelle que Paul n'a pas pu supporter plus longtemps d'ignorer leur état spirituel sous la persécution (52-⁠10, 52-⁠11).</p><p>MacArthur divise le chapitre en deux grands ensembles. Les versets 1 à 10 livrent une « radiographie spirituelle » du cœur pastoral en sept attitudes qui reflètent celles du Souverain Berger, Jésus-Christ : l'affection (3.1a, 5a), l'abnégation (3.1b-2a), la compassion (3.2b-4), la vigilance protectrice (3.5), le délice (3.6-⁠8), la gratitude (3.9) et l'intercession (3.10) (52-⁠10, 52-⁠11). Les versets 11 à 13 formulent ensuite la prière pastorale au mode optatif, adressée conjointement à Dieu notre Père et à notre Seigneur Jésus pour demander une foi perfectionnée (3.11), un amour débordant (3.12) et une espérance purificatrice en vue de l'avènement de Christ (3.13) (52-⁠12).</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">1 Thessaloniciens 3</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">Le récit de 1 Thessaloniciens 3.1-⁠6 permet de reconstituer avec précision les déplacements de Paul, Silvain (Silas) et Timothée entre leur départ forcé de Thessalonique et la rédaction de l'épître à Corinthe (Actes 17.10 à 18.5) (52-⁠10). Lorsque l'émeute de Thessalonique contraint les frères à faire partir Paul et Silas de nuit vers Bérée (Actes 17.10), les Juifs de Thessalonique viennent encore agiter la foule à Bérée; les frères escortent alors Paul seul jusqu'à Athènes, tandis que Silas et Timothée restent temporairement à Bérée avec l'ordre de rejoindre Paul au plus vite (Actes 17.13-⁠15) (52-⁠10).</p><div class="body"><p>1 Thessaloniciens 3.1-⁠2 nous apprend que Timothée (et très vraisemblablement Silas avec lui) a effectivement rejoint Paul à Athènes, mais que l'inquiétude de l'apôtre au sujet des jeunes convertis de Thessalonique et de Macédoine était devenue si intolérable qu'il a pris la décision coûteuse de renvoyer Timothée à Thessalonique (3.2) et Silas en Macédoine, sans doute à Philippes, choisissant ainsi de « rester seuls à Athènes » (3.1) au milieu d'une capitale intellectuelle païenne remplie de philosophes stoïciens et épicuriens cyniques (Actes 17.16-⁠34) (52-⁠10, 52-⁠11).</p><p>Après son ministère à Athènes, Paul gagne Corinthe (Actes 18.1), où Silas et Timothée reviennent enfin de Macédoine le rejoindre (Actes 18.5). Le mot grec <i>arti</i> en 3.6 (« Mais Timothée, récemment arrivé ici de chez vous », littéralement « à l'instant même ») prouve que Paul écrit cette lettre depuis Corinthe immédiatement après le retour de Timothée : soulagé d'apprendre que la foi et l'amour des Thessaloniciens ont tenu bon sous le feu de la tribulation et des calomnies, il leur exprime sur-le-champ sa joie (« Car maintenant nous vivons », 3.8) et son désir de revenir compléter ce qui manque encore à leur foi (3.10) (52-⁠11).</p></div></div><aside class="grille__marge"><p class="marge__titre">Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>Le sacrifice d'Athènes et le compagnonnage de Timothée (3.1-⁠2).</b> Lors du deuxième voyage missionnaire, Timothée, recruté à Lystre en Actes 16.1-⁠3, était encore un très jeune collaborateur au début de ses vingt ans de ministère aux côtés de Paul (52-⁠10). Pourtant, Paul n'hésite pas à l'appeler « notre frère, ministre de Dieu [ou collaborateur de Dieu] dans l’Evangile de Christ » (3.2) et à se priver à Athènes de son compagnon le plus cher et le plus proche de son propre cœur (Philippiens 2.19-⁠20; 1 Corinthiens 4.17) pour l'envoyer affermir la jeune Église de Thessalonique (52-⁠10, 52-⁠11).</li><li><b>La prière de souhait au mode optatif dans l'Église primitive (3.11-⁠13).</b> En 3.11-⁠13 (comme en 5.23; 2 Thessaloniciens 3.5, 16; Romains 15.5, 13; Hébreux 13.20-⁠21), Paul formule sa prière à la troisième personne au moyen du mode optatif grec (<i>kateuthunai</i>, <i>pleonasai</i>, <i>perisseusai</i>), au lieu du vocatif et de l'impératif à la deuxième personne (52-⁠12). MacArthur relève que cette « prière de souhait » (<i>wish prayer</i>), couramment utilisée dans l'Église primitive pour conclure une prédication publique, porte dans deux directions à la fois : elle s'élève vers Dieu comme une intercession fervente et s'adresse en même temps aux croyants pour leur témoigner l'affection du pasteur et les encourager à rechercher ces grâces (52-⁠12).</li><li><b>L'exaucement historique attesté en 2 Thessaloniciens 1.3.</b> MacArthur souligne en 52-⁠12 que les deux premières requêtes de la prière de 3.10-⁠12 (compléter leur foi et faire croître et abonder leur amour mutuel) ont reçu un exaucement rapide et vérifiable : quelques mois plus tard, en ouvrant sa seconde épître aux Thessaloniciens, Paul écrit : « Nous devons toujours rendre grâces à Dieu à votre sujet, frères, comme cela est juste, parce que votre foi fait de grands progrès, et que l’amour de chacun de vous tous à l’égard des autres augmente de plus en plus » (2 Thessaloniciens 1.3). Quant à la requête de 3.11 (« aplanissent notre route pour que nous allions vers vous »), Dieu l'exauça environ cinq ans plus tard lors du troisième voyage missionnaire de Paul en Macédoine (Actes 20.1-⁠4) (52-⁠12).</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">1 Thessaloniciens 3</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Les variantes qui touchent le sens, la leçon que suit la NEG79 et leur portée, puis les témoins consultés et la numérotation.</p></div><div class="grille__texte"><h3 class="marge__titre">Variantes</h3><section class="variante"><h4 class="variante__ref">1 Thessaloniciens 3.2</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>ton adelphon hēmōn kai sunergon tou theou</i>, « collaborateur de Dieu » (SBLGNT, Tregelles, D*, 33), ou <i>kai diakonon tou theou</i>, « serviteur / ministre de Dieu » (Nestle 1904, Westcott et Hort, Tischendorf, $\aleph$, A, B, $\Psi$, 81), ou la leçon conflée <i>kai diakonon tou theou kai sunergon hēmōn</i>, « serviteur de Dieu et notre collaborateur » (texte byzantin, Église orthodoxe grecque, Textus Receptus), ou encore <i>kai sunergon</i> seul (B) ou <i>kai diakonon kai sunergon tou theou</i> (F, G). Plus bas : <i>parakalesai huper tēs pisteōs humōn</i> (SBLGNT, Nestle 1904, Westcott et Hort, Tischendorf), ou <i>parakalesai humas peri tēs pisteōs humōn</i> (texte byzantin, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« Timothée, notre frère, ministre de Dieu dans l’Evangile de Christ » : la NEG79 et la LSG traduisent <i>diakonon tou theou</i>; la NBS traduit <i>sunergon tou theou</i> (« collaborateur de Dieu », comme la Darby « compagnon d’œuvre sous Dieu »); la S21 combine les deux à l'aide de crochets : « serviteur de Dieu [et notre collaborateur] ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">En 52-⁠10, MacArthur signale explicitement le partage des manuscrits entre <i>diakonos</i> (« serviteur de Dieu ») et <i>sunergos</i> (« collaborateur de Dieu ») et note que les deux titres sont pleinement vrais de Timothée (voir 1 Corinthiens 3.9 pour <i>theou gar esmen sunergoi</i> et 1 Timothée 4.6 pour <i>kalos diakonos Christou Iēsou</i>).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">1 Thessaloniciens 3.3</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>to mēdena sainesthai</i>, accusatif de l'infinitif articularisé d'explication ou de but (SBLGNT, Nestle 1904, Westcott et Hort, Tischendorf, texte byzantin, Église orthodoxe grecque), ou <i>tō mēdena sainesthai</i> au datif (Textus Receptus de Stephanus et de Scrivener).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« afin que personne ne soit ébranlé » : toutes les versions françaises comparées rendent une proposition finale.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Que l'article de l'infinitif soit à l'accusatif (<i>to</i>) ou au datif (<i>tō</i>), il explicite le but de l'affermissement mentionné en 3.2 : aucune différence de sens.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">1 Thessaloniciens 3.7</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>epi pasē tē anankē kai thlipsei hēmōn</i>, « dans toute notre nécessité/angoisse et notre tribulation » (SBLGNT, Nestle 1904, Westcott et Hort, Tregelles, Tischendorf, Darby, NBS), ou l'ordre inverse <i>tē thlipsei kai anankē hēmōn</i> (texte byzantin, Église orthodoxe grecque, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« dans nos angoisses et nos épreuves » (NEG79, S21; LSG : « au milieu de toutes nos calamités et de nos tribulations »; Darby : « dans toute notre nécessité et dans notre tribulation »; NBS : « au milieu de tout notre désarroi et de notre détresse »).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Simple inversion de deux synonymes coordonnés sous un seul article <i>tē</i>, sans incidence sur le sens.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">1 Thessaloniciens 3.8</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>ean humeis stēkete en kuriō</i>, indicatif présent après <i>ean</i> (SBLGNT, Nestle 1904, Westcott et Hort, Tregelles, Tischendorf, texte byzantin, Église orthodoxe grecque), ou <i>stēkēte</i>, subjonctif présent (Textus Receptus de Stephanus et de Scrivener).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« puisque vous demeurez fermes dans le Seigneur » (NEG79, LSG; S21 et NBS : « puisque vous tenez ferme »; Darby : « si vous tenez fermes »).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Dans la koinè, <i>ean</i> suivi de l'indicatif présent <i>stēkete</i> souligne que la condition est un fait actuel constaté par le rapport de Timothée (d'où la traduction « puisque » dans la NEG79, la LSG, la S21 et la NBS), tout en maintenant l'exhortation à persévérer (« si vous tenez ferme », Darby et MacArthur en 52-⁠11).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">1 Thessaloniciens 3.11 et 3.13</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>En 3.11 et en 3.13, <i>ho kurios hēmōn Iēsous</i> / <i>tou kuriou hēmōn Iēsou</i> sans <i>Christos</i> (SBLGNT, Nestle 1904, Westcott et Hort, Tregelles, Tischendorf), ou addition de <i>Christos</i> / <i>Christou</i> (texte byzantin, Église orthodoxe grecque, Textus Receptus). En 3.13, fin du verset sans <i>amēn</i> (SBLGNT, Nestle 1904, Westcott et Hort [entre crochets dans NA27], texte byzantin), ou addition finale de <i>amēn</i> (Tischendorf, Textus Receptus, $\aleph^*$, A, D, $\Psi$).</dd></div><div><dt class="mot__label">NEG79</dt><dd>En 3.11 et 3.13, la NEG79, la LSG, la Darby et la NBS traduisent « notre Seigneur Jésus » sans « Christ » (la S21 met « Jésus[-Christ] » en 3.11). En 3.13, seule la NBS traduit l'addition liturgique « Amen ! ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Additions liturgiques secondaires en fin de prière et de section, sans effet sur la doctrine.</dd></div></dl></section></div><div class="grille__marge"><h3 class="marge__titre">Témoins consultés</h3><ul class="temoins" role="list"><li>grec : SBLGNT (bible.audio) et son apparat (fichier sblgntapp de 1 Thessaloniciens, LogosBible), lus aux 13 versets du chapitre</li><li>grec : Nestle 1904, Westcott et Hort 1881, texte byzantin 2005, Église orthodoxe grecque 1904, Tischendorf 8e édition, Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub), lus aux versets où l'apparat marque une variante (3.1, 3.2, 3.3, 3.7, 3.8, 3.10, 3.11, 3.13)</li><li>versions françaises : NEG79 (BibleGateway), LSG, S21 et Darby (bible.audio), NBS (bible.com), lues sur tout le chapitre</li></ul><div class="encadre"><h3 class="marge__titre">Numérotation</h3><p>En 3.6-⁠7, la phrase grecque forme une seule période participiale de 3.6 à 3.7 : la Darby conserve cette continuité par un point-virgule et un tiret à la fin de 3.6 (« - c'est pourquoi, frères »), tandis que la NEG79, la LSG, la S21 et la NBS coupent après 3.6 et ouvrent 3.7 par une nouvelle phrase (« En conséquence » / « C'est pourquoi » / « Ainsi »).</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">1 Thessaloniciens 3</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><h3 class="marge__titre">Plan de la péricope</h3><ol class="plan" role="list"><li><p class="plan__ref"><span>1 Thessaloniciens</span> <span>3.1-⁠5</span></p><div class="plan__corps"><p class="plan__titre">L'envoi sacrificiel de Timothée depuis Athènes : affection, abnégation, compassion et vigilance protectrice</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Inclusion formée par la répétition de <i>mēketi stegontes ... epempsamen</i> (3.1-⁠2, au pluriel) et <i>dia touto kagō mēketi stegōn epempsa</i> (3.5, au singulier), encadrant les propositions finales <i>eis to stērixai ... to mēdena sainesthai</i> (3.2-⁠3) et les explicatives en <i>gar</i> (3.3-⁠4).</p></div></li><li><p class="plan__ref"><span>1 Thessaloniciens</span> <span>3.6-⁠10</span></p><div class="plan__corps"><p class="plan__titre">Le retour de Timothée à Corinthe : délice pastoral, consolation dans l'épreuve, gratitude et intercession nuit et jour</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Transition temporelle vive <i>Arti de elthontos Timotheou ... kai euangelisamenou</i> (3.6), reprise par <i>dia touto pareklēthēmen</i> (3.7), causale culminante <i>hoti nun zōmen ean humeis stēkete en kuriō</i> (3.8), et question rhétorique <i>tina gar eucharistian</i> prolongée par le participe <i>deomenoi</i> (3.9-⁠10).</p></div></li><li><p class="plan__ref"><span>1 Thessaloniciens</span> <span>3.11-⁠13</span></p><div class="plan__corps"><p class="plan__titre">La prière pastorale conclusive : foi complétée, amour surabondant et cœurs affermis dans la sainteté pour l'avènement de Jésus</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Deux propositions principales au mode optatif aoriste (<i>Autos de ho theos kai patēr hēmōn kai ho kurios hēmōn Iēsous kateuthunai</i> en 3.11; <i>humas de ho kurios pleonasai kai perisseusai</i> en 3.12), culminant dans l'infinitif de but <i>eis to stērixai humōn tas kardias amemptous en hagiōsunē</i> (3.13).</p></div></li></ol></div><div class="grille__marge"><h3 class="marge__titre">Observations grammaticales</h3><dl class="observations"><div><dt>1 Thessaloniciens 3.1-⁠2 et 3.5</dt><dd>En 3.1-⁠2, Paul emploie le pluriel épistolaire ou d'équipe (<i>mēketi stegontes eudokēsamen kataleiphthēnai en Athēnais monoi, kai epempsamen Timotheon</i>), puis passe au singulier explicite en 3.5 (<i>kagō mēketi stegōn epempsa</i>). MacArthur fait observer que le pluriel <i>monoi</i> (« seuls ») en 3.1 désigne en réalité Paul resté seul à Athènes après avoir envoyé Timothée à Thessalonique et Silas en Macédoine (Actes 18.5), car dire qu'il était « seul » si Silas était encore auprès de lui aurait été un affront envers Silas (52-⁠10).</dd></div><div><dt>1 Thessaloniciens 3.3-⁠4</dt><dd>En 3.3, le présent passif <i>keimetha</i> (« nous sommes destinés / établis pour cela ») indique un décret divin permanent qui place l'affliction au cœur même de la vocation chrétienne dans le siècle présent (52-⁠10). En 3.4, l'imparfait d'habitude <i>proelegomen humin</i> (« nous vous annoncions d'avance à maintes reprises ») suivi du présent <i>hoti mellomen thlibesthai</i> (« que nous allions souffrir l'affliction ») prouve que dès les premières semaines de leur conversion, Paul leur avait enseigné de façon répétée l'inévitabilité de la persécution (52-⁠10).</dd></div><div><dt>1 Thessaloniciens 3.5</dt><dd>Dans <i>mē pōs epeirasen humas ho peirazōn kai eis kenon genētai ho kopos hēmōn</i>, Paul combine deux modes après <i>mē pōs</i> (« de peur que ») : l'indicatif aoriste <i>epeirasen</i> pour un acte que le tentateur (participe présent substantivé <i>ho peirazōn</i>, désignant sa nature et son office permanent) avait déjà pu commettre dans le passé récent, et le subjonctif aoriste <i>genētai</i> pour la conséquence future redoutée que tout le labeur pastoral ne s'avère vain (52-⁠11).</dd></div><div><dt>1 Thessaloniciens 3.8-⁠10</dt><dd>En 3.8, <i>hoti nun zōmen ean humeis stēkete en kuriō</i> (« Car maintenant nous vivons, puisque/si vous tenez ferme dans le Seigneur ») oppose un <i>nun</i> (« maintenant ») plein de vie à l'angoisse mortelle de l'attente décrite en 3.1-⁠5 (52-⁠11). En 3.10, l'adverbe composé à double préfixe <i>huperekperissou</i> (« au-delà de toute mesure, avec une extrême ardeur », propre à Paul en 1 Thessaloniciens 3.10; 5.13; Éphésiens 3.20) qualifie le participe présent <i>deomenoi</i> (« priant nuit et jour »), dont le but est exprimé par les deux infinitifs aoristes <i>eis to idein ... kai katartisai</i> (52-⁠11).</dd></div><div><dt>1 Thessaloniciens 3.11</dt><dd><i>Autos de ho theos kai patēr hēmōn kai ho kurios hēmōn Iēsous kateuthunai tēn hodon hēmōn pros humas</i> : un sujet double (Dieu notre Père et notre Seigneur Jésus) est repris en tête de phrase par le pronom intensif au nominatif <i>singulier</i> <i>Autos</i> (« Lui-même ») et gouverne un verbe à l'optatif aoriste à la troisième personne du <i>singulier</i> (<i>kateuthunai</i>). MacArthur insiste en 52-⁠12 sur cette anomalie grammaticale voulue par le Saint-Esprit : en réunissant le Père et le Fils sous un pronom singulier et un verbe singulier dans une prière qui leur est adressée conjointement, Paul affirme de la manière la plus forte leur unité d'essence et la pleine divinité de Jésus-Christ (Jean 10.30).</dd></div><div><dt>1 Thessaloniciens 3.12-⁠13</dt><dd>En 3.12, le pronom personnel <i>humas</i> (« vous ») est placé en tête de proposition par emphase en face de <i>Autos</i> (3.11), et les deux optatifs aoristes transitifs <i>pleonasai kai perisseusai</i> (« fasse croître et abonder ») ont pour sujet « le Seigneur » (Jésus). L'infinitif articularisé <i>eis to stērixai humōn tas kardias amemptous en hagiōsunē</i> (3.13) exprime le but ultime de cette croissance dans l'amour : l'adjectif <i>amemptous</i> est prédicat proleptique de <i>tas kardias</i> (« affermisse vos cœurs de telle sorte qu'ils soient irréprochables dans la sainteté ») devant Dieu notre Père lors de la <i>parousia</i> (52-⁠12).</dd></div></dl></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Cinq mots-clés</p></header>
+<p class="lead">Cinq mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">affermir</a><a href="#mot-2">ébranlé</a><a href="#mot-3">nous a donné de bonnes nouvelles</a><a href="#mot-4">vous demeurez fermes</a><a href="#mot-5">compléter</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">affermir</h3><p class="mot__translit">stērixai (stērizō)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>caler solidement, étayer, rendre ferme et inébranlable</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer rattache <i>stērizō</i> à <i>stērinx</i> (« étai, support, pilier », apparenté à <i>stereos</i>, « solide, ferme ») et distingue le sens propre « fixer solidement en place, caler pour que rien ne vacille » (Luc 16.26) et le sens figuré « fortifier, affermir, rendre constant dans l'âme » (Luc 22.32; Romains 1.11; 16.25; 1 Thessaloniciens 3.2, 13; 2 Thessaloniciens 2.17; 3.3; Jacques 5.8; 1 Pierre 5.10; 2 Pierre 1.12; Apocalypse 3.2).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur explique le verbe en 3.2 et en 3.13 par l'image architecturale d'un contrefort ou d'un étai (<i>buttressing</i>) que l'on pose pour soutenir un édifice sous la tempête (52-⁠10, 52-⁠12). En 3.2, Timothée est envoyé pour consolider les fondations doctrinales de leur foi en leur enseignant davantage qui est Dieu et qui est Christ, tandis que <i>parakalesai</i> (« exhorter / encourager ») les pousse à mettre en pratique ce qu'ils savent au milieu des épreuves (Actes 14.22; 15.32, 41; 18.23) (52-⁠10). En 3.13, c'est le Seigneur lui-même qui affermit les cœurs dans la sainteté face à la tentation (52-⁠12).</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> affermir</li><li><b>NEG79</b> affermir</li><li><b>Darby</b> affermir</li><li><b>LSG</b> affermir</li><li><b>NBS</b> affermir</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">ébranlé</h3><p class="mot__translit">sainesthai (sainō)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>remuer la queue (en parlant d'un chien), cajoler, séduire, ou agiter, troubler</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer rattache <i>sainō</i> à <i>seiō</i> (« secouer, agiter ») et retrace ses trois étapes de sens : 1) au sens propre, chez Homère, Hésiode et Ésope, « remuer la queue » en parlant d'un chien; 2) au figuré, chez les tragiques grecs, « flatter, cajoler, chercher à séduire par des caresses »; 3) au passif en 1 Thessaloniciens 3.3, seul emploi du Nouveau Testament (hapax), « être agité, troublé, ébranlé » par les tribulations.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En 52-⁠10, MacArthur expose avec précision l'histoire étymologique du mot depuis le chien qui remue la queue pour attirer l'attention et obtenir une faveur jusqu'aux deux nuances possibles en 3.3 : soit « être balloté de-ci de-là, vaciller » sous le choc des persécutions, soit « être séduit, flatté et détourné de la vérité » par ceux qui promettent un chemin sans souffrance (52-⁠10). Dans les deux cas, le pasteur veut empêcher que la pression des afflictions ne fasse dévier les jeunes croyants de la fermeté de la foi (52-⁠10).</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> ébranlé</li><li><b>NEG79</b> ébranlé</li><li><b>Darby</b> ébranlé</li><li><b>LSG</b> ébranlé</li><li><b>NBS</b> ébranlé</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">nous a donné de bonnes nouvelles</h3><p class="mot__translit">euangelisamenou (euangelizō)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>annoncer une bonne nouvelle, apporter un message de joie</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer compose le verbe de <i>euangelos</i> (« porteur de bonnes nouvelles », de <i>eu</i> et <i>angellō</i>), qui traduit l'hébreu <i>bissar</i> dans la Septante (1 Samuel 31.9; 2 Samuel 18.19; Ésaïe 40.9; 52.7). Dans le Nouveau Testament, à l'exception de Luc 1.19 (la naissance de Jean-Baptiste) et d'Apocalypse 10.7, 1 Thessaloniciens 3.6 est le seul endroit chez Paul où le verbe ne désigne pas la prédication de l'Évangile du salut, mais l'annonce de la bonne nouvelle de la foi et de l'amour des Thessaloniciens.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur souligne en 52-⁠11 le caractère exceptionnel de cet emploi chez Paul : au lieu d'utiliser un verbe ordinaire de rapport, l'apôtre emprunte le mot même de l'Évangile (<i>euangelizomai</i>) pour décrire les nouvelles rapportées par Timothée! Apprendre que la foi, l'amour, la loyauté et l'affection des Thessaloniciens avaient triomphé du tentateur était pour son cœur de berger une « bonne nouvelle » aussi réjouissante que l'Évangile lui-même (52-⁠11). Le lexique et la lecture concordent entièrement.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> nous a donné de bonnes nouvelles</li><li><b>NEG79</b> nous a donné de bonnes nouvelles</li><li class="ecart"><b>Darby</b> nous ayant apporté les bonnes nouvelles</li><li><b>LSG</b> nous a donné de bonnes nouvelles</li><li><b>NBS</b> nous a donné de bonnes nouvelles</li></ul></article><article class="mot" id="mot-4"><header class="mot__tete"><h3 class="mot__fr">vous demeurez fermes</h3><p class="mot__translit">stēkete (stēkō)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>se tenir debout, tenir bon sans reculer</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer note que <i>stēkō</i> est un verbe de la koinè formé par dérivation étymologique sur le parfait <i>hestēka</i> (« je me tiens debout ») de <i>histēmi</i>. Il signifie « se tenir debout » (Marc 11.25), et avec emphase chez Paul « tenir ferme, persévérer sans céder de terrain » : dans la foi (1 Corinthiens 16.13), dans un même esprit (Philippiens 1.27), dans la liberté (Galates 5.1), dans le Seigneur (Philippiens 4.1; 1 Thessaloniciens 3.8) et dans les enseignements apostoliques (2 Thessaloniciens 2.15).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En 52-⁠11, MacArthur relève la connotation militaire de <i>stēkō</i> : c'est le soldat qui refuse de battre en retraite sous l'assaut de l'ennemi et qui garde sa position, revêtu de l'armure de Dieu et du bouclier de la foi (1 Corinthiens 16.13; Galates 5.1; Philippiens 1.27; 4.1; 2 Thessaloniciens 2.15). Tant qu'il ignorait s'ils tenaient bon, Paul traversait une sorte de mort; dès qu'il apprend qu'ils tiennent leur position dans le Seigneur, il s'écrie : « maintenant nous vivons! » (3.8) (52-⁠11).</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> vous tenez ferme</li><li><b>NEG79</b> vous demeurez fermes</li><li class="ecart"><b>Darby</b> vous tenez fermes</li><li><b>LSG</b> vous demeurez fermes</li><li class="ecart"><b>NBS</b> vous tenez ferme</li></ul></article><article class="mot" id="mot-5"><header class="mot__tete"><h3 class="mot__fr">compléter</h3><p class="mot__translit">katartisai (katartizō)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>remettre en bon état, réparer un filet, réduire une fracture, rendre complet et équipé</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer dérive par étymologie <i>katartizō</i> de <i>kata</i> et <i>artios</i> (« ajusté, complet, apte ») et distingue : 1) « réparer, remettre en état ce qui est déchiré ou brisé », comme des filets de pêche (Matthieu 4.21; Marc 1.19), d'où en 1 Thessaloniciens 3.10 « compléter, combler ce qui manque » (<i>ta husterēmata</i>); 2) « équiper, préparer, ajuster » (Hébreux 11.3; 13.21; Luc 6.40; Romains 9.22); 3) au sens éthique, « redresser quelqu'un qui a failli » (Galates 6.1) et « amener à la maturité complète » (1 Corinthiens 1.10; 2 Corinthiens 13.11; 1 Pierre 5.10; substantif <i>katartismos</i> en Éphésiens 4.12).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur rappelle en 52-⁠11 les emplois concrets du verbe pour ajuster des pièces ensemble, remettre en place un os fracturé ou raccommoder un filet déchiré, puis développe en 52-⁠12 ce que signifie « compléter ce qui manque à votre foi » : il ne s'agit pas d'un appel mystique à « croire plus fort » dans le vide, mais d'élargir le socle de vérité biblique que la foi embrasse (52-⁠12). Puisque la foi consiste à se confier dans la vérité révélée de Dieu, on ne peut faire grandir la foi d'une Église qu'en lui enseignant toute la Parole (1 Pierre 2.2), ce que Paul commence à faire dès le chapitre 4 (52-⁠11, 52-⁠12).</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> compléter</li><li><b>NEG79</b> compléter</li><li class="ecart"><b>Darby</b> suppléions à</li><li><b>LSG</b> compléter</li><li class="ecart"><b>NBS</b> suppléer</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">1 Thessaloniciens 3</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Après avoir montré aux chapitres 1 et 2 ce qu'un vrai pasteur fait, dit et est, Paul ouvre au chapitre 3 une fenêtre sur ce qu'un vrai pasteur <i>ressent</i> (3.1-⁠10) et sur ce qu'il <i>demande à Dieu</i> pour son troupeau (3.11-⁠13) (52-⁠10, 52-⁠11, 52-⁠12).</p></div><aside class="grille__marge grille__marge--collante"><details class="sources"><summary><span class="sources__niveau">Niveau 1</span>Sources de l'exposition : trois sermons Grace to You</summary><div class="sources__corps"><p>Niveau 1 : sermons Grace to You sur 1 Thessaloniciens 3.1 à 3.13 (52-⁠10 à 52-⁠12, série « 1 Thessalonians », mai et juin 1990)</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">52-10</span></th><td><a href="https://www.gty.org/sermons/52-10" target="_blank" rel="noopener">The Pastor's Heart, Part 1</a></td><td>1 Th 3.1-⁠4</td></tr><tr><th scope="row"><span class="mot-fr">52-11</span></th><td><a href="https://www.gty.org/sermons/52-11" target="_blank" rel="noopener">The Pastor's Heart, Part 2</a></td><td>1 Th 3.5-⁠10</td></tr><tr><th scope="row"><span class="mot-fr">52-12</span></th><td><a href="https://www.gty.org/sermons/52-12" target="_blank" rel="noopener">A Pastoral Prayer</a></td><td>1 Th 3.11-⁠13</td></tr></tbody></table></div></div></details></aside><div class="grille__texte"><div class="body"><p class="p-cle"><b>1 Thessaloniciens 3.1-⁠4 · affection, abnégation et compassion pour des croyants destinés à l'affliction</b></p><p>Dans le sermon 52-⁠10 (<i>The Pastor's Heart, Part 1</i>), MacArthur dégage des quatre premiers versets les trois premières attitudes qui caractérisent le cœur d'un berger selon Dieu, à l'image du Souverain Berger Jésus-Christ (Jean 10.14-⁠15). Premièrement, <i>l'affection pour son peuple</i> (3.1a) : par deux fois (3.1 et 3.5), Paul répète qu'il « n'y tenait plus » (« impatients que nous étions », <i>mēketi stegontes</i>, ne pouvant plus contenir ni supporter la pression de l'inquiétude). Le fardeau quotidien de toutes les Églises (2 Corinthiens 11.28-⁠29; cf. son inquiétude pour Tite à Troas en 2 Corinthiens 2.12-⁠13 et son amour persévérant en 2 Corinthiens 12.15) pesait sur lui parce qu'il aimait ses brebis jusqu'à ressentir chacune de leurs faiblesses et de leurs blessures (52-⁠10).</p><p>Deuxièmement, <i>l'abnégation envers son peuple</i> (3.1b-2a) : le véritable amour se mesure à ce qu'il est prêt à sacrifier. Alors qu'il se trouvait dans la ville difficile d'Athènes, entouré de philosophes sceptiques et d'idolâtres, Paul a consenti à se priver de ses deux collaborateurs - envoyant Silas à Philippes en Macédoine (Actes 18.5) et Timothée à Thessalonique - et à « rester seul à Athènes » (<i>kataleiphthēnai</i>, verbe fort signifiant être laissé derrière ou abandonné) (52-⁠10). Bien que Timothée fût son bien le plus précieux sur terre, son frère bien-aimé et le « ministre / collaborateur de Dieu dans l’Evangile de Christ » (où Dieu est la source de l'Évangile comme en 2.2, 8, 9, et Christ en est le sujet), Paul a donné le meilleur de ce qu'il avait pour le bien des Thessaloniciens, comme il le fera plus tard pour Corinthe (1 Corinthiens 4.17) et Philippes (Philippiens 2.19-⁠20), à l'exemple du Père donnant son Fils et du Fils donnant sa vie et son Esprit (52-⁠10).</p><p>Troisièmement, <i>la compassion pour son peuple dans l'épreuve</i> (3.2b-4) : Timothée est envoyé « pour vous affermir (<i>stērixai</i>, étayer les fondations de leur connaissance de Dieu et de Christ) et vous exhorter (<i>parakalesai</i>, encourager à mettre cette vérité en pratique) au sujet de votre foi, afin que personne ne soit ébranlé (<i>sainesthai</i>, ni secoué ni séduit) au milieu des afflictions présentes » (3.2-⁠3a; cf. Actes 14.21-⁠22; 15.32, 41; 18.23; Romains 1.11; 2 Thessaloniciens 2.16-⁠17; 3.3) (52-⁠10). Paul ajoute aussitôt une vérité capitale qui pulvérise tout « évangile de la prospérité » : « car vous savez vous-mêmes que nous sommes destinés à cela. Et lorsque nous étions auprès de vous, nous vous annoncions d’avance que nous serions exposés à des afflictions, comme cela est arrivé, et comme vous le savez » (3.3b-4) (52-⁠10). Venir à Christ promet la paix éternelle, mais garantit la tribulation temporelle dans un monde déchu et hostile (Jean 15.18-⁠20; 16.33; Matthieu 5.10-⁠12; 10.24-⁠25; 2 Timothée 3.12; Jacques 1.2-⁠4; 1 Pierre 5.10; Romains 8.28-⁠39) : avertir d'avance les croyants leur permet d'affronter l'orage sans douter de la fidélité de Dieu (52-⁠10).</p><p class="p-cle"><b>1 Thessaloniciens 3.5-⁠10 · protection contre le tentateur, délice, gratitude et intercession</b></p><p>Dans le sermon 52-⁠11 (<i>The Pastor's Heart, Part 2</i>), après avoir cité les paroles de Charles Jefferson, de Jeremy Taylor et le célèbre portrait du prédicateur enchaîné à l'étude de la Parole, MacArthur poursuit l'examen des quatre autres attitudes du cœur pastoral.</p><p>Quatrièmement, <i>la vigilance protectrice pour son peuple</i> (3.5) : avant le retour de Timothée, Paul redoutait que la foi des Thessaloniciens ne soit semblable au sol pierreux ou épineux de Matthieu 13.20-⁠22 et que « le tentateur ne vous ait tentés, et que nous n’ayons travaillé en vain » (cf. Galates 2.2; 4.11; Philippiens 2.16; Actes 20.29-⁠30; 1 Timothée 4.1-⁠6) (52-⁠11). Satan, le tentateur (Matthieu 4.3), déploie trois tactiques successives : 1) aveugler les incrédules pour les empêcher de croire (2 Corinthiens 4.4); 2) étouffer par la persécution ou les convoitises mondaines les premiers élans d'une profession de foi superficielle (Matthieu 13.20-⁠22); 3) lorsqu'il se heurte à une vraie foi salvatrice qu'il ne peut détruire, chercher à l'affaiblir et à entraîner le croyant dans le péché ou l'erreur par ses ruses (1 Corinthiens 7.5; 2 Corinthiens 2.11; 11.3, 14; 1 Pierre 5.8) (52-⁠11). Comme Jésus priant le Père de garder les siens du Malin (Jean 17.15; Luc 22.31-⁠32), le bon berger veille jalousement à protéger le troupeau (52-⁠11).</p><p>Cinquièmement, <i>le délice trouvé dans son peuple</i> (3.6-⁠8) : à l'instant même (<i>arti</i>) où Timothée arrive à Corinthe, il apporte des nouvelles si glorieuses que Paul les appelle un « Évangile » (<i>euangelisamenou</i>, 3.6) (52-⁠11). Ce rapport en quatre points comble le cœur de Paul : 1) leur <i>foi</i> est authentique; 2) leur <i>amour</i> est actif (et comme le dit Jean Calvin cité par MacArthur, la foi et l'amour résument toute la piété; cf. Galates 5.6); 3) leur <i>loyauté</i> envers Paul est intacte (« vous avez toujours de nous un bon souvenir »), malgré toutes les calomnies des détracteurs; 4) leur <i>désir</i> ardent de le revoir répond au sien (3.6) (52-⁠11). Aussi, au milieu de toutes ses angoisses et tribulations à Corinthe (Actes 18), Paul est consolé (3.7) et s'écrie : « Car maintenant nous vivons, puisque vous demeurez fermes (<i>stēkete</i>, tenez votre position militaire sans reculer) dans le Seigneur » (3.8) - le bonheur d'un vrai pasteur ne dépend ni des bâtiments, ni du budget, ni du prestige, mais de la fermeté spirituelle de ses brebis (52-⁠11).</p><p>Sixièmement, <i>la gratitude envers Dieu pour son peuple</i> (3.9) : conscient que Dieu seul est l'auteur de cette persévérance, Paul cherche quels mots pourraient « rendre en retour » (<i>antapodounai</i>) à Dieu une action de grâces proportionnée à la joie qu'il éprouve devant lui (cf. Hébreux 13.17) (52-⁠11). Septièmement, <i>l'intercession pour son peuple</i> (3.10) : loin de se reposer sur cette victoire, Paul prie avec une fréquence incessante (« Nuit et jour »), une ferveur surabondante (« avec une extrême ardeur », <i>huperekperissou</i>) et un double objectif précis : revoir leur visage et « compléter (<i>katartisai</i>) ce qui manque à votre foi » en les instruisant sur la pureté morale, le travail, l'avenir des morts en Christ, le jour du Seigneur et la vie d'assemblée aux chapitres 4 et 5 (52-⁠11).</p><p class="p-cle"><b>1 Thessaloniciens 3.11-⁠13 · la prière pastorale : foi perfectionnée, amour débordant et espérance purificatrice</b></p><p>Dans le sermon 52-⁠12 (<i>A Pastoral Prayer</i>), après avoir cité Spurgeon sur le pasteur qui porte sans cesse les noms de ses brebis sur son pectoral devant le Seigneur, MacArthur analyse la prière qui clôt les trois premiers chapitres autour de la triade chrétienne de la foi, de l'amour et de l'espérance (1.3; 5.8; 1 Corinthiens 13.13).</p><p>En 3.11, l'invocation « Que Dieu lui-même, notre Père, et notre Seigneur Jésus, aplanissent notre route » offre un témoignage trinitaire remarquable : non seulement Paul prie Jésus au même titre que le Père (attribuant à Dieu la proximité intime de « Père » et à Jésus la souveraineté de « Seigneur »), mais le grec place en tête le pronom singulier <i>Autos</i> (« Lui-même ») et accorde le verbe <i>kateuthunai</i> au singulier, parce que le Père et le Fils sont un seul être divin (Jean 10.30) (52-⁠12). De plus, pour surmonter l'obstacle dressé par Satan en 2.18, Paul ne s'adresse jamais à Satan pour « le lier » : il s'adresse uniquement à Dieu et au Seigneur Jésus, qui seuls aplanissent la route en ôtant les obstacles (52-⁠12).</p><p>La prière présente trois requêtes qui s'enchaînent logiquement : 1) <i>une foi qui se perfectionne</i> (3.10-⁠11) : Paul demande que sa route soit aplanie afin d'aller élargir leur connaissance de la vérité biblique; car la foi ne grandit pas par un effort mystique d'autosuggestion, mais à proportion de la vérité de Dieu que l'intelligence comprend et que le cœur embrasse (1 Pierre 2.2), ce qui se manifeste par cinq signes : une connaissance croissante de l'Écriture, une confiance accrue en Dieu, une soumission paisible à sa souveraineté (Romains 8.28), un progrès dans l'obéissance et la joie dans les épreuves (52-⁠12); 2) <i>un amour qui prospère et déborde</i> (3.12) : plus la foi connaît et aime Dieu, plus l'amour divin (<i>agapē</i>) déborde envers les frères (« les uns pour les autres », Jean 13.34-⁠35) et envers les inconvertis et les persécuteurs (« et pour tous », Matthieu 5.43-⁠44), suivant l'exemple même de Paul, qui les avait d'abord aimés quand ils étaient perdus parmi « tous les hommes » avant de les aimer comme des « frères » (52-⁠12); 3) <i>une espérance qui purifie</i> (3.13) : le but (<i>eis to</i>) de cette foi et de cet amour est que le Seigneur « affermisse vos cœurs pour qu’ils soient irréprochables dans la sainteté ». En citant Robert Thomas, MacArthur souligne que l'amour désintéressé est l'antidote direct à la convoitise égoïste et à l'orgueil : un cœur rempli d'amour pour Dieu et pour autrui se détourne du péché (Lévitique 19.2; 1 Pierre 1.16) dans l'attente purificatrice (1 Jean 3.3) de comparaître devant Dieu notre Père au tribunal des récompenses (le <i>bēma</i>, 2 Corinthiens 5.10) « lors de l’avènement (<i>parousia</i>) de notre Seigneur Jésus avec tous ses saints » (52-⁠12).</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>1 Thessaloniciens 2.20 et 3.1, 3.5.</b> Le <i>Dio</i> (« C'est pourquoi ») initial de 3.1 enchaîne directement sur « Oui, vous êtes notre gloire et notre joie » (2.20), et la répétition de <i>mēketi stegontes ... epempsamen</i> (3.1-⁠2) en <i>dia touto kagō mēketi stegōn epempsa</i> (3.5) forme une inclusion autour de l'envoi de Timothée.</li><li><b>1 Thessaloniciens 3.2, 3.5, 3.6, 3.7, 3.10.</b> Le nom <i>pistis</i> (« votre foi ») revient cinq fois en neuf versets comme le fil conducteur de toute l'inquiétude, de la consolation et de la prière de Paul : l'affermir (3.2), s'en informer (3.5), en recevoir la bonne nouvelle (3.6), être consolé par elle (3.7) et compléter ce qui lui manque (3.10).</li><li><b>1 Thessaloniciens 3.2 et 3.13.</b> La construction finale <i>eis to stērixai</i> (« pour affermir ») ouvre le chapitre avec la mission confiée à Timothée (<i>eis to stērixai humas</i>, 3.2) et le referme avec l'œuvre souveraine demandée au Seigneur dans la prière (<i>eis to stērixai humōn tas kardias amemptous en hagiōsunē</i>, 3.13).</li><li><b>1 Thessaloniciens 2.18 et 3.10-⁠11.</b> L'obstruction satanique de 2.18 (« Aussi voulions-nous aller vers vous ... mais Satan nous en a empêchés ») trouve sa réponse directe dans la prière de 3.10-⁠11 : Paul supplie Dieu le Père et le Seigneur Jésus d'aplanir eux-mêmes sa route (<i>kateuthunai tēn hodon hēmōn pros humas</i>).</li><li><b>1 Thessaloniciens 1.3, 3.6 et 3.10-⁠13.</b> La triade paulinienne de 1.3 (foi, amour, espérance) structure la seconde moitié du chapitre 3 : Timothée apporte la bonne nouvelle de leur « foi » et de leur « amour » (3.6), et Paul prie pour que leur « foi » soit complétée (3.10), que leur « amour » abonde (3.12) et que leurs cœurs soient affermis dans la sainteté lors de « l’avènement de notre Seigneur Jésus » (l'objet de l'espérance, 3.13).</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Six passages</p></header>
+<p class="lead">Six passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Actes 17.14-⁠18.5</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Cadre historique des déplacements d'Athènes et de Corinthe évoqués en 3.1-⁠6 : le départ de Paul pour Athènes (Actes 17.14-⁠15), son séjour à Athènes (17.16-⁠34) d'où il renvoie Timothée à Thessalonique (1 Thessaloniciens 3.1-⁠2), puis le retour de Silas et de Timothée arrivant de Macédoine auprès de Paul à Corinthe (Actes 18.5; 1 Thessaloniciens 3.6) (52-⁠10, 52-⁠11).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Actes 14.21-⁠22</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Modèle exact de la mission confiée à Timothée en 1 Thessaloniciens 3.2-⁠4, unissant les deux mêmes verbes (affermir et exhorter) et l'annonce préalable des tribulations : « fortifiant (<i>epistērizontes</i>) l’esprit des disciples, les exhortant (<i>parakalountes</i>) à persévérer dans la foi, et disant que c’est par beaucoup de tribulations qu’il nous faut entrer dans le royaume de Dieu » (cité en 52-⁠10).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">2 Timothée 3.12</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Formule sous forme d'axiome universel ce que Paul rappelle en 1 Thessaloniciens 3.3-⁠4 (« nous sommes destinés à cela ») : « Or, tous ceux qui veulent vivre pieusement en Jésus-Christ seront persécutés » (avec Jean 16.33, cité en 52-⁠10).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">2 Corinthiens 11.28-⁠29</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Décrit la même pression intérieure d'affection et de compassion pastorale qui fait dire à Paul « impatients que nous étions » en 1 Thessaloniciens 3.1 et 3.5 : « il y a, sans parler de bien d’autres choses, ce qui me vient chaque jour à l’esprit, le souci de toutes les Eglises. Qui est faible, que je ne sois faible? Qui vient à tomber, que je ne brûle? » (cité en 52-⁠10).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Philippiens 2.19-⁠20</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Éclaire la valeur du sacrifice consenti par Paul en envoyant Timothée depuis Athènes (3.1-⁠2) : « J’espère dans le Seigneur Jésus vous envoyer bientôt Timothée, afin d’être encouragé moi-même en apprenant ce qui vous concerne. Car je n’ai personne ici qui partage mes sentiments, pour prendre sincèrement à cœur votre situation » (cité en 52-⁠10).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">2 Thessaloniciens 1.3</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Atteste quelques mois plus tard l'exaucement direct de la prière de 1 Thessaloniciens 3.10-⁠12 pour la croissance de leur foi et de leur amour mutuel : « Nous devons toujours rendre grâces à Dieu à votre sujet, frères, comme cela est juste, parce que votre foi fait de grands progrès, et que l’amour de chacun de vous tous à l’égard des autres augmente de plus en plus » (cité en 52-⁠12).</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Quatre axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">Le cœur du berger à l'image de Christ : affection, sacrifice et intercession</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Ne pouvant plus supporter d'ignorer l'état des Thessaloniciens, Paul a consenti à rester seul à Athènes pour leur envoyer Timothée (3.1-⁠5); consolé par la nouvelle de leur fermeté (« Car maintenant nous vivons, puisque vous demeurez fermes dans le Seigneur », 3.8), il rend grâces à Dieu et prie nuit et jour avec une extrême ardeur pour compléter ce qui manque à leur foi (3.9-⁠10).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Le ministère pastoral biblique ne se réduit pas à l'exercice extérieur d'une fonction d'enseignement ou de direction : il procède d'un cœur façonné à l'image du Bon Berger (Jean 10.11-⁠15), habité par une affection profonde, une abnégation prête à sacrifier son propre confort, une compassion qui souffre avec les brebis, une vigilance qui les protège du tentateur, une joie qui ne vit que de leur fermeté et une intercession incessante (52-⁠10, 52-⁠11).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Après la défense des motifs intérieurs (2.1-⁠6) et de la conduite parentale de Paul lors de son séjour chez eux (2.7-⁠12), le chapitre 3 montre que ce même amour pastoral demeure intact à distance et prépare les exhortations pressantes de 4.1-⁠5.24 ainsi que le portrait des conducteurs locaux en 5.12-⁠13.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Un pasteur ou un ancien doit mesurer son ministère non à la taille de son auditoire ou à sa réussite personnelle, mais à la profondeur de son amour sacrificiel, de son fardeau de prière et de son zèle pour la maturité spirituelle des brebis que Dieu lui confie (52-⁠10, 52-⁠11).</p></div></div></section><section class="theme"><h3 class="theme__title">La vocation chrétienne à l'affliction dans le siècle présent</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Paul envoie Timothée affermir et exhorter les Thessaloniciens « afin que personne ne soit ébranlé au milieu des afflictions présentes; car vous savez vous-mêmes que nous sommes destinés à cela », comme il le leur avait annoncé d'avance lorsqu'il était auprès d'eux (3.3-⁠4).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Loin de promettre au croyant une vie terrestre exempte d'épreuves (le faux évangile de la prospérité), Dieu a souverainement établi (<i>keimetha</i>) que les rachetés traverseraient des tribulations dans un monde déchu et hostile à Christ (52-⁠10). Ces afflictions constituent à la fois le lot normal du disciple fidèle et le creuset par lequel Dieu éprouve et manifeste l'authenticité de la foi salvatrice face aux attaques du tentateur (52-⁠10, 52-⁠11).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Ce thème, introduit dès 1.6 (« au milieu de beaucoup de tribulations ») et développé en 2.2 (les outrages de Philippes) et 2.14 (les souffrances endurées de la part des compatriotes), atteint ici son principe doctrinal explicite en 3.3-⁠4 et sera repris au début de la seconde épître (2 Thessaloniciens 1.4-⁠7).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>L'évangélisation et l'enseignement pastoral doivent avertir honnêtement chaque nouveau converti qu'il est destiné à la paix éternelle mais à l'affliction temporelle, afin que l'épreuve, lorsqu'elle survient, ne l'ébranle pas mais l'amène à s'appuyer sur la Parole (52-⁠10).</p></div></div></section><section class="theme"><h3 class="theme__title">L'égalité divine du Père et du Fils dans la prière et la gouvernement du monde</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>En 3.11, Paul adresse sa prière conjointement à « Dieu lui-même, notre Père, et notre Seigneur Jésus » (<i>Autos de ho theos kai patēr hēmōn kai ho kurios hēmōn Iēsous</i>), en employant un pronom singulier et un verbe singulier (<i>kateuthunai</i>) pour leur demander d'aplanir sa route, puis s'adresse directement au Seigneur Jésus en 3.12-⁠13.</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Le Père et le Fils possèdent une seule et même essence divine et exercent ensemble le gouvernement souverain des circonstances, de l'histoire et de la croissance spirituelle des croyants (52-⁠12). L'accord au singulier du verbe et du pronom avec les deux sujets divins atteste l'unité d'essence au sein de la Trinité et légitime la prière adressée directement au Seigneur Jésus aussi bien qu'au Père (52-⁠12).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Prolongeant l'adresse trinitaire de 1.1 (« en Dieu le Père et en Jésus-Christ le Seigneur » sous une seule préposition <i>en</i>), l'invocation de 3.11-⁠13 prépare les bénédictions finales de 5.23-⁠28 et la prière symétrique de 2 Thessaloniciens 2.16-⁠17, où le Seigneur Jésus-Christ et Dieu notre Père gouvernent également deux verbes au singulier.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Face aux obstacles dressés par Satan (2.18), le croyant ne s'adresse jamais au diable : il remet sa route et sa croissance spirituelle entre les mains souveraines du Père et du Fils (52-⁠12).</p></div></div></section><section class="theme"><h3 class="theme__title">La dynamique de la sanctification : de la vérité crue à l'amour qui produit la sainteté</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Paul prie pour compléter ce qui manque à leur foi (3.10), demande au Seigneur de faire croître et abonder leur amour mutuel et envers tous (3.12), « qu’il affermisse vos cœurs pour qu’ils soient irréprochables dans la sainteté devant Dieu notre Père, lors de l’avènement de notre Seigneur Jésus avec tous ses saints! » (3.13).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>La croissance spirituelle suit un ordre divin précis : l'enseignement de la Parole élargit le fondement de la vérité que la foi embrasse; une foi plus profonde en Dieu engendre un amour plus ardent pour lui, qui déborde en amour désintéressé (<i>agapē</i>) pour les frères et pour tous les hommes; et cet amour humble, en chassant l'égoïsme de la convoitise et de l'orgueil, affermit le cœur dans une sainteté irréprochable motivée par l'espérance de comparaître au tribunal de Christ lors de sa <i>parousia</i> (52-⁠12).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Placée à la charnière exacte entre les chapitres 1 à 3 et les chapitres 4 à 5, la prière de 3.10-⁠13 annonce le programme des deux derniers chapitres : l'appel à la sainteté morale (4.1-⁠8), l'amour fraternel croissant (4.9-⁠12), l'espérance de l'enlèvement et du jour du Seigneur (4.13-⁠5.11) et la prière finale de sanctification entière en vue de la <i>parousia</i> (5.23-⁠24).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>On ne peut cultiver la sainteté ni l'amour chrétien dans le vide : il faut d'abord nourrir sa foi par une connaissance toujours plus riche de la Parole de Dieu, puis laisser l'amour pour Dieu et pour autrui supplanter les convoitises égoïstes du cœur (52-⁠12).</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Six questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>En 3.1-⁠10, MacArthur souligne que ce chapitre révèle non pas ce qu'un pasteur fait ou dit, mais ce qu'il ressent pour son peuple : comment ces sept attitudes (affection, abnégation, compassion, protection, délice, gratitude, intercession) interpellent-elles notre conception du leadership dans l'Église locale?</li><li>Sur 3.3-⁠4 (« nous sommes destinés à cela ... nous vous annoncions d’avance que nous serions exposés à des afflictions »), pourquoi le silence sur l'inévitabilité de la souffrance ou les promesses d'un christianisme sans épreuve exposent-ils les jeunes convertis à être ébranlés par le tentateur?</li><li>En 3.8, Paul résume sa joie pastorale en une phrase : « Car maintenant nous vivons, puisque vous demeurez fermes dans le Seigneur »; comment cette parole aide-t-elle les membres d'une assemblée à comprendre comment leur propre fermeté spirituelle console et vivifie leurs conducteurs (Hébreux 13.17)?</li><li>En 3.10-⁠11, MacArthur explique que « compléter ce qui manque à votre foi » ne consiste pas à exhorter les gens à « croire plus fort », mais à élargir la vérité biblique qu'ils connaissent et sur laquelle leur foi peut s'appuyer : quelle place cela donne-t-il à l'exposition doctrinale suivie dans la vie de l'Église?</li><li>Dans la prière de 3.11, quel enseignement tirer de l'accord au singulier du pronom « Lui-même » (<i>Autos</i>) et du verbe « aplanisse » (<i>kateuthunai</i>) avec le double sujet « Dieu notre Père et notre Seigneur Jésus », ainsi que du fait que Paul prie Dieu plutôt que de s'adresser directement à Satan (2.18)?</li><li>En 3.12-⁠13, comment montrer concrètement à l'assemblée que la surabondance de l'amour désintéressé (<i>agapē</i>) envers les frères et envers tous les hommes est le moyen par lequel le Seigneur affermit nos cœurs contre l'égoïsme du péché pour nous rendre irréprochables dans la sainteté lors du retour de Christ?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · 1 Thessaloniciens 3 · 23 octobre 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-1-Thessaloniciens-3.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>
