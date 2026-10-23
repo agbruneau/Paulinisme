@@ -5,7 +5,7 @@ Ce dépôt réunit les études des treize épîtres de Paul dans l'ordre chronol
 ## Découpage d'une épître
 
 - **Un sermon par chapitre.** Le plan de série d'une épître compte autant de prédications que l'épître compte de chapitres (`N` chapitres = `N` sermons), regroupés selon les grands blocs structurels que dégage MacArthur pour ce livre. Ce découpage par chapitre prime sur le découpage par péricopes de la skill `sermon-series`.
-- **Charnières.** Lorsqu'une unité de pensée du texte ou un sermon Grace to You (GTY) enjambe une frontière de chapitre (p. ex. `Galates 1.11-2.10` ou `1 Thessaloniciens 4.16-5.3`), la recherche et le plan en rendent compte dans l'introduction et la transition des chapitres concernés.
+- **Charnières.** Lorsqu'une unité de pensée du texte ou un sermon Grace to You (GTY) enjambe une frontière de chapitre (p. ex. `Galates 1.11-2.10` ou `1 Thessaloniciens 2.17-3.13`), la recherche et le plan en rendent compte dans l'introduction et la transition des chapitres concernés.
 
 ## Livrables d'un dossier `<Épître>/`
 
